@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="Ruoyan Han">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Ruoyan Han">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>Using Longitudinal Models To Analyze Steam Games · Ry2an&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/hakase.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Ry2an&#39;s Studio</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Using Longitudinal Models To Analyze Steam Games</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Ry2an's Studio</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/postbg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            Using Longitudinal Models To Analyze Steam Games
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">3.8k</span>Reading time: <span class="post-count reading-time">23 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/01/11</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p><strong>This is the final assignment of course BIOS 623 at CUNY GSPHHP in Fall 2019</strong><br><strong>Author: Ruoyan Han</strong></p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Video games, as an emerging merchandise, are usually selling their copies through online stores and physical storage disks. Before a game marked by a price and selling on markets, it should be developed by a developer group and be published by a publisher company. The game prices set by publisher could contain the cost of making the games and advertising fees, which is related to the quality of the games. Steam is the most famous video game digital distribution service developed by Valve Corporation. Most game publishers on the world publish soft copies of games on Steam game store. In the online store, developer, publisher, price, and customers’ reviews are recorded and updated on each game’s web-page.</p>
+<p>Overall rating is a count number of all negative reviews (comments) and positive reviews (comments), which in other words is total review numbers (Fig 1). This value should be positively related to sells volume, because on Steam, only players who bought the game can give comments on the web page (one comment per player). The actual selling volume are hidden from the published data I acquired, so that I chose this as dependent variable, which could be considered as a proxy of overall selling volume. In cross-sectional analyses, it is hard to directly analyze the relationship between the game prices with overall ratings. Because the games are not independent with each other, famous publishers and developers could always have some fans love whatever game they made, while small companies may not sell their games well even the quality of the games they made aren’t that worse. Besides, the volume between different publisher are not the same, larger publisher could have more game published in the online stores, which may bias the relationship between price and the game ratings.</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/1.png" alt="fig1"></p>
+<p><strong><center>Fig 1. Different Reviews (Negative and Positive) of a Game Called “Foxhole” on Steam Game Store</center></strong></p>
+<p>In this analysis, I will use different longitudinal models (linear mixed effect models, fixed effect models and generalized estimating equation) to analyze the relationship between game prices and overall ratings in steam online stores among different game publishers. From the results of this analysis, game publishers could see whether the game prices settings is positively or negatively related with overall ratings. And so that they could have a deeper understanding of requirement from player on the view of games prices when they want to publish new games in future.</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><h3 id="Data-Process"><a href="#Data-Process" class="headerlink" title="Data Process"></a>Data Process</h3><h4 id="Data-Source"><a href="#Data-Source" class="headerlink" title="Data Source"></a>Data Source</h4><p>Data for this analysis is created by Nik Davis and published on <a target="_blank" rel="noopener" href="https://www.kaggle.com/nikdavis/steam-store-games">kaggle website</a> [1]. The data collected all available games in U.S. steam online game store in May, 2019. The data is gathered through <a target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?title=Steam_Spy&oldid=929122689">SteamSpy</a>, a website uses an application programming interface (API) to the Steam software distribution service owned by Valve Corporation to estimate the number of sales of software titles offered on the service created by Sergey Galyonkin [2].</p>
+<p>There are several fields in the dataset I acquired and I will use in this analysis:<br>Publisher ID; Game ID; English (whether the game support English Language), Release Date; Overall Ratings and Price of each game.</p>
+<p>Publisher enrolling</p>
+<p>To use longitudinal models, multiple published records are needed for each publisher. Besides, small publisher companies who only published two or three games may not show a mature pattern between game price and overall ratings. Therefore, by creating a histogram and looking the distribution of counts of published game, I decided to use publishers who published more than eight games in the analysis.(Fig 2)</p>
+<p>I also excluded free game records in the dataset, although, I reviewed the distribution of published game price (Fig 3) and it dose not show obvious ceiling effect or zero-inflated distribution. It is because that mostly, the commercial mode of free games are not same with the paid games. They usually sell extra components in the game which did not mention in the data. And so that it may bias the relationship between game prices and overall ratings.<br>Please notice that after removed free games, there could be some publishers have game counts lower than eight.</p>
+<p>I also added 0.1 to overall ratings for all games in case that some games’ overall rating is 0, which may not able to do the log transformation. (I would chose to use the log transformation because of the results of descriptive statistics (Fig 4).)</p>
+<h3 id="Analyzing-Process"><a href="#Analyzing-Process" class="headerlink" title="Analyzing Process"></a>Analyzing Process</h3><h4 id="Descriptive-Statistics"><a href="#Descriptive-Statistics" class="headerlink" title="Descriptive Statistics"></a>Descriptive Statistics</h4><p>After data cleaning, basic descriptive plots (including game counts distribution, scatter plots of game price, and overall volume) and values (including correlation value, game counts for each publisher) are created and calculated to determine what kind of formats of independent variable and dependent variable to use in the models and cleaning processes.</p>
+<h4 id="Cross-sectional-Model"><a href="#Cross-sectional-Model" class="headerlink" title="Cross-sectional Model"></a>Cross-sectional Model</h4><p>To compare the difference between longitudinal models and cross-sectional model, a linear regression is fitted as a comparison. The model is written as following:</p>
+<p>$log(\textrm{Overall Ratings}_i)=\beta_0+\beta_1*\textrm{Price}_i+\xi_i$, $i\in\textrm{Publishers}$</p>
+<p><em>The following models are longitudinal models I fitted for the data:</em></p>
+<h4 id="Longitudinal-Models-LME"><a href="#Longitudinal-Models-LME" class="headerlink" title="Longitudinal Models (LME)"></a>Longitudinal Models (LME)</h4><p>$log(\textrm{Overall Ratings}<em>{ij}) = \beta_0 + b_i + \beta_1*(\textrm{Price}_{ij}) + \xi</em>{ij}$, </p>
+<p>$b_i \in N(0, \delta)$, $i\in\textrm{Publishers}$, (LME-1)</p>
+<h4 id="Linear-Mixed-Effect-Model-Random-Intercept-and-Slope"><a href="#Linear-Mixed-Effect-Model-Random-Intercept-and-Slope" class="headerlink" title="Linear Mixed Effect Model - Random Intercept and Slope"></a>Linear Mixed Effect Model - Random Intercept and Slope</h4><p>$log(\textrm{Overall Ratings}<em>{ij}) = \beta_0 + b_{i1} + \beta_1*(b_{i2} + \textrm{Price}</em>{ij}) + \xi_{ij}$, </p>
+<p>$b_{i1} \in N(0, \delta_1)$, $b_{i2} \in N(0, \delta_2)$, $i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (LME-2)</p>
+<h4 id="Non-linear-Relationship"><a href="#Non-linear-Relationship" class="headerlink" title="Non linear Relationship"></a>Non linear Relationship</h4><p>$log(\textrm{Overall Ratings}<em>{ij}) = \beta_0 + b_i + \beta_1*(\textrm{Price}_{ij}^2) + \beta_2*(\textrm{Price}_{ij}) + \beta_3*(\textrm{Price}_{ij}^{0.5})+ \xi</em>{ij}$, </p>
+<p>$b_i \in N(0, \delta)$, $i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (LME-3)</p>
+<h4 id="Effect-measurement-modifier-and-confounding-effect-of-whether-the-game-have-English-version"><a href="#Effect-measurement-modifier-and-confounding-effect-of-whether-the-game-have-English-version" class="headerlink" title="Effect measurement modifier and confounding effect of whether the game have English version"></a>Effect measurement modifier and confounding effect of whether the game have English version</h4><p>$log(\textrm{Overall Ratings}<em>{ij}) = \beta_0 + b_i + \beta_1 * (\textrm{Price}_{ij}) + \beta_2 * (\textrm{English}_{ij}) + \beta_3 * (\textrm{Price}_{ij} * \textrm{English}</em>{ij}) + \xi_{ij}$, </p>
+<p>$b_i \in N(0, \delta)$, $i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (LME-4)</p>
+<h4 id="Confouder-of-released-date"><a href="#Confouder-of-released-date" class="headerlink" title="Confouder of released date"></a>Confouder of released date</h4><p>$log(\textrm{Overall Ratings}<em>{ij}) = \beta_0 + b_i + \beta_1 * (\textrm{Price}_{ij}) + \beta_2 * (\textrm{Released Date}_{ij}) + \xi</em>{ij}$, </p>
+<p>$b_i \in N(0, \delta)$, $i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (LME-5)</p>
+<h4 id="Estimating-line"><a href="#Estimating-line" class="headerlink" title="Estimating line"></a>Estimating line</h4><p>The estimated value of LME models are calculated and combined with the scatter plots.</p>
+<h4 id="Fixed-Effect-Model-FEM"><a href="#Fixed-Effect-Model-FEM" class="headerlink" title="Fixed Effect Model (FEM)"></a>Fixed Effect Model (FEM)</h4><p>Fixed effect models in this analysis are used to test whether the assumption of LME models (random intercept and random slope) are applicable. Rather than focusing the estimated parameter of ‘price’ in the FEM models, I would pay more attention of the distributions of fixed terms in the models. Distribution of fixed intercepts and slopes are plotted to see whether they are normally distributed. If they are normally distributed, we could use a stronger assumption and use LME the models to fit the data.</p>
+<p><em>Intercept:</em></p>
+<p>$log(\textrm{Overall Ratings}<em>{ij}) = \alpha_i +  \beta_1*(\textrm{Price}</em>{ij}) + \xi_i$, </p>
+<p>$i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (FEM-1)</p>
+<p><em>Slope:</em></p>
+<p>$log(\textrm{Overall Ratings}<em>{ij}) = \beta_0 + \beta_1 * (\textrm{Price}</em>{ij}) + \beta_2 * (\alpha_i * \textrm{Price}_{ij}) + \xi_i$, </p>
+<p>$i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (FEM-2)</p>
+<p>For the “fixed slopes”, I mean the actually slope of price fitted by this fixed effect model for each publisher.</p>
+<p>$\textrm{Fixed Slope} = \beta_1+ \beta_2 * \alpha_i$</p>
+<p>I wanted to use the offset() function in the regression of avoid the existence of β2. However, the program did not run well on this. So I still kept the β2. Fortunately, in this case, the existence of β2 does not affect the calculation of ‘fixed slopes’.</p>
+<h4 id="Generalized-Estimating-Equation-GEE"><a href="#Generalized-Estimating-Equation-GEE" class="headerlink" title="Generalized Estimating Equation (GEE)"></a>Generalized Estimating Equation (GEE)</h4><p>In GEE model, I will use the original overall ratings data because GEE model could handle discreet data. Since the GEE model need same number of records for each publisher. To have a better understanding of correlation matrix, again, I chose the number of game counts in the dataset by the game count distribution (Fig 13). Finally, a subset of GEE model is created by choosing publishers published equal or more than 5 games. And 5 games are randomly chosen into the subset. There are 323 publishers and 1615 games are in the subset.</p>
+<p>Before starting to fit the GEE model. Correlation Matrix of 5 games among publishers are calculated and plotted to determine what correlation matrix to use in the GEE model.<br>Unfortunately, due to technical reason, although I tested the correlation matrix and checked the mean and standard deviation of overall ratings are same or not, I still chose to use Poisson distribution and “exchange” correlation matrix.</p>
+<p>$log(\lambda_{ij})= \beta_0 + \beta_1*(\textrm{Price}_{ij})$, </p>
+<p>$\textrm{Overall ratings}<em>{ij} \in Poisson(\lambda</em>{ij})$, </p>
+<p>$i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$</p>
+<h3 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h3><p>Tools I used in this analysis including R software 3.6.1, packages: ggplot2, lattice, gridExtra, nlme, lme4, geepack, stargazer[3], and ggpubr. Microsoft Excel are also used in some calculations.</p>
+<h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><h3 id="Data-Process-1"><a href="#Data-Process-1" class="headerlink" title="Data Process"></a>Data Process</h3><p>In the raw data, game counts for each publisher are generated and plotted.</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/2.png" alt="fig2"></p>
+<p><strong><center>Fig 2. Game Counts Distribution</center></strong></p>
+<p>In order to find a proper criteria to remove publishers only publisher one game or published too less game to bias the pattern of prices and overall ratings. From the plot, we can notice that there is a peak around log(counts) = 2, so that I decided to enroll publishers who have published more than exp(2) ≈ 8.</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/3.png" alt="fig3"></p>
+<p><strong><center>Fig 3. Game Price Distribution</center></strong></p>
+<p><em>Note: I added 0.1 in the free game prices to generate this plot, otherwise the log price for free games are negative infinity.</em></p>
+<p>From the plot, we can see the distribution of game price is that most game log prices are between 1 and 3. And also there is another peak of game frequency for free games and game prices less than 1 dollar.</p>
+<p>The publisher include criteria are created based on the results above. In raw data, their are 14137 game publisher and 27075 published games. Among them, 324 publishers and their 7299 games are selected to be analysis. </p>
+<p>In the subset for analysis, distribution of independent variable and dependent variable are plotted as following:</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/4.png" alt="fig4"></p>
+<p><strong><center>Fig 4. Basic Description of Subset Data</center></strong></p>
+<p>From the plot, we can see that price and mean price do not have an obvious distribution. The original overall ratings have some extremely high value cases, and skewed to the right. The log of overall rating is kind of a unimodal distribution. Therefore, in the longitudinal models, except GEE models (for discrete outcome), I would use the log of overall ratings as the dependent variable.</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/5.png" alt="fig5"></p>
+<p><strong><center>Fig 5. Line plot by comparing game prices and overall ratings for each publisher</center></strong></p>
+<p>From this plot, we can see that there is a weak correlation between log of overall ratings and price. Especially, over 20 dollars, the smoothed line is almost straight. The correlation for original overall ratings is not obvious.</p>
+<h3 id="Analyze-Process"><a href="#Analyze-Process" class="headerlink" title="Analyze Process"></a>Analyze Process</h3><p>As a comparison, a cross-sectional model is fitted.</p>
+<h4 id="Table-1-Result-of-cross-sectional-model"><a href="#Table-1-Result-of-cross-sectional-model" class="headerlink" title="Table 1. Result of cross-sectional model"></a>Table 1. Result of cross-sectional model</h4><table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Estimation</th>
+<th align="center">Standard Error</th>
+<th align="center">P-value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Intercept</td>
+<td align="center">3.58</td>
+<td align="center">0.031</td>
+<td align="center">&lt;0.001</td>
+</tr>
+<tr>
+<td align="center">Price</td>
+<td align="center">0.11</td>
+<td align="center">0.002</td>
+<td align="center">&lt;0.001</td>
+</tr>
+<tr>
+<td align="center">R-square</td>
+<td align="center">0.1834</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/6.png" alt="fig6"></p>
+<p><strong><center>Fig 6. Diagnostic Plots of Cross-Sectional Model</center></strong></p>
+<p>From the results, we can see that the price is positively related to log of overall ratings (p- value &lt; 0.05). However, the R-square is not large, which means the residuals are relatively huge in this model. Other confounders may affect the association.</p>
+<h4 id="Table-2-Result-of-LME-Models"><a href="#Table-2-Result-of-LME-Models" class="headerlink" title="Table 2. Result of LME Models"></a>Table 2. Result of LME Models</h4><table>
+<thead>
+<tr>
+<th align="center">Parameter (Standard Error)</th>
+<th align="center">LME-1</th>
+<th align="center">LME-2</th>
+<th align="center">LME-3</th>
+<th align="center">LME-4</th>
+<th align="center">LME-5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Price</td>
+<td align="center">0.064***</td>
+<td align="center">0.058***</td>
+<td align="center">0.137***</td>
+<td align="center">0.006</td>
+<td align="center">0.091***</td>
+</tr>
+<tr>
+<td align="center">(Price)</td>
+<td align="center">0.003</td>
+<td align="center">0.007</td>
+<td align="center">0.028</td>
+<td align="center">0.260</td>
+<td align="center">0.003</td>
+</tr>
+<tr>
+<td align="center">Price^0.5</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-0.279**</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">(Price^0.5)</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">0.134</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Price^2</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-0.001***</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">(Price^2)</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">0.0003</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">English</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">0.351</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">(English)</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">0.250</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Price*English</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">0.056***</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">(Price*English)</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">0.016</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Number of Date to “2019-11-31”</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">0.001***</td>
+</tr>
+<tr>
+<td align="center">(Number of Date to “2019-11-31”)</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">0.00002</td>
+</tr>
+<tr>
+<td align="center">Intercept</td>
+<td align="center">3.906***</td>
+<td align="center">3.932***</td>
+<td align="center">4.146***</td>
+<td align="center">3.569***</td>
+<td align="center">2.720***</td>
+</tr>
+<tr>
+<td align="center">(Intercept)</td>
+<td align="center">0.084</td>
+<td align="center">0.087</td>
+<td align="center">0.174</td>
+<td align="center">0.026</td>
+<td align="center">0.078</td>
+</tr>
+<tr>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+</tr>
+<tr>
+<td align="center">Random Intercept (Standard Deviation)</td>
+<td align="center">1.43</td>
+<td align="center">1.43</td>
+<td align="center">1.43</td>
+<td align="center">1.44</td>
+<td align="center">1.18</td>
+</tr>
+<tr>
+<td align="center">Random Slope (Standard Deviation)</td>
+<td align="center"></td>
+<td align="center">0.07</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+</tr>
+<tr>
+<td align="center">Observations</td>
+<td align="center">7299</td>
+<td align="center">7299</td>
+<td align="center">7299</td>
+<td align="center">7299</td>
+<td align="center">7299</td>
+</tr>
+<tr>
+<td align="center">Log Likelihood</td>
+<td align="center">-12,942.01</td>
+<td align="center">-12,863.12</td>
+<td align="center">-12,945.80</td>
+<td align="center">-12,927.43</td>
+<td align="center">-12,383.77</td>
+</tr>
+<tr>
+<td align="center">Akaike Inf. Crit.</td>
+<td align="center">25,892.02</td>
+<td align="center">25,738.23</td>
+<td align="center">25,903.59</td>
+<td align="center">25,866.86</td>
+<td align="center">24,777.55</td>
+</tr>
+<tr>
+<td align="center">Bayesian Inf. Crit.</td>
+<td align="center">25,919.60</td>
+<td align="center">25,779.60</td>
+<td align="center">25,944.96</td>
+<td align="center">25,908.23</td>
+<td align="center">24,812.02</td>
+</tr>
+</tbody></table>
+<p>Note: (*p&lt;0.1); (**p&lt;0.05); (***p&lt;0.01)</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/7.png" alt="fig7"></p>
+<p><strong><center>Fig 7. Residuals of LME Models</center></strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/8.png" alt="fig8"></p>
+<p><em>Note: the red lines mean estimated average intercept and slopes. The blues lines are 95% interval of random intercepts and slopes.</em></p>
+<p><strong><center>Fig 8. Estimated Curves of Model LME-1 and LME-2</center></strong></p>
+<h4 id="Table-3-Fixed-Effect-Models"><a href="#Table-3-Fixed-Effect-Models" class="headerlink" title="Table 3. Fixed Effect Models"></a>Table 3. Fixed Effect Models</h4><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">FEM-1</th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center">FEM-2</th>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Covariates</td>
+<td align="center">Estimated Value</td>
+<td align="center">Standard Error</td>
+<td align="center">P-Value</td>
+<td align="center">Estimated Value</td>
+<td align="center">Standard Error</td>
+<td align="center">P-value</td>
+</tr>
+<tr>
+<td align="center">price</td>
+<td align="center">0.060</td>
+<td align="center">0.003</td>
+<td align="center">&lt;0.001</td>
+<td align="center">-0.157</td>
+<td align="center">0.0356</td>
+<td align="center">0.6587</td>
+</tr>
+<tr>
+<td align="center">Intercept</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">3.964</td>
+<td align="center">0.7923</td>
+<td align="center">&lt;0.001</td>
+</tr>
+<tr>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+</tr>
+<tr>
+<td align="center">Mean of Fixed Term</td>
+<td align="center">3.93</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">0.26</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Standard deviation of Fixed Term</td>
+<td align="center">1.49</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">3.26</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/9.png" alt="fig9"></p>
+<p><strong><center>Fig 9. Distribution of Fixed Intercepts of FEM-1</center></strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/10.png" alt="fig10"></p>
+<p><strong><center>Fig 10. Distribution of Fixed Slopes (Estimated slope of price add by every individual interaction term) of FEM-2</center></strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/11.png" alt="fig11"></p>
+<p><strong><center>Fig 11. Residuals of FEM-1</center></strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/13.png" alt="fig12"></p>
+<p><strong><center>Fig 12. Residuals of FEM-2</center></strong></p>
+<p>From the results, we can see that both of the fixed intercepts and slopes are quite normally distributed.</p>
+<hr>
+<p>Before using GEE model, I generated a subset which contain all the 323 publishers who have more than 5 non-free games in the data and randomly picked 5 games for each publisher. Then randomly picked 100 publishers to fit the GEE model. The reason of why I chose 5 is because the following distribution of free game counts:</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/13.png" alt="fig13"></p>
+<p><strong><center>Fig 13. Non-Free Game Counts of Every Publisher</center></strong></p>
+<p>To choose what kind of correlated matrix to use in the GEE model, I plotted the correlation of games in five prices. When calculated in the correlation matrix, for each publisher, there could be duplicate prices for publishers. I randomly gave order for same prices.</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/14.png" alt="fig14"></p>
+<p><strong><center>Fig 14. Correlation Matrix of Overall ratings in Different Prices</center></strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/15.png" alt="fig15"></p>
+<p>Note: ‘or’ means ‘Overall Ratings’, and ‘p*’ means the rank of five prices</p>
+<p><strong><center>Fig 15. Correlation Matrix of Overall</center></strong></p>
+<h4 id="Table-4-Generalized-Estimating-Equation"><a href="#Table-4-Generalized-Estimating-Equation" class="headerlink" title="Table 4. Generalized Estimating Equation"></a>Table 4. Generalized Estimating Equation</h4><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">Estimated Value</th>
+<th align="center">Standard Error</th>
+<th align="center">P-value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">price</td>
+<td align="center">0.0410</td>
+<td align="center">0.013</td>
+<td align="center">0.001</td>
+</tr>
+<tr>
+<td align="center">Intercept</td>
+<td align="center">6.732</td>
+<td align="center">0.386</td>
+<td align="center">&lt;0.001</td>
+</tr>
+</tbody></table>
+<h2 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h2><h3 id="What-are-overall-ratings-indicating-What-the-models-tell-the-game-publishers"><a href="#What-are-overall-ratings-indicating-What-the-models-tell-the-game-publishers" class="headerlink" title="What are overall ratings indicating? What the models tell the game publishers?"></a>What are overall ratings indicating? What the models tell the game publishers?</h3><p>Overall ratings may not be the most import measurement for game publishers, but actually it is the most important variable in the dataset I acquired. Firstly, as mentioned in introduction, the number of overall ratings is positively related to the selling volume. On the other hand, if there are lots of comments, publishers could get many reviews of the game, which could also help publishers and developers editing the game. Therefore, for each game, publishers do expect more comments / higher overall rating. The results of this analysis could help publishers expecting the overall ratings value (the number of total comments) by the setting of game price.</p>
+<p>On average, for each publisher, the higher price one game published with, the more comments (higher overall ratings) is expected to acquire. However, this not means that a game with infinity price would have infinity overall rating. From LME models of testing non-linearity (LME-3), and with other covariates (LME4, LME-5) should that there are other factors effecting the relationship between game price and overall ratings. Besides, publishers cannot based on the results to set the game prices unreasonable high. The results can only tell us games with higher price could have higher overall ratings. Actually speaking, to receive higher overall ratings, the publishers should publish games that worth that higher prices.</p>
+<h3 id="Which-model-is-the-best-to-describe-the-relationship-between-game-price-and-selling-volume"><a href="#Which-model-is-the-best-to-describe-the-relationship-between-game-price-and-selling-volume" class="headerlink" title="Which model is the best to describe the relationship between game price and selling volume?"></a>Which model is the best to describe the relationship between game price and selling volume?</h3><p>Since there will be many models discussed in this part, I will give my answer at first. In my opinion, the linear effect model with random intercept and random slope describes the relationship in a best way.<br>Firstly, compare with the cross sectional model, longitudinal models could control for the difference between each publisher, sot hat it could reduce the confounding effect between game prices and overall ratings. The regression coefficient of price in cross-sectional model is higher than the longitudinal models, which means that the proportion of publishers who have more overall ratings is higher in the dataset.</p>
+<p>Secondly, for generalized estimating equation, I put too many adjustments in that model. Because GEE model require each publisher have same amount of published games, I removed the publishers who have less than five games in the analyzing dataset and randomly chose five games for publishers who have more than five games. Besides, I should use the “unstructured” correlation model to fit the data. However, it would cost too much times to finish it. And at last, I still use “exchangeable” correlation matrix in the model. And the original count data isn’t a good dependent variable in this case.</p>
+<p>Thirdly, in the fixed effect models, we can see that the fixed intercepts and slopes are quite normally distributed (Fig 9, Fig 10), which means we can make a stronger hypothesis that this intercepts and slopes are normally distributed.</p>
+<p>Also from AIC and the Log likelihoods, the LME model with random intercept and random slope was still the best one among models without other covariates.</p>
+<h3 id="Whether-we-should-controlling-released-time-in-the-model"><a href="#Whether-we-should-controlling-released-time-in-the-model" class="headerlink" title="Whether we should controlling released time in the model?"></a>Whether we should controlling released time in the model?</h3><p>At first, I do not want to adjust for released date because it is not associated with game price. The common prices setting of video games has not been changed for quite long time. The game with higher quality and made by large game companies (AAA games) would have a price of 59.99 dollars. There are also some lower settings like 49.99 dollars, 29.99 dollars or 23.99 dollars. Actually the setting of game prices is not that clear lower than 49.99 dollars. Although, on the other hand, release time is strongly related to the number of overall ratings, I still did not think released time could be a confounder. However, I noticed that some games would permanently reduced prices after resealed for a long time like about 1 year or 2 years. There are also some games permanently enhanced their prices because the developers made a great update and enhanced the overall game quality. Therefore, I finally included the released time in the analyses. The result shows that, after controlled by released time, the game price is also positively related to the overall ratings.</p>
+<h3 id="Limitations-of-the-analysis"><a href="#Limitations-of-the-analysis" class="headerlink" title="Limitations of the analysis"></a>Limitations of the analysis</h3><p>In the analysis, there are three spots that I manually decide to remove some records from the dataset. The first one is that I only include publishers who published more than eight games in the analysis. The main reason of doing this is to fit the requirement of longitudinal data that each individual should have several records. Although I did find some evidence from the distribution of published game counts to say patterns from publishers who published more than eight games should be more stable and mature than from new game publishers, it is still lack of scientific supports. The second spot was in the GEE model, because I need reduce the number of records and for each individual publishers, I need same game records. Therefore, I randomly picked 5 games from each publishers. </p>
+<p>In longitudinal analysis, both of these problem could have another solution: for example, if there is a publisher only published 2 games and have different game prices and overall ratings, I could estimate overall ratings at other game prices for this publisher by basic algebra. However, there is another problem in this solution: I do not know what price I should estimated by. No one knows if there is another game published by the publisher, what game price would it be set. But all in all, there is data from the original dataset did not include in the model. Therefore, I should set the target population to be game publishers who published more than eight games.</p>
+<p>The third spot is that I did not involve free games in the analysis. In reason is that most free games have paid services in the game and it is hard to count it’s price because it’s different by player. However, there could also have few games that actually because of the poor game quality to be set as free games. But I did not include them in the model. Therefore, the result </p>
+<p>Another limitation is about the correlation of overall ratings. By introducing longitudinal analysis and setting publishers as individual, the correlation of overall ratings has been counted and fitted in the models. However, Not only there are publishers publish games from different developers, but also there is a few amount of developers who publish their games in different publishers. This means There still could be correlations of overall ratings among different publishers because they published different games from same developers.</p>
+<p>There are lots of other variables effect the overall ratings like the types of games, whether the game is published on other platforms and how the publisher advertising the game. Further analysis could concern more covariates to make the mechanism of how prices effects overall ratings clearer.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This analysis shows that on average, game price is positively related to the overall ratings. For one dollar increased on the game price for one publisher among publishers who published more than eight games, there is about 0.06 promotion in log overall rating of the game. This analysis also proved that this positively relationship is not linear. And games’ overall rating could also be effect by other variables like whether the game have English version or released date.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1] Nik Davis, (2019) Steam Store Games (Clean dataset)<br>Combined data of 27,000 games scraped from Steam and SteamSpy APIs, <a target="_blank" rel="noopener" href="https://www.kaggle.com/nikdavis/steam-store-games">https://www.kaggle.com/nikdavis/steam-store-games</a></p>
+<p>[2]Wikipedia contributors. (2019, December 3). Steam Spy. In Wikipedia, The Free Encyclopedia. Retrieved 21:08, December 12, 2019, from <a target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?title=Steam_Spy&amp;oldid=929122689">https://en.wikipedia.org/w/index.php?title=Steam_Spy&amp;oldid=929122689</a></p>
+<p>[3] Hlavac, Marek (2018). stargazer: Well-Formatted Regression and Summary Statistics Tables. R package version 5.2.2. <a target="_blank" rel="noopener" href="https://cran.r-project.org/package=stargazer">https://CRAN.R-project.org/package=stargazer</a></p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
+            <p>Link of This Article：<a href="https://ry2an.github.io/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/">https://ry2an.github.io/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/</a>
+            <p>Publish Date：<a href="https://ry2an.github.io/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/">January 11th 2020, 5:03:26 pm</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/">May 21st 2020, 12:41:53 pm</a>
+            <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/01/14/Vaccine-Making-Selling-Delivering-and-Using-System/" title= "Vaccine Making Selling Delivering and Using System">
+                    <div class="nextTitle">Vaccine Making Selling Delivering and Using System</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/01/10/Connect-Four-Chess/" title= "Connect Four Chess">
+                    <div class="prevTitle">Connect Four Chess</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:ruoyan.han94@outlook.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Ry2an" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/my_wechat.jpg" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.zhihu.com/people/tui-mao-39" class="iconfont-archer zhihu" target="_blank" title=zhihu></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://space.bilibili.com/2477951" class="iconfont-archer bilibili" target="_blank" title=bilibili></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Method"><span class="toc-number">2.</span> <span class="toc-text">Method</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Data-Process"><span class="toc-number">2.1.</span> <span class="toc-text">Data Process</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Data-Source"><span class="toc-number">2.1.1.</span> <span class="toc-text">Data Source</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analyzing-Process"><span class="toc-number">2.2.</span> <span class="toc-text">Analyzing Process</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Descriptive-Statistics"><span class="toc-number">2.2.1.</span> <span class="toc-text">Descriptive Statistics</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Cross-sectional-Model"><span class="toc-number">2.2.2.</span> <span class="toc-text">Cross-sectional Model</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Longitudinal-Models-LME"><span class="toc-number">2.2.3.</span> <span class="toc-text">Longitudinal Models (LME)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Linear-Mixed-Effect-Model-Random-Intercept-and-Slope"><span class="toc-number">2.2.4.</span> <span class="toc-text">Linear Mixed Effect Model - Random Intercept and Slope</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Non-linear-Relationship"><span class="toc-number">2.2.5.</span> <span class="toc-text">Non linear Relationship</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Effect-measurement-modifier-and-confounding-effect-of-whether-the-game-have-English-version"><span class="toc-number">2.2.6.</span> <span class="toc-text">Effect measurement modifier and confounding effect of whether the game have English version</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Confouder-of-released-date"><span class="toc-number">2.2.7.</span> <span class="toc-text">Confouder of released date</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Estimating-line"><span class="toc-number">2.2.8.</span> <span class="toc-text">Estimating line</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Fixed-Effect-Model-FEM"><span class="toc-number">2.2.9.</span> <span class="toc-text">Fixed Effect Model (FEM)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Generalized-Estimating-Equation-GEE"><span class="toc-number">2.2.10.</span> <span class="toc-text">Generalized Estimating Equation (GEE)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tools"><span class="toc-number">2.3.</span> <span class="toc-text">Tools</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Results"><span class="toc-number">3.</span> <span class="toc-text">Results</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Data-Process-1"><span class="toc-number">3.1.</span> <span class="toc-text">Data Process</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analyze-Process"><span class="toc-number">3.2.</span> <span class="toc-text">Analyze Process</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Table-1-Result-of-cross-sectional-model"><span class="toc-number">3.2.1.</span> <span class="toc-text">Table 1. Result of cross-sectional model</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Table-2-Result-of-LME-Models"><span class="toc-number">3.2.2.</span> <span class="toc-text">Table 2. Result of LME Models</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Table-3-Fixed-Effect-Models"><span class="toc-number">3.2.3.</span> <span class="toc-text">Table 3. Fixed Effect Models</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Table-4-Generalized-Estimating-Equation"><span class="toc-number">3.2.4.</span> <span class="toc-text">Table 4. Generalized Estimating Equation</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Discussion"><span class="toc-number">4.</span> <span class="toc-text">Discussion</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-are-overall-ratings-indicating-What-the-models-tell-the-game-publishers"><span class="toc-number">4.1.</span> <span class="toc-text">What are overall ratings indicating? What the models tell the game publishers?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Which-model-is-the-best-to-describe-the-relationship-between-game-price-and-selling-volume"><span class="toc-number">4.2.</span> <span class="toc-text">Which model is the best to describe the relationship between game price and selling volume?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Whether-we-should-controlling-released-time-in-the-model"><span class="toc-number">4.3.</span> <span class="toc-text">Whether we should controlling released time in the model?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Limitations-of-the-analysis"><span class="toc-number">4.4.</span> <span class="toc-text">Limitations of the analysis</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">5.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">6.</span> <span class="toc-text">Reference</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 16
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/30</span><a class="archive-post-title" href= "/2020/07/30/test/" >test</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span><a class="archive-post-title" href= "/2020/07/29/flight-back-china/" >flight_back_china</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/20</span><a class="archive-post-title" href= "/2020/05/20/EPID622/" >Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/Portfolio-as-MPH-Student/" >Portfolio as MPH</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/05</span><a class="archive-post-title" href= "/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/" >Repeat Academic Poisson and Negative Binomial Regression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2020/03/04/Repeat-Ancademic-Survival-Analysis/" >Repeat Academic Survival Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/" >Understanding Fourier Transform and Wavelet Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/31</span><a class="archive-post-title" href= "/2020/01/31/Simulating-SIR-Model/" >Simulating SIR Model</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/17</span><a class="archive-post-title" href= "/2020/01/17/Crawling-Data-From-html-Based-Pages/" >Crawling Data From html Based Pages</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/2020/01/14/Vaccine-Making-Selling-Delivering-and-Using-System/" >Vaccine Making Selling Delivering and Using System</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/11</span><a class="archive-post-title" href= "/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/" >Using Longitudinal Models To Analyze Steam Games</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/10</span><a class="archive-post-title" href= "/2020/01/10/Connect-Four-Chess/" >Connect Four Chess</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2016 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/01</span><a class="archive-post-title" href= "/2016/09/01/summer-survey-2016/" >2016年暑期实践</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1994 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/10</span><a class="archive-post-title" href= "/1994/10/10/Markdown-Cheat-Sheet/" >Markdown Cheat Sheet</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/07/30/hello-world/" >Hello World</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1994 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/09</span><a class="archive-post-title" href= "/1994/10/09/MySQL-Hand-Book/" >MySQL Hand Book</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="trip"><span class="iconfont-archer">&#xe606;</span>trip</span>
+    
+        <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Ruoyan Han"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+

@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="Ruoyan Han">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Ruoyan Han">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>2016年暑期实践 · Ry2an&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/hakase.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Ry2an&#39;s Studio</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">2016年暑期实践</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Ry2an's Studio</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/postbg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            2016年暑期实践
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">3k</span>Reading time: <span class="post-count reading-time">10 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2016/09/01</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>这是我2016年带领班上同学做得一次调研，言语中多少透露着一丝稚嫩。现在想起来都是满满的回忆</p>
+<h1 id="黄河潮来信息通，豫防不见暮云重-河南省公共卫生相关单位信息化系统-现状调查"><a href="#黄河潮来信息通，豫防不见暮云重-河南省公共卫生相关单位信息化系统-现状调查" class="headerlink" title="黄河潮来信息通，豫防不见暮云重 - - 河南省公共卫生相关单位信息化系统 现状调查"></a><strong>黄河潮来信息通，豫防不见暮云重</strong> - - 河南省公共卫生相关单位信息化系统 现状调查</h1><h2 id="成员"><a href="#成员" class="headerlink" title="成员"></a>成员</h2><p>组长：韩若岩</p>
+<p>组员（依姓氏排序）：陈廷瑞，刘石坚，罗斯元，周前</p>
+<h2 id="调查背景"><a href="#调查背景" class="headerlink" title="调查背景"></a>调查背景</h2><p>随着计算机科学和互联网技术的发展，各行各业都进入了“互联网+”的时代。公共卫生行业因其对于信息传递、分析的及时性、有效性的需求，故信息化系统的建设对于公共卫生行业尤为重要。从 08 年左右逐渐热起来的信息化建设（公共卫生的信息化建设其实更早，在 03 年非典之后就已经开始了） ，经过了 8 年左右时间的搭建，如今信息化平台的效果如何？在进一步建设方面还存在什么样的问题？带着这样的疑问， 我组5名同学在河南省疾控中心、河南省卫生和计划生育委员会统计信息中心、郑州市疾控中心、郑州市二七区疾控中心展开了调研活动，并整理出总结与感受。</p>
+<h2 id="调查结果与总结"><a href="#调查结果与总结" class="headerlink" title="调查结果与总结"></a>调查结果与总结</h2><h3 id="信息化的便捷性在公共卫生工作中体现的非常明显。"><a href="#信息化的便捷性在公共卫生工作中体现的非常明显。" class="headerlink" title="信息化的便捷性在公共卫生工作中体现的非常明显。"></a>信息化的便捷性在公共卫生工作中体现的非常明显。</h3><p>计算机的特性即是短时间内大量处理简单任务；互联网的特性即是在短时间内传输大量的数据，这两点特性在医疗卫生信息化很多方面的使用中被发挥的淋漓尽致。总的来说一大好处就是在很多步骤上实现了去纸质化。 而去纸质化又能带来缩短时间、安全、减少程序步骤等等诸多好处。第二点好处就是公开透明，这样既能化解不必要的问题，又能在人们需要时及时地快捷地查询。第三点好处是权限的严格分配，这样既方便工作人员进行自己的工作，而且由能是卫生服务的工作能够科学的分配。最重要的它保证了权力使用和数据的安全性。此外，这种权限的形式也杜绝了以前办事踢皮球的现象。第四点是信息化系统的跨平台的使用。 比如中国疾病预防控制信息系统的短信通知功能和电子疫苗系统的微信端查询功能。 跨平台对数据库进行读写能使信息化的便捷性显现地更加明显，随时随地都可以进行办公或享受卫生服务。</p>
+<h3 id="信息化平台的建设需要基层工作人员的参与。"><a href="#信息化平台的建设需要基层工作人员的参与。" class="headerlink" title="信息化平台的建设需要基层工作人员的参与。"></a>信息化平台的建设需要基层工作人员的参与。</h3><p>设计信息化平台最重要的就是解答需要哪些功能和对于功能的需求两个问题。四次调研下来，印象最深的其实不是深度、宽度全覆盖的中国疾病预防控制信息系统，也不是万达公司设计的各式各样的信息化平台，而是最后的电子疫苗信息管理系统。虽然这只是公共卫生服务中的一个部分，但之所以效果这么好，是因为基层的工作人员参与到了这项工程的设计之中。因为只有基层的工作人员才对于服务对象的的需求了解的比较深刻。 如果想要把信息化平台设计到位，只靠国家层面的设计是不到位的。</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/summer_survey/2.png" alt="1"></p>
+<center>图一 尝试使用中国疾病疫情信息系统</center>
+
+<h3 id="信息化平台的联通需要标准化的体系。"><a href="#信息化平台的联通需要标准化的体系。" class="headerlink" title="信息化平台的联通需要标准化的体系。\"></a>信息化平台的联通需要标准化的体系。\</h3><p>虽然信息化的发展趋势是跨平台、多服务这样的宽度型覆盖，看似如果由高层（国家级）同一设计制作更加符合逻辑，但通过刚才的论述得知，信息化平台的设计是不能脱离基层工作的。但更不可能通过集合各项工作的工作人员共同构思来完成。此外，信息化的系统对于不同地域也会有其不同。比如把万达公司的复旦儿科医院的HIS系统直接搬到郑州市儿童医院的电脑里肯定是不行的，由于患者的就诊习惯不同、常见病不同、有关规定不同所致的行事程序不同使之很多地方都需要重新设计。所以，可行的方法就是标准化，尽可能地减少信息互联、表合并时的成本。标准化是简单的，比如决定所有“乙肝”和“乙型肝炎”都称为“乙型肝炎” 。但统一标准化却是任重而道远的，因为随着信息化平台的宽度不断增加，需要标准化的数据、文本、工具等会越来越多。而且不仅要制定这些标准化，还需要对相关用户（卫生服务人员）进行培训。合理的进行标准化和培训的方案设计是信息化平台能够被使用和继续拓宽的基础。</p>
+<h3 id="信息化平台的建设不仅需要解决技术问题。"><a href="#信息化平台的建设不仅需要解决技术问题。" class="headerlink" title="信息化平台的建设不仅需要解决技术问题。"></a>信息化平台的建设不仅需要解决技术问题。</h3><p>以上几点讲得都数据技术问题，包括网络架构、数据库的建设、安全性、标准化等等。但在信息化平台的建设中还存在着其他种种阻力。比如居民健康档案数据库的建设。听起来是一件便民利民同时对于卫生行业也会有很大帮助（数据精准采集、医疗步骤化简）的事情。但其实很多医院并不想要统一的健康档案，因为现在的医院都是自己盈利，国家不给拨款的。一旦这样，患者们都去小诊所检查好了，再去大医院做风险高的大手术。这样做会整个打乱大型医院的利润来源、势必对于医疗从业人员和医疗器材等资源的分配造成很大影响。从而导致很多政策都需要修改。此外，很多医生对于外院的检查都不太信得过，就算有了统一的居民健康档案，医生还是想在自己医院再检查一下。患者可能不太理解，但我这样的医学生还是认同这样的做法的，毕竟就算有检查结果，外科医生在做手术前还是需要再听一听、叩一叩才放心。因为自己做得手术，患者可不会找外院的检验课去投诉。总之，信息化的建设需要的不仅仅是技术问题， 还需要一些政策的制定与执行才能使信息化建设继续进行下去。</p>
+<h3 id="对于信息化平台建设的迫切性和危机感认识有些不足。"><a href="#对于信息化平台建设的迫切性和危机感认识有些不足。" class="headerlink" title="对于信息化平台建设的迫切性和危机感认识有些不足。"></a>对于信息化平台建设的迫切性和危机感认识有些不足。</h3><p>当说道如果是一些健康类平台或网站如果通过信息化平台对公众提供卫生服务的效果如何时，老师说，他们那些不是很好做的，主要因为他们不像我们能从官方渠道获得一手的数据。但在信息化时代，已经有更多易获得的数据具有了流行病学意义。比如之前谷歌作的根据搜索数来预测流感疫情的案例。 虽然近期 （2016 年 3 月） 有报道说谷歌的流感预测已经不准确了，但它至少指出了一个方向， 要知道我国的诸如百度拇指医生等等的健康类网站会有更多更有针对性的数据。 试想当有一天百度能根据它已有的数据经过如今比较流行的机器学习等算法不说精准预测，至少它能给出一个“进入流感季节，请注意防寒保暖、个人卫生”的提醒，甚至是根据每位患者的患流感潜在概率在百度地图上生成的流感感染危险分布图能够显示出“汇金百货” 、 “百联又一城”这样的地方平均每平米危险系数（假设与没平米∑用户*患病概率成正比）较高依此来提醒人们少进入这样的场所的话，虽然其没有准确的数据不过首先这本身就是预测， 二是加上其先进的算法弥补数据的确实以及多年来为网民提供各种服务的经验和口碑， 相信他们推出的产品一定比卫生行业自己做个 APP </p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/summer_survey/1.png" alt="2"></p>
+<center>图二 浏览万达公司关于信息化系统的宣传册</center>
+
+<h3 id="系统设计还需要加强。"><a href="#系统设计还需要加强。" class="headerlink" title="系统设计还需要加强。"></a>系统设计还需要加强。</h3><p>在调研活动中，我注意到老师们大多喜欢将数据下载到本地然后在 excel 上进行后续操作。问其原因时，解释为浏览器对于表格的运算、操作还是没有 excel 方便。如果一直这样的话，信息化最终还是会沦为手工化。不过我看万达公司的产品倒是有添加逻辑的功能，这样批量处理数据就更快捷了。</p>
+<h3 id="对于安全性的设计意识不足。"><a href="#对于安全性的设计意识不足。" class="headerlink" title="对于安全性的设计意识不足。"></a>对于安全性的设计意识不足。</h3><p>如上文中所提到的，不需要老师需要把浏览器上的表格下载到本地进行操作，而且各种平台也提供导出到 excel 这种功能。如果是虚拟系统还好，可大部分电脑就是普通的 win7 系统。此外，对于电子疫苗系统，我竟能够不通过任何实名认证（那个系统通过微信昵称绑定）就绑定到一个孩子的接种信息。而且它会经常把整个街道内的部分孩子的一些接种信息（大多为通知）推送给所有关注此公众号的用户。以上种种做法都是非常不安全的。本来数据库内的信息都是已经加密了的，就算有不法分子拷贝出去也要解密后才能获取其资料。可以上这些做法就是自己把信息解密后有公布出去（存在本地也有被盗取的风险） ，使数据库白加密了。如果我是不法分子， 完全可以利用这些信息去诱骗那些带孩子的家长而且系统也只记录了我的微信昵称。所以，在推出某种功能前一定要考虑其安全性。否则就会像前一阵子有一个宝宝出生照片泄露事件一样，加重危害医患关系。</p>
+<h3 id="信息化平台的建设只是公共卫生信息化时代的第一步。"><a href="#信息化平台的建设只是公共卫生信息化时代的第一步。" class="headerlink" title="信息化平台的建设只是公共卫生信息化时代的第一步。"></a>信息化平台的建设只是公共卫生信息化时代的第一步。</h3><p>对于一般行业，信息化系统只是一个提高工作效率的工具。 而对于卫生行业来说， 数据却有着其特殊的含义。目前大数据的概念炒得很火，可是没有全息性的数据，终究还是传统的统计方法。而信息化系统恰恰为我们带来的就是每一个人的每一个时间的所有的数据（全息性） ，是开启大数据时代各类专项研究的基石。或者做个公众号要受欢迎的多。到那时，如果百度能保证其数据的安全性（百度的数据库只会比目前医疗部门用的更安全）的话，医院也会愿意为其提供数据（只要没有政策干预）</p>
+<p>完整调查报告(full report link)：<br><a target="_blank" rel="noopener" href="https://github.com/Ry2an/my_picture_garage/blob/master/summer_survey/%E8%B0%83%E7%A0%94%E6%8A%A5%E5%91%8A.pdf">https://github.com/Ry2an/my_picture_garage/blob/master/summer_survey/%E8%B0%83%E7%A0%94%E6%8A%A5%E5%91%8A.pdf</a></p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
+            <p>Link of This Article：<a href="https://ry2an.github.io/2016/09/01/summer-survey-2016/">https://ry2an.github.io/2016/09/01/summer-survey-2016/</a>
+            <p>Publish Date：<a href="https://ry2an.github.io/2016/09/01/summer-survey-2016/">September 1st 2016, 6:20:09 pm</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2016/09/01/summer-survey-2016/">January 18th 2020, 7:41:06 am</a>
+            <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/01/10/Connect-Four-Chess/" title= "Connect Four Chess">
+                    <div class="nextTitle">Connect Four Chess</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/1994/10/10/Markdown-Cheat-Sheet/" title= "Markdown Cheat Sheet">
+                    <div class="prevTitle">Markdown Cheat Sheet</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:ruoyan.han94@outlook.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Ry2an" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/my_wechat.jpg" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.zhihu.com/people/tui-mao-39" class="iconfont-archer zhihu" target="_blank" title=zhihu></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://space.bilibili.com/2477951" class="iconfont-archer bilibili" target="_blank" title=bilibili></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%BB%84%E6%B2%B3%E6%BD%AE%E6%9D%A5%E4%BF%A1%E6%81%AF%E9%80%9A%EF%BC%8C%E8%B1%AB%E9%98%B2%E4%B8%8D%E8%A7%81%E6%9A%AE%E4%BA%91%E9%87%8D-%E6%B2%B3%E5%8D%97%E7%9C%81%E5%85%AC%E5%85%B1%E5%8D%AB%E7%94%9F%E7%9B%B8%E5%85%B3%E5%8D%95%E4%BD%8D%E4%BF%A1%E6%81%AF%E5%8C%96%E7%B3%BB%E7%BB%9F-%E7%8E%B0%E7%8A%B6%E8%B0%83%E6%9F%A5"><span class="toc-number">1.</span> <span class="toc-text">黄河潮来信息通，豫防不见暮云重 - - 河南省公共卫生相关单位信息化系统 现状调查</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%90%E5%91%98"><span class="toc-number">1.1.</span> <span class="toc-text">成员</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E6%9F%A5%E8%83%8C%E6%99%AF"><span class="toc-number">1.2.</span> <span class="toc-text">调查背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E6%9F%A5%E7%BB%93%E6%9E%9C%E4%B8%8E%E6%80%BB%E7%BB%93"><span class="toc-number">1.3.</span> <span class="toc-text">调查结果与总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%8C%96%E7%9A%84%E4%BE%BF%E6%8D%B7%E6%80%A7%E5%9C%A8%E5%85%AC%E5%85%B1%E5%8D%AB%E7%94%9F%E5%B7%A5%E4%BD%9C%E4%B8%AD%E4%BD%93%E7%8E%B0%E7%9A%84%E9%9D%9E%E5%B8%B8%E6%98%8E%E6%98%BE%E3%80%82"><span class="toc-number">1.3.1.</span> <span class="toc-text">信息化的便捷性在公共卫生工作中体现的非常明显。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%8C%96%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%BB%BA%E8%AE%BE%E9%9C%80%E8%A6%81%E5%9F%BA%E5%B1%82%E5%B7%A5%E4%BD%9C%E4%BA%BA%E5%91%98%E7%9A%84%E5%8F%82%E4%B8%8E%E3%80%82"><span class="toc-number">1.3.2.</span> <span class="toc-text">信息化平台的建设需要基层工作人员的参与。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%8C%96%E5%B9%B3%E5%8F%B0%E7%9A%84%E8%81%94%E9%80%9A%E9%9C%80%E8%A6%81%E6%A0%87%E5%87%86%E5%8C%96%E7%9A%84%E4%BD%93%E7%B3%BB%E3%80%82"><span class="toc-number">1.3.3.</span> <span class="toc-text">信息化平台的联通需要标准化的体系。\</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%8C%96%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%BB%BA%E8%AE%BE%E4%B8%8D%E4%BB%85%E9%9C%80%E8%A6%81%E8%A7%A3%E5%86%B3%E6%8A%80%E6%9C%AF%E9%97%AE%E9%A2%98%E3%80%82"><span class="toc-number">1.3.4.</span> <span class="toc-text">信息化平台的建设不仅需要解决技术问题。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E%E4%BF%A1%E6%81%AF%E5%8C%96%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE%E7%9A%84%E8%BF%AB%E5%88%87%E6%80%A7%E5%92%8C%E5%8D%B1%E6%9C%BA%E6%84%9F%E8%AE%A4%E8%AF%86%E6%9C%89%E4%BA%9B%E4%B8%8D%E8%B6%B3%E3%80%82"><span class="toc-number">1.3.5.</span> <span class="toc-text">对于信息化平台建设的迫切性和危机感认识有些不足。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E8%BF%98%E9%9C%80%E8%A6%81%E5%8A%A0%E5%BC%BA%E3%80%82"><span class="toc-number">1.3.6.</span> <span class="toc-text">系统设计还需要加强。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E%E5%AE%89%E5%85%A8%E6%80%A7%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%84%8F%E8%AF%86%E4%B8%8D%E8%B6%B3%E3%80%82"><span class="toc-number">1.3.7.</span> <span class="toc-text">对于安全性的设计意识不足。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%8C%96%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%BB%BA%E8%AE%BE%E5%8F%AA%E6%98%AF%E5%85%AC%E5%85%B1%E5%8D%AB%E7%94%9F%E4%BF%A1%E6%81%AF%E5%8C%96%E6%97%B6%E4%BB%A3%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AD%A5%E3%80%82"><span class="toc-number">1.3.8.</span> <span class="toc-text">信息化平台的建设只是公共卫生信息化时代的第一步。</span></a></li></ol></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 16
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/30</span><a class="archive-post-title" href= "/2020/07/30/test/" >test</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span><a class="archive-post-title" href= "/2020/07/29/flight-back-china/" >flight_back_china</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/20</span><a class="archive-post-title" href= "/2020/05/20/EPID622/" >Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/Portfolio-as-MPH-Student/" >Portfolio as MPH</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/05</span><a class="archive-post-title" href= "/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/" >Repeat Academic Poisson and Negative Binomial Regression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2020/03/04/Repeat-Ancademic-Survival-Analysis/" >Repeat Academic Survival Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/" >Understanding Fourier Transform and Wavelet Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/31</span><a class="archive-post-title" href= "/2020/01/31/Simulating-SIR-Model/" >Simulating SIR Model</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/17</span><a class="archive-post-title" href= "/2020/01/17/Crawling-Data-From-html-Based-Pages/" >Crawling Data From html Based Pages</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/2020/01/14/Vaccine-Making-Selling-Delivering-and-Using-System/" >Vaccine Making Selling Delivering and Using System</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/11</span><a class="archive-post-title" href= "/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/" >Using Longitudinal Models To Analyze Steam Games</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/10</span><a class="archive-post-title" href= "/2020/01/10/Connect-Four-Chess/" >Connect Four Chess</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2016 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/01</span><a class="archive-post-title" href= "/2016/09/01/summer-survey-2016/" >2016年暑期实践</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1994 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/10</span><a class="archive-post-title" href= "/1994/10/10/Markdown-Cheat-Sheet/" >Markdown Cheat Sheet</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/07/30/hello-world/" >Hello World</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1994 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/09</span><a class="archive-post-title" href= "/1994/10/09/MySQL-Hand-Book/" >MySQL Hand Book</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="trip"><span class="iconfont-archer">&#xe606;</span>trip</span>
+    
+        <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Ruoyan Han"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+

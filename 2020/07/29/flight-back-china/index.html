@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="Ruoyan Han">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Ruoyan Han">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>flight_back_china · Ry2an&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/hakase.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Ry2an&#39;s Studio</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">flight_back_china</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Ry2an's Studio</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/postbg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            flight_back_china
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "trip">trip</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">2.2k</span>Reading time: <span class="post-count reading-time">7 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/07/29</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>回国航班游记【多图警告！】</p>
+<a id="more"></a>
+
+<h3 id="航班信息"><a href="#航班信息" class="headerlink" title="航班信息"></a>航班信息</h3><p>首先说一下我的航班：</p>
+<blockquote>
+<ul>
+<li>KOREAN AIR KE082 JFK -&gt; ICN (纽约肯尼迪机场, 仁川国际机场) 当地时间7月11日下午2点起飞</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>XIAMEN AIR MF872 ICN -&gt; XMN (仁川国际机场, 厦门高崎国际机场) 当地时间7月13日下午1点45起飞</li>
+</ul>
+</blockquote>
+<h3 id="到达肯尼迪国际机场"><a href="#到达肯尼迪国际机场" class="headerlink" title="到达肯尼迪国际机场"></a>到达肯尼迪国际机场</h3><p>根据阿牛的建议，我最好提前6个小时到机场。我住的地方离JFK不远，本来跟接我的人约好9点半来接我，这样我大概10点会到。结果处于阿牛的旨意，还是麻烦人家改到了8点半来接我。结果，到达机场后。。。。却被告之人家大韩航空的柜台10点才开始办理值机:triumph:</p>
+<p>几个月没出门的我，来的时候看到了不少人在Bath Beach跑步。当初租这里的房子就是想可以经常在海边骑行，结果也就刚搬来的秋季骑了几次。因为疫情的原因今年春季根本没出门。。亏了</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-6052df8a0346eda9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="28"></p>
+<p>附上一张寂寞的骑行跨年照，图中是韦拉扎诺海峡大桥。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-59d2fe09295abd7e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="32"></p>
+<p>空空如也的肯尼迪机场</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-67701545dfaca58b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="01"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-bc86c789c615a7c2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="02"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-b385e0158e0cbeb1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="29"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-814c13008a828643.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="30"></p>
+<h3 id="1-办理值机与行李托运"><a href="#1-办理值机与行李托运" class="headerlink" title="1. 办理值机与行李托运"></a>1. 办理值机与行李托运</h3><p>出行前我最担心的问题就是行李直挂。</p>
+<p>大韩航空的规定是可以托运两个23kg，随身一个10kg。厦门航空的经济舱是可以托运一个23kg，随身一个5kg。本来我看厦门官网上说留学生可以再追加一个23kg，不过阿牛说疫情期间估计不会有那个政策。</p>
+<p>我的行李有一个托运的大箱子，尽全力压缩到了22kg。然后随身的行李包括一个小拉杆箱和一个斜挎包加起来也有11kg了。实在没法减了，有电池的东西太多，我已经把我笔记本的电池单独拆出来了:joy:。</p>
+<p>另外，我没有行程单，只有阿牛给我的航班信息和我的电子客票号。从电子客票号来看，我明显不是联程票。(具体是不是大家可以参考下<a target="_blank" rel="noopener" href="https://piao.tips/zh/author/airticket-na/">北美票帝</a>)</p>
+<hr>
+<p>托运还是很顺利的。给帮助我办理的人员看了我的电子客票号后托运行李直接帮我办到了厦门。另外随身行李全程也没有被提出超重等问题（本来都准备好真要超重就交钱了）。</p>
+<p>在大韩航空的柜台只办理了第一段的登机牌。问了大韩航空的人，说第二段的登机牌在仁川机场去办。</p>
+<p>总之，感觉这类手续不同的值机人员办理的可能完全不同。</p>
+<p>办理好了以后去吃了点东西，回来看了一下，还是有人正在办理值机，感觉我这班再来晚点也没问题。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-67701545dfaca58b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="01"></p>
+<hr>
+<p>当天的天气看起来还不错，头一天布鲁克林还热带风暴下了暴雨。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-36d76b20ad135b72.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="04"></p>
+<p>找到了等下要坐的飞机。（结果起飞前又下雨了）</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-622909e1adcc5696.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="05"></p>
+<h3 id="2-第一段飞行"><a href="#2-第一段飞行" class="headerlink" title="2. 第一段飞行"></a>2. 第一段飞行</h3><p>大韩航空的服务不错，乘务员会说一点中文（顺便教大家一句韩语：干桑哈米达，是谢谢的意思）。空乘人员全部都穿了防护服。我们航班的人感觉都挺大条的，一个穿防护服的都没有。（在仁川机场遇见了一波洛杉矶飞来的，据说人均防护服）。另外大韩航空的经济舱全部都是隔着一个坐的。两个人之间要么是过道，要么是空座。</p>
+<p>我只是戴了一个N95口罩感觉就受了大罪了。首先是不知道是不是我买的口罩有点小还是N95本身就设计的这么紧。不说我戴了一路，就是从出门到坐上飞机，我的耳朵后面就已经被勒肿了，特别疼。另外，N95确实比我平时带的医用临床口罩过滤的多。刚开始还好，后面在飞机上我感觉都有点呼吸不畅了。又想到前有一位大姐在飞机上不幸猝死的新闻:pray:，我也不想那么多了，不能被尿憋死。于是就时不时地喝水，趁着喝水的功夫可以正大光明地摘下口罩吸两口气。结果，估计是水喝多了，去了好几次厕所。。。</p>
+<p>13个小时的航程提供了两顿饭。本来是不准备吃的，准备了一些巧克力。可架不住人家的饭卖相不错，另外虽然吃了巧克力，但在真正的饭菜面前还是有点难顶，于是真香了。不过我专门放在小桌板上了一会儿和别人错开时间吃的，感觉多少也能降低点风险吧。第一顿吃了韩式拌饭，第二顿是普通的牛肉饭，不过生鱼片没敢吃。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-35fac24827568a6c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="06"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-9a109cd5793ddaa0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="07"></p>
+<p>无聊地监视着飞行航线。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-a30f1aefd668da34.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="33"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-4c543670ffb59d9f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="34"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-4ae05bf4370564b3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="35"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-e2fea75053062412.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="36"></p>
+<p>电影看腻了的同学们可以看一下这个，在少儿节目里，也挺好看的。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-c192396523ae908d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="37"></p>
+<h3 id="3-仁川国际机场"><a href="#3-仁川国际机场" class="headerlink" title="3. 仁川国际机场"></a>3. 仁川国际机场</h3><p><img src="https://upload-images.jianshu.io/upload_images/13640208-5699c530b06e3342.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="10"></p>
+<p>到达了仁川机场，跟着转机大部队过了安检进入了T2航站楼候机区。正等着看哪里能办登机牌呢，这才发现大事不妙。过了安检后哪还有什么值机柜台啊。找了半天发现T2航站楼貌似有厦门航空的办公室，找了半天也没有找到。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-292edccc712d5756.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="08"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-6aac770fffbc6ec8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="09"></p>
+<p>整个T2航站楼的3层像是一个U形，在U的两个拐角出可以找到人工的问询台。问了一下，说是明天起飞前到登机口处厦航的人会提前来给大家办理登机牌。（事实也确实如此）。</p>
+<p>到达后还有很多免税店没有关门，如果不是东西实在太多我还想给亲朋好友买一点礼物，有点对不起他们。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-84762052a970e918.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="19"></p>
+<p>同样是在两个拐角处还可以找到休息区，有两种可以休息的地方。一个是带搭脚的椅子，一个是床。我在卫生间刷了个牙后去床上躺了一会儿，里面感觉通风不是很好，就在门口的一张上睡的。到了后半夜发现这个风水宝地的人似乎越来越多了，我就撤了出来。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-c350ba875c5adbb5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="15"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-fa7ad86bdc0c2c00.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="18"></p>
+<p>除了免费的住宿，还可以选择仁川国际机场的转机酒店。大概10万韩元相当于600多块的样子（记得不是很清楚了）。但是要提前预约号，要不就没房了。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-bea51a30411a3828.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="13"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-bf0a886bc8c966b4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="14"></p>
+<p>吃饭请容许我推荐一下4楼food court的黑豆面。很好吃，不咸还有点微微的甜味。不过貌似不是每顿都会准备这个菜品。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-de6e7568faef5f9c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="11"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-58d306cdcd1bd0a4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="12"></p>
+<p>还找到了传闻中仁川机场的免费洗澡区。不过疫情期间肯定不会开了。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-c8db38dec0d1d805.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="16"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-c2e02ee961ec920a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="17"></p>
+<p>候机区有很多8k电视，不过不知道是不是片源的关系，感觉很模糊，没有我第一次在costco里看见4k那么惊艳。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-9a811e3dc58a80d0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="38"></p>
+<hr>
+<p>飞机预定是1点45起飞，结果不到11点厦航的人就来候机口了。候机口上有两个二维码要扫。一个是给海关的登记。一个是一个教闽政通的软件，是进入厦门以及在厦门隔离的时候用的。其实第一个登记了最后没有用。到中国海关后又扫了一个更新版本的出来。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-8883614783c60a67.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="20"></p>
+<p>要领登机牌的人实在是太多了，给大家看一下排队盛况（这张图片估计占总人数的1/3）</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-af18c9490b4bd0f3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="22"></p>
+<p>可能是因为人太多，本来预计13：15起飞的航班改到了14：15。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-75889e451246d326.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="21"></p>
+<h3 id="4-第二段飞行"><a href="#4-第二段飞行" class="headerlink" title="4. 第二段飞行"></a>4. 第二段飞行</h3><p>厦航的航班并没有留空座，大家紧密地坐着。飞机上给了一些水果和面包，没有吃。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-fe367aa29f691260.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="24"></p>
+<p>航班上又填写了一些表格。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-a58adec1f41b8e13.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="23"></p>
+<h3 id="5-落地"><a href="#5-落地" class="headerlink" title="5. 落地"></a>5. 落地</h3><p>首先是接受核酸检测，然后是入关。基本就服从安排就行。境外来厦门的旅客被大巴首先统一拉到了分配中心，在里面问了一下结束隔离后要去哪。之后不知道是按照什么原则分配的。最终被分配到了市区的一家酒店，听说算是比较幸运的了。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-d165c1143fa4aa3d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="27"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-fe0f35f867b598d7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="25"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13640208-9b22908f8ff373e7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="26"></p>
+<p>由于害怕酒店便宜的房间被抢完，特地往前站了站，结果进去后却被告之只剩下最便宜的房间了。真是正合我意。6点的多下的飞机，进房间已经10点了。我后面还有很多小伙伴在等着入住。</p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
+            <p>Link of This Article：<a href="https://ry2an.github.io/2020/07/29/flight-back-china/">https://ry2an.github.io/2020/07/29/flight-back-china/</a>
+            <p>Publish Date：<a href="https://ry2an.github.io/2020/07/29/flight-back-china/">July 29th 2020, 8:10:44 pm</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/07/29/flight-back-china/">July 30th 2020, 12:57:37 pm</a>
+            <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/07/30/test/" title= "test">
+                    <div class="nextTitle">test</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/05/20/EPID622/" title= "Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases">
+                    <div class="prevTitle">Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:ruoyan.han94@outlook.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Ry2an" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/my_wechat.jpg" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.zhihu.com/people/tui-mao-39" class="iconfont-archer zhihu" target="_blank" title=zhihu></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://space.bilibili.com/2477951" class="iconfont-archer bilibili" target="_blank" title=bilibili></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%88%AA%E7%8F%AD%E4%BF%A1%E6%81%AF"><span class="toc-number">1.</span> <span class="toc-text">航班信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B0%E8%BE%BE%E8%82%AF%E5%B0%BC%E8%BF%AA%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA"><span class="toc-number">2.</span> <span class="toc-text">到达肯尼迪国际机场</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8A%9E%E7%90%86%E5%80%BC%E6%9C%BA%E4%B8%8E%E8%A1%8C%E6%9D%8E%E6%89%98%E8%BF%90"><span class="toc-number">3.</span> <span class="toc-text">1. 办理值机与行李托运</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%AC%AC%E4%B8%80%E6%AE%B5%E9%A3%9E%E8%A1%8C"><span class="toc-number">4.</span> <span class="toc-text">2. 第一段飞行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BB%81%E5%B7%9D%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA"><span class="toc-number">5.</span> <span class="toc-text">3. 仁川国际机场</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%AC%AC%E4%BA%8C%E6%AE%B5%E9%A3%9E%E8%A1%8C"><span class="toc-number">6.</span> <span class="toc-text">4. 第二段飞行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E8%90%BD%E5%9C%B0"><span class="toc-number">7.</span> <span class="toc-text">5. 落地</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 16
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/30</span><a class="archive-post-title" href= "/2020/07/30/test/" >test</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span><a class="archive-post-title" href= "/2020/07/29/flight-back-china/" >flight_back_china</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/20</span><a class="archive-post-title" href= "/2020/05/20/EPID622/" >Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/Portfolio-as-MPH-Student/" >Portfolio as MPH</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/05</span><a class="archive-post-title" href= "/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/" >Repeat Academic Poisson and Negative Binomial Regression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2020/03/04/Repeat-Ancademic-Survival-Analysis/" >Repeat Academic Survival Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/" >Understanding Fourier Transform and Wavelet Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/31</span><a class="archive-post-title" href= "/2020/01/31/Simulating-SIR-Model/" >Simulating SIR Model</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/17</span><a class="archive-post-title" href= "/2020/01/17/Crawling-Data-From-html-Based-Pages/" >Crawling Data From html Based Pages</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/2020/01/14/Vaccine-Making-Selling-Delivering-and-Using-System/" >Vaccine Making Selling Delivering and Using System</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/11</span><a class="archive-post-title" href= "/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/" >Using Longitudinal Models To Analyze Steam Games</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/10</span><a class="archive-post-title" href= "/2020/01/10/Connect-Four-Chess/" >Connect Four Chess</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2016 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/01</span><a class="archive-post-title" href= "/2016/09/01/summer-survey-2016/" >2016年暑期实践</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1994 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/10</span><a class="archive-post-title" href= "/1994/10/10/Markdown-Cheat-Sheet/" >Markdown Cheat Sheet</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/07/30/hello-world/" >Hello World</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1994 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/09</span><a class="archive-post-title" href= "/1994/10/09/MySQL-Hand-Book/" >MySQL Hand Book</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="trip"><span class="iconfont-archer">&#xe606;</span>trip</span>
+    
+        <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Ruoyan Han"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+

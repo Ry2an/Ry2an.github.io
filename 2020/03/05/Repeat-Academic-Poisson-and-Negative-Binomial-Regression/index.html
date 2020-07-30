@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="Ruoyan Han">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Ruoyan Han">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>Repeat Academic Poisson and Negative Binomial Regression · Ry2an&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/hakase.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Ry2an&#39;s Studio</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Repeat Academic Poisson and Negative Binomial Regression</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Ry2an's Studio</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/postbg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            Repeat Academic Poisson and Negative Binomial Regression
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">2.1k</span>Reading time: <span class="post-count reading-time">13 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/03/05</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>Author: Ruoyan Han</p>
+<p>Code of this project is avaliable at:<br><a target="_blank" rel="noopener" href="https://github.com/Ry2an/case_code/tree/master/bios623as2">https://github.com/Ry2an/case_code/tree/master/bios623as2</a></p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>In 1996, the Australian government exempted a new gun law that banned semiautomatic rifles and pump-action shotguns and started to buyback firearms. Chapman, et al, did an analysis to reveal whether the law change had brought changes in death rates for different reasons related to gunshot [1]. This document is the assignment of BIOS 621 and I will repeat one outcome (total non-firearm death rate) in Chapman, et al’s article with same statistical methods and compare the usage of log negative binomial regression and log Poisson regression in this situation.</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><h3 id="Data-setting"><a href="#Data-setting" class="headerlink" title="Data setting"></a>Data setting</h3><h4 id="Rate-calculation"><a href="#Rate-calculation" class="headerlink" title="Rate calculation"></a>Rate calculation</h4><p>Since the total death is gradually growing, comparing the absolute death number change in two law backgrounds could be affected. Therefore, as the same thing the author did, a death rate is calculated by the total death divide by the total person-year at risk for some linear regression calculation in this assignment.</p>
+<h3 id="Analysis-processes"><a href="#Analysis-processes" class="headerlink" title="Analysis processes"></a>Analysis processes</h3><p>At the first step, log (mean) and log (standard deviation) of the outcome measure (total non-firearm death) and their stratified results are calculated to see whether the outcome could be recognized as a Poisson distribution. If the outcome is in Poisson distribution, the log(mean) and log (standard deviation) should be similar.</p>
+<p>The second step is to calculate the mean and 95% confidence interval of the total non-firearm death rate in two law backgrounds (before 1997 and after 1997). Three solutions are attempt to get the result. The first one is to treat the means of non-firearm death rate before and after the law change are in two sample distributions (t distribution). Therefore, the standard error of the means could be calculated by standard deviation divided by square root of n into two periods of time, where n means that number of means in two periods of time. The degree of freedom is equal to n – 1. The formula is shown as (1).</p>
+<p>$$<br>\textrm{Sample SD} = \frac{\delta}{\sqrt{n}}<br>$$</p>
+<p>The second solution of calculating the mean and its 95%confidence interval is by linear regression. The model is shown as (2).</p>
+<p>$$<br>Rate_i = \beta_0 + \beta_1 * \textrm{Law}_i + \xi_i, \xi_i \sim N(0, \delta)<br>$$</p>
+<p>The third solution will use log negative binomial regression to calculate the mean and confidence interval of the total non-firearm death rate before and after the law change. The model is shown as (3). (in Negative Binomial Regression)</p>
+<p>$$<br>log(\textrm{TNF}_i) = \beta_0 + \beta_1 * \textrm{Law}_i + log(\textrm{personyearatrisk}_i) + \xi_i<br>$$</p>
+<p>By assuming law change is an effect modifier of the relationship between time (year) and total non-firearm death rate, three models shown in the article has been fitted. The formula is shown as (4) – (6). (in Negative Binomial Regression)</p>
+<p>$$<br>log(\textrm{TNF}_i) = \beta_0 + \beta_1 * \textrm{Law}_i + log(\textrm{personyearatrisk}_i) + \xi_i, \textrm{Year} \in [1979, 1997)<br>$$</p>
+<p>$$<br>log(\textrm{TNF}_i) = \beta_0 + \beta_1 * \textrm{Law}_i + log(\textrm{personyearatrisk}_i) + \xi_i, \textrm{Year} \in [1997, 2013)<br>$$</p>
+<p>$$<br>\textrm{Rate}_i = \beta_0 + \beta_1 * \textrm{Year}_i + \beta_2 * \textrm{Law}_i +<br>\beta_3 * \textrm{Year}_i * \textrm{Law}_i + \xi_i<br>$$</p>
+<p>A log Poisson regression is also fitted to compare with model  The model formula is shown as (7).</p>
+<p>$$<br>\textrm{Rate}_i = \beta_0 + \beta_1 * \textrm{Year}_i + \beta_2 * \textrm{Law}_i +<br>\beta_3 * \textrm{Year}_i * \textrm{Law}_i + \xi_i<br>$$</p>
+<p>Model (6) and model (7) are compared by Akaike information criterion (AIC), log (likelihood of regression), diagnose plots and regression curve with residuals. In order to compare the intercept change at the year of the law update, I will use ‘(year - 1996)’ to replace the original ‘year’ in the model (6) and model (7).</p>
+<h3 id="Software"><a href="#Software" class="headerlink" title="Software:"></a>Software:</h3><p>The software I used for calculation and analysis in this assignment are R software 3.6.1 and MS Office Excel 2019.</p>
+<p>R packages and tools used:  R markdown; MASS; ggplot2; plotrix; plyr; countreg; gridExtra </p>
+<h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><p>The total log mean and log standard deviation for total non-firearm deaths rate is 2.41 and 0.32.<br>The log mean and log standard deviation before the law change for total non-firearm deaths rate is 2.36 and 0.27.</p>
+<p>The log mean and log standard deviation after the law change for total non-firearm deaths rate is 2.46 and 0.17.</p>
+<p>Log mean and log standard deviation of outcome is not similar. Therefore, we cannot assume that the log outcome is in a Poisson distribution.</p>
+<p>Mean calculation and interpret.</p>
+<p>Solution 1 gave us the average rate of total non-firearm death before the law change is 10.61 (95% CI: 8.64, 12.57) deaths per 100000 person-years. The average rate of total non-firearm death before the law change is 11.80 (95% CI: 9.83, 13.76) deaths per 100000 person-years.</p>
+<p>Solution 2 gave us the average rate of total non-firearm death before the law change is 10.61 (95% CI: 10.00, 11.21) deaths per 100000 person-years. The average rate of total non-firearm death before the law change is 11.80 (95% CI: 11.19, 12.40) deaths per 100000 person-years.</p>
+<p>Solution 1 gave us the average rate of total non-firearm death before the law change is 10.61 (95% CI: 10.09, 11.16) deaths per 100000 person-years. The average rate of total non-firearm death before the law change is 11.79 (95% CI: 11.21, 12.41) deaths per 100000 person-years.</p>
+<p>A plot has generated to describe the mean calculation from three solutions.</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/fig1.png" alt="fig1"></p>
+<p><strong>Fig 1. Results of three solutions to calculate mean non-firearm death rate before and after the law change</strong></p>
+<p><strong>Table 1. Regression result</strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/table1.PNG" alt="table1"></p>
+<p>From the result, we can know that in the year of 1979 to 1996 before the law change, the average trend of total non-firearm death rate is 1.002 (rate ratio) from model (4), while in the year of 1997 to 2013 after the law change, the trend of  total non-firearm death rate is 0.986 (rate ratio). The change of this difference in log of the rate ratio is -0.0348 (the change of slope of two period log(rate ratio)) from model 6 and this difference is statistically significant.</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/fig2.png" alt="fig2"></p>
+<p><strong>Fig 2. Predicted Values of Model (6) (Left) and Model (7) (Right)</strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/fig3.png" alt="fig3"></p>
+<p><strong>Fig 3. Diagnostic Plots of Model (6) (Left 4 plots) and Model (7) (Right 4 Plots)</strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/fig4.png" alt="fig4"></p>
+<p><strong>Fig 4. Hang plots of Model (6) (Left) and Model (7) (Right)</strong></p>
+<h2 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h2><h3 id="Compare-with-the-paper’s-result"><a href="#Compare-with-the-paper’s-result" class="headerlink" title="Compare with the paper’s result"></a>Compare with the paper’s result</h3><p>The total non- firearm death results of Chapman, et al is copied as follows. The mean trend of death rate before the law change is equal to exp (0.0212) = 1.021 and its confidence interval has been shown above. The mean trend of death rate after the law change is equal to exp (0.0212 – 0.0348) = 0.986. The 95% confidence interval of this trend is exp (0.0157 – 0.0348) = 0.981 and exp (0.0226 – 0.0348) = 0.992, which is calculated by adding the coefficient of ‘Law’ into the confidence interval of coefficient of (Year - 1996). RT and RL are equal to the rate ratio at the law change and the exponential of the slope difference between the two status which has been shown above in the table.</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/fig5.jpg" alt="fig5"></p>
+<p><strong>Fig 5. Original results from the paper of Chapman, et al</strong></p>
+<h3 id="The-association-between-separate-model-and-combined-model"><a href="#The-association-between-separate-model-and-combined-model" class="headerlink" title="The association between separate model and combined model"></a>The association between separate model and combined model</h3><p>The reason that I didn’t do a separate log Poisson regression before and after the law change is because that they are equivalent with the model (7). Let’s look at model (4) – (6) as an example.<br>If we substitute the Law value in the model (6) as 0 and 1, which is also the value I generated in the dataset, the model will look like this:</p>
+<p>$$<br>log(\textrm{TNF}_i) = \beta_0 + \beta_1 * \textrm{Year}_i + log(\textrm{personyearatrisk}_i) + \xi_i, (\textrm{Law} = 0)<br>$$</p>
+<p>$$<br>log(\textrm{TNF}_i) = (\beta_0 + \beta_2) + (\beta_1 + \beta_3) * \textrm{Year}_i + log(\textrm{personyearatrisk}_i) + \xi_i, (\textrm{Law} = 1)<br>$$</p>
+<p>We can see that these two separated models look quite similar with model (4) and model (5). Actually, they are the same. Law = 0 equals to year &lt; 1997, and Law = 1 equals to year &gt;= 1997. If we add the β of Year * Law in model (6) with the β of Year in model (6), we could get the same value of Year’s β in model (5). If we do not add anything to the β of Year in model (6), it equals with the β of Year in model (4). In fact, the β of Year * Law in model (6) describes the differences between the Years’ beta of model (4) and model (5), and we can additionally notice the standard error and p-value of these difference in model (6). That’s why I don’t have to try another separated model for Poisson regression.</p>
+<h3 id="Model-comparison"><a href="#Model-comparison" class="headerlink" title="Model comparison"></a>Model comparison</h3><p>From AIC, we can notice that the log negative binomial model fits better than log Poisson regression.</p>
+<p>The Log Likelihood of Negative Binomial model is higher than log Poisson, which also means the model (7) fits better.</p>
+<p>From the estimating lines (Fig 2.) the two models provided quite same estimating curve, the only difference I noticed is that the end of the blue line (total non-firearm death rate before law change) (in the green circle) in the log Poisson regression is a little bit higher than the log negative binomial regression.</p>
+<p>The diagnostic plots of the two models (Fig 3.) are almost the same, the only difference I noticed is in the Q-Q plots. It seems that the error term in log negative binomial regression is better normally distributed than the log Poisson regression.</p>
+<h3 id="Limitation"><a href="#Limitation" class="headerlink" title="Limitation"></a>Limitation</h3><p>It’s understandable that the rate after the law change is still higher because the rate is just starting to decreasing after the low change by the result of the regressions. </p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/fig6.png" alt="fig6"></p>
+<p><strong>Fig 6. Histogram of total non-firearm death rate in two interested period</strong></p>
+<p>However, what we should expect from the law change is that the death rate of firearm could be lower. So, what about the non-firearm deaths? Shall it increase because fewer people will be killed by gunshot? Or shall it be stable because people could still be alive if they avoid the gunshot? Or shall it decrease because people are healthier and healthier? We need a comparison. If we have a global or other comparable total non-firearm death rate, we could know whether the law has actually changed something. If naturally the total non-firearm death rate is decreased after 1996 if some grate medical product has been made, the curve could be same without the law change.  After comparing with a counterfactual rate, we could take a deeper insight in to the reason for total non-firearm deaths started to decrease after the law change.</p>
+<p>If we do not know the background of the law change, the curve of death rate could be seemed very normal, just a little peak in 1996. Actually, the most obvious change in the raw curve is around 1998 and after 2005. But we do not know whether something important happened at that time. Even there is a cause of raw curve changing happed in the year 1996, we could not distinguish whether it was the law upgrade or other potential mediators and confounders. </p>
+<p>The last thing I want to discuss is that the confidence intervals in the model (7) (Log Poisson Regression) is narrower than the model (6) (Log Negative Binomial Regression). However, both the AIC and log-likelihood show that the log negative binomial regression is better. That is because although log Poisson regression is more precise in this case because of its strict distribution assumption, it lost accuracy compare to the negative binomial regression.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This assignment has totally repeated the result of Chapman, et al in the analysis of total non-firearm death rate that the trend of the rate has statistical significantly changed after the year of 1996. From 1979 - 1996, the mean rate of total non-firearm death rate was 10.61 (95%CI, 10.09 - 11.16) per 100,000 person-year (annual trend 1.021, 95%CI: 1.016 - 1.026), whereas from 1997 - 2013, the mean rate of total non-firearm deaths rate was 11.79 (95%CI: 11.21, 12.41) per 100,000 person-year (annual trend 0.986, 95%CI: 0.981, 0.992). </p>
+<p>Besides, this assignment compared Log Negative Binomial Regression’s and Log Poisson regression’s performance under this circumstance. The result shows that Log Negative Binomial Regression is better than Log Poisson regression in this case.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><p>[1] Chapman, S., Alpers, P., &amp; Jones, M. (2016). Association between gun law reforms and intentional firearm deaths in Australia, 1979-2013. Jama, 316(3), 291-299.</p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
+            <p>Link of This Article：<a href="https://ry2an.github.io/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/">https://ry2an.github.io/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/</a>
+            <p>Publish Date：<a href="https://ry2an.github.io/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/">March 5th 2020, 7:58:10 pm</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/">March 6th 2020, 10:23:30 am</a>
+            <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/05/03/Portfolio-as-MPH-Student/" title= "Portfolio as MPH">
+                    <div class="nextTitle">Portfolio as MPH</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/03/04/Repeat-Ancademic-Survival-Analysis/" title= "Repeat Academic Survival Analysis">
+                    <div class="prevTitle">Repeat Academic Survival Analysis</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:ruoyan.han94@outlook.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Ry2an" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/my_wechat.jpg" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.zhihu.com/people/tui-mao-39" class="iconfont-archer zhihu" target="_blank" title=zhihu></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://space.bilibili.com/2477951" class="iconfont-archer bilibili" target="_blank" title=bilibili></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Method"><span class="toc-number">2.</span> <span class="toc-text">Method</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Data-setting"><span class="toc-number">2.1.</span> <span class="toc-text">Data setting</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Rate-calculation"><span class="toc-number">2.1.1.</span> <span class="toc-text">Rate calculation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analysis-processes"><span class="toc-number">2.2.</span> <span class="toc-text">Analysis processes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Software"><span class="toc-number">2.3.</span> <span class="toc-text">Software:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Results"><span class="toc-number">3.</span> <span class="toc-text">Results</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Discussion"><span class="toc-number">4.</span> <span class="toc-text">Discussion</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Compare-with-the-paper%E2%80%99s-result"><span class="toc-number">4.1.</span> <span class="toc-text">Compare with the paper’s result</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-association-between-separate-model-and-combined-model"><span class="toc-number">4.2.</span> <span class="toc-text">The association between separate model and combined model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Model-comparison"><span class="toc-number">4.3.</span> <span class="toc-text">Model comparison</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Limitation"><span class="toc-number">4.4.</span> <span class="toc-text">Limitation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">5.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">6.</span> <span class="toc-text">Reference:</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 16
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/30</span><a class="archive-post-title" href= "/2020/07/30/test/" >test</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span><a class="archive-post-title" href= "/2020/07/29/flight-back-china/" >flight_back_china</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/20</span><a class="archive-post-title" href= "/2020/05/20/EPID622/" >Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/Portfolio-as-MPH-Student/" >Portfolio as MPH</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/05</span><a class="archive-post-title" href= "/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/" >Repeat Academic Poisson and Negative Binomial Regression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2020/03/04/Repeat-Ancademic-Survival-Analysis/" >Repeat Academic Survival Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/" >Understanding Fourier Transform and Wavelet Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/31</span><a class="archive-post-title" href= "/2020/01/31/Simulating-SIR-Model/" >Simulating SIR Model</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/17</span><a class="archive-post-title" href= "/2020/01/17/Crawling-Data-From-html-Based-Pages/" >Crawling Data From html Based Pages</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/2020/01/14/Vaccine-Making-Selling-Delivering-and-Using-System/" >Vaccine Making Selling Delivering and Using System</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/11</span><a class="archive-post-title" href= "/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/" >Using Longitudinal Models To Analyze Steam Games</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/10</span><a class="archive-post-title" href= "/2020/01/10/Connect-Four-Chess/" >Connect Four Chess</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2016 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/01</span><a class="archive-post-title" href= "/2016/09/01/summer-survey-2016/" >2016年暑期实践</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1994 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/10</span><a class="archive-post-title" href= "/1994/10/10/Markdown-Cheat-Sheet/" >Markdown Cheat Sheet</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/07/30/hello-world/" >Hello World</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1994 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/09</span><a class="archive-post-title" href= "/1994/10/09/MySQL-Hand-Book/" >MySQL Hand Book</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="trip"><span class="iconfont-archer">&#xe606;</span>trip</span>
+    
+        <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Ruoyan Han"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+

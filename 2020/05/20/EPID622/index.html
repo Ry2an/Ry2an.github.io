@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="Ruoyan Han">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Ruoyan Han">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases · Ry2an&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/hakase.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Ry2an&#39;s Studio</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Ry2an's Studio</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/postbg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            Exploring Association Between Self-Reported Mental Health and Obesity by Usin...
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">3.4k</span>Reading time: <span class="post-count reading-time">21 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/05/20</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>Course assignment of EPID 622</p>
+<p>Author: Ruoyan Han </p>
+<p>Title: Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases</p>
+<a id="more"></a>
+
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><strong>Introduction</strong></h2><p>Obesity is a risk factor for many significant morbidity1. The burden has been increasing since 1990 but still does not have a slowing down trend2,3. Up to now, in the United States, the burdens of obesity have been increasing and reached about 20% to 30% in different states4. On the other hand, there are many risk factors for obesity. One major risk factor of obesity claims by previous studies is mental health status. People who have mental illnesses could have 2<br>to 3 times risk of having obesity5. We will discuss the relationship between obesity and mental status in this paper.</p>
+<p>Controlling for confounders is a normal considering when we want to measure the relationship between to conditions, and so do this time. There are also confounders between obesity and mental status. Both obesity and mental status are related to many chronic diseases. Hypertension, Dyslipidemia, and Diabetes1. Hypothyroidism6-8, Cushing’s Syndrome9,10, and polycystic Ovary Syndrome11 could cause a weight change of their patients. Besides, some drugs like Antidepressants12, Antipsychotics13, Sulfonylureas14, Thiazolidinediones14, Insulin14, Antiepileptic drugs15, Corticosteroids14 and Beta-blockers14 which are used to cure mental diseases, diabetes, hypertension, epilepsy, cardiovascular diseases, and autoimmune diseases can also cause a weight change. In another direction, chronic conditions have also been proved as a risk factor of mental illnesses16,17. Therefore, to have an accurate estimation of the relationship between mental status and obesity, we need to adjust to chronic diseases as confounders.</p>
+<p>However, there is a problem between these confounders. Chronic diseases are usually related to each other. Some typical examples are diabetes and hypertension18; diabetes and asthma19; hypertension and kidney failure20, etc. If covariates are not independent with each other, it will influence the accuracy of the coefficient parameter21. The classical process would choose to<br>use stepwise strategy and remove co-linear items22 which could lose usage of collected data.</p>
+<p>Propensity score23 is an approach that could help with the co-linearity covariates without eliminating them out of the data analysis24,25. The propensity score is the predicted probability for individuals in the dataset of being exposed by giving confounding values. One way to utilize the score is to adjust for the covariates. In observational studies, individuals are typically clustered into different exposure groups with different probabilities, where the<br>confounding can occur. Therefore, by controlling for the propensity score, confounders can also be adjusted23.</p>
+<p>In this study, regression models would be fitted to test on what extent that propensity score could enhance the relationship estimation between self-reported mental status and obesity. Based on previous studies, we expected that the adjusted relationship would be positive, which means people with poorer mental status could have more chances to get obese.</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a><strong>Method</strong></h2><p><strong>Data</strong></p>
+<p>Dataset of NYC HANES 2014-2014 (New York City Health and Nutrition Examination Survey)26 was used in the analyses. The dataset includes participants from households who live in five boroughs, over 20 years old, and non-institutionalized. There were two layers in the sampling strategy of this dataset. In the first layer, NYC was geologically recognized as 6236 segments<br>and 144 segments are randomly picked. In the selected segments, 0 to 2 household adults were randomly selected based on how many eligible adults are living in the houses within the 144 segments. The reason to select by houses is to minimize the household-to-household clustering. The total response rate was 36%. 1524 participants finished the survey.</p>
+<p>Several variables in the NYC HANES dataset were used in this analysis:</p>
+<p>‘Self-reported mental condition (MHQ_1)’ was chosen as the interested exposure. It is a 5-categories choice question. In some of our analysis, we transformed it into a binary variable by whether the self-reported mental status is ‘poor’ or not. ‘Body Mass Index (BMI)’ is a measurement that already generated in the dataset. The outcome variable in this analysis ‘whether obese’ was created based on this variable. If one participant’s BMI was over 30, he would be marked as ‘obese’. Five chronic diseases covariates were considered in the analysis:<br>‘whether having high blood pressure (BPQ_2), ‘whether having diabetes or sugar diabetes (DIQ_1)’, ‘whether having cancer or malignancy (MCQ_14)’, ‘whether having asthma (MCQ_1)’ and ‘whether having failing kidneys (MCQ_12)’. Besides, six mental health questions (MHQ_2 to MHQ_7) were used for validity tests. Age and Gender were used as common confounder and modifier. (Details of questions and items used in this analysis would be added to the appendix.)</p>
+<p><strong>Cronbach alpha</strong></p>
+<p>To check the validity of the outcome variables, self-reported mental health, Cronbach alphas are calculated. There are seven questions (MHQ1 - MHQ7) that asked all participants about their mental mood. The first question was picked as the outcome. Cronbach alpha is calculated based on the answers of the seven questions to see whether they have a good consistency. During data processing, we re-coded question MHQ-1 to let it have the same direction with the other six<br>questions of representing mental status from better to worse rather than from worse to better.</p>
+<p><strong>Weighting Sample</strong></p>
+<p>Two parts of the survey results were covered in our analyses: computer interview and physical tests, which correspond to two weights in the dataset (CAPI_WT and EXAM_WT). The sample size of the computer interview is 1,527 and the sample size of the physical tests is 1500. In the regression analyses, participants with missing data are removed. Therefore, the weight of the physical tests, which have lower samples, was used to adjusting in the models.</p>
+<p><strong>Univariate Analysis and Multivariate Analysis</strong></p>
+<p>In the univariate analysis part, to comparing regression coefficients of the chronic diseases, we also added age and gender into the models:</p>
+<p>(model 1)</p>
+<p>$$<br>\textrm{Obese}<em>{i} = \beta</em>{1}*\textrm{Self-reported Mental Health}<em>{i} + \beta</em>{2}*\textrm{Age}<em>{i} + \beta</em>{3}*\textrm{Self-reported Mental Health}<em>{i} * \textrm{Gender} + \beta</em>{4}*\textrm{Gender} +\xi_{i}<br>$$</p>
+<p>(model 2)</p>
+<p>$$<br>\textrm{Obese}<em>{i} = \beta</em>{1}*\textrm{Diabetes}<em>{i} + \beta</em>{2}*\textrm{Age}<em>{i} + \beta</em>{3}*\textrm{Gender} + \xi_{i}<br>$$</p>
+<p>(model 3)</p>
+<p>$$<br>\textrm{Obese}<em>{i} = \beta</em>{1}*\textrm{Hypertension}<em>{i} + \beta</em>{2}*\textrm{Age}<em>{i} + \beta</em>{3}*\textrm{Gender} + \xi_{i}<br>$$</p>
+<p>(model 4)</p>
+<p>$$<br>\textrm{Obese}<em>{i} = \beta</em>{1}*\textrm{Asthma}<em>{i} + \beta</em>{2}*\textrm{Age}<em>{i} + \beta</em>{3}*\textrm{Gender} + \xi_{i}<br>$$</p>
+<p>(model 5)</p>
+<p>$$<br>\textrm{Obese}<em>{i} = \beta</em>{1}*\textrm{Kidney}<em>{i} + \beta</em>{2}*\textrm{Age}<em>{i} + \beta</em>{3}*\textrm{Gender} + \xi_{i}<br>$$</p>
+<p>(model 6)</p>
+<p>$$<br>\textrm{Obese}<em>{i} = \beta</em>{1}*\textrm{Cancer}<em>{i} + \beta</em>{2}*\textrm{Age}<em>{i} + \beta</em>{3}*\textrm{Gender} + \xi_{i}<br>$$</p>
+<p>Multivariable regression model included all covariates in the univariate<br>analysis:</p>
+<p>(model 7)</p>
+<p>$$<br>\textrm{Obese}<em>{i} = \beta</em>{1}*\textrm{Self-reported Mental Health}<em>{i} + \beta</em>{2}*\textrm{Hypertension}<em>{i} + \beta</em>{3}*\textrm{Diabetes}<em>{i} + \beta</em>{4}*\textrm{Asthma}<em>{i} + \beta</em>{5}*\textrm{Cancer}_{i} + $$</p>
+<p>$$\beta_{6}*\textrm{Kidney}<em>{i} + \beta</em>{7}*\textrm{Age}<em>{i} + \beta</em>{8}*\textrm{Self-reported Mental Health}<em>{i} * \textrm{Gender} + \beta</em>{9}*\textrm{Gender} + \xi_{i}<br>$$</p>
+<p><strong>Logistic regression with Propensity Score</strong></p>
+<p>The propensity score is the estimated probability of exposure based on<br>covariates, which could be measured with the following model:</p>
+<p>(model 8)</p>
+<p>$$<br>\textrm{Self-reported Mental Health}<em>{i} = \beta</em>{1}*\textrm{Hypertension}<em>{i} + \beta</em>{2}*\textrm{Diabetes}<em>{i} + \beta</em>{3}*\textrm{Asthma}<em>{i} + \beta</em>{4}*\textrm{Cancer}<em>{i} + \beta</em>{5}*\textrm{Kidney}<em>{i} + \beta</em>{6}*\textrm{Age}_{i}<br>$$</p>
+<p>After the score is calculated, we could remove the original covariates and<br>replace them with the score:</p>
+<p>(model 9)</p>
+<p>$$<br>\textrm{Obese}<em>{i} = \beta</em>{1}*\textrm{Self-reported Mental Health}<em>{i} + \beta</em>{2}*\textrm{Propensity Score}<em>{i} + \beta</em>{3}*\textrm{Self-reported Mental Health}<em>{i} * \textrm{Gender} + \beta</em>{4}*\textrm{Gender} + \beta_{5}*\textrm{Age}<em>{i} + \xi</em>{i}<br>$$</p>
+<p><strong>Tools</strong></p>
+<p>All data processing and analysis are finished in SAS 9.4.</p>
+<h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a><strong>Results</strong></h2><p><strong>Descriptive Analysis</strong></p>
+<p><strong>Table 1. Covariates Distribution Among Different Outcome Status</strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/epid622/t1.PNG" alt="t1"></p>
+<p>This table shows the distribution of covariates that include in the analyses among participants with different obesity status. ‘Mental Status: Poor’, which is the binary-transformed variable from ‘Mental Status’ is the exposure variable in the following analyses.</p>
+<p><strong>Questionnaire Validity</strong></p>
+<p>We calculated the Cronbach alpha for seven mental questions that asked all participants (MHQ_1 to MHQ_7). The alpha of answers to the seven questions is over 0.8, which indicates that they have a high consistency. Any banning of the variables could cause a reduction of the alpha value.</p>
+<p><strong>Table 2. Cronbach Alpha for Mental Status Questions</strong></p>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Alpha after banned this question</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mental Status Level (Excellent/ Very Good/ Good/ Fair/ Poor)</td>
+<td>0.84</td>
+</tr>
+<tr>
+<td>Past 30 days, felt nervous level (All/ Most/ Some/ A little/ None of the time)</td>
+<td>0.84</td>
+</tr>
+<tr>
+<td>Past 30 days, felt hopeless or not (All/ Most/ Some/ A little/ None of the time)</td>
+<td>0.82</td>
+</tr>
+<tr>
+<td>Past 30 days, felt restless or fidgety or not (All/ Most/ Some/ A little/ None of the time)</td>
+<td>0.83</td>
+</tr>
+<tr>
+<td>Past 30 days, felt depressed, no cheerin or not (All/ Most/ Some/ A little/ None of the time)</td>
+<td>0.82</td>
+</tr>
+<tr>
+<td>Past 30 days, felt everything an effort or not (All/ Most/ Some/ A little/ None of the time)</td>
+<td>0.83</td>
+</tr>
+<tr>
+<td>Past 30 days, felt worthless or not (All/ Most/ Some/ A little/ None of the time)</td>
+<td>0.82</td>
+</tr>
+<tr>
+<td>Total Alpha</td>
+<td>0.85</td>
+</tr>
+</tbody></table>
+<p><strong>Classical Regression Analysis</strong></p>
+<p>Table 3 shows the result of univariate analysis and multivariable regression. Parameter of diabetes and kidney failure have obvious changes between the univariate model and the multivariate model. Other covariates and exposure did not change a lot in the multivariate model. P-value of exposure increased.</p>
+<p><strong>Regression with Propensity Score</strong></p>
+<p>The propensity score, which means the probability of exposure estimated by confounders, is fitted for each individual with a logistic regression model. Table 3 compares how the regression coefficient of self-reported mental status change between classical regression and regression using the propensity score.</p>
+<p>To have a better view of natural log odds distribution under 5 original different self-reported status, two regression models with ordinal exposure degree were fitted and shown in Table 4.</p>
+<p><strong>Table 3. Regression models for the relationship between Self-reported Mental Status and Obese</strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/epid622/t3.PNG" alt="t3"></p>
+<p><strong>Table 4. Regression with Five-Degree Exposure</strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/epid622/t4.PNG" alt="t4"></p>
+<p><em>Note: The reference category of exposure was mental status equal to “poor”.</em></p>
+<h2 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a><strong>Discussion</strong></h2><p><strong>The validity of the exposure question.</strong></p>
+<p>Since the exposure in this study is the self-reported mental status. The validity of this question needed to be checked. From the Cronbach’s alpha in Table 2, we can see that the total alpha of the questions was over 0.8, which means the consistency of these questions was high and they were not results that participants randomly made. Besides, by removing any of the questions, the total alpha would reduce, which means the answers to these questions were unique.</p>
+<p><strong>Relationship between self-reported mental status and obesity.</strong></p>
+<p>The result from regressions with original confounders and propensity scores in Table 3 are similar. The odds of being obese is lower among people whose self-reported mental health status is ‘poor’. Results in Table 4 indicate that this relationship is becoming stronger when the self-reported mental status is lower. In models using the propensity score, this relationship is confounded by age, older people have less chance of being obese, which is opposite to the initial hypothesis from the literature review. We can also reject the hypothesis that this relationship is not modified by gender on 0.05 critical criteria. By controlling for other covariates, the natural log odds of obese males are 1.75 higher than females. The model also showed the confounding effect of hypertension and asthma. People with these chronic diseases could have lesser odds of being obese.</p>
+<p>However, the causal property is hard to extract from the results. Firstly, the NYC HANES is a cross-sectional survey that does not have temporal order in different variables. Secondly, the causal direction, in this case, is unclear. To illustrate the causal pathway, a cohort study would a better design.</p>
+<p><strong>Effect of using propensity score approach in regression.</strong></p>
+<p>The regression coefficient of exposure did not change a lot in models with propensity score. However, since the standard error of the parameter reduced a little bit, the p-value was also reduced. By comparing the regression parameter of chronic diseases from univariate analysis to multivariable analysis, we can notice that some chronic disease changed their regression coefficient and p-values like diabetes and kidney failure, this means these chronic diseases are actually related to each other. Besides, the regression coefficient and p-value of age as a confounder also changed in the model with propensity score, which could reduce biases from chronic diseases.</p>
+<h2 id="Limitation"><a href="#Limitation" class="headerlink" title="Limitation"></a><strong>Limitation</strong></h2><p>The propensity score was not showing its power in this case obviously. By using the propensity score approach to control for confounders, it can also resolve two problems other than correlations between confounders: the unacceptably large number of covariates and unknown confounders. If we could have more records about chronic disease, the difference between classical multivariable analysis and regression with propensity score could be more obvious.</p>
+<p>Besides, the number of exposed individuals was relatively low in this analysis. It could influence the power of the analyses which needs to be concerned if the result were not statistically significant. And it may also reduce the precision of our results.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a><strong>Conclusion</strong></h2><p>Among people who live in New York city and older than 20 years old and have ‘poor’ self-reported mental status is negatively related to obesity. By controlling for age and chronic diseases, the odds of being obese for people whose self-reported mental status is ‘poor’ is 0.35 (95%CI: 0.13, 0.93) times than other people.</p>
+<p>The propensity score approach in this analysis did not improve the model obviously.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a><strong>Reference:</strong></h2><ol>
+<li><p>Heart N, Lung, Institute B, Diabetes NIo, Digestive, Diseases K. <em>Clinical<br>guidelines on the identification, evaluation, and treatment of overweight and<br>obesity in adults: the evidence report.</em> National Heart, Lung, and Blood<br>Institute; 1998.</p>
+</li>
+<li><p>STATEofCHILDHOODOBESITY. Adult Obesity Rates.<br>In:2018:<a target="_blank" rel="noopener" href="https://stateofchildhoodobesity.org/adult-obesity/">https://stateofchildhoodobesity.org/adult-obesity/</a>.</p>
+</li>
+<li><p>Behavioral Risk Factor Surveillance System Survey Data. 2018.</p>
+</li>
+<li><p>Prevention CfDCa. Adult Obesity Prevalence Maps.<br><a target="_blank" rel="noopener" href="https://www.cdc.gov/obesity/data/prevalence-maps.html#overall">https://www.cdc.gov/obesity/data/prevalence-maps.html#overall</a>. Published 2018.<br>Accessed May.10.2020, 2020.</p>
+</li>
+<li><p>Avila C, Holloway AC, Hahn MK, et al. An Overview of Links Between Obesity<br>and Mental Health. <em>Curr Obes Rep.</em> 2015;4(3):303-310.</p>
+</li>
+<li><p>Pearce EN. Thyroid hormone and obesity. <em>Curr Opin Endocrinol Diabetes Obes.</em><br>2012;19(5):408-413.</p>
+</li>
+<li><p>Kitahara CM, Platz EA, Ladenson PW, Mondul AM, Menke A, Berrington de<br>Gonzalez A. Body fatness and markers of thyroid function among U.S. men and<br>women. <em>PLoS One.</em> 2012;7(4):e34979.</p>
+</li>
+<li><p>Laurberg P, Knudsen N, Andersen S, Carlé A, Pedersen IB, Karmisholt J.<br>Thyroid function and obesity. <em>Eur Thyroid J.</em> 2012;1(3):159-167.</p>
+</li>
+<li><p>Kirk LF, Jr., Hash RB, Katner HP, Jones T. Cushing’s disease: clinical<br>manifestations and diagnostic evaluation. <em>Am Fam Physician.</em><br>2000;62(5):1119-1127, 1133-1114.</p>
+</li>
+<li><p>Tiryakioglu O, Ugurlu S, Yalin S, et al. Screening for Cushing’s syndrome in<br>obese patients. <em>Clinics (Sao Paulo).</em> 2010;65(1):9-13.</p>
+</li>
+<li><p>Legro RS, Arslanian SA, Ehrmann DA, et al. Diagnosis and treatment of<br>polycystic ovary syndrome: an Endocrine Society clinical practice guideline. <em>J<br>Clin Endocrinol Metab.</em> 2013;98(12):4565-4592.</p>
+</li>
+<li><p>Uguz F, Sahingoz M, Gungor B, Aksoy F, Askin R. Weight gain and associated<br>factors in patients using newer antidepressant drugs. <em>Gen Hosp Psychiatry.</em><br>2015;37(1):46-48.</p>
+</li>
+<li><p>Galling B, Calsina Ferrer A, Abi Zeid Daou M, Sangroula D, Hagi K, Correll<br>CU. Safety and tolerability of antidepressant co-treatment in acute major<br>depressive disorder: results from a systematic review and exploratory<br>meta-analysis. <em>Expert Opin Drug Saf.</em> 2015;14(10):1587-1608.</p>
+</li>
+<li><p>Velazquez A, Apovian CM. Pharmacological management of obesity. <em>Minerva<br>Endocrinol.</em> 2018;43(3):356-366.</p>
+</li>
+<li><p>Ness-Abramof R, Apovian CM. Drug-induced weight gain. <em>Drugs Today (Barc).</em><br>2005;41(8):547-555.</p>
+</li>
+<li><p>Brown HK, Qazilbash A, Rahim N, Dennis CL, Vigod SN. Chronic Medical<br>Conditions and Peripartum Mental Illness: A Systematic Review and Meta-Analysis.</p>
+</li>
+</ol>
+<p><em>Am J Epidemiol.</em> 2018;187(9):2060-2068.</p>
+<ol start="17">
+<li><p>Brown HK, Wilton AS, Ray JG, Dennis CL, Guttmann A, Vigod SN. Chronic<br>physical conditions and risk for perinatal mental illness: A population-based<br>retrospective cohort study. <em>PLoS Med.</em> 2019;16(8):e1002864.</p>
+</li>
+<li><p>Krzesinski JM, Weekers L. [Hypertension and diabetes]. <em>Rev Med Liege.</em><br>2005;60(5-6):572-577.</p>
+</li>
+<li><p>Baek JY, Lee SE, Han K, Koh EH. Association between diabetes and asthma:<br>Evidence from a nationwide Korean study. <em>Ann Allergy Asthma Immunol.</em><br>2018;121(6):699-703.</p>
+</li>
+<li><p>Gargiulo R, Suhail F, Lerma EV. Hypertension and chronic kidney disease.</p>
+</li>
+</ol>
+<p><em>Dis Mon.</em> 2015;61(9):387-395.</p>
+<ol start="21">
+<li>Wold S, Ruhe A, Wold H, Dunn I, WJ. The collinearity problem in linear<br>regression. The partial least squares (PLS) approach to generalized inverses.</li>
+</ol>
+<p><em>SIAM Journal on Scientific and Statistical Computing.</em> 1984;5(3):735-743.</p>
+<ol start="22">
+<li>Weitzen S, Lapane KL, Toledano AY, Hume AL, Mor V. Principles for modeling<br>propensity scores in medical research: a systematic literature review.</li>
+</ol>
+<p><em>Pharmacoepidemiology and drug safety.</em> 2004;13(12):841-853.</p>
+<ol start="23">
+<li><p>Haukoos JS, Lewis RJ. The Propensity Score. <em>Jama.</em> 2015;314(15):1637-1638.</p>
+</li>
+<li><p>Rosenbaum PR, Rubin DB. The central role of the propensity score in<br>observational studies for causal effects. <em>Biometrika.</em> 1983;70(1):41-55.</p>
+</li>
+<li><p>D’Agostino Jr RB. Propensity score methods for bias reduction in the<br>comparison of a treatment to a non‐randomized control group. <em>Statistics in<br>medicine.</em> 1998;17(19):2265-2281.</p>
+</li>
+<li><p>Perlman SE, Charon Gwynn R, Greene CM, Freeman A, Chernov C, Thorpe LE. NYC<br>HANES 2013-14 and Reflections on Future Population Health Surveillance. <em>J Urban<br>Health.</em> 2018;95(6):777-780.</p>
+</li>
+</ol>
+<p><strong>Appendix:</strong></p>
+<p>Questions used in the analysis:</p>
+<p>MHQ_1</p>
+<p>Now thinking about your mental health, which includes stress, depression and<br>emotional problems, would you say your overall mental health is excellent, very<br>good, good, fair, or poor?</p>
+<p>1: Excellent</p>
+<p>2: Very good</p>
+<p>3: Good</p>
+<p>4: Fair</p>
+<p>5: Poor</p>
+<p>.D: Don’t know</p>
+<p>.R: Refusal</p>
+<p>.: Legit skip</p>
+<p>MHQ_2</p>
+<p>During the past 30 days, how often did you feel nervous?</p>
+<p>1: All of the time</p>
+<p>2: Most of the time</p>
+<p>3: Some of the time</p>
+<p>4: A little of the time</p>
+<p>5: None of the time</p>
+<p>.D: Don’t know</p>
+<p>.R: Refusal</p>
+<p>.: Legit skip</p>
+<p>MHQ_3</p>
+<p>During the past 30 days, how often did you feel hopeless?</p>
+<p>1: All of the time</p>
+<p>2: Most of the time</p>
+<p>3: Some of the time</p>
+<p>4: A little of the time</p>
+<p>5: None of the time</p>
+<p>.D: Don’t know</p>
+<p>.R: Refusal</p>
+<p>.: Legit skip</p>
+<p>MHQ_4</p>
+<p>During the past 30 days, how often did you feel restless or fidgety?</p>
+<p>1: All of the time</p>
+<p>2: Most of the time</p>
+<p>3: Some of the time</p>
+<p>4: A little of the time</p>
+<p>5: None of the time</p>
+<p>.D: Don’t know</p>
+<p>.R: Refusal</p>
+<p>.: Legit skip</p>
+<p>MHQ_5</p>
+<p>During the past 30 days, how often did you feel so sad or depressed that nothing<br>could cheer you up?</p>
+<p>1: All of the time</p>
+<p>2: Most of the time</p>
+<p>3: Some of the time</p>
+<p>4: A little of the time</p>
+<p>5: None of the time</p>
+<p>.D: Don’t know</p>
+<p>.R: Refusal</p>
+<p>.: Legit skip</p>
+<p>MHQ_6</p>
+<p>During the past 30 days, how often did you feel that everything was an effort?</p>
+<p>1: All of the time</p>
+<p>2: Most of the time</p>
+<p>3: Some of the time</p>
+<p>4: A little of the time</p>
+<p>5: None of the time</p>
+<p>.D: Don’t know</p>
+<p>.R: Refusal</p>
+<p>.: Legit skip</p>
+<p>MHQ_7</p>
+<p>During the past 30 days, how often did you feel down on yourself, no good or<br>worthless?</p>
+<p>1: All of the time</p>
+<p>2: Most of the time</p>
+<p>3: Some of the time</p>
+<p>4: A little of the time</p>
+<p>5: None of the time</p>
+<p>.D: Don’t know</p>
+<p>.R: Refusal</p>
+<p>.: Legit skip</p>
+<p>BPQ_2</p>
+<p>Has SP ever been told by a doctor or other health professional that SP had<br>hypertension, also called high blood pressure?</p>
+<p>1: Yes</p>
+<p>2: No</p>
+<p>.D: Don’t know</p>
+<p>DIQ_1</p>
+<p>(Other than during pregnancy, ) Has SP ever been told by a doctor or health<br>professional that SP has diabetes or sugar diabetes?</p>
+<p>1: Yes</p>
+<p>2: No</p>
+<p>3: Borderline or Prediabetes</p>
+<p>.D: Don’t know</p>
+<p>MCQ_1</p>
+<p>Has a doctor or other health professional ever told SP that (you have/s/he/SP<br>has) asthma?</p>
+<p>1: Yes</p>
+<p>2: No</p>
+<p>MCQ_12</p>
+<p>Has SP ever been told by a doctor or other health professional that SP had weak<br>or failing kidneys? Do not include kidney stones, bladder infections, or<br>incontinence.</p>
+<p>1: Yes</p>
+<p>2: No</p>
+<p>.D: Don’t know</p>
+<p>MCQ_14</p>
+<p>Has SP ever been told by a doctor or other health professional that SP had<br>cancer or a malignancy of any kind?</p>
+<p>1: Yes</p>
+<p>2: No</p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
+            <p>Link of This Article：<a href="https://ry2an.github.io/2020/05/20/EPID622/">https://ry2an.github.io/2020/05/20/EPID622/</a>
+            <p>Publish Date：<a href="https://ry2an.github.io/2020/05/20/EPID622/">May 20th 2020, 4:41:48 pm</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/05/20/EPID622/">May 21st 2020, 5:34:18 am</a>
+            <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/07/29/flight-back-china/" title= "flight_back_china">
+                    <div class="nextTitle">flight_back_china</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/05/03/Portfolio-as-MPH-Student/" title= "Portfolio as MPH">
+                    <div class="prevTitle">Portfolio as MPH</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:ruoyan.han94@outlook.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Ry2an" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/my_wechat.jpg" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.zhihu.com/people/tui-mao-39" class="iconfont-archer zhihu" target="_blank" title=zhihu></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://space.bilibili.com/2477951" class="iconfont-archer bilibili" target="_blank" title=bilibili></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Method"><span class="toc-number">2.</span> <span class="toc-text">Method</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Results"><span class="toc-number">3.</span> <span class="toc-text">Results</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Discussion"><span class="toc-number">4.</span> <span class="toc-text">Discussion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Limitation"><span class="toc-number">5.</span> <span class="toc-text">Limitation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">6.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">7.</span> <span class="toc-text">Reference:</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 16
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/30</span><a class="archive-post-title" href= "/2020/07/30/test/" >test</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span><a class="archive-post-title" href= "/2020/07/29/flight-back-china/" >flight_back_china</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/20</span><a class="archive-post-title" href= "/2020/05/20/EPID622/" >Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/Portfolio-as-MPH-Student/" >Portfolio as MPH</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/05</span><a class="archive-post-title" href= "/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/" >Repeat Academic Poisson and Negative Binomial Regression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2020/03/04/Repeat-Ancademic-Survival-Analysis/" >Repeat Academic Survival Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/" >Understanding Fourier Transform and Wavelet Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/31</span><a class="archive-post-title" href= "/2020/01/31/Simulating-SIR-Model/" >Simulating SIR Model</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/17</span><a class="archive-post-title" href= "/2020/01/17/Crawling-Data-From-html-Based-Pages/" >Crawling Data From html Based Pages</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/2020/01/14/Vaccine-Making-Selling-Delivering-and-Using-System/" >Vaccine Making Selling Delivering and Using System</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/11</span><a class="archive-post-title" href= "/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/" >Using Longitudinal Models To Analyze Steam Games</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/10</span><a class="archive-post-title" href= "/2020/01/10/Connect-Four-Chess/" >Connect Four Chess</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2016 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/01</span><a class="archive-post-title" href= "/2016/09/01/summer-survey-2016/" >2016年暑期实践</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1994 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/10</span><a class="archive-post-title" href= "/1994/10/10/Markdown-Cheat-Sheet/" >Markdown Cheat Sheet</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/07/30/hello-world/" >Hello World</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1994 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/09</span><a class="archive-post-title" href= "/1994/10/09/MySQL-Hand-Book/" >MySQL Hand Book</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="trip"><span class="iconfont-archer">&#xe606;</span>trip</span>
+    
+        <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Ruoyan Han"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+

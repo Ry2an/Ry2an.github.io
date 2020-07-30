@@ -1,0 +1,2138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="Ruoyan Han">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Ruoyan Han">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>Portfolio as MPH · Ry2an&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/hakase.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Ry2an&#39;s Studio</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Portfolio as MPH</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Ry2an's Studio</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/postbg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            Portfolio as MPH
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">13.8k</span>Reading time: <span class="post-count reading-time">86 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/05/03</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>This is a summary of my experiences and achievements in public health field so far when I graduate.</p>
+<a id="more"></a>
+
+<h2 id="Professional-Mission-Statement"><a href="#Professional-Mission-Statement" class="headerlink" title="Professional Mission Statement"></a>Professional Mission Statement</h2><p>By being in health fields for 7 years as a student, I deeply know that health is related with every details in our life from national level policies to our daily food consuming. To keep promoting health globally, expertise from different fields should work together.</p>
+<p>I am gladly joined the biostatistics master’s program in the City University of New York, School of Public Health and Health Policy and the preventive medicine bachelor’s program in the Fudan University. With these experiences, I acquired understanding of all aspects of health career. Especially in data analyzing, I learned different epidemiology studies designs to deal with different aims of studies and their analyzing strategy. I am able to finish data processing, model building, fitting based on different type and distribution of exposure variable, outcome variable and covariates (predicting models are also understood), and results and data visualization in R, SAS and SPSS. I am familiar with different types of regression (linear logistic, poison, negative binomial), survival analysis (including cox regression), longitudinal data analysis and skills like using propensity score, interaction and weighting.</p>
+<p>I hope I can contribute myself to revealing unknown patterns of health and diseases and interpreting professional results to public.</p>
+<p>As the informatics technology in health field is maturing, new challenges are also generated for statisticians. I wish I can learn more from different fields and use my knowledge to promote health.</p>
+<h2 id="Resume"><a href="#Resume" class="headerlink" title="Resume"></a>Resume</h2><h3 id="Personal-Information"><a href="#Personal-Information" class="headerlink" title="Personal Information"></a>Personal Information</h3><p>Name: Ruoyan Han</p>
+<p>Email: <a href="mailto:&#x72;&#117;&#x6f;&#121;&#x61;&#110;&#46;&#x68;&#x61;&#110;&#57;&#x34;&#x40;&#x6f;&#x75;&#x74;&#108;&#111;&#x6f;&#107;&#46;&#99;&#111;&#x6d;">&#x72;&#117;&#x6f;&#121;&#x61;&#110;&#46;&#x68;&#x61;&#110;&#57;&#x34;&#x40;&#x6f;&#x75;&#x74;&#108;&#111;&#x6f;&#107;&#46;&#99;&#111;&#x6d;</a></p>
+<p>Tel : 86-18537182018</p>
+<p>Home Page: <a href="https://ry2an.github.io/">https://ry2an.github.io/</a></p>
+<h3 id="Resume-Objective"><a href="#Resume-Objective" class="headerlink" title="Resume Objective"></a>Resume Objective</h3><p>An experienced new graduate master level student in Biostatistics. Trained by multiple biostatistics epidemiology, and computer science courses and also developed projects with different tools (R, R shiny and ggplot2, SAS, MYSQL, SPSS, python). Fluent in oral and written English.</p>
+<h3 id="Education-Experiences"><a href="#Education-Experiences" class="headerlink" title="Education Experiences"></a>Education Experiences</h3><ul>
+<li>Master of Public Health in Biostatistics</li>
+</ul>
+<p>Sept 2018 - June 2020 (expected)</p>
+<p><strong>School of Public Health, City University of New York (CUNY SPH) New York, NY, United States</strong></p>
+<p>Current Cumulative GPA: 3.76</p>
+<blockquote>
+<p>  Description: Statistical tools, methods and special problems and solutions in the public health field are taught. Most data types (cross-sectional, survival or longitudinal) and interested variable types in different types of studies could be handled with my knowledge. Skills of learning from literature reviewing and academic writing are also acquired.</p>
+</blockquote>
+<ul>
+<li>Bachelor of Medicine in Preventive Medicine</li>
+</ul>
+<p>Sept 2013 - June 2018</p>
+<p><strong>Fudan University Shanghai, China</strong></p>
+<blockquote>
+<p>  Description: Medial courses of clinical medicine and publish health fields are assigned in this program. Trained from basic chemical and animal experiments to community health enhance projects. Awards: Scholarship for excellent students, Fudan University (2014)</p>
+</blockquote>
+<ul>
+<li>Secondary Major Data Science (Non - Degree)</li>
+</ul>
+<p>Sept 2015 – Jan 2017</p>
+<p><strong>Fudan University Shanghai, China</strong></p>
+<blockquote>
+<p>  Description: Fundamental courses of statistics and machine learning are assigned in this program, also trained with different developing tasks.</p>
+</blockquote>
+<h3 id="Internship-Experiences"><a href="#Internship-Experiences" class="headerlink" title="Internship Experiences"></a>Internship Experiences</h3><ul>
+<li>Research Intern (Data Group)</li>
+</ul>
+<p>June 2019 – Aug 2019</p>
+<p><strong>New York University Langone Health Hospital New York, NY, United States</strong></p>
+<blockquote>
+<ul>
+<li>Using R software and SAS to cleaning data from the database of different hospitals and study server</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Expand functions of local python script to fix data errors.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Weighting participants’ data to standard population and plotting in R software.</li>
+</ul>
+</blockquote>
+<ul>
+<li>Department Information Intern</li>
+</ul>
+<p>March 2018–April 2018</p>
+<p><strong>Center for Disease Control of Putuo District Shanghai, China</strong></p>
+<blockquote>
+<p>According to the ICD-10 classification of cancers, summarized data and calculated measurements of patients of Putuo District in a specified format in Excel to submit to superior.</p>
+</blockquote>
+<ul>
+<li>Clinical Intern</li>
+</ul>
+<p>March 2017–August 2017</p>
+<p><strong>Fifth Hospital of Shanghai Shanghai, China</strong></p>
+<blockquote>
+<ul>
+<li>Inquired and recorded disease history and medical tests of patients to help doctors write cases.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Assisting the attending doctors in operations included fastening tissues, vessels, and dropping tools.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Helped hospitalized patients in cleaning wounds and changing the dressings daily.</li>
+</ul>
+</blockquote>
+<h3 id="Skills"><a href="#Skills" class="headerlink" title="Skills"></a>Skills</h3><h4 id="Statistics"><a href="#Statistics" class="headerlink" title="Statistics:"></a>Statistics:</h4><p>Able to implement different univariate and multivariable analyses and interpret results properly. Familiar with different regression models, cox models, and longitudinal regression models.</p>
+<ul>
+<li><p>Capstone project of Master degree: An ecology study on rubella by using     dynamic model and Time Series Wavelet analysis.</p>
+</li>
+<li><p>Course project: Analyzed relationship between self-reported mental status     and obesity. Controlling for multiple chronic diseases with propensity     score. Measured the validity of independent variable by using Cronbach     alpha. All processes of data cleaning and analyzing are addresses on SAS     9.4. (Link: <a href="https://ry2an.github.io/2020/05/20/EPID622/">https://ry2an.github.io/2020/05/20/EPID622/</a>)</p>
+</li>
+<li><p>Repeated academic statistics analyses including: survival analysis (log-rank     test and cox model), Poisson and Negative Binomial regression in SAS and R.</p>
+</li>
+<li><p>Course project: Analyzed game prices and ratings on the Steam store with     longitudinal models. Game prices were treated as the time variable and     publishers were treated as individuals. Linear mixed effect models and fixed     effect models are used to handle continuous outcome and general estimated     equation models are used to deal with discrete outcomes. (Link:     <a href="https://ry2an.github.io/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/">https://ry2an.github.io/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/</a>)</p>
+</li>
+<li><p>Capstone project of Bachelor degree: By utilizing logistic regression in     SPSS, the study revealed different factors that can influence the survival     time of indwelling needles and their odds ratios on those influences.</p>
+</li>
+</ul>
+<h4 id="Analyzing-and-Developing-tools"><a href="#Analyzing-and-Developing-tools" class="headerlink" title="Analyzing and Developing tools:"></a>Analyzing and Developing tools:</h4><p>Excellent in R (with R markdown, ggplot2, lattice, xyplot, shiny and statistical testing) SAS, and MS Excel; familiar with, SPSS, Python, and ArcGIS. Able to use github as a version controller. Able to write markdown files. Here are some cases:</p>
+<ul>
+<li><p>[Connecting Four Chess] By utilizing ggplot2 and shiny package in R, a local     chess game has been made with user interface and could run by editing and     reading local files. (Link: <a target="_blank" rel="noopener" href="https://github.com/Ry2an/connect_4_chess">https://github.com/Ry2an/connect_4_chess</a>)</p>
+</li>
+<li><p>[De Long Research Activity, Fudan University] Embed development by using     Python and R software to create a program with user interface and implement     some of the map-drawing functions in ArcGIS and used the cancer dataset from     annual statistic reports. (Link: <a target="_blank" rel="noopener" href="https://github.com/Ry2an/hanrygis">https://github.com/Ry2an/hanrygis</a>)</p>
+</li>
+<li><p>[Crawler Programming] Crawling and describe infectious data from Shanghai     Center of Disease Control’s website by using python and regular expression     to identify. (Link: <a target="_blank" rel="noopener" href="https://github.com/Ry2an/crawler_prac">https://github.com/Ry2an/crawler_prac</a>)</p>
+</li>
+<li><p>[Vaccine database business simulator] This program is a practicing     assignment of a database course. SQL orders are embedded in visual basic     windows to add, delete, edit and search the .mdb file created by Microsoft     Access. (Link: <a target="_blank" rel="noopener" href="https://github.com/Ry2an/VacSys">https://github.com/Ry2an/VacSys</a>)</p>
+</li>
+</ul>
+<h4 id="Language"><a href="#Language" class="headerlink" title="Language:"></a>Language:</h4><ul>
+<li>Fluently speaking and writing in English and Simplified Chinese.</li>
+</ul>
+<h2 id="Core-Competencies"><a href="#Core-Competencies" class="headerlink" title="Core Competencies"></a>Core Competencies</h2><p><strong>1. Apply epidemiological methods to the breadth of settings and situations in public health practice</strong></p>
+<p>From the biostatistics and epidemiology courses, I not only learned the concepts of study designs and models as statistics students do, I also learned what problems could happen in public health contexts (e.g. missing data, selecting samples) and how to properly handle them.</p>
+<p><strong>2. Select quantitative and qualitative data collection methods appropriate for a given public health context</strong></p>
+<p>As a student in biostatistics track, I believe the most research that I may meet or execute in my future career would be quantitative analyses. Most statistical analyses will tell researches whether different measurements are ‘significantly’ different with each other and what is the extent of the difference. Both parts of the results are needed for scientific judgements.</p>
+<p>For data collection, I learned how to used RedCap system from my fieldwork and course EPID 622 data management.</p>
+<p><strong>3. Analyze quantitative and qualitative data using biostatistics, informatics, computer-based programming and software, as appropriate</strong></p>
+<p>I have been trained to use R, SAS and SPSS to do statistical analyses. I also learned how to use MySQL by myself. From course EPID 630, I learned client - server structure which is the common structure of health informatics constructions and managing skills of health informatics projects.</p>
+<p><strong>4. Interpret results of data analysis for public health research, policy or practice</strong></p>
+<p>Interpreting results is crucial in biostatistics and epidemiology. I learned some standard sentence template of interpreting of different measurements (OR, RR, RD, etc.) and different study designs (cohort, cases control, random controlled trials, etc.) in course BIOS 611 and EPID 611. In BIOS 620 and EPID 620, I deeper understood the concepts of the study designs and models. Based on my knowledge, I am able to illustrate the meaning of statistical measurements to audiences with different level.</p>
+<p><strong>5. Compare the organization, structure and function of health care, public health and regulatory systems across national and international settings</strong></p>
+<p>In course CHSS 610 and HPAM 610, I learned some health structure in the United States, especially in the insurance field. I am able to tell what are mean insurance setting in the United States for different population, relationship between insurance company and policies and how physicians get salaries from patients’ insurance premium.</p>
+<p><strong>6. Discuss the means by which structural bias, social inequities and racism undermine health and create challenges to achieving health equity at organizational, community and societal levels</strong></p>
+<p>Bias is a common problem of epidemiology and statistics researches. With my experience learn from courses and practices, I am able to tell what are some potential selection bias and confounding effect or ecological fallacy due to races and policies.</p>
+<h2 id="Biostatistics-and-Epidemiology-Competencies"><a href="#Biostatistics-and-Epidemiology-Competencies" class="headerlink" title="Biostatistics and Epidemiology Competencies"></a>Biostatistics and Epidemiology Competencies</h2><p><strong>1. Identify key sources of data for epidemiologic purposes</strong></p>
+<p>I get known several public dataset for public health researching in course EPID 622 and BIOS 623. I also learned what are some institutions that I could ask for data sharing for researches. (e.g. NYC DOHMH)</p>
+<p>In my fieldwork, I also learned how to organize data collection from participants.</p>
+<p>With the knowledge learned from EPID 630, I realized that the data source of epidemiologic studies is broader than broader. We can know what are some key variable or measurements based on literature review and previous experience. However, the causal network is continuous rather than linking few points.</p>
+<p><strong>2. Use measures of disease frequency and association to appropriately describe the distribution and determinants of disease, and appropriately characterize statistical uncertainty around such estimates</strong></p>
+<p>Incidence, Prevalence are usually used for describing disease distribution in population. Risk Ratio, Odds Ratio, Risk Difference are usually used for comparing distributions of disease in different populations. With my experience in CUNY SPH, I am able to choose proper measurement based on the health, context, variable type, study design and model type</p>
+<p><strong>3. Critically read and evaluate the strengths and limitations of epidemiologic literature from a methodological perspective. Summarize correctly and critically evaluate statistical analyses in published literature</strong></p>
+<p>In epidemiology courses during CUNY SPH, students are asked for criticizing papers. Problems in reviewed papers are usually about:</p>
+<blockquote>
+<ul>
+<li>Sample size (Power)</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Hypothesis (Confused about difference between interested exposure and other covariates / Confused about difference between predicting model and other causal explaining model)</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Interpret of Results</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Participants Including and Excluding Criteria</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Selection Bias / Internal Validity (Whether data and represent source population) / External Validity (Proper Target Population)</li>
+</ul>
+</blockquote>
+<p><strong>4. Select epidemiologic study designs, data collection techniques, and analytic approaches suitable for different scientific inquiries</strong></p>
+<p>Cross-sectional Study, Case control Study, Cohort Study are discussed in epidemiology courses. And special data processing skills or models for variable with different type (continuous, discrete, time-event) are discussed in BIOS courses.</p>
+<p><strong>5. Identify key threats to validity (internal and external) within and across epidemiologic studies</strong></p>
+<p>Internal validity means whether the information in the dataset can properly represent the information of source population.</p>
+<p>External validity means whether the source population can properly represent the target population of the study.</p>
+<p>The discussion about validity should start at the beginning of the study. “In what population we want to reveal a association / causal pathway?”</p>
+<p>In EPID and BIOS courses, I also learned some strategies to reduce lost follow ups. For example, preparing better gifts. (But also need control the value of the gift to reduce selection bias.) or schedule lower frequencies of meetings.</p>
+<p>In course EPID 611, we also discussed about validity measurements like kappa and Cronbach’s alpha.</p>
+<p><strong>6. Use statistical software to collect, retrieve, analyze and summarize epidemiologic data. Use information technology and computer software effectively for collection, management, analysis and presentation of public health data.</strong></p>
+<p>I have been trained to use R, SAS and SPSS to do statistical analyses. I also learned how to use MySQL by myself. From course EPID 630, I learned client - server structure which is the common structure of health informatics constructions and managing skills of health informatics projects.</p>
+<p>For data collection, I learned how to used RedCap system from my fieldwork and course EPID 622 data management.</p>
+<p><strong>7. Describe assumptions, procedures, strengths and limitations of statistical methods that are used in public health research. Select statistical methods that are suitable for different purposes of analysis and different types of data. Apply statistical methods correctly in public health research</strong></p>
+<p>We discussed theories, advantages, disadvantages, typical using circumstances and study processes of case control study, cohort study, random controlled trial in the courses ad CUNY SPH. And we also learned how to choose tests, measurements, models and recoding process based on the type of variables.</p>
+<p><strong>8. Write scientific reports of statistical analyses correctly with tables and figures. Accurately describe computer outputs of those analyses and appropriately interpret the statistical results.</strong></p>
+<p>I have been trained with writing assignments in different course at CUNY SPH. There are some examples in the <em>Academic Reports</em> part of this portfolio.</p>
+<p><strong>9. Orally present statistical findings clearly and effectively</strong></p>
+<p>I am able to present academic reports, statistical results to different audiences. Here are some of my presenting experiences:</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/few_plots/bios611.jpg" alt="bios611"></p>
+<p><em><center>Presentation BIOS 611</center></em></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/few_plots/bios623.jpg" alt="bios623"></p>
+<p><em><center>Presentation BIOS 623</center></em></p>
+<p>I also have a video presenting record for <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1D54y1Q77m">EPID 622</a>. Link: (<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1D54y1Q77m">https://www.bilibili.com/video/BV1D54y1Q77m</a>)</p>
+<h2 id="Experience-in-Public-Health"><a href="#Experience-in-Public-Health" class="headerlink" title="Experience in Public Health"></a>Experience in Public Health</h2><h3 id="CITI-Program-Certificate"><a href="#CITI-Program-Certificate" class="headerlink" title="CITI Program Certificate"></a>CITI Program Certificate</h3><ul>
+<li>I passed the COLLABORATIVE INSTITUTIONAL TRAINING INITIATIVE (CITI Training)     before I started my fieldwork.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/few_plots/citi.PNG" alt="citi"></p>
+<p>Verify at (<a target="_blank" rel="noopener" href="http://www.citiprogram.org/verify/?w9d34f73f-136b-4fb7-b4ab-2bc54b4c440b-31229708">www.citiprogram.org/verify/?w9d34f73f-136b-4fb7-b4ab-2bc54b4c440b-31229708</a>).</p>
+<h3 id="IRB-determination-Letter-from-CUNY-SPH"><a href="#IRB-determination-Letter-from-CUNY-SPH" class="headerlink" title="IRB determination Letter from CUNY SPH"></a>IRB determination Letter from CUNY SPH</h3><p>This is the IRB determination Letter from CUNY SPH for my fieldwork.</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/few_plots/Han_HSRDetermination_01.png" alt="hsr1"></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/few_plots/Han_HSRDetermination_01.png" alt="hsr2"></p>
+<h3 id="Fieldwork-Experience"><a href="#Fieldwork-Experience" class="headerlink" title="Fieldwork Experience"></a>Fieldwork Experience</h3><ul>
+<li>Volunteer in NYU Langone Health (2019)</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/few_plots/nyu_summer_intern.jpg" alt="nyuintern"></p>
+<ul>
+<li>Introduction</li>
+</ul>
+<p>In June to August 2019, I got a chance to work in the Department of Pediatric and Environment, NYU Langone Health. This experience was also count as the fieldwork course in CUNY SPH.</p>
+<ul>
+<li>Responsibility</li>
+</ul>
+<blockquote>
+<ul>
+<li>Using R software and SAS to cleaning data from the database of different hospitals and study server</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Expand functions of local python script to fix data errors.  Weighting participants’ data to standard population and plotting in R software</li>
+</ul>
+</blockquote>
+<ul>
+<li>What I learned</li>
+</ul>
+<p>Two things I learned from this experience</p>
+<blockquote>
+<ul>
+<li>Always processing data with code. (Excel operations cannot always be repeatable)</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Write daily work summary. Focusing on building and executing plans.</li>
+</ul>
+</blockquote>
+<h3 id="Clinical-Intern-in-5th-Hospital-of-Shanghai-2018"><a href="#Clinical-Intern-in-5th-Hospital-of-Shanghai-2018" class="headerlink" title="Clinical Intern in 5th Hospital of Shanghai (2018)"></a>Clinical Intern in 5th Hospital of Shanghai (2018)</h3><ul>
+<li>Responsibility</li>
+</ul>
+<blockquote>
+<ul>
+<li>Inquired and recorded disease history and medical tests of patients to help doctors write cases.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Assisting the attending doctors in operations included fastening tissues, vessels, and dropping tools.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Helped hospitalized patients in cleaning wounds and changing the dressings daily.</li>
+</ul>
+</blockquote>
+<h3 id="Volunteer-in-department-of-Health-Putuo-Shanghai-2018"><a href="#Volunteer-in-department-of-Health-Putuo-Shanghai-2018" class="headerlink" title="Volunteer in department of Health, Putuo, Shanghai (2018)"></a>Volunteer in department of Health, Putuo, Shanghai (2018)</h3><blockquote>
+<p>  It was a very short experience. Together with officers in department of Health of Putuo district, my classmate and I went to supervising smoking banning status of buildings in Putuo district. We visited gyms, hotels and office buildings and learned strategies of banning smokes (including posters, slogans, signs, preaching, supervising and fines).</p>
+</blockquote>
+<h3 id="Internship-in-CDC-Putuo-Shanghai-2018"><a href="#Internship-in-CDC-Putuo-Shanghai-2018" class="headerlink" title="Internship in CDC, Putuo, Shanghai (2018)"></a>Internship in CDC, Putuo, Shanghai (2018)</h3><ul>
+<li>Responsibility</li>
+</ul>
+<blockquote>
+<p>  According to the ICD-10 classification of cancers, summarized data and calculated measurements of patients of Putuo District in a specified format in Excel to submit to superior.</p>
+</blockquote>
+<h3 id="Community-Health-Education-Experience-2017"><a href="#Community-Health-Education-Experience-2017" class="headerlink" title="Community Health Education Experience (2017)"></a>Community Health Education Experience (2017)</h3><blockquote>
+<p>  As a course assignment, I took part in a health education event in one community in Shanghai. It was a lecture about cardiovascular diseases. My job was to deliver gifts (waters, towels, and cloth detergent to the participants).</p>
+</blockquote>
+<h3 id="Survey-of-Informatics-Systems-Ultilizing-2016"><a href="#Survey-of-Informatics-Systems-Ultilizing-2016" class="headerlink" title="Survey of Informatics Systems Ultilizing (2016)"></a>Survey of Informatics Systems Ultilizing (2016)</h3><p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/summer_survey/2.png" alt="henan_summer_survey"></p>
+<p>henan_summer_survey</p>
+<blockquote>
+<p>  Thanks for the supporting of summer events of Fudan University, I lead few of my classmates interviewed officers whom I previously contacted in departments of health in Henan Province.</p>
+</blockquote>
+<blockquote>
+<p>  I wrote a brief summary after the event. We are surprised by the development of informatics technology in health field, but we also saw spaces of promotion in future works. (Full Text Link: <a href="https://ry2an.github.io/2016/09/01/summer-survey-2016/">https://ry2an.github.io/2016/09/01/summer-survey-2016/</a>)</p>
+</blockquote>
+<h2 id="Academic-Reports-Course-Assignments"><a href="#Academic-Reports-Course-Assignments" class="headerlink" title="Academic Reports (Course Assignments)"></a>Academic Reports (Course Assignments)</h2><p>Here are some academic reports that I wrote as course assignments (Full texts added in the Appendix):</p>
+<ul>
+<li>EPID 622 Assignment:</li>
+</ul>
+<p>Title: Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases</p>
+<p>Link <a href="https://ry2an.github.io/2020/05/20/EPID622/">https://ry2an.github.io/2020/05/20/EPID622/</a></p>
+<ul>
+<li>BIOS 621 Assignment:</li>
+</ul>
+<p>Title: Repeat Academic Poisson and Negative Binomial Regression</p>
+<p>Link: <a href="https://ry2an.github.io/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/">https://ry2an.github.io/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/</a></p>
+<ul>
+<li>BIOS 621 ASSIGNMENT:</li>
+</ul>
+<p>Title: Repeat Academic Survival Analysis</p>
+<p>Link: <a href="https://ry2an.github.io/2020/03/04/Repeat-Ancademic-Survival-Analysis/">https://ry2an.github.io/2020/03/04/Repeat-Ancademic-Survival-Analysis/</a></p>
+<ul>
+<li>BIOS 623 Assignment:</li>
+</ul>
+<p>Link: <a href="https://ry2an.github.io/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/">https://ry2an.github.io/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/</a></p>
+<h2 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h2><h3 id="Exploring-Association-Between-Self-Reported-Mental-Health-and-Obesity-by-Using-Propensity-Score-to-Adjust-Chronic-Diseases"><a href="#Exploring-Association-Between-Self-Reported-Mental-Health-and-Obesity-by-Using-Propensity-Score-to-Adjust-Chronic-Diseases" class="headerlink" title="Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases"></a>Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases</h3><h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><p>Obesity is a risk factor for many significant morbidity1. The burden has been increasing since 1990 but still does not have a slowing down trend2,3. Up to now, in the United States, the burdens of obesity have been increasing and reached about 20% to 30% in different states4. On the other hand, there are many risk factors for obesity. One major risk factor of obesity claims by previous studies is mental health status. People who have mental illnesses could have 2 to 3 times risk of having obesity5. We will discuss the relationship between obesity and mental status in this paper.</p>
+<p>Controlling for confounders is a normal considering when we want to measure the relationship between to conditions, and so do this time. There are also confounders between obesity and mental status. Both obesity and mental status are related to many chronic diseases. Hypertension, Dyslipidemia, and Diabetes1. Hypothyroidism6-8, Cushing’s Syndrome9,10, and polycystic Ovary Syndrome11 could cause a weight change of their patients. Besides, some drugs like Antidepressants12, Antipsychotics13, Sulfonylureas14, Thiazolidinediones14, Insulin14, Antiepileptic drugs15, Corticosteroids14 and Beta-blockers14 which are used to cure mental diseases, diabetes, hypertension, epilepsy, cardiovascular diseases, and autoimmune diseases can also cause a weight change. In another direction, chronic conditions have also been proved as a risk factor of mental illnesses16,17. Therefore, to have an accurate estimation of the relationship between mental status and obesity, we need to adjust to chronic diseases as confounders.</p>
+<p>However, there is a problem between these confounders. Chronic diseases are usually related to each other. Some typical examples are diabetes and hypertension18; diabetes and asthma19; hypertension and kidney failure20, etc. If covariates are not independent with each other, it will influence the accuracy of the coefficient parameter21. The classical process would choose to use stepwise strategy and remove co-linear items22 which could lose usage of collected data.</p>
+<p>Propensity score23 is an approach that could help with the co-linearity covariates without eliminating them out of the data analysis24,25. The propensity score is the predicted probability for individuals in the dataset of being exposed by giving confounding values. One way to utilize the score is to adjust for the covariates. In observational studies, individuals are typically clustered into different exposure groups with different probabilities, where the confounding can occur. Therefore, by controlling for the propensity score, confounders can also be adjusted23.</p>
+<p>In this study, regression models would be fitted to test on what extent that propensity score could enhance the relationship estimation between self-reported mental status and obesity. Based on previous studies, we expected that the adjusted relationship would be positive, which means people with poorer mental status could have more chances to get obese.</p>
+<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><p><strong>Data</strong></p>
+<p>Dataset of NYC HANES 2014-2014 (New York City Health and Nutrition Examination Survey)26 was used in the analyses. The dataset includes participants from households who live in five boroughs, over 20 years old, and non-institutionalized. There were two layers in the sampling strategy of this dataset. In the first layer, NYC was geologically recognized as 6236 segments and 144 segments are randomly picked. In the selected segments, 0 to 2 household adults were randomly selected based on how many eligible adults are living in the houses within the 144 segments. The reason to select by houses is to minimize the household-to-household clustering. The total response rate was 36%. 1524 participants finished the survey.</p>
+<p>Several variables in the NYC HANES dataset were used in this analysis:</p>
+<p>‘Self-reported mental condition (MHQ_1)’ was chosen as the interested exposure. It is a 5-categories choice question. In some of our analysis, we transformed it into a binary variable by whether the self-reported mental status is ‘poor’ or not. ‘Body Mass Index (BMI)’ is a measurement that already generated in the dataset. The outcome variable in this analysis ‘whether obese’ was created based on this variable. If one participant’s BMI was over 30, he would be marked as ‘obese’. Five chronic diseases covariates were considered in the analysis: ‘whether having high blood pressure (BPQ_2), ‘whether having diabetes or sugar diabetes (DIQ_1)’, ‘whether having cancer or malignancy (MCQ_14)’, ‘whether having asthma (MCQ_1)’ and ‘whether having failing kidneys (MCQ_12)’. Besides, six mental health questions (MHQ_2 to MHQ_7) were used for validity tests. Age and Gender were used as common confounder and modifier. (Details of questions and items used in this analysis would be added to the appendix.)</p>
+<p><strong>Cronbach alpha</strong></p>
+<p>To check the validity of the outcome variables, self-reported mental health, Cronbach alphas are calculated. There are seven questions (MHQ1 - MHQ7) that asked all participants about their mental mood. The first question was picked as the outcome. Cronbach alpha is calculated based on the answers of the seven questions to see whether they have a good consistency. During data processing, we re-coded question MHQ-1 to let it have the same direction with the other six questions of representing mental status from better to worse rather than from worse to better.</p>
+<p><strong>Weighting Sample</strong></p>
+<p>Two parts of the survey results were covered in our analyses: computer interview and physical tests, which correspond to two weights in the dataset (CAPI_WT and EXAM_WT). The sample size of the computer interview is 1,527 and the sample size of the physical tests is 1500. In the regression analyses, participants with missing data are removed. Therefore, the weight of the physical tests, which have lower samples, was used to adjusting in the models.</p>
+<p><strong>Univariate Analysis and Multivariate Analysis</strong></p>
+<p>In the univariate analysis part, to comparing regression coefficients of the chronic diseases, we also added age and gender into the models:</p>
+<p>(model 1)</p>
+<p>$$<br>\text{Obese}<em>{i} = \beta</em>{1}*{Self - reported Mental Health}<em>{i} + \beta</em>{2}<em>\text{Age}<em>{i} + \beta</em>{3}</em>{Self - reported Mental Health}<em>{i}*\text{Gender} + \beta</em>{4}*\text{Gender} + \xi_{i}<br>$$</p>
+<p>(model 2)</p>
+<p>$$<br>\text{Obese}<em>{i} = \beta</em>{1}*\text{Diabetes}<em>{i} + \beta</em>{2}*\text{Age}<em>{i} + \beta</em>{3}*\text{Gender} + \xi_{i}<br>$$</p>
+<p>(model 3)</p>
+<p>$$<br>\text{Obese}<em>{i} = \beta</em>{1}*\text{Hypertension}<em>{i} + \beta</em>{2}*\text{Age}<em>{i} + \beta</em>{3}*\text{Gender} + \xi_{i}<br>$$</p>
+<p>(model 4)</p>
+<p>$$<br>\text{Obese}<em>{i} = \beta</em>{1}*\text{Asthma}<em>{i} + \beta</em>{2}*\text{Age}<em>{i} + \beta</em>{3}*\text{Gender} + \xi_{i}<br>$$</p>
+<p>(model 5)</p>
+<p>$$<br>\text{Obese}<em>{i} = \beta</em>{1}*\text{Kidney}<em>{i} + \beta</em>{2}*\text{Age}<em>{i} + \beta</em>{3}*\text{Gender} + \xi_{i}<br>$$</p>
+<p>(model 6)</p>
+<p>$$<br>\text{Obese}<em>{i} = \beta</em>{1}*\text{Cancer}<em>{i} + \beta</em>{2}*\text{Age}<em>{i} + \beta</em>{3}*\text{Gender} + \xi_{i}<br>$$</p>
+<p>Multivariable regression model included all covariates in the univariate analysis:</p>
+<p>(model 7)</p>
+<p>$$<br>\text{Obese}<em>{i} = \beta</em>{1}*{Self - reported Mental Health}<em>{i} + \beta</em>{2}*\text{Hypertension}<em>{i} + \beta</em>{3}*\text{Diabetes}<em>{i} + \beta</em>{4}*\text{Asthma}<em>{i} + \beta</em>{5}*\text{Cancer}_{i} +<br>$$</p>
+<p>$$<br>\beta_{6}*\text{Kidney}<em>{i} + \beta</em>{7}<em>\text{Age}<em>{i} + \beta</em>{8}</em>{Self - reported Mental Health}<em>{i}*\text{Gender} + \beta</em>{9}*\text{Gender} + \xi_{i}<br>$$</p>
+<p><strong>Logistic regression with Propensity Score</strong></p>
+<p>The propensity score is the estimated probability of exposure based on covariates, which could be measured with the following model:</p>
+<p>(model 8)</p>
+<p>$$ {Self - reported Ment\text{al Health}}<em>{i} = \beta</em>{1}*\text{Hypertension}<em>{i} + \beta</em>{2}*\text{Diabetes}<em>{i} + \beta</em>{3}*\text{Asthma}<em>{i} + \beta</em>{4}*\text{Cancer}<em>{i} + \beta</em>{5}*\text{Kidney}<em>{i} + \beta</em>{6}*\text{Age}_{i}<br>$$</p>
+<p>After the score is calculated, we could remove the original covariates and replace them with the score:</p>
+<p>(model 9)</p>
+<p>$$<br>\text{Obese}<em>{i} = \beta</em>{1}*{Self - reported Mental Health}<em>{i} + \beta</em>{2}<em>\text{Propensity Score}<em>{i} + \beta</em>{3}</em>{Self - reported Mental Health}<em>{i}*\text{Gender} + \beta</em>{4}*\text{Gender} + \beta_{5}*\text{Age}<em>{i} + \xi</em>{i}<br>$$</p>
+<p><strong>Tools</strong></p>
+<p>All data processing and analysis are finished in SAS 9.4.</p>
+<h4 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h4><p><strong>Descriptive Analysis</strong></p>
+<p><strong>Table 1. Covariates Distribution Among Different Outcome Status</strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/epid622/t1.PNG" alt="t1"></p>
+<p>This table shows the distribution of covariates that include in the analyses among participants with different obesity status. ‘Mental Status: Poor’, which is the binary-transformed variable from ‘Mental Status’ is the exposure variable in the following analyses.</p>
+<p><strong>Questionnaire Validity</strong></p>
+<p>We calculated the Cronbach alpha for seven mental questions that asked all participants (MHQ_1 to MHQ_7). The alpha of answers to the seven questions is over 0.8, which indicates that they have a high consistency. Any banning of the variables could cause a reduction of the alpha value.</p>
+<p><strong>Table 2. Cronbach Alpha for Mental Status Questions</strong></p>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Alpha after banned this question</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mental Status Level (Excellent/ Very Good/ Good/ Fair/ Poor)</td>
+<td>0.84</td>
+</tr>
+<tr>
+<td>Past 30 days, felt nervous level (All/ Most/ Some/ A little/ None of the time)</td>
+<td>0.84</td>
+</tr>
+<tr>
+<td>Past 30 days, felt hopeless or not (All/ Most/ Some/ A little/ None of the time)</td>
+<td>0.82</td>
+</tr>
+<tr>
+<td>Past 30 days, felt restless or fidgety or not (All/ Most/ Some/ A little/ None of the time)</td>
+<td>0.83</td>
+</tr>
+<tr>
+<td>Past 30 days, felt depressed, no cheerin or not (All/ Most/ Some/ A little/ None of the time)</td>
+<td>0.82</td>
+</tr>
+<tr>
+<td>Past 30 days, felt everything an effort or not (All/ Most/ Some/ A little/ None of the time)</td>
+<td>0.83</td>
+</tr>
+<tr>
+<td>Past 30 days, felt worthless or not (All/ Most/ Some/ A little/ None of the time)</td>
+<td>0.82</td>
+</tr>
+<tr>
+<td>Total Alpha</td>
+<td>0.85</td>
+</tr>
+</tbody></table>
+<p><strong>Classical Regression Analysis</strong></p>
+<p>Table 3 shows the result of univariate analysis and multivariable regression. Parameter of diabetes and kidney failure have obvious changes between the univariate model and the multivariate model. Other covariates and exposure did not change a lot in the multivariate model. P-value of exposure increased.</p>
+<p><strong>Regression with Propensity Score</strong></p>
+<p>The propensity score, which means the probability of exposure estimated by confounders, is fitted for each individual with a logistic regression model. Table 3 compares how the regression coefficient of self-reported mental status change between classical regression and regression using the propensity score.</p>
+<p>To have a better view of natural log odds distribution under 5 original different self-reported status, two regression models with ordinal exposure degree were fitted and shown in Table 4.</p>
+<p><strong>Table 3. Regression models for the relationship between Self-reported Mental Status and Obese</strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/epid622/t3.PNG" alt="t3"></p>
+<p><strong>Table 4. Regression with Five-Degree Exposure</strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/epid622/t4.PNG" alt="t4"></p>
+<p><em>Note: The reference category of exposure was mental status equal to “poor”.</em></p>
+<h4 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h4><p><strong>The validity of the exposure question.</strong></p>
+<p>Since the exposure in this study is the self-reported mental status. The validity of this question needed to be checked. From the Cronbach’s alpha in Table 2, we can see that the total alpha of the questions was over 0.8, which means the consistency of these questions was high and they were not results that participants randomly made. Besides, by removing any of the questions, the total alpha would reduce, which means the answers to these questions were unique.</p>
+<p><strong>Relationship between self-reported mental status and obesity.</strong></p>
+<p>The result from regressions with original confounders and propensity scores in Table 3 are similar. The odds of being obese is lower among people whose self-reported mental health status is ‘poor’. Results in Table 4 indicate that this relationship is becoming stronger when the self-reported mental status is lower. In models using the propensity score, this relationship is confounded by age, older people have less chance of being obese, which is opposite to the initial hypothesis from the literature review. We can also reject the hypothesis that this relationship is not modified by gender on 0.05 critical criteria. By controlling for other covariates, the natural log odds of obese males are 1.75 higher than females. The model also showed the confounding effect of hypertension and asthma. People with these chronic diseases could have lesser odds of being obese.</p>
+<p>However, the causal property is hard to extract from the results. Firstly, the NYC HANES is a cross-sectional survey that does not have temporal order in different variables. Secondly, the causal direction, in this case, is unclear. To illustrate the causal pathway, a cohort study would a better design.</p>
+<p><strong>Effect of using propensity score approach in regression.</strong></p>
+<p>The regression coefficient of exposure did not change a lot in models with propensity score. However, since the standard error of the parameter reduced a little bit, the p-value was also reduced. By comparing the regression parameter of chronic diseases from univariate analysis to multivariable analysis, we can notice that some chronic disease changed their regression coefficient and p-values like diabetes and kidney failure, this means these chronic diseases are actually related to each other. Besides, the regression coefficient and p-value of age as a confounder also changed in the model with propensity score, which could reduce biases from chronic diseases.</p>
+<h4 id="Limitation"><a href="#Limitation" class="headerlink" title="Limitation"></a>Limitation</h4><p>The propensity score was not showing its power in this case obviously. By using the propensity score approach to control for confounders, it can also resolve two problems other than correlations between confounders: the unacceptably large number of covariates and unknown confounders. If we could have more records about chronic disease, the difference between classical multivariable analysis and regression with propensity score could be more obvious.</p>
+<p>Besides, the number of exposed individuals was relatively low in this analysis. It could influence the power of the analyses which needs to be concerned if the result were not statistically significant. And it may also reduce the precision of our results.</p>
+<h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p>Among people who live in New York city and older than 20 years old and have ‘poor’ self-reported mental status is negatively related to obesity. By controlling for age and chronic diseases, the odds of being obese for people whose self-reported mental status is ‘poor’ is 0.35 (95%CI: 0.13, 0.93) times than other people.</p>
+<p>The propensity score approach in this analysis did not improve the model obviously.</p>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h4><ol>
+<li><p>Heart N, Lung, Institute B, Diabetes NIo, Digestive, Diseases K. <em>Clinical     guidelines on the identification, evaluation, and treatment of overweight     and obesity in adults: the evidence report.</em> National Heart, Lung, and Blood     Institute; 1998.</p>
+</li>
+<li><p>STATEofCHILDHOODOBESITY. Adult Obesity Rates.     In:2018:<a target="_blank" rel="noopener" href="https://stateofchildhoodobesity.org/adult-obesity/">https://stateofchildhoodobesity.org/adult-obesity/</a>.</p>
+</li>
+<li><p>Behavioral Risk Factor Surveillance System Survey Data. 2018.</p>
+</li>
+<li><p>Prevention CfDCa. Adult Obesity Prevalence Maps.     <a target="_blank" rel="noopener" href="https://www.cdc.gov/obesity/data/prevalence-maps.html#overall">https://www.cdc.gov/obesity/data/prevalence-maps.html#overall</a>. Published     2018. Accessed May.10.2020, 2020.</p>
+</li>
+<li><p>Avila C, Holloway AC, Hahn MK, et al. An Overview of Links Between Obesity     and Mental Health. <em>Curr Obes Rep.</em> 2015;4(3):303-310.</p>
+</li>
+<li><p>Pearce EN. Thyroid hormone and obesity. <em>Curr Opin Endocrinol Diabetes     Obes.</em> 2012;19(5):408-413.</p>
+</li>
+<li><p>Kitahara CM, Platz EA, Ladenson PW, Mondul AM, Menke A, Berrington de     Gonzalez A. Body fatness and markers of thyroid function among U.S. men and     women. <em>PLoS One.</em> 2012;7(4):e34979.</p>
+</li>
+<li><p>Laurberg P, Knudsen N, Andersen S, Carlé A, Pedersen IB, Karmisholt J.     Thyroid function and obesity. <em>Eur Thyroid J.</em> 2012;1(3):159-167.</p>
+</li>
+<li><p>Kirk LF, Jr., Hash RB, Katner HP, Jones T. Cushing’s disease: clinical     manifestations and diagnostic evaluation. <em>Am Fam Physician.</em>     2000;62(5):1119-1127, 1133-1114.</p>
+</li>
+<li><p>Tiryakioglu O, Ugurlu S, Yalin S, et al. Screening for Cushing’s syndrome in     obese patients. <em>Clinics (Sao Paulo).</em> 2010;65(1):9-13.</p>
+</li>
+<li><p>Legro RS, Arslanian SA, Ehrmann DA, et al. Diagnosis and treatment of     polycystic ovary syndrome: an Endocrine Society clinical practice guideline.     <em>J Clin Endocrinol Metab.</em> 2013;98(12):4565-4592.</p>
+</li>
+<li><p>Uguz F, Sahingoz M, Gungor B, Aksoy F, Askin R. Weight gain and associated     factors in patients using newer antidepressant drugs. <em>Gen Hosp Psychiatry.</em>     2015;37(1):46-48.</p>
+</li>
+<li><p>Galling B, Calsina Ferrer A, Abi Zeid Daou M, Sangroula D, Hagi K, Correll     CU. Safety and tolerability of antidepressant co-treatment in acute major     depressive disorder: results from a systematic review and exploratory     meta-analysis. <em>Expert Opin Drug Saf.</em> 2015;14(10):1587-1608.</p>
+</li>
+<li><p>Velazquez A, Apovian CM. Pharmacological management of obesity. <em>Minerva     Endocrinol.</em> 2018;43(3):356-366.</p>
+</li>
+<li><p>Ness-Abramof R, Apovian CM. Drug-induced weight gain. <em>Drugs Today (Barc).</em>     2005;41(8):547-555.</p>
+</li>
+<li><p>Brown HK, Qazilbash A, Rahim N, Dennis CL, Vigod SN. Chronic Medical     Conditions and Peripartum Mental Illness: A Systematic Review and     Meta-Analysis. <em>Am J Epidemiol.</em> 2018;187(9):2060-2068.</p>
+</li>
+<li><p>Brown HK, Wilton AS, Ray JG, Dennis CL, Guttmann A, Vigod SN. Chronic     physical conditions and risk for perinatal mental illness: A     population-based retrospective cohort study. <em>PLoS Med.</em>     2019;16(8):e1002864.</p>
+</li>
+<li><p>Krzesinski JM, Weekers L. [Hypertension and diabetes]. <em>Rev Med Liege.</em>     2005;60(5-6):572-577.</p>
+</li>
+<li><p>Baek JY, Lee SE, Han K, Koh EH. Association between diabetes and asthma:     Evidence from a nationwide Korean study. <em>Ann Allergy Asthma Immunol.</em>     2018;121(6):699-703.</p>
+</li>
+<li><p>Gargiulo R, Suhail F, Lerma EV. Hypertension and chronic kidney disease.     <em>Dis Mon.</em> 2015;61(9):387-395.</p>
+</li>
+<li><p>Wold S, Ruhe A, Wold H, Dunn I, WJ. The collinearity problem in linear     regression. The partial least squares (PLS) approach to generalized     inverses. <em>SIAM Journal on Scientific and Statistical Computing.</em>     1984;5(3):735-743.</p>
+</li>
+<li><p>Weitzen S, Lapane KL, Toledano AY, Hume AL, Mor V. Principles for modeling     propensity scores in medical research: a systematic literature review.     <em>Pharmacoepidemiology and drug safety.</em> 2004;13(12):841-853.</p>
+</li>
+<li><p>Haukoos JS, Lewis RJ. The Propensity Score. <em>Jama.</em> 2015;314(15):1637-1638.</p>
+</li>
+<li><p>Rosenbaum PR, Rubin DB. The central role of the propensity score in     observational studies for causal effects. <em>Biometrika.</em> 1983;70(1):41-55.</p>
+</li>
+<li><p>D’Agostino Jr RB. Propensity score methods for bias reduction in the     comparison of a treatment to a non‐randomized control group. <em>Statistics in     medicine.</em> 1998;17(19):2265-2281.</p>
+</li>
+<li><p>Perlman SE, Charon Gwynn R, Greene CM, Freeman A, Chernov C, Thorpe LE. NYC     HANES 2013-14 and Reflections on Future Population Health Surveillance. <em>J     Urban Health.</em> 2018;95(6):777-780.</p>
+</li>
+</ol>
+<p><strong>Appendix:</strong></p>
+<p>Questions used in the analysis:</p>
+<p>MHQ_1</p>
+<p>Now thinking about your mental health, which includes stress, depression and emotional problems, would you say your overall mental health is excellent, very good, good, fair, or poor?</p>
+<p>1: Excellent</p>
+<p>2: Very good</p>
+<p>3: Good</p>
+<p>4: Fair</p>
+<p>5: Poor</p>
+<p>.D: Don’t know</p>
+<p>.R: Refusal</p>
+<p>.: Legit skip</p>
+<p>MHQ_2</p>
+<p>During the past 30 days, how often did you feel nervous?</p>
+<p>1: All of the time</p>
+<p>2: Most of the time</p>
+<p>3: Some of the time</p>
+<p>4: A little of the time</p>
+<p>5: None of the time</p>
+<p>.D: Don’t know</p>
+<p>.R: Refusal</p>
+<p>.: Legit skip</p>
+<p>MHQ_3</p>
+<p>During the past 30 days, how often did you feel hopeless?</p>
+<p>1: All of the time</p>
+<p>2: Most of the time</p>
+<p>3: Some of the time</p>
+<p>4: A little of the time</p>
+<p>5: None of the time</p>
+<p>.D: Don’t know</p>
+<p>.R: Refusal</p>
+<p>.: Legit skip</p>
+<p>MHQ_4</p>
+<p>During the past 30 days, how often did you feel restless or fidgety?</p>
+<p>1: All of the time</p>
+<p>2: Most of the time</p>
+<p>3: Some of the time</p>
+<p>4: A little of the time</p>
+<p>5: None of the time</p>
+<p>.D: Don’t know</p>
+<p>.R: Refusal</p>
+<p>.: Legit skip</p>
+<p>MHQ_5</p>
+<p>During the past 30 days, how often did you feel so sad or depressed that nothing could cheer you up?</p>
+<p>1: All of the time</p>
+<p>2: Most of the time</p>
+<p>3: Some of the time</p>
+<p>4: A little of the time</p>
+<p>5: None of the time</p>
+<p>.D: Don’t know</p>
+<p>.R: Refusal</p>
+<p>.: Legit skip</p>
+<p>MHQ_6</p>
+<p>During the past 30 days, how often did you feel that everything was an effort?</p>
+<p>1: All of the time</p>
+<p>2: Most of the time</p>
+<p>3: Some of the time</p>
+<p>4: A little of the time</p>
+<p>5: None of the time</p>
+<p>.D: Don’t know</p>
+<p>.R: Refusal</p>
+<p>.: Legit skip</p>
+<p>MHQ_7</p>
+<p>During the past 30 days, how often did you feel down on yourself, no good or worthless?</p>
+<p>1: All of the time</p>
+<p>2: Most of the time</p>
+<p>3: Some of the time</p>
+<p>4: A little of the time</p>
+<p>5: None of the time</p>
+<p>.D: Don’t know</p>
+<p>.R: Refusal</p>
+<p>.: Legit skip</p>
+<p>BPQ_2</p>
+<p>Has SP ever been told by a doctor or other health professional that SP had hypertension, also called high blood pressure?</p>
+<p>1: Yes</p>
+<p>2: No</p>
+<p>.D: Don’t know</p>
+<p>DIQ_1</p>
+<p>(Other than during pregnancy, ) Has SP ever been told by a doctor or health professional that SP has diabetes or sugar diabetes?</p>
+<p>1: Yes</p>
+<p>2: No</p>
+<p>3: Borderline or Prediabetes</p>
+<p>.D: Don’t know</p>
+<p>MCQ_1</p>
+<p>Has a doctor or other health professional ever told SP that (you have/s/he/SP has) asthma?</p>
+<p>1: Yes</p>
+<p>2: No</p>
+<p>MCQ_12</p>
+<p>Has SP ever been told by a doctor or other health professional that SP had weak or failing kidneys? Do not include kidney stones, bladder infections, or incontinence.</p>
+<p>1: Yes</p>
+<p>2: No</p>
+<p>.D: Don’t know</p>
+<p>MCQ_14</p>
+<p>Has SP ever been told by a doctor or other health professional that SP had cancer or a malignancy of any kind?</p>
+<p>1: Yes</p>
+<p>2: No</p>
+<h3 id="Repeat-Academic-Poisson-and-Negative-Binomial-Regression"><a href="#Repeat-Academic-Poisson-and-Negative-Binomial-Regression" class="headerlink" title="Repeat Academic Poisson and Negative Binomial Regression"></a>Repeat Academic Poisson and Negative Binomial Regression</h3><p>Author: Ruoyan Han</p>
+<p>Code of this project is avaliable at: <a target="_blank" rel="noopener" href="https://github.com/Ry2an/case_code/tree/master/bios623as2">https://github.com/Ry2an/case_code/tree/master/bios623as2</a></p>
+<h4 id="Introduction-1"><a href="#Introduction-1" class="headerlink" title="Introduction"></a>Introduction</h4><p>In 1996, the Australian government exempted a new gun law that banned semiautomatic rifles and pump-action shotguns and started to buyback firearms. Chapman, et al, did an analysis to reveal whether the law change had brought changes in death rates for different reasons related to gunshot [1]. This document is the assignment of BIOS 621 and I will repeat one outcome (total non-firearm death rate) in Chapman, et al’s article with same statistical methods and compare the usage of log negative binomial regression and log Poisson regression in this situation.</p>
+<h4 id="Method-1"><a href="#Method-1" class="headerlink" title="Method"></a>Method</h4><h5 id="Data-setting"><a href="#Data-setting" class="headerlink" title="Data setting"></a>Data setting</h5><h6 id="Rate-calculation"><a href="#Rate-calculation" class="headerlink" title="Rate calculation"></a>Rate calculation</h6><p>Since the total death is gradually growing, comparing the absolute death number change in two law backgrounds could be affected. Therefore, as the same thing the author did, a death rate is calculated by the total death divide by the total person-year at risk for some linear regression calculation in this assignment.</p>
+<h5 id="Analysis-processes"><a href="#Analysis-processes" class="headerlink" title="Analysis processes"></a>Analysis processes</h5><p>At the first step, log (mean) and log (standard deviation) of the outcome measure (total non-firearm death) and their stratified results are calculated to see whether the outcome could be recognized as a Poisson distribution. If the outcome is in Poisson distribution, the log(mean) and log (standard deviation) should be similar.</p>
+<p>The second step is to calculate the mean and 95% confidence interval of the total non-firearm death rate in two law backgrounds (before 1997 and after 1997). Three solutions are attempt to get the result. The first one is to treat the means of non-firearm death rate before and after the law change are in two sample distributions (t distribution). Therefore, the standard error of the means could be calculated by standard deviation divided by square root of n into two periods of time, where n means that number of means in two periods of time. The degree of freedom is equal to n – 1. The formula is shown as (1).</p>
+<p>$$<br>\text{Sample SD} = \frac{\delta}{ qrt{n}}<br>$$</p>
+<p>The second solution of calculating the mean and its 95%confidence interval is by linear regression. The model is shown as (2).</p>
+<p>$$<br>\text{Rat}e_{i} = \beta_{0} + \beta_{1}*{\text{La}w}<em>{i} + \xi</em>{i},\xi_{i}  im N(0,\delta)<br>$$</p>
+<p>The third solution will use log negative binomial regression to calculate the mean and confidence interval of the total non-firearm death rate before and after the law change. The model is shown as (3). (in Negative Binomial Regression)</p>
+<p>$$<br>\log(\text{TNF}<em>{i}) = \beta</em>{0} + \beta_{1}*\text{Law}<em>{i} + \log(\text{personyearatrisk}</em>{i}) + \xi_{i}<br>$$</p>
+<p>By assuming law change is an effect modifier of the relationship between time (year) and total non-firearm death rate, three models shown in the article has been fitted. The formula is shown as (4) – (6). (in Negative Binomial Regression)</p>
+<p>$$<br>\log(\text{TNF}<em>{i}) = \beta</em>{0} + \beta_{1}*\text{Law}<em>{i} + \log(\text{personyearatrisk}</em>{i}) + \xi_{i},\text{Year} \in \lbrack 1979,1997)<br>$$</p>
+<p>$$<br>\log(\text{TNF}<em>{i}) = \beta</em>{0} + \beta_{1}*\text{Law}<em>{i} + \log(\text{personyearatrisk}</em>{i}) + \xi_{i},\text{Year} \in \lbrack 1997,2013)<br>$$</p>
+<p>$$<br>\text{Rate}<em>{i} = \beta</em>{0} + \beta_{1}*\text{Year}<em>{i} + \beta</em>{2}*\text{Law}<em>{i} + \beta</em>{3}*\text{Year}<em>{i}*\text{Law}</em>{i} + \xi_{i}<br>$$</p>
+<p>A log Poisson regression is also fitted to compare with model The model formula is shown as (7).</p>
+<p>$$<br>\text{Rate}<em>{i} = \beta</em>{0} + \beta_{1}*\text{Year}<em>{i} + \beta</em>{2}*\text{Law}<em>{i} + \beta</em>{3}*\text{Year}<em>{i}*\text{Law}</em>{i} + \xi_{i}<br>$$</p>
+<p>Model (6) and model (7) are compared by Akaike information criterion (AIC), log (likelihood of regression), diagnose plots and regression curve with residuals. In order to compare the intercept change at the year of the law update, I will use ‘(year - 1996)’ to replace the original ‘year’ in the model (6) and model (7).</p>
+<h5 id="Software"><a href="#Software" class="headerlink" title="Software:"></a>Software:</h5><p>The software I used for calculation and analysis in this assignment are R software 3.6.1 and MS Office Excel 2019.</p>
+<p>R packages and tools used: R markdown; MASS; ggplot2; plotrix; plyr; countreg; gridExtra</p>
+<h4 id="Results-1"><a href="#Results-1" class="headerlink" title="Results"></a>Results</h4><p>The total log mean and log standard deviation for total non-firearm deaths rate is 2.41 and 0.32. The log mean and log standard deviation before the law change for total non-firearm deaths rate is 2.36 and 0.27.</p>
+<p>The log mean and log standard deviation after the law change for total non-firearm deaths rate is 2.46 and 0.17.</p>
+<p>Log mean and log standard deviation of outcome is not similar. Therefore, we cannot assume that the log outcome is in a Poisson distribution.</p>
+<p>Mean calculation and interpret.</p>
+<p>Solution 1 gave us the average rate of total non-firearm death before the law change is 10.61 (95% CI: 8.64, 12.57) deaths per 100000 person-years. The average rate of total non-firearm death before the law change is 11.80 (95% CI: 9.83, 13.76) deaths per 100000 person-years.</p>
+<p>Solution 2 gave us the average rate of total non-firearm death before the law change is 10.61 (95% CI: 10.00, 11.21) deaths per 100000 person-years. The average rate of total non-firearm death before the law change is 11.80 (95% CI: 11.19, 12.40) deaths per 100000 person-years.</p>
+<p>Solution 1 gave us the average rate of total non-firearm death before the law change is 10.61 (95% CI: 10.09, 11.16) deaths per 100000 person-years. The average rate of total non-firearm death before the law change is 11.79 (95% CI: 11.21, 12.41) deaths per 100000 person-years.</p>
+<p>A plot has generated to describe the mean calculation from three solutions.</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/fig1.png" alt="fig1"></p>
+<p><strong>Fig 1. Results of three solutions to calculate mean non-firearm death rate before and after the law change</strong></p>
+<p><strong>Table 1. Regression result</strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/table1.PNG" alt="table1"></p>
+<p>From the result, we can know that in the year of 1979 to 1996 before the law change, the average trend of total non-firearm death rate is 1.002 (rate ratio) from model (4), while in the year of 1997 to 2013 after the law change, the trend of total non-firearm death rate is 0.986 (rate ratio). The change of this difference in log of the rate ratio is -0.0348 (the change of slope of two period log(rate ratio)) from model 6 and this difference is statistically significant.</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/fig2.png" alt="fig2"></p>
+<p><strong>Fig 2. Predicted Values of Model (6) (Left) and Model (7) (Right)</strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/fig3.png" alt="fig3"></p>
+<p> <strong>Fig 3. Diagnostic Plots of Model (6) (Left 4 plots) and Model (7) (Right 4 Plots)</strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/fig4.png" alt="fig4"></p>
+<p><strong>Fig 4. Hang plots of Model (6) (Left) and Model (7) (Right)</strong></p>
+<h4 id="Discussion-1"><a href="#Discussion-1" class="headerlink" title="Discussion"></a>Discussion</h4><h5 id="Compare-with-the-paper’s-result"><a href="#Compare-with-the-paper’s-result" class="headerlink" title="Compare with the paper’s result"></a>Compare with the paper’s result</h5><p>The total non- firearm death results of Chapman, et al is copied as follows. The mean trend of death rate before the law change is equal to exp (0.0212) = 1.021 and its confidence interval has been shown above. The mean trend of death rate after the law change is equal to exp (0.0212 – 0.0348) = 0.986. The 95% confidence interval of this trend is exp (0.0157 – 0.0348) = 0.981 and exp (0.0226 – 0.0348) = 0.992, which is calculated by adding the coefficient of ‘Law’ into the confidence interval of coefficient of (Year - 1996). RT and RL are equal to the rate ratio at the law change and the exponential of the slope difference between the two status which has been shown above in the table.</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/fig5.jpg" alt="fig5"></p>
+<p><strong>Fig 5. Original results from the paper of Chapman, et al</strong></p>
+<h5 id="The-association-between-separate-model-and-combined-model"><a href="#The-association-between-separate-model-and-combined-model" class="headerlink" title="The association between separate model and combined model"></a>The association between separate model and combined model</h5><p>The reason that I didn’t do a separate log Poisson regression before and after the law change is because that they are equivalent with the model (7). Let’s look at model (4) – (6) as an example. If we substitute the Law value in the model (6) as 0 and 1, which is also the value I generated in the dataset, the model will look like this:</p>
+<p>$$<br>\log(\text{TNF}<em>{i}) = \beta</em>{0} + \beta_{1}*\text{Year}<em>{i} + \log(\text{personyearatrisk}</em>{i}) + \xi_{i},(\text{Law} = 0)<br>$$</p>
+<p>$$<br>\log(\text{TNF}<em>{i}) = (\beta</em>{0} + \beta_{2}) + (\beta_{1} + \beta_{3})*\text{Year}<em>{i} + \log(\text{personyearatrisk}</em>{i}) + \xi_{i},(\text{Law} = 1)<br>$$</p>
+<p>We can see that these two separated models look quite similar with model (4) and model (5). Actually, they are the same. Law = 0 equals to year  &lt; 1997, and Law = 1 equals to year  &gt;= 1997. If we add the β of Year * Law in model (6) with the β of Year in model (6), we could get the same value of Year’s β in model (5). If we do not add anything to the β of Year in model (6), it equals with the β of Year in model (4). In fact, the β of Year * Law in model (6) describes the differences between the Years’ beta of model (4) and model (5), and we can additionally notice the standard error and p-value of these difference in model (6). That’s why I don’t have to try another separated model for Poisson regression.</p>
+<h5 id="Model-comparison"><a href="#Model-comparison" class="headerlink" title="Model comparison"></a>Model comparison</h5><p>From AIC, we can notice that the log negative binomial model fits better than log Poisson regression.</p>
+<p>The Log Likelihood of Negative Binomial model is higher than log Poisson, which also means the model (7) fits better.</p>
+<p>From the estimating lines (Fig 2.) the two models provided quite same estimating curve, the only difference I noticed is that the end of the blue line (total non-firearm death rate before law change) (in the green circle) in the log Poisson regression is a little bit higher than the log negative binomial regression.</p>
+<p>The diagnostic plots of the two models (Fig 3.) are almost the same, the only difference I noticed is in the Q-Q plots. It seems that the error term in log negative binomial regression is better normally distributed than the log Poisson regression.</p>
+<h5 id="Limitation-1"><a href="#Limitation-1" class="headerlink" title="Limitation"></a>Limitation</h5><p>It’s understandable that the rate after the law change is still higher because the rate is just starting to decreasing after the low change by the result of the regressions.</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/fig6.png" alt="fig6"></p>
+<p><strong>Fig 6. Histogram of total non-firearm death rate in two interested period</strong></p>
+<p>However, what we should expect from the law change is that the death rate of firearm could be lower. So, what about the non-firearm deaths? Shall it increase because fewer people will be killed by gunshot? Or shall it be stable because people could still be alive if they avoid the gunshot? Or shall it decrease because people are healthier and healthier? We need a comparison. If we have a global or other comparable total non-firearm death rate, we could know whether the law has actually changed something. If naturally the total non-firearm death rate is decreased after 1996 if some grate medical product has been made, the curve could be same without the law change. After comparing with a counterfactual rate, we could take a deeper insight in to the reason for total non-firearm deaths started to decrease after the law change.</p>
+<p>If we do not know the background of the law change, the curve of death rate could be seemed very normal, just a little peak in 1996. Actually, the most obvious change in the raw curve is around 1998 and after 2005. But we do not know whether something important happened at that time. Even there is a cause of raw curve changing happed in the year 1996, we could not distinguish whether it was the law upgrade or other potential mediators and confounders.</p>
+<p>The last thing I want to discuss is that the confidence intervals in the model (7) (Log Poisson Regression) is narrower than the model (6) (Log Negative Binomial Regression). However, both the AIC and log-likelihood show that the log negative binomial regression is better. That is because although log Poisson regression is more precise in this case because of its strict distribution assumption, it lost accuracy compare to the negative binomial regression.</p>
+<h4 id="Conclusion-1"><a href="#Conclusion-1" class="headerlink" title="Conclusion"></a>Conclusion</h4><p>This assignment has totally repeated the result of Chapman, et al in the analysis of total non-firearm death rate that the trend of the rate has statistical significantly changed after the year of 1996. From 1979 - 1996, the mean rate of total non-firearm death rate was 10.61 (95%CI, 10.09 - 11.16) per 100,000 person-year (annual trend 1.021, 95%CI: 1.016 - 1.026), whereas from 1997 - 2013, the mean rate of total non-firearm deaths rate was 11.79 (95%CI: 11.21, 12.41) per 100,000 person-year (annual trend 0.986, 95%CI: 0.981, 0.992).</p>
+<p>Besides, this assignment compared Log Negative Binomial Regression’s and Log Poisson regression’s performance under this circumstance. The result shows that Log Negative Binomial Regression is better than Log Poisson regression in this case.</p>
+<h4 id="Reference-1"><a href="#Reference-1" class="headerlink" title="Reference:"></a>Reference:</h4><p>[1] Chapman, S., Alpers, P., &amp; Jones, M. (2016). Association between gun law reforms and intentional firearm deaths in Australia, 1979-2013. Jama, 316(3), 291-299.</p>
+<h3 id="Repeat-Academic-Survival-Analysis"><a href="#Repeat-Academic-Survival-Analysis" class="headerlink" title="Repeat Academic Survival Analysis"></a>Repeat Academic Survival Analysis</h3><p>Author: Ruoyan Han</p>
+<p>Code and data for this case is available at: <a target="_blank" rel="noopener" href="https://github.com/Ry2an/case_code/tree/master/bios623as3">https://github.com/Ry2an/case_code/tree/master/bios623as3</a></p>
+<h4 id="Introduction-2"><a href="#Introduction-2" class="headerlink" title="Introduction:"></a>Introduction:</h4><p>This practicing case is going to repeat partial work of Wondwossen, et al’s paper1.Their paper is focusing on whether the mortality is different of tuberculosis patients who also have HIV when receiving cART treatment at different time points (first week, fourth week and eighth week). This case is mainly repeating Figure 2 and Table 2 of the paper, which included survival analysis by using Kaplan Meier function and Proportional Hazard approach with several corvariates. In addition, residuals of different models are shown and interpreted in this document.</p>
+<h4 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h4><h5 id="Data-Source"><a href="#Data-Source" class="headerlink" title="Data Source:"></a>Data Source:</h5><p>The dataset used in this paper is included in the supplement of Wondwossen, et al’s paper.</p>
+<h5 id="Software-1"><a href="#Software-1" class="headerlink" title="Software:"></a>Software:</h5><p>R software 3.6.1</p>
+<p>Package: survival, survminer</p>
+<h5 id="Analysis-Process"><a href="#Analysis-Process" class="headerlink" title="Analysis Process:"></a>Analysis Process:</h5><ul>
+<li>Kaplan Meier curve :</li>
+</ul>
+<p>To repeat the Figure 2 of the original paper, survfit() and survdiff() from R package ‘survival’ are used to calculate. The group setting of Kaplan Meier approach is by three different time of receiving cART. The plot of survival curve and risk table is generated by ggsurvplot() function of package ‘survminer’.</p>
+<ul>
+<li>Log-rank test:</li>
+</ul>
+<p>A log rank test is implemented by survdiff() function under R package ‘survival’ to tell whether the survival curve of treatments happened in the week 1, week 4 and week 8 are different with each other.</p>
+<ul>
+<li><p>Proportional Hazard Analysis:</p>
+</li>
+<li><p>Univariate Analysis:</p>
+</li>
+</ul>
+<p>Four models are implemented separately by only enrolling treatment, whether CD4 cell count is less than 50 per microliter, whether albumin is less than 3 grams per deciliter and Body Mass Index in the models. This analysis uses coxph() function under R package ‘survival’. The models are listed as following (1 - 4):</p>
+<p>$$<br>\text{hazard}|t = h_{0t}*\exp(\beta_{0} + \beta_{1}*\text{treatment})<br>$$</p>
+<p>$$<br>\text{hazard}|t = h_{0t}*\exp(\beta_{0} + \beta_{1}*whether CD4  &lt;  50)<br>$$</p>
+<p>$$<br>\text{hazard}|t = h_{0t}*\exp(\beta_{0} + \beta_{1}*\text{whethe}r Albumin  &lt;  3)<br>$$</p>
+<p>$$<br>\text{hazard}|t = h_{0t}*\exp(\beta_{0} + \beta_{1}*\text{BMI})<br>$$</p>
+<ul>
+<li>Multivariable Analysis:</li>
+</ul>
+<p>One model is fitted by enrolling all covariates mentioned in the univariate analysis. The model is shown as following (5):</p>
+<p>$$<br>\text{hazard}|t = h_{0t}*\exp(\beta_{0} + \beta_{1}*\text{treatment} + \beta_{1}*whether CD4  &lt;  50 + \beta_{1}*whether Albumin  &lt;  3 + \beta_{1}*\text{BMI})<br>$$</p>
+<ul>
+<li>Residuals Analysis:</li>
+</ul>
+<p>Martingale, Deviance and Scaled Schoenfeld Residual are drawn in R. Smoothed lines are drawn by the smooth.spline() function in R on each graphs. Additionally, Schoenfeld Residuals are also shown by cox.zph() function under ‘survival’ package in R.</p>
+<h4 id="Results-2"><a href="#Results-2" class="headerlink" title="Results"></a>Results</h4><p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as3/fig1.png" alt="fig1"></p>
+<p><strong>Fig 1.</strong> Survival Curve and Risk Table of Kaplan Meier Approach</p>
+<p>From the plot, we can see that the survival curve of people who received cART treatment in 8th week remains staying on the top of other two curves in the study period. Curves of ‘week 1’ and ‘week 4’ treatments have some crosses before the first 10 weeks. Then the curves of ‘week 1’ keeps staying at the bottom of the three curves.</p>
+<p><strong>Table 1.</strong> Result of Log - Rank Test</p>
+<table>
+<thead>
+<tr>
+<th>Treatment</th>
+<th>N</th>
+<th>Observed</th>
+<th>Expected</th>
+<th>(O-E)^2/E</th>
+<th>(O-E)^2/V</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>week1</td>
+<td>163</td>
+<td>27.00</td>
+<td>20.90</td>
+<td>1.78</td>
+<td>2.68</td>
+</tr>
+<tr>
+<td>week4</td>
+<td>160</td>
+<td>20.00</td>
+<td>21.56</td>
+<td>0.11</td>
+<td>0.17</td>
+</tr>
+<tr>
+<td>week8</td>
+<td>155</td>
+<td>17.00</td>
+<td>21.54</td>
+<td>0.96</td>
+<td>1.47</td>
+</tr>
+<tr>
+<td>Chi-Square Value</td>
+<td>2.89</td>
+<td>Degree of Freedom</td>
+<td>2.00</td>
+<td>p-value</td>
+<td>0.24</td>
+</tr>
+</tbody></table>
+<p><strong>Table 2.</strong> Estimated Values of Univariable Models (1 - 4) and the Multivariable Models (5)</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as3/table2.png" alt="table2"></p>
+<p>The results of univariate analysis show that the hazard ratio of ‘week 8’ group compared by ‘week 1’ group and ‘week 4’ group are both not statistically significant by 1 (both parameters not statistically significant by 0). However, parameter of CD4, Albumin conditions and BMI are statistically significant than 0 at 0.05 critical criteria.</p>
+<p>In the multivariable analysis, the conditions of the p-values for covariates are roughly the same with the univariate analysis. Both parameter of ‘week 1’ and ‘week 4’ treatments are not statistically significant by 0. The parameter of CD4, Albumin and conditions are statistically significant than 0 at 0.05 critical criteria. The only difference happened in the parameter ‘BMI’. It is significant at 0.1 critical criteria but not significant at 0.05 critical criteria.</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as3/fig2_1.png" alt="fig2_1"></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as3/fig2_2.png" alt="fig2_2"></p>
+<p><strong>Fig 2.</strong> Scaled Schenfeld Residual for Each Covariates in Multivariable Analysis</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as3/fig3.png" alt="fig3"></p>
+<p><strong>Fig 3.</strong> Matingale Residuals and Deviance Residuals</p>
+<p>All of the residuals lying close to ‘0’. For Schenfeld residuals, we can the confidence intervals are always contain 0 for each covariates. This indicates that the multivariable model has a good fit so that the error term could stay in the distribution assumed by the model.</p>
+<h4 id="Discussion-2"><a href="#Discussion-2" class="headerlink" title="Discussion"></a>Discussion</h4><p>There are several discrepancy between my results with the original paper. In the univariate analysis multivariable analysis, the regression coefficient of ‘CD4’ and ‘Albumin’ are not same with the paper. Coefficient of ‘Week 1’ are not same in the multivariable analysis. I think the reason is because of the data from the supplement of the paper. Although I analyzed with people who lost follow up before the treatment by considering the intention to treat approach, which was the same as the authors did in their paper, we can see that there are discrepancy between the number of people who died or quit before the treatment. In the paper, the number of three groups (‘week1’, ‘week4’ and ‘week8’) who received the treatment is 149, 147 and 135, while from the data they are 150, 146, and 137. This could lead the survival probability of three treatments different with the original paper at least when first event happens. Besides, In this assignment, I didn’t include ‘Hepatotoxicity requiring interruption of TB therapy’ as a covariate in the model, which could also lead different results.</p>
+<p><strong>Table 3.</strong> Comparation Between Hazard Ratio in Previous Model and in the Original Paper</p>
+<table>
+<thead>
+<tr>
+<th>Covariates</th>
+<th>Univariate Model</th>
+<th></th>
+<th></th>
+<th></th>
+<th>Multivariable Model</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>Hazard Ratio</td>
+<td>HR From Paper</td>
+<td>p-value</td>
+<td>p-value from paper</td>
+<td>Hazard Ratio</td>
+<td>HR From Paper</td>
+<td>p-value</td>
+<td>p-value from paper</td>
+</tr>
+<tr>
+<td>Week 1</td>
+<td>1.64</td>
+<td>1.6</td>
+<td>0.110</td>
+<td>0.1</td>
+<td>1.67</td>
+<td>1.5</td>
+<td>0.104</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>Week 4</td>
+<td>1.18</td>
+<td>1.2</td>
+<td>0.620</td>
+<td>0.6</td>
+<td>1.20</td>
+<td>1.2</td>
+<td>0.588</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>CD4 cell  &lt; 50</td>
+<td>1.97</td>
+<td>3.3</td>
+<td>0.007</td>
+<td>0.001</td>
+<td>1.69</td>
+<td>2.7</td>
+<td>0.041</td>
+<td>0.001</td>
+</tr>
+<tr>
+<td>Albumin  &lt; 3</td>
+<td>2.04</td>
+<td>2.8</td>
+<td>0.005</td>
+<td>0.001</td>
+<td>1.75</td>
+<td>2.3</td>
+<td>0.033</td>
+<td>0.02</td>
+</tr>
+<tr>
+<td>BMI</td>
+<td>0.90</td>
+<td>0.9</td>
+<td>0.025</td>
+<td>0.0</td>
+<td>0.92</td>
+<td>0.9</td>
+<td>0.079</td>
+<td>0.04</td>
+</tr>
+</tbody></table>
+<p>Although the parameters of different treatments are not significant in the model, we can still see a trend among three treatments: Hazard Ratio: week 1 : week 8 = 1.7; week 4 : week 8 = 1.2; week 8 : week 8 = 1. It is obvious that by controlling with other covariates, the later the patient receive the treatments, the higher of the survival probability could be. But it’s just not statistically significant.</p>
+<p>In my opinion, there could be two solutions to figure out whether there is a trend between treatment time point and survival probability. The first one is to increase the sample size. I will use the parameter of ‘week 1’ in the multivariable analysis as an example. The standard error of this parameter is 0.314, which means only when the regression coefficient is larger than about 0.314 * 1.96 = 0.615 (negatively calculate is the same mechanism), it could be statistically significant at 0.05 critical criteria. That means the hazard ratio compare ‘week 8’ with ‘week 1’ should be larger than exp(0.615) = 1.85. However, as far as I am concerned, 1.5, or 1.2 are still meaningful results for the context. It’s just the study do not have enough power to prove it is statistically significant. In another words, if the standard error of ‘week 1’ could reduced to about 0.511 / 1.96 = 0.261, the result could be statistically significant at 0.05 critical criteria. We know that in the ‘week 1’ group, there are 163 participants, which means the variance of the regression coefficient in target population could be estimated as 0.314 * (163)^0.5 = 4.01. If we want the standard error (the variance of the sample mean of the regression coefficient from target population) to be less than 0.261, the sample size of the treatment group should be more than (4.01 / 0.261)^2 = 236. It is not a huge number, if the study could also increase the number of participants in ‘week 8’, the number could be lesser.</p>
+<p>Another solution is to find another approach by assuming the outcome variable do have an order, with stronger assumption, the parameters could be farther to null hypothesis.</p>
+<h4 id="Conclusion-2"><a href="#Conclusion-2" class="headerlink" title="Conclusion:"></a>Conclusion:</h4><p>From current results, we cannot deny the hypothesis that treatments in three different times could lead same survival curve, which means the hazard ratio of ‘week 1’ and ‘week 4’ compare to ‘week 8’ are same with 1. However, from the result, we could notice that other covariates like baseline CD4, Albumin and BMI status could be more related to different cumulative survival probability by time in the target population.</p>
+<h4 id="Reference-2"><a href="#Reference-2" class="headerlink" title="Reference:"></a>Reference:</h4><p>[1] Amogne, W., Aderaye, G., Habtewold, A., Yimer, G., Makonnen, E., Worku, A., … &amp; Lindquist, L. (2015). Efficacy and safety of antiretroviral therapy initiated one week after tuberculosis therapy in patients with CD4 counts &lt; 200 cells/μL: TB-HAART Study, a randomized clinical trial. PLoS One, 10(5), e0122587.</p>
+<h3 id="Using-Longitudinal-Models-To-Analyze-Steam-Games"><a href="#Using-Longitudinal-Models-To-Analyze-Steam-Games" class="headerlink" title="Using Longitudinal Models To Analyze Steam Games"></a>Using Longitudinal Models To Analyze Steam Games</h3><p><strong>This is the final assignment of course BIOS 623 at CUNY GSPHHP in Fall 2019 Author: Ruoyan Han</strong></p>
+<h4 id="Introduction-3"><a href="#Introduction-3" class="headerlink" title="Introduction"></a>Introduction</h4><p>Video games, as an emerging merchandise, are usually selling their copies through online stores and physical storage disks. Before a game marked by a price and selling on markets, it should be developed by a developer group and be published by a publisher company. The game prices set by publisher could contain the cost of making the games and advertising fees, which is related to the quality of the games. Steam is the most famous video game digital distribution service developed by Valve Corporation. Most game publishers on the world publish soft copies of games on Steam game store. In the online store, developer, publisher, price, and customers’ reviews are recorded and updated on each game’s web-page.</p>
+<p>Overall rating is a count number of all negative reviews (comments) and positive reviews (comments), which in other words is total review numbers (Fig 1). This value should be positively related to sells volume, because on Steam, only players who bought the game can give comments on the web page (one comment per player). The actual selling volume are hidden from the published data I acquired, so that I chose this as dependent variable, which could be considered as a proxy of overall selling volume. In cross-sectional analyses, it is hard to directly analyze the relationship between the game prices with overall ratings. Because the games are not independent with each other, famous publishers and developers could always have some fans love whatever game they made, while small companies may not sell their games well even the quality of the games they made aren’t that worse. Besides, the volume between different publisher are not the same, larger publisher could have more game published in the online stores, which may bias the relationship between price and the game ratings.</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/1.png" alt="fig1"></p>
+<p><strong>Fig 1. Different Reviews (Negative and Positive) of a Game Called “Foxhole” on Steam Game Store</strong></p>
+<p>In this analysis, I will use different longitudinal models (linear mixed effect models, fixed effect models and generalized estimating equation) to analyze the relationship between game prices and overall ratings in steam online stores among different game publishers. From the results of this analysis, game publishers could see whether the game prices settings is positively or negatively related with overall ratings. And so that they could have a deeper understanding of requirement from player on the view of games prices when they want to publish new games in future.</p>
+<h4 id="Method-2"><a href="#Method-2" class="headerlink" title="Method"></a>Method</h4><h5 id="Data-Process"><a href="#Data-Process" class="headerlink" title="Data Process"></a>Data Process</h5><h6 id="Data-Source-1"><a href="#Data-Source-1" class="headerlink" title="Data Source"></a>Data Source</h6><p>Data for this analysis is created by Nik Davis and published on <a target="_blank" rel="noopener" href="https://www.kaggle.com/nikdavis/steam-store-games">kaggle website</a> [1]. The data collected all available games in U.S. steam online game store in May, 2019. The data is gathered through <a target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?title=Steam_Spy&oldid=929122689">SteamSpy</a>, a website uses an application programming interface (API) to the Steam software distribution service owned by Valve Corporation to estimate the number of sales of software titles offered on the service created by Sergey Galyonkin [2].</p>
+<p>There are several fields in the dataset I acquired and I will use in this analysis: Publisher ID; Game ID; English (whether the game support English Language), Release Date; Overall Ratings and Price of each game.</p>
+<p>Publisher enrolling</p>
+<p>To use longitudinal models, multiple published records are needed for each publisher. Besides, small publisher companies who only published two or three games may not show a mature pattern between game price and overall ratings. Therefore, by creating a histogram and looking the distribution of counts of published game, I decided to use publishers who published more than eight games in the analysis.(Fig 2)</p>
+<p>I also excluded free game records in the dataset, although, I reviewed the distribution of published game price (Fig 3) and it dose not show obvious ceiling effect or zero-inflated distribution. It is because that mostly, the commercial mode of free games are not same with the paid games. They usually sell extra components in the game which did not mention in the data. And so that it may bias the relationship between game prices and overall ratings. Please notice that after removed free games, there could be some publishers have game counts lower than eight.</p>
+<p>I also added 0.1 to overall ratings for all games in case that some games’ overall rating is 0, which may not able to do the log transformation. (I would chose to use the log transformation because of the results of descriptive statistics (Fig 4).)</p>
+<h5 id="Analyzing-Process"><a href="#Analyzing-Process" class="headerlink" title="Analyzing Process"></a>Analyzing Process</h5><h6 id="Descriptive-Statistics"><a href="#Descriptive-Statistics" class="headerlink" title="Descriptive Statistics"></a>Descriptive Statistics</h6><p>After data cleaning, basic descriptive plots (including game counts distribution, scatter plots of game price, and overall volume) and values (including correlation value, game counts for each publisher) are created and calculated to determine what kind of formats of independent variable and dependent variable to use in the models and cleaning processes.</p>
+<h6 id="Cross-sectional-Model"><a href="#Cross-sectional-Model" class="headerlink" title="Cross-sectional Model"></a>Cross-sectional Model</h6><p>To compare the difference between longitudinal models and cross-sectional model, a linear regression is fitted as a comparison. The model is written as following:</p>
+<p>$log(\textrm{Overall Ratings}_i)=\beta_0+\beta_1*\textrm{Price}_i+\xi_i$, $$i \in<br>\text{Publishers}$$</p>
+<p><em>The following models are longitudinal models I fitted for the data:</em></p>
+<h6 id="Longitudinal-Models-LME"><a href="#Longitudinal-Models-LME" class="headerlink" title="Longitudinal Models (LME)"></a>Longitudinal Models (LME)</h6><p>$log(\textrm{Overall Ratings}<em>{ij}) = \beta_0 + b_i + \beta_1*(\textrm{Price}_{ij}) + \xi</em>{ij}$, </p>
+<p>$b_i \in N(0, \delta)$, $i\in\textrm{Publishers}$, (LME-1)</p>
+<h4 id="Linear-Mixed-Effect-Model-Random-Intercept-and-Slope"><a href="#Linear-Mixed-Effect-Model-Random-Intercept-and-Slope" class="headerlink" title="Linear Mixed Effect Model - Random Intercept and Slope"></a>Linear Mixed Effect Model - Random Intercept and Slope</h4><p>$log(\textrm{Overall Ratings}<em>{ij}) = \beta_0 + b_{i1} + \beta_1*(b_{i2} + \textrm{Price}</em>{ij}) + \xi_{ij}$, </p>
+<p>$b_{i1} \in N(0, \delta_1)$, $b_{i2} \in N(0, \delta_2)$, $i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (LME-2)</p>
+<h4 id="Non-linear-Relationship"><a href="#Non-linear-Relationship" class="headerlink" title="Non linear Relationship"></a>Non linear Relationship</h4><p>$log(\textrm{Overall Ratings}<em>{ij}) = \beta_0 + b_i + \beta_1*(\textrm{Price}_{ij}^2) + \beta_2*(\textrm{Price}_{ij}) + \beta_3*(\textrm{Price}_{ij}^{0.5})+ \xi</em>{ij}$, </p>
+<p>$b_i \in N(0, \delta)$, $i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (LME-3)</p>
+<h4 id="Effect-measurement-modifier-and-confounding-effect-of-whether-the-game-have-English-version"><a href="#Effect-measurement-modifier-and-confounding-effect-of-whether-the-game-have-English-version" class="headerlink" title="Effect measurement modifier and confounding effect of whether the game have English version"></a>Effect measurement modifier and confounding effect of whether the game have English version</h4><p>$log(\textrm{Overall Ratings}<em>{ij}) = \beta_0 + b_i + \beta_1 * (\textrm{Price}_{ij}) + \beta_2 * (\textrm{English}_{ij}) + \beta_3 * (\textrm{Price}_{ij} * \textrm{English}</em>{ij}) + \xi_{ij}$, </p>
+<p>$b_i \in N(0, \delta)$, $i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (LME-4)</p>
+<h4 id="Confouder-of-released-date"><a href="#Confouder-of-released-date" class="headerlink" title="Confouder of released date"></a>Confouder of released date</h4><p>$log(\textrm{Overall Ratings}<em>{ij}) = \beta_0 + b_i + \beta_1 * (\textrm{Price}_{ij}) + \beta_2 * (\textrm{Released Date}_{ij}) + \xi</em>{ij}$, </p>
+<p>$b_i \in N(0, \delta)$, $i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (LME-5)</p>
+<h4 id="Estimating-line"><a href="#Estimating-line" class="headerlink" title="Estimating line"></a>Estimating line</h4><p>The estimated value of LME models are calculated and combined with the scatter plots.</p>
+<h4 id="Fixed-Effect-Model-FEM"><a href="#Fixed-Effect-Model-FEM" class="headerlink" title="Fixed Effect Model (FEM)"></a>Fixed Effect Model (FEM)</h4><p>Fixed effect models in this analysis are used to test whether the assumption of LME models (random intercept and random slope) are applicable. Rather than focusing the estimated parameter of ‘price’ in the FEM models, I would pay more attention of the distributions of fixed terms in the models. Distribution of fixed intercepts and slopes are plotted to see whether they are normally distributed. If they are normally distributed, we could use a stronger assumption and use LME the models to fit the data.</p>
+<p><em>Intercept:</em></p>
+<p>$log(\textrm{Overall Ratings}<em>{ij}) = \alpha_i +  \beta_1*(\textrm{Price}</em>{ij}) + \xi_i$, </p>
+<p>$i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (FEM-1)</p>
+<p><em>Slope:</em></p>
+<p>$log(\textrm{Overall Ratings}<em>{ij}) = \beta_0 + \beta_1 * (\textrm{Price}</em>{ij}) + \beta_2 * (\alpha_i * \textrm{Price}_{ij}) + \xi_i$, </p>
+<p>$i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (FEM-2)</p>
+<p>For the “fixed slopes”, I mean the actually slope of price fitted by this fixed effect model for each publisher.</p>
+<p>$\textrm{Fixed Slope} = \beta_1+ \beta_2 * \alpha_i$</p>
+<p>I wanted to use the offset() function in the regression of avoid the existence of β2. However, the program did not run well on this. So I still kept the β2. Fortunately, in this case, the existence of β2 does not affect the calculation of ‘fixed slopes’.</p>
+<h4 id="Generalized-Estimating-Equation-GEE"><a href="#Generalized-Estimating-Equation-GEE" class="headerlink" title="Generalized Estimating Equation (GEE)"></a>Generalized Estimating Equation (GEE)</h4><p>In GEE model, I will use the original overall ratings data because GEE model could handle discreet data. Since the GEE model need same number of records for each publisher. To have a better understanding of correlation matrix, again, I chose the number of game counts in the dataset by the game count distribution (Fig 13). Finally, a subset of GEE model is created by choosing publishers published equal or more than 5 games. And 5 games are randomly chosen into the subset. There are 323 publishers and 1615 games are in the subset.</p>
+<p>Before starting to fit the GEE model. Correlation Matrix of 5 games among publishers are calculated and plotted to determine what correlation matrix to use in the GEE model. Unfortunately, due to technical reason, although I tested the correlation matrix and checked the mean and standard deviation of overall ratings are same or not, I still chose to use Poisson distribution and “exchange” correlation matrix.</p>
+<p>$log(\lambda_{ij})= \beta_0 + \beta_1*(\textrm{Price}_{ij})$, </p>
+<p>$\textrm{Overall ratings}<em>{ij} \in Poisson(\lambda</em>{ij})$, </p>
+<p>$i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$</p>
+<h5 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h5><p>Tools I used in this analysis including R software 3.6.1, packages: ggplot2, lattice, gridExtra, nlme, lme4, geepack, stargazer[3], and ggpubr. Microsoft Excel are also used in some calculations.</p>
+<h4 id="Results-3"><a href="#Results-3" class="headerlink" title="Results"></a>Results</h4><h5 id="Data-Process-1"><a href="#Data-Process-1" class="headerlink" title="Data Process"></a>Data Process</h5><p>In the raw data, game counts for each publisher are generated and plotted.</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/2.png" alt="fig2"></p>
+<p><strong><center>Fig 2. Game Counts Distribution</center></strong></p>
+<p>In order to find a proper criteria to remove publishers only publisher one game or published too less game to bias the pattern of prices and overall ratings. From the plot, we can notice that there is a peak around log(counts) = 2, so that I decided to enroll publishers who have published more than exp(2) ≈ 8.</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/3.png" alt="fig3"></p>
+<p><strong><center>Fig 3. Game Price Distribution</center></strong></p>
+<p><em>Note: I added 0.1 in the free game prices to generate this plot, otherwise the log price for free games are negative infinity.</em></p>
+<p>From the plot, we can see the distribution of game price is that most game log prices are between 1 and 3. And also there is another peak of game frequency for free games and game prices less than 1 dollar.</p>
+<p>The publisher include criteria are created based on the results above. In raw data, their are 14137 game publisher and 27075 published games. Among them, 324 publishers and their 7299 games are selected to be analysis.</p>
+<p>In the subset for analysis, distribution of independent variable and dependent variable are plotted as following:</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/4.png" alt="fig4"></p>
+<p><strong><center>Fig 4. Basic Description of Subset Data</center></strong></p>
+<p>From the plot, we can see that price and mean price do not have an obvious distribution. The original overall ratings have some extremely high value cases, and skewed to the right. The log of overall rating is kind of a unimodal distribution. Therefore, in the longitudinal models, except GEE models (for discrete outcome), I would use the log of overall ratings as the dependent variable.</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/5.png" alt="fig5"></p>
+<p><strong><center>Fig 5. Line plot by comparing game prices and overall ratings for each publisher</center></strong></p>
+<p>From this plot, we can see that there is a weak correlation between log of overall ratings and price. Especially, over 20 dollars, the smoothed line is almost straight. The correlation for original overall ratings is not obvious.</p>
+<h5 id="Analyze-Process"><a href="#Analyze-Process" class="headerlink" title="Analyze Process"></a>Analyze Process</h5><p>As a comparison, a cross-sectional model is fitted.</p>
+<h6 id="Table-1-Result-of-cross-sectional-model"><a href="#Table-1-Result-of-cross-sectional-model" class="headerlink" title="Table 1. Result of cross-sectional model"></a>Table 1. Result of cross-sectional model</h6><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Estimation</th>
+<th>Standard Error</th>
+<th>P-value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Intercept</td>
+<td>3.58</td>
+<td>0.031</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td>Price</td>
+<td>0.11</td>
+<td>0.002</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td>R-square</td>
+<td>0.1834</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/6.png" alt="fig6"></p>
+<p><strong><center>Fig 6. Diagnostic Plots of Cross-Sectional Model</center></strong></p>
+<p>From the results, we can see that the price is positively related to log of overall ratings (p- value  &lt; 0.05). However, the R-square is not large, which means the residuals are relatively huge in this model. Other confounders may affect the association.</p>
+<h6 id="Table-2-Result-of-LME-Models"><a href="#Table-2-Result-of-LME-Models" class="headerlink" title="Table 2. Result of LME Models"></a>Table 2. Result of LME Models</h6><table>
+<thead>
+<tr>
+<th>Parameter (Standard Error)</th>
+<th>LME-1</th>
+<th>LME-2</th>
+<th>LME-3</th>
+<th>LME-4</th>
+<th>LME-5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Price</td>
+<td>0.064***</td>
+<td>0.058***</td>
+<td>0.137***</td>
+<td>0.006</td>
+<td>0.091***</td>
+</tr>
+<tr>
+<td>(Price)</td>
+<td>0.003</td>
+<td>0.007</td>
+<td>0.028</td>
+<td>0.260</td>
+<td>0.003</td>
+</tr>
+<tr>
+<td>Price^0.5</td>
+<td></td>
+<td></td>
+<td>-0.279**</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>(Price^0.5)</td>
+<td></td>
+<td></td>
+<td>0.134</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Price^2</td>
+<td></td>
+<td></td>
+<td>-0.001***</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>(Price^2)</td>
+<td></td>
+<td></td>
+<td>0.0003</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>English</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0.351</td>
+<td></td>
+</tr>
+<tr>
+<td>(English)</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0.250</td>
+<td></td>
+</tr>
+<tr>
+<td>Price*English</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0.056***</td>
+<td></td>
+</tr>
+<tr>
+<td>(Price*English)</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0.016</td>
+<td></td>
+</tr>
+<tr>
+<td>Number of Date to “2019-11-31”</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0.001***</td>
+</tr>
+<tr>
+<td>(Number of Date to “2019-11-31”)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0.00002</td>
+</tr>
+<tr>
+<td>Intercept</td>
+<td>3.906***</td>
+<td>3.932***</td>
+<td>4.146***</td>
+<td>3.569***</td>
+<td>2.720***</td>
+</tr>
+<tr>
+<td>(Intercept)</td>
+<td>0.084</td>
+<td>0.087</td>
+<td>0.174</td>
+<td>0.026</td>
+<td>0.078</td>
+</tr>
+<tr>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Random Intercept (Standard Deviation)</td>
+<td>1.43</td>
+<td>1.43</td>
+<td>1.43</td>
+<td>1.44</td>
+<td>1.18</td>
+</tr>
+<tr>
+<td>Random Slope (Standard Deviation)</td>
+<td></td>
+<td>0.07</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Observations</td>
+<td>7299</td>
+<td>7299</td>
+<td>7299</td>
+<td>7299</td>
+<td>7299</td>
+</tr>
+<tr>
+<td>Log Likelihood</td>
+<td>-12,942.01</td>
+<td>-12,863.12</td>
+<td>-12,945.80</td>
+<td>-12,927.43</td>
+<td>-12,383.77</td>
+</tr>
+<tr>
+<td>Akaike Inf. Crit.</td>
+<td>25,892.02</td>
+<td>25,738.23</td>
+<td>25,903.59</td>
+<td>25,866.86</td>
+<td>24,777.55</td>
+</tr>
+<tr>
+<td>Bayesian Inf. Crit.</td>
+<td>25,919.60</td>
+<td>25,779.60</td>
+<td>25,944.96</td>
+<td>25,908.23</td>
+<td>24,812.02</td>
+</tr>
+</tbody></table>
+<p>Note: (*p &lt;0.1); (**p &lt;0.05); (***p &lt;0.01)</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/7.png" alt="fig7"></p>
+<p><strong><center>Fig 7. Residuals of LME Models</center></strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/8.png" alt="fig8"></p>
+<p><em>Note: the red lines mean estimated average intercept and slopes. The blues lines are 95% interval of random intercepts and slopes.</em></p>
+<p><strong><center>Fig 8. Estimated Curves of Model LME-1 and LME-2</center></strong></p>
+<h6 id="Table-3-Fixed-Effect-Models"><a href="#Table-3-Fixed-Effect-Models" class="headerlink" title="Table 3. Fixed Effect Models"></a>Table 3. Fixed Effect Models</h6><table>
+<thead>
+<tr>
+<th></th>
+<th>FEM-1</th>
+<th></th>
+<th></th>
+<th>FEM-2</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Covariates</td>
+<td>Estimated Value</td>
+<td>Standard Error</td>
+<td>P-Value</td>
+<td>Estimated Value</td>
+<td>Standard Error</td>
+<td>P-value</td>
+</tr>
+<tr>
+<td>price</td>
+<td>0.060</td>
+<td>0.003</td>
+<td>&lt;0.001</td>
+<td>-0.157</td>
+<td>0.0356</td>
+<td>0.6587</td>
+</tr>
+<tr>
+<td>Intercept</td>
+<td></td>
+<td></td>
+<td></td>
+<td>3.964</td>
+<td>0.7923</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Mean of Fixed Term</td>
+<td>3.93</td>
+<td></td>
+<td></td>
+<td>0.26</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Standard deviation of Fixed Term</td>
+<td>1.49</td>
+<td></td>
+<td></td>
+<td>3.26</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/9.png" alt="fig9"></p>
+<p><strong><center>Fig 9. Distribution of Fixed Intercepts of FEM-1</center></strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/10.png" alt="fig10"></p>
+<p><strong><center>Fig 10. Distribution of Fixed Slopes (Estimated slope of price add by every individual interaction term) of FEM-2</center></strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/11.png" alt="fig11"></p>
+<p><strong><center>Fig 11. Residuals of FEM-1</center></strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/13.png" alt="fig12"></p>
+<p><strong><center>Fig 12. Residuals of FEM-2</center></strong></p>
+<p>From the results, we can see that both of the fixed intercepts and slopes are quite normally distributed.</p>
+<p>Before using GEE model, I generated a subset which contain all the 323 publishers who have more than 5 non-free games in the data and randomly picked 5 games for each publisher. Then randomly picked 100 publishers to fit the GEE model. The reason of why I chose 5 is because the following distribution of free game counts:</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/13.png" alt="fig13"></p>
+<p><strong><center>Fig 13. Non-Free Game Counts of Every Publisher</center></strong></p>
+<p>To choose what kind of correlated matrix to use in the GEE model, I plotted the correlation of games in five prices. When calculated in the correlation matrix, for each publisher, there could be duplicate prices for publishers. I randomly gave order for same prices.</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/14.png" alt="fig14"></p>
+<p><strong><center>Fig 14. Correlation Matrix of Overall ratings in Different Prices</center></strong></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/15.png" alt="fig15"></p>
+<p>Note: ‘or’ means ‘Overall Ratings’, and ‘p*’ means the rank of five prices</p>
+<p><strong><center>Fig 15. Correlation Matrix of Overall</center></strong></p>
+<h6 id="Table-4-Generalized-Estimating-Equation"><a href="#Table-4-Generalized-Estimating-Equation" class="headerlink" title="Table 4. Generalized Estimating Equation"></a>Table 4. Generalized Estimating Equation</h6><table>
+<thead>
+<tr>
+<th></th>
+<th>Estimated Value</th>
+<th>Standard Error</th>
+<th>P-value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>price</td>
+<td>0.0410</td>
+<td>0.013</td>
+<td>0.001</td>
+</tr>
+<tr>
+<td>Intercept</td>
+<td>6.732</td>
+<td>0.386</td>
+<td>&lt;0.001</td>
+</tr>
+</tbody></table>
+<h4 id="Discussion-3"><a href="#Discussion-3" class="headerlink" title="Discussion"></a>Discussion</h4><h5 id="What-are-overall-ratings-indicating-What-the-models-tell-the-game-publishers"><a href="#What-are-overall-ratings-indicating-What-the-models-tell-the-game-publishers" class="headerlink" title="What are overall ratings indicating? What the models tell the game publishers?"></a>What are overall ratings indicating? What the models tell the game publishers?</h5><p>Overall ratings may not be the most import measurement for game publishers, but actually it is the most important variable in the dataset I acquired. Firstly, as mentioned in introduction, the number of overall ratings is positively related to the selling volume. On the other hand, if there are lots of comments, publishers could get many reviews of the game, which could also help publishers and developers editing the game. Therefore, for each game, publishers do expect more comments / higher overall rating. The results of this analysis could help publishers expecting the overall ratings value (the number of total comments) by the setting of game price.</p>
+<p>On average, for each publisher, the higher price one game published with, the more comments (higher overall ratings) is expected to acquire. However, this not means that a game with infinity price would have infinity overall rating. From LME models of testing non-linearity (LME-3), and with other covariates (LME4, LME-5) should that there are other factors effecting the relationship between game price and overall ratings. Besides, publishers cannot based on the results to set the game prices unreasonable high. The results can only tell us games with higher price could have higher overall ratings. Actually speaking, to receive higher overall ratings, the publishers should publish games that worth that higher prices.</p>
+<h5 id="Which-model-is-the-best-to-describe-the-relationship-between-game-price-and-selling-volume"><a href="#Which-model-is-the-best-to-describe-the-relationship-between-game-price-and-selling-volume" class="headerlink" title="Which model is the best to describe the relationship between game price and selling volume?"></a>Which model is the best to describe the relationship between game price and selling volume?</h5><p>Since there will be many models discussed in this part, I will give my answer at first. In my opinion, the linear effect model with random intercept and random slope describes the relationship in a best way. Firstly, compare with the cross sectional model, longitudinal models could control for the difference between each publisher, sot hat it could reduce the confounding effect between game prices and overall ratings. The regression coefficient of price in cross-sectional model is higher than the longitudinal models, which means that the proportion of publishers who have more overall ratings is higher in the dataset.</p>
+<p>Secondly, for generalized estimating equation, I put too many adjustments in that model. Because GEE model require each publisher have same amount of published games, I removed the publishers who have less than five games in the analyzing dataset and randomly chose five games for publishers who have more than five games. Besides, I should use the “unstructured” correlation model to fit the data. However, it would cost too much times to finish it. And at last, I still use “exchangeable” correlation matrix in the model. And the original count data isn’t a good dependent variable in this case.</p>
+<p>Thirdly, in the fixed effect models, we can see that the fixed intercepts and slopes are quite normally distributed (Fig 9, Fig 10), which means we can make a stronger hypothesis that this intercepts and slopes are normally distributed.</p>
+<p>Also from AIC and the Log likelihoods, the LME model with random intercept and random slope was still the best one among models without other covariates.</p>
+<h5 id="Whether-we-should-controlling-released-time-in-the-model"><a href="#Whether-we-should-controlling-released-time-in-the-model" class="headerlink" title="Whether we should controlling released time in the model?"></a>Whether we should controlling released time in the model?</h5><p>At first, I do not want to adjust for released date because it is not associated with game price. The common prices setting of video games has not been changed for quite long time. The game with higher quality and made by large game companies (AAA games) would have a price of 59.99 dollars. There are also some lower settings like 49.99 dollars, 29.99 dollars or 23.99 dollars. Actually the setting of game prices is not that clear lower than 49.99 dollars. Although, on the other hand, release time is strongly related to the number of overall ratings, I still did not think released time could be a confounder. However, I noticed that some games would permanently reduced prices after resealed for a long time like about 1 year or 2 years. There are also some games permanently enhanced their prices because the developers made a great update and enhanced the overall game quality. Therefore, I finally included the released time in the analyses. The result shows that, after controlled by released time, the game price is also positively related to the overall ratings.</p>
+<h5 id="Limitations-of-the-analysis"><a href="#Limitations-of-the-analysis" class="headerlink" title="Limitations of the analysis"></a>Limitations of the analysis</h5><p>In the analysis, there are three spots that I manually decide to remove some records from the dataset. The first one is that I only include publishers who published more than eight games in the analysis. The main reason of doing this is to fit the requirement of longitudinal data that each individual should have several records. Although I did find some evidence from the distribution of published game counts to say patterns from publishers who published more than eight games should be more stable and mature than from new game publishers, it is still lack of scientific supports. The second spot was in the GEE model, because I need reduce the number of records and for each individual publishers, I need same game records. Therefore, I randomly picked 5 games from each publishers.</p>
+<p>In longitudinal analysis, both of these problem could have another solution: for example, if there is a publisher only published 2 games and have different game prices and overall ratings, I could estimate overall ratings at other game prices for this publisher by basic algebra. However, there is another problem in this solution: I do not know what price I should estimated by. No one knows if there is another game published by the publisher, what game price would it be set. But all in all, there is data from the original dataset did not include in the model. Therefore, I should set the target population to be game publishers who published more than eight games.</p>
+<p>The third spot is that I did not involve free games in the analysis. In reason is that most free games have paid services in the game and it is hard to count it’s price because it’s different by player. However, there could also have few games that actually because of the poor game quality to be set as free games. But I did not include them in the model. Therefore, the result</p>
+<p>Another limitation is about the correlation of overall ratings. By introducing longitudinal analysis and setting publishers as individual, the correlation of overall ratings has been counted and fitted in the models. However, Not only there are publishers publish games from different developers, but also there is a few amount of developers who publish their games in different publishers. This means There still could be correlations of overall ratings among different publishers because they published different games from same developers.</p>
+<p>There are lots of other variables effect the overall ratings like the types of games, whether the game is published on other platforms and how the publisher advertising the game. Further analysis could concern more covariates to make the mechanism of how prices effects overall ratings clearer.</p>
+<h4 id="Conclusion-3"><a href="#Conclusion-3" class="headerlink" title="Conclusion"></a>Conclusion</h4><p>This analysis shows that on average, game price is positively related to the overall ratings. For one dollar increased on the game price for one publisher among publishers who published more than eight games, there is about 0.06 promotion in log overall rating of the game. This analysis also proved that this positively relationship is not linear. And games’ overall rating could also be effect by other variables like whether the game have English version or released date.</p>
+<h4 id="Reference-3"><a href="#Reference-3" class="headerlink" title="Reference"></a>Reference</h4><p>[1] Nik Davis, (2019) Steam Store Games (Clean dataset) Combined data of 27,000 games scraped from Steam and SteamSpy APIs, <a target="_blank" rel="noopener" href="https://www.kaggle.com/nikdavis/steam-store-games">https://www.kaggle.com/nikdavis/steam-store-games</a></p>
+<p>[2]Wikipedia contributors. (2019, December 3). Steam Spy. In Wikipedia, The Free Encyclopedia. Retrieved 21:08, December 12, 2019, from <a target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?title=Steam_Spy&amp;oldid=929122689">https://en.wikipedia.org/w/index.php?title=Steam_Spy&amp;oldid=929122689</a></p>
+<p>[3] Hlavac, Marek (2018). stargazer: Well-Formatted Regression and Summary Statistics Tables. R package version 5.2.2. <a target="_blank" rel="noopener" href="https://cran.r-project.org/package=stargazer">https://CRAN.R-project.org/package=stargazer</a> </p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
+            <p>Link of This Article：<a href="https://ry2an.github.io/2020/05/03/Portfolio-as-MPH-Student/">https://ry2an.github.io/2020/05/03/Portfolio-as-MPH-Student/</a>
+            <p>Publish Date：<a href="https://ry2an.github.io/2020/05/03/Portfolio-as-MPH-Student/">May 3rd 2020, 2:04:42 pm</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/05/03/Portfolio-as-MPH-Student/">May 21st 2020, 1:44:00 pm</a>
+            <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/05/20/EPID622/" title= "Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases">
+                    <div class="nextTitle">Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/" title= "Repeat Academic Poisson and Negative Binomial Regression">
+                    <div class="prevTitle">Repeat Academic Poisson and Negative Binomial Regression</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:ruoyan.han94@outlook.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Ry2an" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/my_wechat.jpg" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.zhihu.com/people/tui-mao-39" class="iconfont-archer zhihu" target="_blank" title=zhihu></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://space.bilibili.com/2477951" class="iconfont-archer bilibili" target="_blank" title=bilibili></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Professional-Mission-Statement"><span class="toc-number">1.</span> <span class="toc-text">Professional Mission Statement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Resume"><span class="toc-number">2.</span> <span class="toc-text">Resume</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Personal-Information"><span class="toc-number">2.1.</span> <span class="toc-text">Personal Information</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Resume-Objective"><span class="toc-number">2.2.</span> <span class="toc-text">Resume Objective</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Education-Experiences"><span class="toc-number">2.3.</span> <span class="toc-text">Education Experiences</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Internship-Experiences"><span class="toc-number">2.4.</span> <span class="toc-text">Internship Experiences</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Skills"><span class="toc-number">2.5.</span> <span class="toc-text">Skills</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Statistics"><span class="toc-number">2.5.1.</span> <span class="toc-text">Statistics:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Analyzing-and-Developing-tools"><span class="toc-number">2.5.2.</span> <span class="toc-text">Analyzing and Developing tools:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Language"><span class="toc-number">2.5.3.</span> <span class="toc-text">Language:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Core-Competencies"><span class="toc-number">3.</span> <span class="toc-text">Core Competencies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Biostatistics-and-Epidemiology-Competencies"><span class="toc-number">4.</span> <span class="toc-text">Biostatistics and Epidemiology Competencies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Experience-in-Public-Health"><span class="toc-number">5.</span> <span class="toc-text">Experience in Public Health</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CITI-Program-Certificate"><span class="toc-number">5.1.</span> <span class="toc-text">CITI Program Certificate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IRB-determination-Letter-from-CUNY-SPH"><span class="toc-number">5.2.</span> <span class="toc-text">IRB determination Letter from CUNY SPH</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fieldwork-Experience"><span class="toc-number">5.3.</span> <span class="toc-text">Fieldwork Experience</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Clinical-Intern-in-5th-Hospital-of-Shanghai-2018"><span class="toc-number">5.4.</span> <span class="toc-text">Clinical Intern in 5th Hospital of Shanghai (2018)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Volunteer-in-department-of-Health-Putuo-Shanghai-2018"><span class="toc-number">5.5.</span> <span class="toc-text">Volunteer in department of Health, Putuo, Shanghai (2018)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Internship-in-CDC-Putuo-Shanghai-2018"><span class="toc-number">5.6.</span> <span class="toc-text">Internship in CDC, Putuo, Shanghai (2018)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Community-Health-Education-Experience-2017"><span class="toc-number">5.7.</span> <span class="toc-text">Community Health Education Experience (2017)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Survey-of-Informatics-Systems-Ultilizing-2016"><span class="toc-number">5.8.</span> <span class="toc-text">Survey of Informatics Systems Ultilizing (2016)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Academic-Reports-Course-Assignments"><span class="toc-number">6.</span> <span class="toc-text">Academic Reports (Course Assignments)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Appendix"><span class="toc-number">7.</span> <span class="toc-text">Appendix</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Exploring-Association-Between-Self-Reported-Mental-Health-and-Obesity-by-Using-Propensity-Score-to-Adjust-Chronic-Diseases"><span class="toc-number">7.1.</span> <span class="toc-text">Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Introduction"><span class="toc-number">7.1.1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Method"><span class="toc-number">7.1.2.</span> <span class="toc-text">Method</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Results"><span class="toc-number">7.1.3.</span> <span class="toc-text">Results</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Discussion"><span class="toc-number">7.1.4.</span> <span class="toc-text">Discussion</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Limitation"><span class="toc-number">7.1.5.</span> <span class="toc-text">Limitation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Conclusion"><span class="toc-number">7.1.6.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference"><span class="toc-number">7.1.7.</span> <span class="toc-text">Reference:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Repeat-Academic-Poisson-and-Negative-Binomial-Regression"><span class="toc-number">7.2.</span> <span class="toc-text">Repeat Academic Poisson and Negative Binomial Regression</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Introduction-1"><span class="toc-number">7.2.1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Method-1"><span class="toc-number">7.2.2.</span> <span class="toc-text">Method</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Data-setting"><span class="toc-number">7.2.2.1.</span> <span class="toc-text">Data setting</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Rate-calculation"><span class="toc-number">7.2.2.1.1.</span> <span class="toc-text">Rate calculation</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Analysis-processes"><span class="toc-number">7.2.2.2.</span> <span class="toc-text">Analysis processes</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Software"><span class="toc-number">7.2.2.3.</span> <span class="toc-text">Software:</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Results-1"><span class="toc-number">7.2.3.</span> <span class="toc-text">Results</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Discussion-1"><span class="toc-number">7.2.4.</span> <span class="toc-text">Discussion</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Compare-with-the-paper%E2%80%99s-result"><span class="toc-number">7.2.4.1.</span> <span class="toc-text">Compare with the paper’s result</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#The-association-between-separate-model-and-combined-model"><span class="toc-number">7.2.4.2.</span> <span class="toc-text">The association between separate model and combined model</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Model-comparison"><span class="toc-number">7.2.4.3.</span> <span class="toc-text">Model comparison</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Limitation-1"><span class="toc-number">7.2.4.4.</span> <span class="toc-text">Limitation</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Conclusion-1"><span class="toc-number">7.2.5.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference-1"><span class="toc-number">7.2.6.</span> <span class="toc-text">Reference:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Repeat-Academic-Survival-Analysis"><span class="toc-number">7.3.</span> <span class="toc-text">Repeat Academic Survival Analysis</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Introduction-2"><span class="toc-number">7.3.1.</span> <span class="toc-text">Introduction:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Methods"><span class="toc-number">7.3.2.</span> <span class="toc-text">Methods</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Data-Source"><span class="toc-number">7.3.2.1.</span> <span class="toc-text">Data Source:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Software-1"><span class="toc-number">7.3.2.2.</span> <span class="toc-text">Software:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Analysis-Process"><span class="toc-number">7.3.2.3.</span> <span class="toc-text">Analysis Process:</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Results-2"><span class="toc-number">7.3.3.</span> <span class="toc-text">Results</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Discussion-2"><span class="toc-number">7.3.4.</span> <span class="toc-text">Discussion</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Conclusion-2"><span class="toc-number">7.3.5.</span> <span class="toc-text">Conclusion:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference-2"><span class="toc-number">7.3.6.</span> <span class="toc-text">Reference:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Using-Longitudinal-Models-To-Analyze-Steam-Games"><span class="toc-number">7.4.</span> <span class="toc-text">Using Longitudinal Models To Analyze Steam Games</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Introduction-3"><span class="toc-number">7.4.1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Method-2"><span class="toc-number">7.4.2.</span> <span class="toc-text">Method</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Data-Process"><span class="toc-number">7.4.2.1.</span> <span class="toc-text">Data Process</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Data-Source-1"><span class="toc-number">7.4.2.1.1.</span> <span class="toc-text">Data Source</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Analyzing-Process"><span class="toc-number">7.4.2.2.</span> <span class="toc-text">Analyzing Process</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Descriptive-Statistics"><span class="toc-number">7.4.2.2.1.</span> <span class="toc-text">Descriptive Statistics</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Cross-sectional-Model"><span class="toc-number">7.4.2.2.2.</span> <span class="toc-text">Cross-sectional Model</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Longitudinal-Models-LME"><span class="toc-number">7.4.2.2.3.</span> <span class="toc-text">Longitudinal Models (LME)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Linear-Mixed-Effect-Model-Random-Intercept-and-Slope"><span class="toc-number">7.4.3.</span> <span class="toc-text">Linear Mixed Effect Model - Random Intercept and Slope</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Non-linear-Relationship"><span class="toc-number">7.4.4.</span> <span class="toc-text">Non linear Relationship</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Effect-measurement-modifier-and-confounding-effect-of-whether-the-game-have-English-version"><span class="toc-number">7.4.5.</span> <span class="toc-text">Effect measurement modifier and confounding effect of whether the game have English version</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Confouder-of-released-date"><span class="toc-number">7.4.6.</span> <span class="toc-text">Confouder of released date</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Estimating-line"><span class="toc-number">7.4.7.</span> <span class="toc-text">Estimating line</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Fixed-Effect-Model-FEM"><span class="toc-number">7.4.8.</span> <span class="toc-text">Fixed Effect Model (FEM)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Generalized-Estimating-Equation-GEE"><span class="toc-number">7.4.9.</span> <span class="toc-text">Generalized Estimating Equation (GEE)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Tools"><span class="toc-number">7.4.9.1.</span> <span class="toc-text">Tools</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Results-3"><span class="toc-number">7.4.10.</span> <span class="toc-text">Results</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Data-Process-1"><span class="toc-number">7.4.10.1.</span> <span class="toc-text">Data Process</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Analyze-Process"><span class="toc-number">7.4.10.2.</span> <span class="toc-text">Analyze Process</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Table-1-Result-of-cross-sectional-model"><span class="toc-number">7.4.10.2.1.</span> <span class="toc-text">Table 1. Result of cross-sectional model</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Table-2-Result-of-LME-Models"><span class="toc-number">7.4.10.2.2.</span> <span class="toc-text">Table 2. Result of LME Models</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Table-3-Fixed-Effect-Models"><span class="toc-number">7.4.10.2.3.</span> <span class="toc-text">Table 3. Fixed Effect Models</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Table-4-Generalized-Estimating-Equation"><span class="toc-number">7.4.10.2.4.</span> <span class="toc-text">Table 4. Generalized Estimating Equation</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Discussion-3"><span class="toc-number">7.4.11.</span> <span class="toc-text">Discussion</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#What-are-overall-ratings-indicating-What-the-models-tell-the-game-publishers"><span class="toc-number">7.4.11.1.</span> <span class="toc-text">What are overall ratings indicating? What the models tell the game publishers?</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Which-model-is-the-best-to-describe-the-relationship-between-game-price-and-selling-volume"><span class="toc-number">7.4.11.2.</span> <span class="toc-text">Which model is the best to describe the relationship between game price and selling volume?</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Whether-we-should-controlling-released-time-in-the-model"><span class="toc-number">7.4.11.3.</span> <span class="toc-text">Whether we should controlling released time in the model?</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Limitations-of-the-analysis"><span class="toc-number">7.4.11.4.</span> <span class="toc-text">Limitations of the analysis</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Conclusion-3"><span class="toc-number">7.4.12.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference-3"><span class="toc-number">7.4.13.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 16
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/30</span><a class="archive-post-title" href= "/2020/07/30/test/" >test</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span><a class="archive-post-title" href= "/2020/07/29/flight-back-china/" >flight_back_china</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/20</span><a class="archive-post-title" href= "/2020/05/20/EPID622/" >Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/Portfolio-as-MPH-Student/" >Portfolio as MPH</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/05</span><a class="archive-post-title" href= "/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/" >Repeat Academic Poisson and Negative Binomial Regression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2020/03/04/Repeat-Ancademic-Survival-Analysis/" >Repeat Academic Survival Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/" >Understanding Fourier Transform and Wavelet Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/31</span><a class="archive-post-title" href= "/2020/01/31/Simulating-SIR-Model/" >Simulating SIR Model</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/17</span><a class="archive-post-title" href= "/2020/01/17/Crawling-Data-From-html-Based-Pages/" >Crawling Data From html Based Pages</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/2020/01/14/Vaccine-Making-Selling-Delivering-and-Using-System/" >Vaccine Making Selling Delivering and Using System</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/11</span><a class="archive-post-title" href= "/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/" >Using Longitudinal Models To Analyze Steam Games</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/10</span><a class="archive-post-title" href= "/2020/01/10/Connect-Four-Chess/" >Connect Four Chess</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2016 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/01</span><a class="archive-post-title" href= "/2016/09/01/summer-survey-2016/" >2016年暑期实践</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1994 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/10</span><a class="archive-post-title" href= "/1994/10/10/Markdown-Cheat-Sheet/" >Markdown Cheat Sheet</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/07/30/hello-world/" >Hello World</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1994 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/09</span><a class="archive-post-title" href= "/1994/10/09/MySQL-Hand-Book/" >MySQL Hand Book</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="trip"><span class="iconfont-archer">&#xe606;</span>trip</span>
+    
+        <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Ruoyan Han"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+

@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="Ruoyan Han">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Ruoyan Han">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>Repeat Academic Survival Analysis · Ry2an&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/hakase.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Ry2an&#39;s Studio</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Repeat Academic Survival Analysis</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Ry2an's Studio</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/postbg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            Repeat Academic Survival Analysis
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">1.6k</span>Reading time: <span class="post-count reading-time">9 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/03/04</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>Author: Ruoyan Han</p>
+<p>Code and data for this case is available at:<br><a target="_blank" rel="noopener" href="https://github.com/Ry2an/case_code/tree/master/bios623as3">https://github.com/Ry2an/case_code/tree/master/bios623as3</a></p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction:"></a>Introduction:</h2><p>This practicing case is going to repeat partial work of Wondwossen, et al’s paper<sup>1</sup>.Their paper is focusing on whether the mortality is different of tuberculosis patients who also have HIV when receiving cART treatment at different time points (first week, fourth week and eighth week). This case is mainly repeating Figure 2 and Table 2 of the paper, which included survival analysis by using Kaplan Meier function and Proportional Hazard approach with several corvariates. In addition, residuals of different models are shown and interpreted in this document.</p>
+<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><h3 id="Data-Source"><a href="#Data-Source" class="headerlink" title="Data Source:"></a>Data Source:</h3><p>The dataset used in this paper is included in the supplement of Wondwossen, et al’s paper.</p>
+<h3 id="Software"><a href="#Software" class="headerlink" title="Software:"></a>Software:</h3><p>R software 3.6.1</p>
+<p>Package: survival, survminer</p>
+<h3 id="Analysis-Process"><a href="#Analysis-Process" class="headerlink" title="Analysis Process:"></a>Analysis Process:</h3><ul>
+<li><h4 id="Kaplan-Meier-curve"><a href="#Kaplan-Meier-curve" class="headerlink" title="Kaplan Meier curve :"></a>Kaplan Meier curve :</h4></li>
+</ul>
+<p>To repeat the Figure 2 of the original paper, survfit() and survdiff() from R package ‘survival’ are used to calculate. The group setting of Kaplan Meier approach is by three different time of receiving cART. The plot of survival curve and risk table is generated by ggsurvplot() function of package ‘survminer’.</p>
+<ul>
+<li><h4 id="Log-rank-test"><a href="#Log-rank-test" class="headerlink" title="Log-rank test:"></a>Log-rank test:</h4></li>
+</ul>
+<p>A log rank test is implemented by survdiff() function under R package ‘survival’ to tell whether the survival curve of treatments happened in the week 1, week 4 and week 8 are different with each other.</p>
+<ul>
+<li><h4 id="Proportional-Hazard-Analysis"><a href="#Proportional-Hazard-Analysis" class="headerlink" title="Proportional Hazard Analysis:"></a>Proportional Hazard Analysis:</h4></li>
+</ul>
+<h5 id="Univariate-Analysis"><a href="#Univariate-Analysis" class="headerlink" title="Univariate Analysis:"></a>Univariate Analysis:</h5><p>Four models are implemented separately by only enrolling treatment, whether CD4 cell count is less than 50 per microliter, whether albumin is less than 3 grams per deciliter and Body Mass Index in the models. This analysis uses coxph() function under R package ‘survival’. The models are listed as following (1 - 4): </p>
+<p> $$<br> \textrm{hazard}|t = h_{0t}<em>exp(\beta_0 + \beta_1</em>\textrm{treatment})<br> $$</p>
+<p> $$<br> \textrm{hazard}|t = h_{0t}<em>exp(\beta_0 + \beta_1</em>\textrm{whether CD4 &lt; 50})<br> $$</p>
+<p> $$<br> \textrm{hazard}|t = h_{0t}<em>exp(\beta_0 + \beta_1</em>\textrm{whether Albumin &lt; 3})<br> $$</p>
+<p> $$<br> \textrm{hazard}|t = h_{0t}<em>exp(\beta_0 + \beta_1</em>\textrm{BMI})<br> $$</p>
+<h5 id="Multivariable-Analysis"><a href="#Multivariable-Analysis" class="headerlink" title="Multivariable Analysis:"></a>Multivariable Analysis:</h5><p>One model is fitted by enrolling all covariates mentioned in the univariate analysis. The model is shown as following (5):</p>
+<p> $$<br> \textrm{hazard}|t = h_{0t}<em>exp(\beta_0 + \beta_1</em>\textrm{treatment} + \beta_1<em>\textrm{whether CD4 &lt; 50} + \beta_1</em>\textrm{whether Albumin &lt; 3} + \beta_1*\textrm{BMI})<br> $$</p>
+<ul>
+<li><h4 id="Residuals-Analysis"><a href="#Residuals-Analysis" class="headerlink" title="Residuals Analysis:"></a>Residuals Analysis:</h4></li>
+</ul>
+<p>Martingale, Deviance and Scaled Schoenfeld Residual are drawn in R. Smoothed lines are drawn by the smooth.spline() function in R on each graphs. Additionally, Schoenfeld Residuals are also shown by cox.zph() function under ‘survival’ package in R.</p>
+<h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as3/fig1.png" alt="fig1"></p>
+<p><strong>Fig 1.</strong> Survival Curve and Risk Table of Kaplan Meier Approach</p>
+<p>From the plot, we can see that the survival curve of people who received cART treatment in 8th week remains staying on the top of other two curves in the study period. Curves of ‘week 1’ and ‘week 4’ treatments have some crosses before the first 10 weeks. Then the curves of ‘week 1’ keeps staying at the bottom of the three curves. </p>
+<p><strong>Table 1.</strong> Result of Log - Rank Test</p>
+<table>
+<thead>
+<tr>
+<th align="center">Treatment</th>
+<th align="center">N</th>
+<th align="center">Observed</th>
+<th align="center">Expected</th>
+<th align="center">(O-E)^2/E</th>
+<th align="center">(O-E)^2/V</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">week1</td>
+<td align="center">163</td>
+<td align="center">27.00</td>
+<td align="center">20.90</td>
+<td align="center">1.78</td>
+<td align="center">2.68</td>
+</tr>
+<tr>
+<td align="center">week4</td>
+<td align="center">160</td>
+<td align="center">20.00</td>
+<td align="center">21.56</td>
+<td align="center">0.11</td>
+<td align="center">0.17</td>
+</tr>
+<tr>
+<td align="center">week8</td>
+<td align="center">155</td>
+<td align="center">17.00</td>
+<td align="center">21.54</td>
+<td align="center">0.96</td>
+<td align="center">1.47</td>
+</tr>
+<tr>
+<td align="center">Chi-Square Value</td>
+<td align="center">2.89</td>
+<td align="center">Degree of Freedom</td>
+<td align="center">2.00</td>
+<td align="center">p-value</td>
+<td align="center">0.24</td>
+</tr>
+</tbody></table>
+<p><strong>Table 2.</strong> Estimated Values of Univariable Models (1 - 4) and the Multivariable Models (5)</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as3/table2.png" alt="table2"></p>
+<p>The results of univariate analysis show that the hazard ratio of ‘week 8’ group compared by ‘week 1’ group and ‘week 4’ group are both not statistically significant by 1 (both parameters not statistically significant by 0). However, parameter of CD4, Albumin conditions and BMI are statistically significant than 0 at 0.05 critical criteria.</p>
+<p>In the multivariable analysis, the conditions of the p-values for covariates are roughly the same with the univariate analysis. Both parameter of ‘week 1’ and ‘week 4’ treatments are not statistically significant by 0. The parameter of CD4, Albumin and conditions are statistically significant than 0 at 0.05 critical criteria. The only difference happened in the parameter ‘BMI’. It is significant at 0.1 critical criteria but not significant at 0.05 critical criteria.</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as3/fig2_1.png" alt="fig2_1"></p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as3/fig2_2.png" alt="fig2_2"></p>
+<p><strong>Fig 2.</strong> Scaled Schenfeld Residual for Each Covariates in Multivariable Analysis</p>
+<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as3/fig3.png" alt="fig3"></p>
+<p><strong>Fig 3.</strong> Matingale Residuals and Deviance Residuals</p>
+<p>All of the residuals lying close to ‘0’. For Schenfeld residuals, we can the confidence intervals are always contain 0 for each covariates. This indicates that the multivariable model has a good fit so that the error term could stay in the distribution assumed by the model.</p>
+<h2 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h2><p>There are several discrepancy between my results with the original paper. In the univariate analysis multivariable analysis, the regression coefficient of ‘CD4’ and ‘Albumin’ are not same with the paper. Coefficient of ‘Week 1’ are not same in the multivariable analysis. I think the reason is because of the data from the supplement of the paper. Although I analyzed with people who lost follow up before the treatment by considering the intention to treat approach, which was the same as the authors did in their paper, we can see that there are discrepancy between the number of people who died or quit before the treatment. In the paper, the number of three groups (‘week1’, ‘week4’ and ‘week8’) who received the treatment is 149, 147 and 135, while from the data they are 150, 146, and 137. This could lead the survival probability of three treatments different with the original paper at least when first event happens. Besides, In this assignment, I didn’t include ‘Hepatotoxicity requiring interruption of TB therapy’ as a covariate in the model, which could also lead different results.</p>
+<p><strong>Table 3.</strong> Comparation Between Hazard Ratio in Previous Model and in the Original Paper</p>
+<table>
+<thead>
+<tr>
+<th align="center">Covariates</th>
+<th align="center">Univariate Model</th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center">Multivariable Model</th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"></td>
+<td align="center">Hazard Ratio</td>
+<td align="center">HR From Paper</td>
+<td align="center">p-value</td>
+<td align="center">p-value from paper</td>
+<td align="center">Hazard Ratio</td>
+<td align="center">HR From Paper</td>
+<td align="center">p-value</td>
+<td align="center">p-value from paper</td>
+</tr>
+<tr>
+<td align="center">Week 1</td>
+<td align="center">1.64</td>
+<td align="center">1.6</td>
+<td align="center">0.110</td>
+<td align="center">0.1</td>
+<td align="center">1.67</td>
+<td align="center">1.5</td>
+<td align="center">0.104</td>
+<td align="center">0.2</td>
+</tr>
+<tr>
+<td align="center">Week 4</td>
+<td align="center">1.18</td>
+<td align="center">1.2</td>
+<td align="center">0.620</td>
+<td align="center">0.6</td>
+<td align="center">1.20</td>
+<td align="center">1.2</td>
+<td align="center">0.588</td>
+<td align="center">0.6</td>
+</tr>
+<tr>
+<td align="center">CD4 cell &lt; 50</td>
+<td align="center">1.97</td>
+<td align="center">3.3</td>
+<td align="center">0.007</td>
+<td align="center">0.001</td>
+<td align="center">1.69</td>
+<td align="center">2.7</td>
+<td align="center">0.041</td>
+<td align="center">0.001</td>
+</tr>
+<tr>
+<td align="center">Albumin &lt; 3</td>
+<td align="center">2.04</td>
+<td align="center">2.8</td>
+<td align="center">0.005</td>
+<td align="center">0.001</td>
+<td align="center">1.75</td>
+<td align="center">2.3</td>
+<td align="center">0.033</td>
+<td align="center">0.02</td>
+</tr>
+<tr>
+<td align="center">BMI</td>
+<td align="center">0.90</td>
+<td align="center">0.9</td>
+<td align="center">0.025</td>
+<td align="center">0.0</td>
+<td align="center">0.92</td>
+<td align="center">0.9</td>
+<td align="center">0.079</td>
+<td align="center">0.04</td>
+</tr>
+</tbody></table>
+<p>Although the parameters of different treatments are not significant in the model, we can still see a trend among three treatments:<br>Hazard Ratio: week 1 : week 8 = 1.7; week 4 : week 8 = 1.2; week 8 : week 8 = 1. It is obvious that by controlling with other covariates, the later the patient receive the treatments, the higher of the survival probability could be. But it’s just not statistically significant.</p>
+<p>In my opinion, there could be two solutions to figure out whether there is a trend between treatment time point and survival probability. The first one is to increase the sample size. I will use the parameter of ‘week 1’ in the multivariable analysis as an example. The standard error of this parameter is 0.314, which means only when the regression coefficient is larger than about 0.314 * 1.96 = 0.615 (negatively calculate is the same mechanism), it could be statistically significant at 0.05 critical criteria. That means the hazard ratio compare ‘week 8’ with ‘week 1’ should be larger than exp(0.615) = 1.85. However, as far as I am concerned, 1.5, or 1.2 are still meaningful results for the context. It’s just the study do not have enough power to prove it is statistically significant. In another words, if the standard error of ‘week 1’ could reduced to about 0.511 / 1.96 = 0.261, the result could be statistically significant at 0.05 critical criteria. We know that in the ‘week 1’ group, there are 163 participants, which means the variance of the regression coefficient in target population could be estimated as 0.314 * (163)^0.5 = 4.01. If we want the standard error (the variance of the sample mean of the regression coefficient from target population) to be less than 0.261, the sample size of the treatment group should be more than (4.01 / 0.261)^2 = 236. It is not a huge number, if the study could also increase the number of participants in ‘week 8’, the number could be lesser.</p>
+<p>Another solution is to find another approach by assuming the outcome variable do have an order, with stronger assumption, the parameters could be farther to null hypothesis.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion:"></a>Conclusion:</h2><p>From current results, we cannot deny the hypothesis that treatments in three different times could lead same survival curve, which means the hazard ratio of ‘week 1’ and ‘week 4’ compare to ‘week 8’ are same with 1. However, from the result, we could notice that other covariates like baseline CD4, Albumin and BMI status could be more related to different cumulative survival probability by time in the target population.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><p>[1] Amogne, W., Aderaye, G., Habtewold, A., Yimer, G., Makonnen, E., Worku, A., … &amp; Lindquist, L. (2015). Efficacy and safety of antiretroviral therapy initiated one week after tuberculosis therapy in patients with CD4 counts&lt; 200 cells/μL: TB-HAART Study, a randomized clinical trial. PLoS One, 10(5), e0122587.</p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
+            <p>Link of This Article：<a href="https://ry2an.github.io/2020/03/04/Repeat-Ancademic-Survival-Analysis/">https://ry2an.github.io/2020/03/04/Repeat-Ancademic-Survival-Analysis/</a>
+            <p>Publish Date：<a href="https://ry2an.github.io/2020/03/04/Repeat-Ancademic-Survival-Analysis/">March 4th 2020, 3:06:11 pm</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/03/04/Repeat-Ancademic-Survival-Analysis/">May 21st 2020, 12:15:11 pm</a>
+            <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/" title= "Repeat Academic Poisson and Negative Binomial Regression">
+                    <div class="nextTitle">Repeat Academic Poisson and Negative Binomial Regression</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/" title= "Understanding Fourier Transform and Wavelet Analysis">
+                    <div class="prevTitle">Understanding Fourier Transform and Wavelet Analysis</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:ruoyan.han94@outlook.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Ry2an" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/my_wechat.jpg" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.zhihu.com/people/tui-mao-39" class="iconfont-archer zhihu" target="_blank" title=zhihu></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://space.bilibili.com/2477951" class="iconfont-archer bilibili" target="_blank" title=bilibili></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Methods"><span class="toc-number">2.</span> <span class="toc-text">Methods</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Data-Source"><span class="toc-number">2.1.</span> <span class="toc-text">Data Source:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Software"><span class="toc-number">2.2.</span> <span class="toc-text">Software:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analysis-Process"><span class="toc-number">2.3.</span> <span class="toc-text">Analysis Process:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Kaplan-Meier-curve"><span class="toc-number">2.3.1.</span> <span class="toc-text">Kaplan Meier curve :</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Log-rank-test"><span class="toc-number">2.3.2.</span> <span class="toc-text">Log-rank test:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Proportional-Hazard-Analysis"><span class="toc-number">2.3.3.</span> <span class="toc-text">Proportional Hazard Analysis:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Univariate-Analysis"><span class="toc-number">2.3.3.1.</span> <span class="toc-text">Univariate Analysis:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Multivariable-Analysis"><span class="toc-number">2.3.3.2.</span> <span class="toc-text">Multivariable Analysis:</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Residuals-Analysis"><span class="toc-number">2.3.4.</span> <span class="toc-text">Residuals Analysis:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Results"><span class="toc-number">3.</span> <span class="toc-text">Results</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Discussion"><span class="toc-number">4.</span> <span class="toc-text">Discussion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">5.</span> <span class="toc-text">Conclusion:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">6.</span> <span class="toc-text">Reference:</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 16
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/30</span><a class="archive-post-title" href= "/2020/07/30/test/" >test</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span><a class="archive-post-title" href= "/2020/07/29/flight-back-china/" >flight_back_china</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/20</span><a class="archive-post-title" href= "/2020/05/20/EPID622/" >Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/Portfolio-as-MPH-Student/" >Portfolio as MPH</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/05</span><a class="archive-post-title" href= "/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/" >Repeat Academic Poisson and Negative Binomial Regression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2020/03/04/Repeat-Ancademic-Survival-Analysis/" >Repeat Academic Survival Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/" >Understanding Fourier Transform and Wavelet Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/31</span><a class="archive-post-title" href= "/2020/01/31/Simulating-SIR-Model/" >Simulating SIR Model</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/17</span><a class="archive-post-title" href= "/2020/01/17/Crawling-Data-From-html-Based-Pages/" >Crawling Data From html Based Pages</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/2020/01/14/Vaccine-Making-Selling-Delivering-and-Using-System/" >Vaccine Making Selling Delivering and Using System</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/11</span><a class="archive-post-title" href= "/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/" >Using Longitudinal Models To Analyze Steam Games</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/10</span><a class="archive-post-title" href= "/2020/01/10/Connect-Four-Chess/" >Connect Four Chess</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2016 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/01</span><a class="archive-post-title" href= "/2016/09/01/summer-survey-2016/" >2016年暑期实践</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1994 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/10</span><a class="archive-post-title" href= "/1994/10/10/Markdown-Cheat-Sheet/" >Markdown Cheat Sheet</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/07/30/hello-world/" >Hello World</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1994 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/09</span><a class="archive-post-title" href= "/1994/10/09/MySQL-Hand-Book/" >MySQL Hand Book</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="trip"><span class="iconfont-archer">&#xe606;</span>trip</span>
+    
+        <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Ruoyan Han"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+
