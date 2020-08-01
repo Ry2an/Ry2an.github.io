@@ -413,13 +413,13 @@ height:50vh;
 <li><h4 id="Proportional-Hazard-Analysis"><a href="#Proportional-Hazard-Analysis" class="headerlink" title="Proportional Hazard Analysis:"></a>Proportional Hazard Analysis:</h4></li>
 </ul>
 <h5 id="Univariate-Analysis"><a href="#Univariate-Analysis" class="headerlink" title="Univariate Analysis:"></a>Univariate Analysis:</h5><p>Four models are implemented separately by only enrolling treatment, whether CD4 cell count is less than 50 per microliter, whether albumin is less than 3 grams per deciliter and Body Mass Index in the models. This analysis uses coxph() function under R package ‘survival’. The models are listed as following (1 - 4): </p>
-<p> $$<br> \textrm{hazard}|t = h_{0t}<em>exp(\beta_0 + \beta_1</em>\textrm{treatment})<br> $$</p>
-<p> $$<br> \textrm{hazard}|t = h_{0t}<em>exp(\beta_0 + \beta_1</em>\textrm{whether CD4 &lt; 50})<br> $$</p>
-<p> $$<br> \textrm{hazard}|t = h_{0t}<em>exp(\beta_0 + \beta_1</em>\textrm{whether Albumin &lt; 3})<br> $$</p>
-<p> $$<br> \textrm{hazard}|t = h_{0t}<em>exp(\beta_0 + \beta_1</em>\textrm{BMI})<br> $$</p>
-<h5 id="Multivariable-Analysis"><a href="#Multivariable-Analysis" class="headerlink" title="Multivariable Analysis:"></a>Multivariable Analysis:</h5><p>One model is fitted by enrolling all covariates mentioned in the univariate analysis. The model is shown as following (5):</p>
-<p> $$<br> \textrm{hazard}|t = h_{0t}<em>exp(\beta_0 + \beta_1</em>\textrm{treatment} + \beta_1<em>\textrm{whether CD4 &lt; 50} + \beta_1</em>\textrm{whether Albumin &lt; 3} + \beta_1*\textrm{BMI})<br> $$</p>
-<ul>
+<script type="math/tex; mode=display">
+ \textrm{hazard}|t = h_{0t}*exp(\beta_0 + \beta_1*\textrm{treatment})</script><script type="math/tex; mode=display">
+ \textrm{hazard}|t = h_{0t}*exp(\beta_0 + \beta_1*\textrm{whether CD4 < 50})</script><script type="math/tex; mode=display">
+ \textrm{hazard}|t = h_{0t}*exp(\beta_0 + \beta_1*\textrm{whether Albumin < 3})</script><script type="math/tex; mode=display">
+ \textrm{hazard}|t = h_{0t}*exp(\beta_0 + \beta_1*\textrm{BMI})</script><h5 id="Multivariable-Analysis"><a href="#Multivariable-Analysis" class="headerlink" title="Multivariable Analysis:"></a>Multivariable Analysis:</h5><p>One model is fitted by enrolling all covariates mentioned in the univariate analysis. The model is shown as following (5):</p>
+<script type="math/tex; mode=display">
+ \textrm{hazard}|t = h_{0t}*exp(\beta_0 + \beta_1*\textrm{treatment} + \beta_1*\textrm{whether CD4 < 50} + \beta_1*\textrm{whether Albumin < 3} + \beta_1*\textrm{BMI})</script><ul>
 <li><h4 id="Residuals-Analysis"><a href="#Residuals-Analysis" class="headerlink" title="Residuals Analysis:"></a>Residuals Analysis:</h4></li>
 </ul>
 <p>Martingale, Deviance and Scaled Schoenfeld Residual are drawn in R. Smoothed lines are drawn by the smooth.spline() function in R on each graphs. Additionally, Schoenfeld Residuals are also shown by cox.zph() function under ‘survival’ package in R.</p>
@@ -427,50 +427,54 @@ height:50vh;
 <p><strong>Fig 1.</strong> Survival Curve and Risk Table of Kaplan Meier Approach</p>
 <p>From the plot, we can see that the survival curve of people who received cART treatment in 8th week remains staying on the top of other two curves in the study period. Curves of ‘week 1’ and ‘week 4’ treatments have some crosses before the first 10 weeks. Then the curves of ‘week 1’ keeps staying at the bottom of the three curves. </p>
 <p><strong>Table 1.</strong> Result of Log - Rank Test</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">Treatment</th>
-<th align="center">N</th>
-<th align="center">Observed</th>
-<th align="center">Expected</th>
-<th align="center">(O-E)^2/E</th>
-<th align="center">(O-E)^2/V</th>
+<th style="text-align:center">Treatment</th>
+<th style="text-align:center">N</th>
+<th style="text-align:center">Observed</th>
+<th style="text-align:center">Expected</th>
+<th style="text-align:center">(O-E)^2/E</th>
+<th style="text-align:center">(O-E)^2/V</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">week1</td>
-<td align="center">163</td>
-<td align="center">27.00</td>
-<td align="center">20.90</td>
-<td align="center">1.78</td>
-<td align="center">2.68</td>
+<tbody>
+<tr>
+<td style="text-align:center">week1</td>
+<td style="text-align:center">163</td>
+<td style="text-align:center">27.00</td>
+<td style="text-align:center">20.90</td>
+<td style="text-align:center">1.78</td>
+<td style="text-align:center">2.68</td>
 </tr>
 <tr>
-<td align="center">week4</td>
-<td align="center">160</td>
-<td align="center">20.00</td>
-<td align="center">21.56</td>
-<td align="center">0.11</td>
-<td align="center">0.17</td>
+<td style="text-align:center">week4</td>
+<td style="text-align:center">160</td>
+<td style="text-align:center">20.00</td>
+<td style="text-align:center">21.56</td>
+<td style="text-align:center">0.11</td>
+<td style="text-align:center">0.17</td>
 </tr>
 <tr>
-<td align="center">week8</td>
-<td align="center">155</td>
-<td align="center">17.00</td>
-<td align="center">21.54</td>
-<td align="center">0.96</td>
-<td align="center">1.47</td>
+<td style="text-align:center">week8</td>
+<td style="text-align:center">155</td>
+<td style="text-align:center">17.00</td>
+<td style="text-align:center">21.54</td>
+<td style="text-align:center">0.96</td>
+<td style="text-align:center">1.47</td>
 </tr>
 <tr>
-<td align="center">Chi-Square Value</td>
-<td align="center">2.89</td>
-<td align="center">Degree of Freedom</td>
-<td align="center">2.00</td>
-<td align="center">p-value</td>
-<td align="center">0.24</td>
+<td style="text-align:center">Chi-Square Value</td>
+<td style="text-align:center">2.89</td>
+<td style="text-align:center">Degree of Freedom</td>
+<td style="text-align:center">2.00</td>
+<td style="text-align:center">p-value</td>
+<td style="text-align:center">0.24</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>Table 2.</strong> Estimated Values of Univariable Models (1 - 4) and the Multivariable Models (5)</p>
 <p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as3/table2.png" alt="table2"></p>
 <p>The results of univariate analysis show that the hazard ratio of ‘week 8’ group compared by ‘week 1’ group and ‘week 4’ group are both not statistically significant by 1 (both parameters not statistically significant by 0). However, parameter of CD4, Albumin conditions and BMI are statistically significant than 0 at 0.05 critical criteria.</p>
@@ -483,87 +487,91 @@ height:50vh;
 <p>All of the residuals lying close to ‘0’. For Schenfeld residuals, we can the confidence intervals are always contain 0 for each covariates. This indicates that the multivariable model has a good fit so that the error term could stay in the distribution assumed by the model.</p>
 <h2 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h2><p>There are several discrepancy between my results with the original paper. In the univariate analysis multivariable analysis, the regression coefficient of ‘CD4’ and ‘Albumin’ are not same with the paper. Coefficient of ‘Week 1’ are not same in the multivariable analysis. I think the reason is because of the data from the supplement of the paper. Although I analyzed with people who lost follow up before the treatment by considering the intention to treat approach, which was the same as the authors did in their paper, we can see that there are discrepancy between the number of people who died or quit before the treatment. In the paper, the number of three groups (‘week1’, ‘week4’ and ‘week8’) who received the treatment is 149, 147 and 135, while from the data they are 150, 146, and 137. This could lead the survival probability of three treatments different with the original paper at least when first event happens. Besides, In this assignment, I didn’t include ‘Hepatotoxicity requiring interruption of TB therapy’ as a covariate in the model, which could also lead different results.</p>
 <p><strong>Table 3.</strong> Comparation Between Hazard Ratio in Previous Model and in the Original Paper</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">Covariates</th>
-<th align="center">Univariate Model</th>
-<th align="center"></th>
-<th align="center"></th>
-<th align="center"></th>
-<th align="center">Multivariable Model</th>
-<th align="center"></th>
-<th align="center"></th>
-<th align="center"></th>
+<th style="text-align:center">Covariates</th>
+<th style="text-align:center">Univariate Model</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center">Multivariable Model</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center"></td>
-<td align="center">Hazard Ratio</td>
-<td align="center">HR From Paper</td>
-<td align="center">p-value</td>
-<td align="center">p-value from paper</td>
-<td align="center">Hazard Ratio</td>
-<td align="center">HR From Paper</td>
-<td align="center">p-value</td>
-<td align="center">p-value from paper</td>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">Hazard Ratio</td>
+<td style="text-align:center">HR From Paper</td>
+<td style="text-align:center">p-value</td>
+<td style="text-align:center">p-value from paper</td>
+<td style="text-align:center">Hazard Ratio</td>
+<td style="text-align:center">HR From Paper</td>
+<td style="text-align:center">p-value</td>
+<td style="text-align:center">p-value from paper</td>
 </tr>
 <tr>
-<td align="center">Week 1</td>
-<td align="center">1.64</td>
-<td align="center">1.6</td>
-<td align="center">0.110</td>
-<td align="center">0.1</td>
-<td align="center">1.67</td>
-<td align="center">1.5</td>
-<td align="center">0.104</td>
-<td align="center">0.2</td>
+<td style="text-align:center">Week 1</td>
+<td style="text-align:center">1.64</td>
+<td style="text-align:center">1.6</td>
+<td style="text-align:center">0.110</td>
+<td style="text-align:center">0.1</td>
+<td style="text-align:center">1.67</td>
+<td style="text-align:center">1.5</td>
+<td style="text-align:center">0.104</td>
+<td style="text-align:center">0.2</td>
 </tr>
 <tr>
-<td align="center">Week 4</td>
-<td align="center">1.18</td>
-<td align="center">1.2</td>
-<td align="center">0.620</td>
-<td align="center">0.6</td>
-<td align="center">1.20</td>
-<td align="center">1.2</td>
-<td align="center">0.588</td>
-<td align="center">0.6</td>
+<td style="text-align:center">Week 4</td>
+<td style="text-align:center">1.18</td>
+<td style="text-align:center">1.2</td>
+<td style="text-align:center">0.620</td>
+<td style="text-align:center">0.6</td>
+<td style="text-align:center">1.20</td>
+<td style="text-align:center">1.2</td>
+<td style="text-align:center">0.588</td>
+<td style="text-align:center">0.6</td>
 </tr>
 <tr>
-<td align="center">CD4 cell &lt; 50</td>
-<td align="center">1.97</td>
-<td align="center">3.3</td>
-<td align="center">0.007</td>
-<td align="center">0.001</td>
-<td align="center">1.69</td>
-<td align="center">2.7</td>
-<td align="center">0.041</td>
-<td align="center">0.001</td>
+<td style="text-align:center">CD4 cell &lt; 50</td>
+<td style="text-align:center">1.97</td>
+<td style="text-align:center">3.3</td>
+<td style="text-align:center">0.007</td>
+<td style="text-align:center">0.001</td>
+<td style="text-align:center">1.69</td>
+<td style="text-align:center">2.7</td>
+<td style="text-align:center">0.041</td>
+<td style="text-align:center">0.001</td>
 </tr>
 <tr>
-<td align="center">Albumin &lt; 3</td>
-<td align="center">2.04</td>
-<td align="center">2.8</td>
-<td align="center">0.005</td>
-<td align="center">0.001</td>
-<td align="center">1.75</td>
-<td align="center">2.3</td>
-<td align="center">0.033</td>
-<td align="center">0.02</td>
+<td style="text-align:center">Albumin &lt; 3</td>
+<td style="text-align:center">2.04</td>
+<td style="text-align:center">2.8</td>
+<td style="text-align:center">0.005</td>
+<td style="text-align:center">0.001</td>
+<td style="text-align:center">1.75</td>
+<td style="text-align:center">2.3</td>
+<td style="text-align:center">0.033</td>
+<td style="text-align:center">0.02</td>
 </tr>
 <tr>
-<td align="center">BMI</td>
-<td align="center">0.90</td>
-<td align="center">0.9</td>
-<td align="center">0.025</td>
-<td align="center">0.0</td>
-<td align="center">0.92</td>
-<td align="center">0.9</td>
-<td align="center">0.079</td>
-<td align="center">0.04</td>
+<td style="text-align:center">BMI</td>
+<td style="text-align:center">0.90</td>
+<td style="text-align:center">0.9</td>
+<td style="text-align:center">0.025</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.92</td>
+<td style="text-align:center">0.9</td>
+<td style="text-align:center">0.079</td>
+<td style="text-align:center">0.04</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>Although the parameters of different treatments are not significant in the model, we can still see a trend among three treatments:<br>Hazard Ratio: week 1 : week 8 = 1.7; week 4 : week 8 = 1.2; week 8 : week 8 = 1. It is obvious that by controlling with other covariates, the later the patient receive the treatments, the higher of the survival probability could be. But it’s just not statistically significant.</p>
 <p>In my opinion, there could be two solutions to figure out whether there is a trend between treatment time point and survival probability. The first one is to increase the sample size. I will use the parameter of ‘week 1’ in the multivariable analysis as an example. The standard error of this parameter is 0.314, which means only when the regression coefficient is larger than about 0.314 * 1.96 = 0.615 (negatively calculate is the same mechanism), it could be statistically significant at 0.05 critical criteria. That means the hazard ratio compare ‘week 8’ with ‘week 1’ should be larger than exp(0.615) = 1.85. However, as far as I am concerned, 1.5, or 1.2 are still meaningful results for the context. It’s just the study do not have enough power to prove it is statistically significant. In another words, if the standard error of ‘week 1’ could reduced to about 0.511 / 1.96 = 0.261, the result could be statistically significant at 0.05 critical criteria. We know that in the ‘week 1’ group, there are 163 participants, which means the variance of the regression coefficient in target population could be estimated as 0.314 * (163)^0.5 = 4.01. If we want the standard error (the variance of the sample mean of the regression coefficient from target population) to be less than 0.261, the sample size of the treatment group should be more than (4.01 / 0.261)^2 = 236. It is not a huge number, if the study could also increase the number of participants in ‘week 8’, the number could be lesser.</p>
 <p>Another solution is to find another approach by assuming the outcome variable do have an order, with stronger assumption, the parameters could be farther to null hypothesis.</p>
@@ -1113,7 +1121,22 @@ jsonContent:
     
         <script src="/scripts/share.js" async></script>    
      
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
 </html>
 
 

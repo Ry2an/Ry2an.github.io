@@ -266,7 +266,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">675</span>Reading time: <span class="post-count reading-time">2 min</span></span>
+                        <span>Word count: <span class="post-count word-count">677</span>Reading time: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -401,11 +401,11 @@ height:50vh;
 <h1 id="我展示的是一级标题"><a href="#我展示的是一级标题" class="headerlink" title="我展示的是一级标题"></a>我展示的是一级标题</h1><h2 id="我展示的是二级标题"><a href="#我展示的是二级标题" class="headerlink" title="我展示的是二级标题"></a>我展示的是二级标题</h2><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><p>换行的方式<br>可以两个空格加回车</p>
 <p>或者连续两个回车</p>
 <p><em>斜体文本</em></p>
-<p><em>斜体文本</em></p>
+<p>_斜体文本_</p>
 <p><strong>粗体文本</strong></p>
 <p><strong>粗体文本</strong></p>
 <p><strong><em>粗斜体文本</em></strong></p>
-<p><strong><em>粗斜体文本</em></strong></p>
+<p><strong>_粗斜体文本_</strong></p>
 <center>居中</center>
 
 <p align="left">左对齐</p>
@@ -433,21 +433,11 @@ height:50vh;
 <li>第三项</li>
 </ul>
 <h2 id="Markdown区块"><a href="#Markdown区块" class="headerlink" title="Markdown区块"></a>Markdown区块</h2><blockquote>
-<p>区块的第一项<br>区块的第二项<br>区块的第三项</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>最外层</p>
+<p>区块的第一项<br>区块的第二项</p>
+<h2 id="区块的第三项"><a href="#区块的第三项" class="headerlink" title="区块的第三项"></a>区块的第三项</h2><p>最外层</p>
 <blockquote>
 <p>第一层嵌套</p>
-<blockquote>
-<p>第二层嵌套</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<hr>
-<blockquote>
-<p>区块中使用列表</p>
+<h2 id="gt-第二层嵌套"><a href="#gt-第二层嵌套" class="headerlink" title="&gt; 第二层嵌套"></a>&gt; 第二层嵌套</h2><p>区块中使用列表</p>
 <ol>
 <li>第一项</li>
 <li>第二项</li>
@@ -457,25 +447,21 @@ height:50vh;
 <li>第二项</li>
 <li>第三项</li>
 </ul>
-</blockquote>
 <hr>
 <ul>
-<li>第一项<blockquote>
-<p>菜鸟教程<br>学的不仅是技术更是梦想</p>
-</blockquote>
-</li>
+<li>第一项<br>菜鸟教程<br>学的不仅是技术更是梦想</li>
 <li>第二项</li>
 </ul>
+</blockquote>
+</blockquote>
 <h2 id="Markdown代码"><a href="#Markdown代码" class="headerlink" title="Markdown代码"></a>Markdown代码</h2><p><code>printf(&quot;Hello world&quot;);</code>可以写在同一行内</p>
 <p>四个空格或一个tab键加小于号开启代码区块</p>
-<pre><code>&gt;&lt;!--hexoPostRenderEscape:&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cat(&amp;quot;This is the code part&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;:hexoPostRenderEscape--&gt;</code></pre>
-<p>一段代码可以注明也可以不注明</p>
+<pre><code>&gt;&lt;!--hexoPostRenderEscape:&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cat(&amp;quot;This is the code part&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;:hexoPostRenderEscape--&gt;
+</code></pre><p>一段代码可以注明也可以不注明</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(document).ready(function () &#123;</span><br><span class="line">    alert(&#39;RUNOOB&#39;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat(&quot;Hello world&quot;)</span><br></pre></td></tr></table></figure>
-
 <p>被添加<a href="www.link_address.com">链接</a>的文字</p>
-<p>也可以直接写出链接<br><a target="_blank" rel="noopener" href="http://www.link_address.com/">www.link_address.com</a></p>
+<p>也可以直接写出链接<br>www.link_address.com</p>
 <p>链接也可以用变量来代替，文档末尾附带变量地址：<br>这个链接用 1 作为网址变量 <a target="_blank" rel="noopener" href="http://www.google.com/">Google</a></p>
 <p>这个链接用 runoob 作为网址变量 <a target="_blank" rel="noopener" href="http://www.runoob.com/">Runoob</a></p>
 <p>然后在文档的结尾为变量赋值（网址）</p>
@@ -486,6 +472,7 @@ height:50vh;
 <p><img src="http://static.runoob.com/images/runoob-logo.png" alt="RUNOOB 图标" title="RUNOOB"></p>
 <h2 id="Markdown-表格"><a href="#Markdown-表格" class="headerlink" title="Markdown 表格"></a>Markdown 表格</h2><p>Markdown 制作表格使用 | 来分隔不同的单元格，使用 - 来分隔表头和其他行。</p>
 <p>语法格式如下：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -493,7 +480,8 @@ height:50vh;
 <th>表头</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>单元格</td>
 <td>单元格</td>
 </tr>
@@ -501,39 +489,42 @@ height:50vh;
 <td>单元格</td>
 <td>单元格</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="left">左对齐</th>
-<th align="right">右对齐</th>
-<th align="center">居中对齐</th>
+<th style="text-align:left">左对齐</th>
+<th style="text-align:right">右对齐</th>
+<th style="text-align:center">居中对齐</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
-<td align="center">单元格</td>
+<tbody>
+<tr>
+<td style="text-align:left">单元格</td>
+<td style="text-align:right">单元格</td>
+<td style="text-align:center">单元格</td>
 </tr>
 <tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
-<td align="center">单元格</td>
+<td style="text-align:left">单元格</td>
+<td style="text-align:right">单元格</td>
+<td style="text-align:center">单元格</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h2 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h2><p><strong>文本加粗</strong> </p>
 <p>** 正常显示星号 **</p>
 <hr>
-<p>$$\textrm{Soma Size}_i = \beta_0 +\beta_1*\textrm{Fatty Acid treatment}_i +\xi_i$$</p>
-<p>$a + b$</p>
+<script type="math/tex; mode=display">\textrm{Soma Size}_i = \beta_0 +\beta_1*\textrm{Fatty Acid treatment}_i +\xi_i</script><p>$a + b$</p>
 <p>$a+b$</p>
-<p>$$a + b$$</p>
-<p>$$a+b$$</p>
-<hr>
+<script type="math/tex; mode=display">a + b</script><script type="math/tex; mode=display">a+b</script><hr>
 <p>换行</p>
 <p>在一行中插入</p>
-<p>&lt;\br&gt; &lt;\br&gt; (去掉’\‘)</p>
+<p>&lt;\br&gt; &lt;\br&gt; (去掉’\\’)</p>
 <p><br><br></p>
 <p>换行</p>
 
@@ -689,7 +680,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%91%E5%B1%95%E7%A4%BA%E7%9A%84%E6%98%AF%E4%B8%80%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">我展示的是一级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E5%B1%95%E7%A4%BA%E7%9A%84%E6%98%AF%E4%BA%8C%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">我展示的是二级标题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">一级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">2.1.</span> <span class="toc-text">二级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">2.1.1.</span> <span class="toc-text">三级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">四级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%94%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">2.1.1.1.1.</span> <span class="toc-text">五级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%85%AD%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">2.1.1.1.1.1.</span> <span class="toc-text">六级标题</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E9%9A%94%E7%BA%BF"><span class="toc-number">2.2.</span> <span class="toc-text">分隔线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Markdown-%E5%88%97%E8%A1%A8"><span class="toc-number">2.3.</span> <span class="toc-text">Markdown 列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Markdown%E5%8C%BA%E5%9D%97"><span class="toc-number">2.4.</span> <span class="toc-text">Markdown区块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Markdown%E4%BB%A3%E7%A0%81"><span class="toc-number">2.5.</span> <span class="toc-text">Markdown代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Markdown-%E5%9B%BE%E7%89%87"><span class="toc-number">2.6.</span> <span class="toc-text">Markdown 图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Markdown-%E8%A1%A8%E6%A0%BC"><span class="toc-number">2.7.</span> <span class="toc-text">Markdown 表格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AC%E4%B9%89"><span class="toc-number">2.8.</span> <span class="toc-text">转义</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%91%E5%B1%95%E7%A4%BA%E7%9A%84%E6%98%AF%E4%B8%80%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">我展示的是一级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E5%B1%95%E7%A4%BA%E7%9A%84%E6%98%AF%E4%BA%8C%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">我展示的是二级标题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">一级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">2.1.</span> <span class="toc-text">二级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">2.1.1.</span> <span class="toc-text">三级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">四级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%94%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">2.1.1.1.1.</span> <span class="toc-text">五级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%85%AD%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">2.1.1.1.1.1.</span> <span class="toc-text">六级标题</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E9%9A%94%E7%BA%BF"><span class="toc-number">2.2.</span> <span class="toc-text">分隔线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Markdown-%E5%88%97%E8%A1%A8"><span class="toc-number">2.3.</span> <span class="toc-text">Markdown 列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Markdown%E5%8C%BA%E5%9D%97"><span class="toc-number">2.4.</span> <span class="toc-text">Markdown区块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%9D%97%E7%9A%84%E7%AC%AC%E4%B8%89%E9%A1%B9"><span class="toc-number">2.5.</span> <span class="toc-text">区块的第三项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gt-%E7%AC%AC%E4%BA%8C%E5%B1%82%E5%B5%8C%E5%A5%97"><span class="toc-number">2.6.</span> <span class="toc-text">&gt; 第二层嵌套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Markdown%E4%BB%A3%E7%A0%81"><span class="toc-number">2.7.</span> <span class="toc-text">Markdown代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Markdown-%E5%9B%BE%E7%89%87"><span class="toc-number">2.8.</span> <span class="toc-text">Markdown 图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Markdown-%E8%A1%A8%E6%A0%BC"><span class="toc-number">2.9.</span> <span class="toc-text">Markdown 表格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AC%E4%B9%89"><span class="toc-number">2.10.</span> <span class="toc-text">转义</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1080,7 +1071,22 @@ jsonContent:
     
         <script src="/scripts/share.js" async></script>    
      
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
 </html>
 
 

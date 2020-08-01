@@ -431,14 +431,12 @@ height:50vh;
 <li>to get access to the server and require html codes, we should firstly let our program pretent to be a browser. And thus we need to have a “head claim”:</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">for i in range(0,2):</span><br><span class="line">    url &#x3D; &#39;http:&#x2F;&#x2F;www.hnwst.gov.cn&#x2F;cms&#x2F;showsubpage.jsp?ocid&#x3D;363&amp;ncid&#x3D;363&amp;pno&#x3D;&#39;+str(i)+&#39;.html&#39;</span><br><span class="line"></span><br><span class="line">    headers &#x3D; &#123; &quot;Accept&quot;:&quot;text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;webp,*&#x2F;*;q&#x3D;0.8&quot;,</span><br><span class="line">                &quot;Accept-Encoding&quot;:&quot;gzip, deflate, sdch&quot;,</span><br><span class="line">                &quot;Accept-Language&quot;:&quot;zh-TW,zh;q&#x3D;0.8,en-US;q&#x3D;0.6,en;q&#x3D;0.4&quot;,</span><br><span class="line">                &quot;Referer&quot;:&#39;http:&#x2F;&#x2F;www.wsjsw.gov.cn&#x2F;wsj&#x2F;n429&#x2F;n426&#x2F;index.html&#39;</span><br><span class="line">                &quot;User-Agent&quot;:&quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36\</span><br><span class="line">                 (KHTML, like Gecko) Chrome&#x2F;51,.0.2704.106 Safari&#x2F;537.36&quot;</span><br><span class="line">                &#125;</span><br><span class="line">    tempp&#x3D;i+1</span><br><span class="line">    r &#x3D; requests.get(url,headers&#x3D;headers)</span><br><span class="line">    f&#x3D;open (&quot;D:\\pypj\\wjwhn\\page&quot;+str(tempp)+&quot;.txt&quot;,&#39;wb&#39;)</span><br><span class="line">    f.write(r.text)</span><br><span class="line">    f.close()</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>After we get the html file, we need to find the pattern and copy the “matched strings”</li>
 </ul>
 <p><em>Plase notice that this method is called ‘Regular Expression’, ‘regexp’, or ‘正则表达式’. There is a more advanced plug-in in python called ‘Beautiful Soup’.</em></p>
-<p><em>To understand what’s the meaning of ‘\d’ or ‘\w’, please find the tutorials of regexp by yourself.</em></p>
+<p><em>To understand what’s the meaning of ‘\\d’ or ‘\\w’, please find the tutorials of regexp by yourself.</em></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f &#x3D; open(&quot;D:&#x2F;&#x2F;pypj&#x2F;&#x2F;wjw&#x2F;&#x2F;page1.txt&quot;)</span><br><span class="line">line1 &#x3D; f.readlines()</span><br><span class="line">patternu &#x3D; re.compile(r&#39;&#x2F;wsj&#x2F;n\d\d\d&#x2F;n\d\d\d&#x2F;u1ai\d+\.html&#39;)</span><br><span class="line">result1u &#x3D; re.findall(patternu,str(line1))</span><br></pre></td></tr></table></figure>
-
 <hr>
 <p>To see full codes of this program, please forward to <a target="_blank" rel="noopener" href="https://github.com/Ry2an/crawler_prac">my github reporsitory</a>.</p>
 <hr>
@@ -988,7 +986,22 @@ jsonContent:
     
         <script src="/scripts/share.js" async></script>    
      
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
 </html>
 
 

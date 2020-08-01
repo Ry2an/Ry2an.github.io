@@ -351,7 +351,7 @@
                 <span>Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases</span>
         </a>
         <div class="abstract-content">
-            <p>Course assignment of EPID 622<br>Author: Ruoyan Han </p>
+            <p>Course assignment of EPID 622<br>Author: Ruoyan Han<br></p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -867,7 +867,22 @@ jsonContent:
     </div>
     <!-- async load share.js -->
      
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
 </html>
 
 

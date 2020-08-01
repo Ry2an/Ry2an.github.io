@@ -401,9 +401,7 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>回国航班游记【多图警告！】</p>
-<a id="more"></a>
-
+        <p>回国航班游记【多图警告！】<br><a id="more"></a></p>
 <h3 id="航班信息"><a href="#航班信息" class="headerlink" title="航班信息"></a>航班信息</h3><p>首先说一下我的航班：</p>
 <blockquote>
 <ul>
@@ -1031,7 +1029,22 @@ jsonContent:
     
         <script src="/scripts/share.js" async></script>    
      
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
 </html>
 
 

@@ -395,9 +395,7 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>Course assignment of EPID 622<br>Author: Ruoyan Han </p>
-<a id="more"></a>
-
+        <p>Course assignment of EPID 622<br>Author: Ruoyan Han<br><a id="more"></a></p>
 <h1 id="Exploring-Association-Between-Self-Reported-Mental-Health-and-Obesity-by-Using-Propensity-Score-to-Adjust-Chronic-Diseases"><a href="#Exploring-Association-Between-Self-Reported-Mental-Health-and-Obesity-by-Using-Propensity-Score-to-Adjust-Chronic-Diseases" class="headerlink" title="Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases"></a>Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><strong>Introduction</strong></h2><p>Obesity is a risk factor for many significant morbidity1. The burden has been increasing since 1990 but still does not have a slowing down trend2,3. Up to now, in the United States, the burdens of obesity have been increasing and reached about 20% to 30% in different states4. On the other hand, there are many risk factors for obesity. One major risk factor of obesity claims by previous studies is mental health status. People who have mental illnesses could have 2<br>to 3 times risk of having obesity5. We will discuss the relationship between obesity and mental status in this paper.</p>
 <p>Controlling for confounders is a normal considering when we want to measure the relationship between to conditions, and so do this time. There are also confounders between obesity and mental status. Both obesity and mental status are related to many chronic diseases. Hypertension, Dyslipidemia, and Diabetes1. Hypothyroidism6-8, Cushing’s Syndrome9,10, and polycystic Ovary Syndrome11 could cause a weight change of their patients. Besides, some drugs like Antidepressants12, Antipsychotics13, Sulfonylureas14, Thiazolidinediones14, Insulin14, Antiepileptic drugs15, Corticosteroids14 and Beta-blockers14 which are used to cure mental diseases, diabetes, hypertension, epilepsy, cardiovascular diseases, and autoimmune diseases can also cause a weight change. In another direction, chronic conditions have also been proved as a risk factor of mental illnesses16,17. Therefore, to have an accurate estimation of the relationship between mental status and obesity, we need to adjust to chronic diseases as confounders.</p>
 <p>However, there is a problem between these confounders. Chronic diseases are usually related to each other. Some typical examples are diabetes and hypertension18; diabetes and asthma19; hypertension and kidney failure20, etc. If covariates are not independent with each other, it will influence the accuracy of the coefficient parameter21. The classical process would choose to<br>use stepwise strategy and remove co-linear items22 which could lose usage of collected data.</p>
@@ -414,29 +412,28 @@ height:50vh;
 <p><strong>Univariate Analysis and Multivariate Analysis</strong></p>
 <p>In the univariate analysis part, to comparing regression coefficients of the chronic diseases, we also added age and gender into the models:</p>
 <p>(model 1)</p>
-<p>$$<br>\textrm{Obese}<em>{i} = \beta</em>{1}*\textrm{Self-reported Mental Health}<em>{i} + \beta</em>{2}*\textrm{Age}<em>{i} + \beta</em>{3}*\textrm{Self-reported Mental Health}<em>{i} * \textrm{Gender} + \beta</em>{4}*\textrm{Gender} +\xi_{i}<br>$$</p>
-<p>(model 2)</p>
-<p>$$<br>\textrm{Obese}<em>{i} = \beta</em>{1}*\textrm{Diabetes}<em>{i} + \beta</em>{2}*\textrm{Age}<em>{i} + \beta</em>{3}*\textrm{Gender} + \xi_{i}<br>$$</p>
-<p>(model 3)</p>
-<p>$$<br>\textrm{Obese}<em>{i} = \beta</em>{1}*\textrm{Hypertension}<em>{i} + \beta</em>{2}*\textrm{Age}<em>{i} + \beta</em>{3}*\textrm{Gender} + \xi_{i}<br>$$</p>
-<p>(model 4)</p>
-<p>$$<br>\textrm{Obese}<em>{i} = \beta</em>{1}*\textrm{Asthma}<em>{i} + \beta</em>{2}*\textrm{Age}<em>{i} + \beta</em>{3}*\textrm{Gender} + \xi_{i}<br>$$</p>
-<p>(model 5)</p>
-<p>$$<br>\textrm{Obese}<em>{i} = \beta</em>{1}*\textrm{Kidney}<em>{i} + \beta</em>{2}*\textrm{Age}<em>{i} + \beta</em>{3}*\textrm{Gender} + \xi_{i}<br>$$</p>
-<p>(model 6)</p>
-<p>$$<br>\textrm{Obese}<em>{i} = \beta</em>{1}*\textrm{Cancer}<em>{i} + \beta</em>{2}*\textrm{Age}<em>{i} + \beta</em>{3}*\textrm{Gender} + \xi_{i}<br>$$</p>
-<p>Multivariable regression model included all covariates in the univariate<br>analysis:</p>
+<script type="math/tex; mode=display">
+\textrm{Obese}_{i} = \beta_{1}*\textrm{Self-reported Mental Health}_{i} + \beta_{2}*\textrm{Age}_{i} + \beta_{3}*\textrm{Self-reported Mental Health}_{i} * \textrm{Gender} + \beta_{4}*\textrm{Gender} +\xi_{i}</script><p>(model 2)</p>
+<script type="math/tex; mode=display">
+\textrm{Obese}_{i} = \beta_{1}*\textrm{Diabetes}_{i} + \beta_{2}*\textrm{Age}_{i} + \beta_{3}*\textrm{Gender} + \xi_{i}</script><p>(model 3)</p>
+<script type="math/tex; mode=display">
+\textrm{Obese}_{i} = \beta_{1}*\textrm{Hypertension}_{i} + \beta_{2}*\textrm{Age}_{i} + \beta_{3}*\textrm{Gender} + \xi_{i}</script><p>(model 4)</p>
+<script type="math/tex; mode=display">
+\textrm{Obese}_{i} = \beta_{1}*\textrm{Asthma}_{i} + \beta_{2}*\textrm{Age}_{i} + \beta_{3}*\textrm{Gender} + \xi_{i}</script><p>(model 5)</p>
+<script type="math/tex; mode=display">
+\textrm{Obese}_{i} = \beta_{1}*\textrm{Kidney}_{i} + \beta_{2}*\textrm{Age}_{i} + \beta_{3}*\textrm{Gender} + \xi_{i}</script><p>(model 6)</p>
+<script type="math/tex; mode=display">
+\textrm{Obese}_{i} = \beta_{1}*\textrm{Cancer}_{i} + \beta_{2}*\textrm{Age}_{i} + \beta_{3}*\textrm{Gender} + \xi_{i}</script><p>Multivariable regression model included all covariates in the univariate<br>analysis:</p>
 <p>(model 7)</p>
-<p>$$<br>\textrm{Obese}<em>{i} = \beta</em>{1}*\textrm{Self-reported Mental Health}<em>{i} + \beta</em>{2}*\textrm{Hypertension}<em>{i} + \beta</em>{3}*\textrm{Diabetes}<em>{i} + \beta</em>{4}*\textrm{Asthma}<em>{i} + \beta</em>{5}*\textrm{Cancer}_{i} + $$</p>
-<p>$$\beta_{6}*\textrm{Kidney}<em>{i} + \beta</em>{7}*\textrm{Age}<em>{i} + \beta</em>{8}*\textrm{Self-reported Mental Health}<em>{i} * \textrm{Gender} + \beta</em>{9}*\textrm{Gender} + \xi_{i}<br>$$</p>
-<p><strong>Logistic regression with Propensity Score</strong></p>
+<script type="math/tex; mode=display">
+\textrm{Obese}_{i} = \beta_{1}*\textrm{Self-reported Mental Health}_{i} + \beta_{2}*\textrm{Hypertension}_{i} + \beta_{3}*\textrm{Diabetes}_{i} + \beta_{4}*\textrm{Asthma}_{i} + \beta_{5}*\textrm{Cancer}_{i} +</script><script type="math/tex; mode=display">\beta_{6}*\textrm{Kidney}_{i} + \beta_{7}*\textrm{Age}_{i} + \beta_{8}*\textrm{Self-reported Mental Health}_{i} * \textrm{Gender} + \beta_{9}*\textrm{Gender} + \xi_{i}</script><p><strong>Logistic regression with Propensity Score</strong></p>
 <p>The propensity score is the estimated probability of exposure based on<br>covariates, which could be measured with the following model:</p>
 <p>(model 8)</p>
-<p>$$<br>\textrm{Self-reported Mental Health}<em>{i} = \beta</em>{1}*\textrm{Hypertension}<em>{i} + \beta</em>{2}*\textrm{Diabetes}<em>{i} + \beta</em>{3}*\textrm{Asthma}<em>{i} + \beta</em>{4}*\textrm{Cancer}<em>{i} + \beta</em>{5}*\textrm{Kidney}<em>{i} + \beta</em>{6}*\textrm{Age}_{i}<br>$$</p>
-<p>After the score is calculated, we could remove the original covariates and<br>replace them with the score:</p>
+<script type="math/tex; mode=display">
+\textrm{Self-reported Mental Health}_{i} = \beta_{1}*\textrm{Hypertension}_{i} + \beta_{2}*\textrm{Diabetes}_{i} + \beta_{3}*\textrm{Asthma}_{i} + \beta_{4}*\textrm{Cancer}_{i} + \beta_{5}*\textrm{Kidney}_{i} + \beta_{6}*\textrm{Age}_{i}</script><p>After the score is calculated, we could remove the original covariates and<br>replace them with the score:</p>
 <p>(model 9)</p>
-<p>$$<br>\textrm{Obese}<em>{i} = \beta</em>{1}*\textrm{Self-reported Mental Health}<em>{i} + \beta</em>{2}*\textrm{Propensity Score}<em>{i} + \beta</em>{3}*\textrm{Self-reported Mental Health}<em>{i} * \textrm{Gender} + \beta</em>{4}*\textrm{Gender} + \beta_{5}*\textrm{Age}<em>{i} + \xi</em>{i}<br>$$</p>
-<p><strong>Tools</strong></p>
+<script type="math/tex; mode=display">
+\textrm{Obese}_{i} = \beta_{1}*\textrm{Self-reported Mental Health}_{i} + \beta_{2}*\textrm{Propensity Score}_{i} + \beta_{3}*\textrm{Self-reported Mental Health}_{i} * \textrm{Gender} + \beta_{4}*\textrm{Gender} + \beta_{5}*\textrm{Age}_{i} + \xi_{i}</script><p><strong>Tools</strong></p>
 <p>All data processing and analysis are finished in SAS 9.4.</p>
 <h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a><strong>Results</strong></h2><p><strong>Descriptive Analysis</strong></p>
 <p><strong>Table 1. Covariates Distribution Among Different Outcome Status</strong></p>
@@ -445,6 +442,7 @@ height:50vh;
 <p><strong>Questionnaire Validity</strong></p>
 <p>We calculated the Cronbach alpha for seven mental questions that asked all participants (MHQ_1 to MHQ_7). The alpha of answers to the seven questions is over 0.8, which indicates that they have a high consistency. Any banning of the variables could cause a reduction of the alpha value.</p>
 <p><strong>Table 2. Cronbach Alpha for Mental Status Questions</strong></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -452,7 +450,8 @@ height:50vh;
 <th>Alpha after banned this question</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>Mental Status Level (Excellent/ Very Good/ Good/ Fair/ Poor)</td>
 <td>0.84</td>
 </tr>
@@ -484,7 +483,9 @@ height:50vh;
 <td>Total Alpha</td>
 <td>0.85</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>Classical Regression Analysis</strong></p>
 <p>Table 3 shows the result of univariate analysis and multivariable regression. Parameter of diabetes and kidney failure have obvious changes between the univariate model and the multivariate model. Other covariates and exposure did not change a lot in the multivariate model. P-value of exposure increased.</p>
 <p><strong>Regression with Propensity Score</strong></p>
@@ -537,30 +538,20 @@ height:50vh;
 </li>
 <li><p>Ness-Abramof R, Apovian CM. Drug-induced weight gain. <em>Drugs Today (Barc).</em><br>2005;41(8):547-555.</p>
 </li>
-<li><p>Brown HK, Qazilbash A, Rahim N, Dennis CL, Vigod SN. Chronic Medical<br>Conditions and Peripartum Mental Illness: A Systematic Review and Meta-Analysis.</p>
+<li><p>Brown HK, Qazilbash A, Rahim N, Dennis CL, Vigod SN. Chronic Medical<br>Conditions and Peripartum Mental Illness: A Systematic Review and Meta-Analysis.<br><em>Am J Epidemiol.</em> 2018;187(9):2060-2068.</p>
 </li>
-</ol>
-<p><em>Am J Epidemiol.</em> 2018;187(9):2060-2068.</p>
-<ol start="17">
 <li><p>Brown HK, Wilton AS, Ray JG, Dennis CL, Guttmann A, Vigod SN. Chronic<br>physical conditions and risk for perinatal mental illness: A population-based<br>retrospective cohort study. <em>PLoS Med.</em> 2019;16(8):e1002864.</p>
 </li>
 <li><p>Krzesinski JM, Weekers L. [Hypertension and diabetes]. <em>Rev Med Liege.</em><br>2005;60(5-6):572-577.</p>
 </li>
 <li><p>Baek JY, Lee SE, Han K, Koh EH. Association between diabetes and asthma:<br>Evidence from a nationwide Korean study. <em>Ann Allergy Asthma Immunol.</em><br>2018;121(6):699-703.</p>
 </li>
-<li><p>Gargiulo R, Suhail F, Lerma EV. Hypertension and chronic kidney disease.</p>
+<li><p>Gargiulo R, Suhail F, Lerma EV. Hypertension and chronic kidney disease.<br><em>Dis Mon.</em> 2015;61(9):387-395.</p>
 </li>
-</ol>
-<p><em>Dis Mon.</em> 2015;61(9):387-395.</p>
-<ol start="21">
-<li>Wold S, Ruhe A, Wold H, Dunn I, WJ. The collinearity problem in linear<br>regression. The partial least squares (PLS) approach to generalized inverses.</li>
-</ol>
-<p><em>SIAM Journal on Scientific and Statistical Computing.</em> 1984;5(3):735-743.</p>
-<ol start="22">
-<li>Weitzen S, Lapane KL, Toledano AY, Hume AL, Mor V. Principles for modeling<br>propensity scores in medical research: a systematic literature review.</li>
-</ol>
-<p><em>Pharmacoepidemiology and drug safety.</em> 2004;13(12):841-853.</p>
-<ol start="23">
+<li><p>Wold S, Ruhe A, Wold H, Dunn I, WJ. The collinearity problem in linear<br>regression. The partial least squares (PLS) approach to generalized inverses.<br><em>SIAM Journal on Scientific and Statistical Computing.</em> 1984;5(3):735-743.</p>
+</li>
+<li><p>Weitzen S, Lapane KL, Toledano AY, Hume AL, Mor V. Principles for modeling<br>propensity scores in medical research: a systematic literature review.<br><em>Pharmacoepidemiology and drug safety.</em> 2004;13(12):841-853.</p>
+</li>
 <li><p>Haukoos JS, Lewis RJ. The Propensity Score. <em>Jama.</em> 2015;314(15):1637-1638.</p>
 </li>
 <li><p>Rosenbaum PR, Rubin DB. The central role of the propensity score in<br>observational studies for causal effects. <em>Biometrika.</em> 1983;70(1):41-55.</p>
@@ -674,7 +665,7 @@ height:50vh;
             <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
             <p>Link of This Article：<a href="https://ry2an.github.io/2020/05/20/EPID622/">https://ry2an.github.io/2020/05/20/EPID622/</a>
             <p>Publish Date：<a href="https://ry2an.github.io/2020/05/20/EPID622/">May 20th 2020, 4:41:48 pm</a>
-            <p>Update Date：<a href="https://ry2an.github.io/2020/05/20/EPID622/">July 31st 2020, 10:52:07 am</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/05/20/EPID622/">July 31st 2020, 4:50:53 pm</a>
             <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
         </div>
     
@@ -1210,7 +1201,22 @@ jsonContent:
     
         <script src="/scripts/share.js" async></script>    
      
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
 </html>
 
 

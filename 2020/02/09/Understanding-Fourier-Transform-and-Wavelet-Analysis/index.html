@@ -407,11 +407,10 @@ height:50vh;
 <h2 id="Basic-Understanding-of-Fourier-Transform"><a href="#Basic-Understanding-of-Fourier-Transform" class="headerlink" title="Basic Understanding of Fourier Transform"></a>Basic Understanding of Fourier Transform</h2><h4 id="Feel-the-transformation"><a href="#Feel-the-transformation" class="headerlink" title="Feel the transformation:"></a>Feel the transformation:</h4><p>Let’s began with the simplest transforming situation: vector. We know that every vector could be transformed to 2 numbers. For example (1, 2) means the vector from (0, 0) and pointed to the point (1, 2). For every vector, we can transform is as two number. And for any two numbers, we can transform them as a vector.</p>
 <p>Same as the waves. Fourier tolds as: every complex waves could be seem as a summary of many sin waves with different frequncy, amplitude, and intercept on x axis. (We do not consider the intercept on y axis because we cannot seperate them.) <strong>And we can trasform a wave to three ‘numbers’ (the more formal name is orthogonal basis).</strong></p>
 <p>It could be interperted as:</p>
-<p>$$<br>\sum_{i=1}^{n}(j_{yi}+z_{i}Sin(P_{i}*(x_{i}-j_{xi})))<br>$$</p>
-<p>I made a program to let you play with 4 sin curves with any parameters. You may use the following codes in R to open:</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^{n}(j_{yi}+z_{i}Sin(P_{i}*(x_{i}-j_{xi})))</script><p>I made a program to let you play with 4 sin curves with any parameters. You may use the following codes in R to open:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">library(shiny)</span><br><span class="line">runGitHub(&quot;shiny_sir&quot;, &quot;Ry2an&quot;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="Calculation-of-vectors"><a href="#Calculation-of-vectors" class="headerlink" title="Calculation of vectors"></a>Calculation of vectors</h4><p>There is a calculation among vectors called point multiply. For example: (1, 2) point multiplied by (10, 3) equals to 1 * 10 + 2 * 3 = 16 and the result is a value. And there is an interesting feature: if two vectors are vertical with each other, the result of point multiply is 0. For example, (10, 1) point multiplied by (-2, 20) is equal to 10 * (-2) + 1 * 20 = 0.</p>
+<h4 id="Calculation-of-vectors"><a href="#Calculation-of-vectors" class="headerlink" title="Calculation of vectors"></a>Calculation of vectors</h4><p>There is a calculation among vectors called point multiply. For example: (1, 2) point multiplied by (10, 3) equals to 1 <em> 10 + 2 </em> 3 = 16 and the result is a value. And there is an interesting feature: if two vectors are vertical with each other, the result of point multiply is 0. For example, (10, 1) point multiplied by (-2, 20) is equal to 10 <em> (-2) + 1 </em> 20 = 0.</p>
 <p>Now, I prepared a question for you. I know there is a vector, but I won’t tell you what is it. If you tell me a vector, I will give you a result of point multiply between your vector and the unknow vector. </p>
 <p>In order to find what the unknown vector is, you draw a circle with r = 1 and created vectors with the point on that circle. Then based on the results I give to you, you drawn point on the space:</p>
 <p>For example, if you give me (1, 0) and my result is 1.7. Then you would draw a point on the direction of (1, 0) but the distance from (0, 0) is 1.7.</p>
@@ -966,7 +965,22 @@ jsonContent:
     
         <script src="/scripts/share.js" async></script>    
      
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
 </html>
 
 

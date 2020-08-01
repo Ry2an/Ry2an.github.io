@@ -266,7 +266,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">598</span>Reading time: <span class="post-count reading-time">3 min</span></span>
+                        <span>Word count: <span class="post-count word-count">604</span>Reading time: <span class="post-count reading-time">3 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -401,37 +401,30 @@ height:50vh;
 <p>Therefore, assumming all people in this group is susceptable for this disease at the begining, this group of people could have three components: suscepted, infected and recovered. In this special stable group, we can know that all of them would go through the suscept, infect and recover processes and finally this disease can no longer cause anything in this group of people.</p>
 <h2 id="Formulas-of-the-Model"><a href="#Formulas-of-the-Model" class="headerlink" title="Formulas of the Model"></a>Formulas of the Model</h2><p>However, describing the trend of the three componnets, is not as easy as the ‘swimming pool questions’ we learned in primary schools. But we can still have a little galnce review of it. Assume there are three swimming pools in your backyard called “Suscept”, “Infect” and “Recover”. Waters are slowly flowing from “S”, through “I” and finally moving to “R”. We can know that the relationship between remain volume in three pools are:</p>
 <p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/sir/2.PNG" alt="pool"></p>
-<p>$$<br>\textrm{Volume-S}<em>t = \textrm{Volume-S}</em>{t-1} - \textrm{Speed S to I per unit time}<br>$$</p>
-<p>$$<br>\textrm{Volume-I}<em>t = \textrm{Volume-I}</em>{t-1} + \textrm{Speed S to I per unit time} - \textrm{Speed I to R per unit time}<br>$$</p>
-<p>$$<br>\textrm{Volume-R}<em>t = \textrm{Volume-R}</em>{t-1} + \textrm{Speed I to R per unit time}<br>$$</p>
-<p>However, the biggest problem of these equation is that the speed among the pools are not stable!</p>
+<script type="math/tex; mode=display">
+\textrm{Volume-S}_t = \textrm{Volume-S}_{t-1} - \textrm{Speed S to I per unit time}</script><script type="math/tex; mode=display">
+\textrm{Volume-I}_t = \textrm{Volume-I}_{t-1} + \textrm{Speed S to I per unit time} - \textrm{Speed I to R per unit time}</script><script type="math/tex; mode=display">
+\textrm{Volume-R}_t = \textrm{Volume-R}_{t-1} + \textrm{Speed I to R per unit time}</script><p>However, the biggest problem of these equation is that the speed among the pools are not stable!</p>
 <p>If we know something about infectious diseases, we can know that: </p>
 <blockquote>
 <ul>
-<li>The more infected people in that group, the faster the people “flowing from S to I”.</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>The more infected people there is, if the chance of recovering for each patient is same, the more people “flowing from I to R.”</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>And in fact, during the process that everyone tranforming from S to R, the number of I is actually changing all the time.</li>
+<li><p>The more infected people in that group, the faster the people “flowing from S to I”.</p>
+</li>
+<li><p>The more infected people there is, if the chance of recovering for each patient is same, the more people “flowing from I to R.”</p>
+</li>
+<li><p>And in fact, during the process that everyone tranforming from S to R, the number of I is actually changing all the time.</p>
+</li>
 </ul>
 </blockquote>
 <p>A good thing is that we can define the “speed of transforming per unit time” in formulas above based on these features.</p>
 <p>We can set the speed of S to I as $\beta_1*\textrm{S}*\textrm{I}$, and the speed of I to R as $\beta_2*\textrm{I}$. Thus, the formulas are chaged as following:</p>
-<p>$$<br>\textrm{Volume-S}<em>t = \textrm{Volume-S}</em>{t-1} - \beta_1*\textrm{S}*\textrm{I}<br>$$</p>
-<p>$$<br>\textrm{Volume-I}<em>t = \textrm{Volume-I}</em>{t-1} + \beta_1*\textrm{S}<em>\textrm{I} - \beta_2</em>\textrm{I}<br>$$</p>
-<p>$$<br>\textrm{Volume-R}<em>t = \textrm{Volume-R}</em>{t-1} + \beta_2*\textrm{I}<br>$$</p>
-<h2 id="Shiny-Program"><a href="#Shiny-Program" class="headerlink" title="Shiny Program"></a>Shiny Program</h2><p>I also created a R shiny app to simulate the trends, please use the following code in your R studio:</p>
+<script type="math/tex; mode=display">
+\textrm{Volume-S}_t = \textrm{Volume-S}_{t-1} - \beta_1*\textrm{S}*\textrm{I}</script><script type="math/tex; mode=display">
+\textrm{Volume-I}_t = \textrm{Volume-I}_{t-1} + \beta_1*\textrm{S}*\textrm{I} - \beta_2*\textrm{I}</script><script type="math/tex; mode=display">
+\textrm{Volume-R}_t = \textrm{Volume-R}_{t-1} + \beta_2*\textrm{I}</script><h2 id="Shiny-Program"><a href="#Shiny-Program" class="headerlink" title="Shiny Program"></a>Shiny Program</h2><p>I also created a R shiny app to simulate the trends, please use the following code in your R studio:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">library(shiny)</span><br><span class="line">runGitHub(&quot;shiny_sir&quot;, &quot;Ry2an&quot;)</span><br></pre></td></tr></table></figure>
-
 <p>To install shiny package, you may want to use:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">install.packages(&quot;shiny&quot;)</span><br></pre></td></tr></table></figure>
-
 <p>Here is a snapshot of the Shiny App.</p>
 <p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/sir/1.PNG" alt="shiny"></p>
 <h2 id="Video-tutorial"><a href="#Video-tutorial" class="headerlink" title="Video tutorial"></a>Video tutorial</h2><p>I created a video to show how the model works and how to draw the curves through R and ggplot2. The video is published on <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av85896996">bilibili video site</a>. I apologize that there is no English subtitle in that video, but the code should be clear to see.</p>
@@ -980,7 +973,22 @@ jsonContent:
     
         <script src="/scripts/share.js" async></script>    
      
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
 </html>
 
 

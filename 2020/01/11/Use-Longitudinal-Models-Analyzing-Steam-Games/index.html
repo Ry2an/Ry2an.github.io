@@ -401,7 +401,7 @@ height:50vh;
 <p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/1.png" alt="fig1"></p>
 <p><strong><center>Fig 1. Different Reviews (Negative and Positive) of a Game Called “Foxhole” on Steam Game Store</center></strong></p>
 <p>In this analysis, I will use different longitudinal models (linear mixed effect models, fixed effect models and generalized estimating equation) to analyze the relationship between game prices and overall ratings in steam online stores among different game publishers. From the results of this analysis, game publishers could see whether the game prices settings is positively or negatively related with overall ratings. And so that they could have a deeper understanding of requirement from player on the view of games prices when they want to publish new games in future.</p>
-<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><h3 id="Data-Process"><a href="#Data-Process" class="headerlink" title="Data Process"></a>Data Process</h3><h4 id="Data-Source"><a href="#Data-Source" class="headerlink" title="Data Source"></a>Data Source</h4><p>Data for this analysis is created by Nik Davis and published on <a target="_blank" rel="noopener" href="https://www.kaggle.com/nikdavis/steam-store-games">kaggle website</a> [1]. The data collected all available games in U.S. steam online game store in May, 2019. The data is gathered through <a target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?title=Steam_Spy&oldid=929122689">SteamSpy</a>, a website uses an application programming interface (API) to the Steam software distribution service owned by Valve Corporation to estimate the number of sales of software titles offered on the service created by Sergey Galyonkin [2].</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><h3 id="Data-Process"><a href="#Data-Process" class="headerlink" title="Data Process"></a>Data Process</h3><h4 id="Data-Source"><a href="#Data-Source" class="headerlink" title="Data Source"></a>Data Source</h4><p>Data for this analysis is created by Nik Davis and published on <a target="_blank" rel="noopener" href="https://www.kaggle.com/nikdavis/steam-store-games">kaggle website</a> [1]. The data collected all available games in U.S. steam online game store in May, 2019. The data is gathered through <a target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?title=Steam_Spy&amp;oldid=929122689">SteamSpy</a>, a website uses an application programming interface (API) to the Steam software distribution service owned by Valve Corporation to estimate the number of sales of software titles offered on the service created by Sergey Galyonkin [2].</p>
 <p>There are several fields in the dataset I acquired and I will use in this analysis:<br>Publisher ID; Game ID; English (whether the game support English Language), Release Date; Overall Ratings and Price of each game.</p>
 <p>Publisher enrolling</p>
 <p>To use longitudinal models, multiple published records are needed for each publisher. Besides, small publisher companies who only published two or three games may not show a mature pattern between game price and overall ratings. Therefore, by creating a histogram and looking the distribution of counts of published game, I decided to use publishers who published more than eight games in the analysis.(Fig 2)</p>
@@ -411,23 +411,23 @@ height:50vh;
 <h4 id="Cross-sectional-Model"><a href="#Cross-sectional-Model" class="headerlink" title="Cross-sectional Model"></a>Cross-sectional Model</h4><p>To compare the difference between longitudinal models and cross-sectional model, a linear regression is fitted as a comparison. The model is written as following:</p>
 <p>$log(\textrm{Overall Ratings}_i)=\beta_0+\beta_1*\textrm{Price}_i+\xi_i$, $i\in\textrm{Publishers}$</p>
 <p><em>The following models are longitudinal models I fitted for the data:</em></p>
-<h4 id="Longitudinal-Models-LME"><a href="#Longitudinal-Models-LME" class="headerlink" title="Longitudinal Models (LME)"></a>Longitudinal Models (LME)</h4><p>$log(\textrm{Overall Ratings}<em>{ij}) = \beta_0 + b_i + \beta_1*(\textrm{Price}_{ij}) + \xi</em>{ij}$, </p>
+<h4 id="Longitudinal-Models-LME"><a href="#Longitudinal-Models-LME" class="headerlink" title="Longitudinal Models (LME)"></a>Longitudinal Models (LME)</h4><p>$log(\textrm{Overall Ratings}_{ij}) = \beta_0 + b_i + \beta_1*(\textrm{Price}_{ij}) + \xi_{ij}$, </p>
 <p>$b_i \in N(0, \delta)$, $i\in\textrm{Publishers}$, (LME-1)</p>
-<h4 id="Linear-Mixed-Effect-Model-Random-Intercept-and-Slope"><a href="#Linear-Mixed-Effect-Model-Random-Intercept-and-Slope" class="headerlink" title="Linear Mixed Effect Model - Random Intercept and Slope"></a>Linear Mixed Effect Model - Random Intercept and Slope</h4><p>$log(\textrm{Overall Ratings}<em>{ij}) = \beta_0 + b_{i1} + \beta_1*(b_{i2} + \textrm{Price}</em>{ij}) + \xi_{ij}$, </p>
+<h4 id="Linear-Mixed-Effect-Model-Random-Intercept-and-Slope"><a href="#Linear-Mixed-Effect-Model-Random-Intercept-and-Slope" class="headerlink" title="Linear Mixed Effect Model - Random Intercept and Slope"></a>Linear Mixed Effect Model - Random Intercept and Slope</h4><p>$log(\textrm{Overall Ratings}_{ij}) = \beta_0 + b_{i1} + \beta_1*(b_{i2} + \textrm{Price}_{ij}) + \xi_{ij}$, </p>
 <p>$b_{i1} \in N(0, \delta_1)$, $b_{i2} \in N(0, \delta_2)$, $i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (LME-2)</p>
-<h4 id="Non-linear-Relationship"><a href="#Non-linear-Relationship" class="headerlink" title="Non linear Relationship"></a>Non linear Relationship</h4><p>$log(\textrm{Overall Ratings}<em>{ij}) = \beta_0 + b_i + \beta_1*(\textrm{Price}_{ij}^2) + \beta_2*(\textrm{Price}_{ij}) + \beta_3*(\textrm{Price}_{ij}^{0.5})+ \xi</em>{ij}$, </p>
+<h4 id="Non-linear-Relationship"><a href="#Non-linear-Relationship" class="headerlink" title="Non linear Relationship"></a>Non linear Relationship</h4><p>$log(\textrm{Overall Ratings}_{ij}) = \beta_0 + b_i + \beta_1*(\textrm{Price}_{ij}^2) + \beta_2*(\textrm{Price}_{ij}) + \beta_3*(\textrm{Price}_{ij}^{0.5})+ \xi_{ij}$, </p>
 <p>$b_i \in N(0, \delta)$, $i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (LME-3)</p>
-<h4 id="Effect-measurement-modifier-and-confounding-effect-of-whether-the-game-have-English-version"><a href="#Effect-measurement-modifier-and-confounding-effect-of-whether-the-game-have-English-version" class="headerlink" title="Effect measurement modifier and confounding effect of whether the game have English version"></a>Effect measurement modifier and confounding effect of whether the game have English version</h4><p>$log(\textrm{Overall Ratings}<em>{ij}) = \beta_0 + b_i + \beta_1 * (\textrm{Price}_{ij}) + \beta_2 * (\textrm{English}_{ij}) + \beta_3 * (\textrm{Price}_{ij} * \textrm{English}</em>{ij}) + \xi_{ij}$, </p>
+<h4 id="Effect-measurement-modifier-and-confounding-effect-of-whether-the-game-have-English-version"><a href="#Effect-measurement-modifier-and-confounding-effect-of-whether-the-game-have-English-version" class="headerlink" title="Effect measurement modifier and confounding effect of whether the game have English version"></a>Effect measurement modifier and confounding effect of whether the game have English version</h4><p>$log(\textrm{Overall Ratings}_{ij}) = \beta_0 + b_i + \beta_1 * (\textrm{Price}_{ij}) + \beta_2 * (\textrm{English}_{ij}) + \beta_3 * (\textrm{Price}_{ij} * \textrm{English}_{ij}) + \xi_{ij}$, </p>
 <p>$b_i \in N(0, \delta)$, $i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (LME-4)</p>
-<h4 id="Confouder-of-released-date"><a href="#Confouder-of-released-date" class="headerlink" title="Confouder of released date"></a>Confouder of released date</h4><p>$log(\textrm{Overall Ratings}<em>{ij}) = \beta_0 + b_i + \beta_1 * (\textrm{Price}_{ij}) + \beta_2 * (\textrm{Released Date}_{ij}) + \xi</em>{ij}$, </p>
+<h4 id="Confouder-of-released-date"><a href="#Confouder-of-released-date" class="headerlink" title="Confouder of released date"></a>Confouder of released date</h4><p>$log(\textrm{Overall Ratings}_{ij}) = \beta_0 + b_i + \beta_1 * (\textrm{Price}_{ij}) + \beta_2 * (\textrm{Released Date}_{ij}) + \xi_{ij}$, </p>
 <p>$b_i \in N(0, \delta)$, $i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (LME-5)</p>
 <h4 id="Estimating-line"><a href="#Estimating-line" class="headerlink" title="Estimating line"></a>Estimating line</h4><p>The estimated value of LME models are calculated and combined with the scatter plots.</p>
 <h4 id="Fixed-Effect-Model-FEM"><a href="#Fixed-Effect-Model-FEM" class="headerlink" title="Fixed Effect Model (FEM)"></a>Fixed Effect Model (FEM)</h4><p>Fixed effect models in this analysis are used to test whether the assumption of LME models (random intercept and random slope) are applicable. Rather than focusing the estimated parameter of ‘price’ in the FEM models, I would pay more attention of the distributions of fixed terms in the models. Distribution of fixed intercepts and slopes are plotted to see whether they are normally distributed. If they are normally distributed, we could use a stronger assumption and use LME the models to fit the data.</p>
 <p><em>Intercept:</em></p>
-<p>$log(\textrm{Overall Ratings}<em>{ij}) = \alpha_i +  \beta_1*(\textrm{Price}</em>{ij}) + \xi_i$, </p>
+<p>$log(\textrm{Overall Ratings}_{ij}) = \alpha_i +  \beta_1*(\textrm{Price}_{ij}) + \xi_i$, </p>
 <p>$i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (FEM-1)</p>
 <p><em>Slope:</em></p>
-<p>$log(\textrm{Overall Ratings}<em>{ij}) = \beta_0 + \beta_1 * (\textrm{Price}</em>{ij}) + \beta_2 * (\alpha_i * \textrm{Price}_{ij}) + \xi_i$, </p>
+<p>$log(\textrm{Overall Ratings}_{ij}) = \beta_0 + \beta_1 * (\textrm{Price}_{ij}) + \beta_2 * (\alpha_i * \textrm{Price}_{ij}) + \xi_i$, </p>
 <p>$i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (FEM-2)</p>
 <p>For the “fixed slopes”, I mean the actually slope of price fitted by this fixed effect model for each publisher.</p>
 <p>$\textrm{Fixed Slope} = \beta_1+ \beta_2 * \alpha_i$</p>
@@ -435,7 +435,7 @@ height:50vh;
 <h4 id="Generalized-Estimating-Equation-GEE"><a href="#Generalized-Estimating-Equation-GEE" class="headerlink" title="Generalized Estimating Equation (GEE)"></a>Generalized Estimating Equation (GEE)</h4><p>In GEE model, I will use the original overall ratings data because GEE model could handle discreet data. Since the GEE model need same number of records for each publisher. To have a better understanding of correlation matrix, again, I chose the number of game counts in the dataset by the game count distribution (Fig 13). Finally, a subset of GEE model is created by choosing publishers published equal or more than 5 games. And 5 games are randomly chosen into the subset. There are 323 publishers and 1615 games are in the subset.</p>
 <p>Before starting to fit the GEE model. Correlation Matrix of 5 games among publishers are calculated and plotted to determine what correlation matrix to use in the GEE model.<br>Unfortunately, due to technical reason, although I tested the correlation matrix and checked the mean and standard deviation of overall ratings are same or not, I still chose to use Poisson distribution and “exchange” correlation matrix.</p>
 <p>$log(\lambda_{ij})= \beta_0 + \beta_1*(\textrm{Price}_{ij})$, </p>
-<p>$\textrm{Overall ratings}<em>{ij} \in Poisson(\lambda</em>{ij})$, </p>
+<p>$\textrm{Overall ratings}_{ij} \in Poisson(\lambda_{ij})$, </p>
 <p>$i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$</p>
 <h3 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h3><p>Tools I used in this analysis including R software 3.6.1, packages: ggplot2, lattice, gridExtra, nlme, lme4, geepack, stargazer[3], and ggpubr. Microsoft Excel are also used in some calculations.</p>
 <h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><h3 id="Data-Process-1"><a href="#Data-Process-1" class="headerlink" title="Data Process"></a>Data Process</h3><p>In the raw data, game counts for each publisher are generated and plotted.</p>
@@ -455,298 +455,308 @@ height:50vh;
 <p><strong><center>Fig 5. Line plot by comparing game prices and overall ratings for each publisher</center></strong></p>
 <p>From this plot, we can see that there is a weak correlation between log of overall ratings and price. Especially, over 20 dollars, the smoothed line is almost straight. The correlation for original overall ratings is not obvious.</p>
 <h3 id="Analyze-Process"><a href="#Analyze-Process" class="headerlink" title="Analyze Process"></a>Analyze Process</h3><p>As a comparison, a cross-sectional model is fitted.</p>
-<h4 id="Table-1-Result-of-cross-sectional-model"><a href="#Table-1-Result-of-cross-sectional-model" class="headerlink" title="Table 1. Result of cross-sectional model"></a>Table 1. Result of cross-sectional model</h4><table>
+<h4 id="Table-1-Result-of-cross-sectional-model"><a href="#Table-1-Result-of-cross-sectional-model" class="headerlink" title="Table 1. Result of cross-sectional model"></a>Table 1. Result of cross-sectional model</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">Parameter</th>
-<th align="center">Estimation</th>
-<th align="center">Standard Error</th>
-<th align="center">P-value</th>
+<th style="text-align:center">Parameter</th>
+<th style="text-align:center">Estimation</th>
+<th style="text-align:center">Standard Error</th>
+<th style="text-align:center">P-value</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">Intercept</td>
-<td align="center">3.58</td>
-<td align="center">0.031</td>
-<td align="center">&lt;0.001</td>
+<tbody>
+<tr>
+<td style="text-align:center">Intercept</td>
+<td style="text-align:center">3.58</td>
+<td style="text-align:center">0.031</td>
+<td style="text-align:center">&lt;0.001</td>
 </tr>
 <tr>
-<td align="center">Price</td>
-<td align="center">0.11</td>
-<td align="center">0.002</td>
-<td align="center">&lt;0.001</td>
+<td style="text-align:center">Price</td>
+<td style="text-align:center">0.11</td>
+<td style="text-align:center">0.002</td>
+<td style="text-align:center">&lt;0.001</td>
 </tr>
 <tr>
-<td align="center">R-square</td>
-<td align="center">0.1834</td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center">R-square</td>
+<td style="text-align:center">0.1834</td>
+<td style="text-align:center"></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/6.png" alt="fig6"></p>
 <p><strong><center>Fig 6. Diagnostic Plots of Cross-Sectional Model</center></strong></p>
 <p>From the results, we can see that the price is positively related to log of overall ratings (p- value &lt; 0.05). However, the R-square is not large, which means the residuals are relatively huge in this model. Other confounders may affect the association.</p>
-<h4 id="Table-2-Result-of-LME-Models"><a href="#Table-2-Result-of-LME-Models" class="headerlink" title="Table 2. Result of LME Models"></a>Table 2. Result of LME Models</h4><table>
+<h4 id="Table-2-Result-of-LME-Models"><a href="#Table-2-Result-of-LME-Models" class="headerlink" title="Table 2. Result of LME Models"></a>Table 2. Result of LME Models</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">Parameter (Standard Error)</th>
-<th align="center">LME-1</th>
-<th align="center">LME-2</th>
-<th align="center">LME-3</th>
-<th align="center">LME-4</th>
-<th align="center">LME-5</th>
+<th style="text-align:center">Parameter (Standard Error)</th>
+<th style="text-align:center">LME-1</th>
+<th style="text-align:center">LME-2</th>
+<th style="text-align:center">LME-3</th>
+<th style="text-align:center">LME-4</th>
+<th style="text-align:center">LME-5</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">Price</td>
-<td align="center">0.064***</td>
-<td align="center">0.058***</td>
-<td align="center">0.137***</td>
-<td align="center">0.006</td>
-<td align="center">0.091***</td>
+<tbody>
+<tr>
+<td style="text-align:center">Price</td>
+<td style="text-align:center">0.064***</td>
+<td style="text-align:center">0.058***</td>
+<td style="text-align:center">0.137***</td>
+<td style="text-align:center">0.006</td>
+<td style="text-align:center">0.091***</td>
 </tr>
 <tr>
-<td align="center">(Price)</td>
-<td align="center">0.003</td>
-<td align="center">0.007</td>
-<td align="center">0.028</td>
-<td align="center">0.260</td>
-<td align="center">0.003</td>
+<td style="text-align:center">(Price)</td>
+<td style="text-align:center">0.003</td>
+<td style="text-align:center">0.007</td>
+<td style="text-align:center">0.028</td>
+<td style="text-align:center">0.260</td>
+<td style="text-align:center">0.003</td>
 </tr>
 <tr>
-<td align="center">Price^0.5</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">-0.279**</td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center">Price^0.5</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">-0.279**</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">(Price^0.5)</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">0.134</td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center">(Price^0.5)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">0.134</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">Price^2</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">-0.001***</td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center">Price^2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">-0.001***</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">(Price^2)</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">0.0003</td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center">(Price^2)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">0.0003</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">English</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">0.351</td>
-<td align="center"></td>
+<td style="text-align:center">English</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">0.351</td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">(English)</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">0.250</td>
-<td align="center"></td>
+<td style="text-align:center">(English)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">0.250</td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">Price*English</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">0.056***</td>
-<td align="center"></td>
+<td style="text-align:center">Price*English</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">0.056***</td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">(Price*English)</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">0.016</td>
-<td align="center"></td>
+<td style="text-align:center">(Price*English)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">0.016</td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">Number of Date to “2019-11-31”</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">0.001***</td>
+<td style="text-align:center">Number of Date to “2019-11-31”</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">0.001***</td>
 </tr>
 <tr>
-<td align="center">(Number of Date to “2019-11-31”)</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">0.00002</td>
+<td style="text-align:center">(Number of Date to “2019-11-31”)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">0.00002</td>
 </tr>
 <tr>
-<td align="center">Intercept</td>
-<td align="center">3.906***</td>
-<td align="center">3.932***</td>
-<td align="center">4.146***</td>
-<td align="center">3.569***</td>
-<td align="center">2.720***</td>
+<td style="text-align:center">Intercept</td>
+<td style="text-align:center">3.906***</td>
+<td style="text-align:center">3.932***</td>
+<td style="text-align:center">4.146***</td>
+<td style="text-align:center">3.569***</td>
+<td style="text-align:center">2.720***</td>
 </tr>
 <tr>
-<td align="center">(Intercept)</td>
-<td align="center">0.084</td>
-<td align="center">0.087</td>
-<td align="center">0.174</td>
-<td align="center">0.026</td>
-<td align="center">0.078</td>
+<td style="text-align:center">(Intercept)</td>
+<td style="text-align:center">0.084</td>
+<td style="text-align:center">0.087</td>
+<td style="text-align:center">0.174</td>
+<td style="text-align:center">0.026</td>
+<td style="text-align:center">0.078</td>
 </tr>
 <tr>
-<td align="center">—</td>
-<td align="center">—</td>
-<td align="center">—</td>
-<td align="center">—</td>
-<td align="center">—</td>
-<td align="center">—</td>
+<td style="text-align:center">—-</td>
+<td style="text-align:center">—-</td>
+<td style="text-align:center">—-</td>
+<td style="text-align:center">—-</td>
+<td style="text-align:center">—-</td>
+<td style="text-align:center">—-</td>
 </tr>
 <tr>
-<td align="center">Random Intercept (Standard Deviation)</td>
-<td align="center">1.43</td>
-<td align="center">1.43</td>
-<td align="center">1.43</td>
-<td align="center">1.44</td>
-<td align="center">1.18</td>
+<td style="text-align:center">Random Intercept (Standard Deviation)</td>
+<td style="text-align:center">1.43</td>
+<td style="text-align:center">1.43</td>
+<td style="text-align:center">1.43</td>
+<td style="text-align:center">1.44</td>
+<td style="text-align:center">1.18</td>
 </tr>
 <tr>
-<td align="center">Random Slope (Standard Deviation)</td>
-<td align="center"></td>
-<td align="center">0.07</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center">Random Slope (Standard Deviation)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">0.07</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">—</td>
-<td align="center">—</td>
-<td align="center">—</td>
-<td align="center">—</td>
-<td align="center">—</td>
-<td align="center">—</td>
+<td style="text-align:center">—-</td>
+<td style="text-align:center">—-</td>
+<td style="text-align:center">—-</td>
+<td style="text-align:center">—-</td>
+<td style="text-align:center">—-</td>
+<td style="text-align:center">—-</td>
 </tr>
 <tr>
-<td align="center">Observations</td>
-<td align="center">7299</td>
-<td align="center">7299</td>
-<td align="center">7299</td>
-<td align="center">7299</td>
-<td align="center">7299</td>
+<td style="text-align:center">Observations</td>
+<td style="text-align:center">7299</td>
+<td style="text-align:center">7299</td>
+<td style="text-align:center">7299</td>
+<td style="text-align:center">7299</td>
+<td style="text-align:center">7299</td>
 </tr>
 <tr>
-<td align="center">Log Likelihood</td>
-<td align="center">-12,942.01</td>
-<td align="center">-12,863.12</td>
-<td align="center">-12,945.80</td>
-<td align="center">-12,927.43</td>
-<td align="center">-12,383.77</td>
+<td style="text-align:center">Log Likelihood</td>
+<td style="text-align:center">-12,942.01</td>
+<td style="text-align:center">-12,863.12</td>
+<td style="text-align:center">-12,945.80</td>
+<td style="text-align:center">-12,927.43</td>
+<td style="text-align:center">-12,383.77</td>
 </tr>
 <tr>
-<td align="center">Akaike Inf. Crit.</td>
-<td align="center">25,892.02</td>
-<td align="center">25,738.23</td>
-<td align="center">25,903.59</td>
-<td align="center">25,866.86</td>
-<td align="center">24,777.55</td>
+<td style="text-align:center">Akaike Inf. Crit.</td>
+<td style="text-align:center">25,892.02</td>
+<td style="text-align:center">25,738.23</td>
+<td style="text-align:center">25,903.59</td>
+<td style="text-align:center">25,866.86</td>
+<td style="text-align:center">24,777.55</td>
 </tr>
 <tr>
-<td align="center">Bayesian Inf. Crit.</td>
-<td align="center">25,919.60</td>
-<td align="center">25,779.60</td>
-<td align="center">25,944.96</td>
-<td align="center">25,908.23</td>
-<td align="center">24,812.02</td>
+<td style="text-align:center">Bayesian Inf. Crit.</td>
+<td style="text-align:center">25,919.60</td>
+<td style="text-align:center">25,779.60</td>
+<td style="text-align:center">25,944.96</td>
+<td style="text-align:center">25,908.23</td>
+<td style="text-align:center">24,812.02</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>Note: (*p&lt;0.1); (**p&lt;0.05); (***p&lt;0.01)</p>
 <p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/7.png" alt="fig7"></p>
 <p><strong><center>Fig 7. Residuals of LME Models</center></strong></p>
 <p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/8.png" alt="fig8"></p>
 <p><em>Note: the red lines mean estimated average intercept and slopes. The blues lines are 95% interval of random intercepts and slopes.</em></p>
 <p><strong><center>Fig 8. Estimated Curves of Model LME-1 and LME-2</center></strong></p>
-<h4 id="Table-3-Fixed-Effect-Models"><a href="#Table-3-Fixed-Effect-Models" class="headerlink" title="Table 3. Fixed Effect Models"></a>Table 3. Fixed Effect Models</h4><table>
+<h4 id="Table-3-Fixed-Effect-Models"><a href="#Table-3-Fixed-Effect-Models" class="headerlink" title="Table 3. Fixed Effect Models"></a>Table 3. Fixed Effect Models</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center"></th>
-<th align="center">FEM-1</th>
-<th align="center"></th>
-<th align="center"></th>
-<th align="center">FEM-2</th>
-<th align="center"></th>
-<th align="center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center">FEM-1</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center">FEM-2</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">Covariates</td>
-<td align="center">Estimated Value</td>
-<td align="center">Standard Error</td>
-<td align="center">P-Value</td>
-<td align="center">Estimated Value</td>
-<td align="center">Standard Error</td>
-<td align="center">P-value</td>
+<tbody>
+<tr>
+<td style="text-align:center">Covariates</td>
+<td style="text-align:center">Estimated Value</td>
+<td style="text-align:center">Standard Error</td>
+<td style="text-align:center">P-Value</td>
+<td style="text-align:center">Estimated Value</td>
+<td style="text-align:center">Standard Error</td>
+<td style="text-align:center">P-value</td>
 </tr>
 <tr>
-<td align="center">price</td>
-<td align="center">0.060</td>
-<td align="center">0.003</td>
-<td align="center">&lt;0.001</td>
-<td align="center">-0.157</td>
-<td align="center">0.0356</td>
-<td align="center">0.6587</td>
+<td style="text-align:center">price</td>
+<td style="text-align:center">0.060</td>
+<td style="text-align:center">0.003</td>
+<td style="text-align:center">&lt;0.001</td>
+<td style="text-align:center">-0.157</td>
+<td style="text-align:center">0.0356</td>
+<td style="text-align:center">0.6587</td>
 </tr>
 <tr>
-<td align="center">Intercept</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">3.964</td>
-<td align="center">0.7923</td>
-<td align="center">&lt;0.001</td>
+<td style="text-align:center">Intercept</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">3.964</td>
+<td style="text-align:center">0.7923</td>
+<td style="text-align:center">&lt;0.001</td>
 </tr>
 <tr>
-<td align="center">—</td>
-<td align="center">—</td>
-<td align="center">—</td>
-<td align="center">—</td>
-<td align="center">—</td>
-<td align="center">—</td>
-<td align="center">—</td>
+<td style="text-align:center">—-</td>
+<td style="text-align:center">—-</td>
+<td style="text-align:center">—-</td>
+<td style="text-align:center">—-</td>
+<td style="text-align:center">—-</td>
+<td style="text-align:center">—-</td>
+<td style="text-align:center">—-</td>
 </tr>
 <tr>
-<td align="center">Mean of Fixed Term</td>
-<td align="center">3.93</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">0.26</td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center">Mean of Fixed Term</td>
+<td style="text-align:center">3.93</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">0.26</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">Standard deviation of Fixed Term</td>
-<td align="center">1.49</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">3.26</td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center">Standard deviation of Fixed Term</td>
+<td style="text-align:center">1.49</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">3.26</td>
+<td style="text-align:center"></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/9.png" alt="fig9"></p>
 <p><strong><center>Fig 9. Distribution of Fixed Intercepts of FEM-1</center></strong></p>
 <p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/10.png" alt="fig10"></p>
@@ -766,28 +776,32 @@ height:50vh;
 <p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/15.png" alt="fig15"></p>
 <p>Note: ‘or’ means ‘Overall Ratings’, and ‘p*’ means the rank of five prices</p>
 <p><strong><center>Fig 15. Correlation Matrix of Overall</center></strong></p>
-<h4 id="Table-4-Generalized-Estimating-Equation"><a href="#Table-4-Generalized-Estimating-Equation" class="headerlink" title="Table 4. Generalized Estimating Equation"></a>Table 4. Generalized Estimating Equation</h4><table>
+<h4 id="Table-4-Generalized-Estimating-Equation"><a href="#Table-4-Generalized-Estimating-Equation" class="headerlink" title="Table 4. Generalized Estimating Equation"></a>Table 4. Generalized Estimating Equation</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center"></th>
-<th align="center">Estimated Value</th>
-<th align="center">Standard Error</th>
-<th align="center">P-value</th>
+<th style="text-align:center"></th>
+<th style="text-align:center">Estimated Value</th>
+<th style="text-align:center">Standard Error</th>
+<th style="text-align:center">P-value</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">price</td>
-<td align="center">0.0410</td>
-<td align="center">0.013</td>
-<td align="center">0.001</td>
+<tbody>
+<tr>
+<td style="text-align:center">price</td>
+<td style="text-align:center">0.0410</td>
+<td style="text-align:center">0.013</td>
+<td style="text-align:center">0.001</td>
 </tr>
 <tr>
-<td align="center">Intercept</td>
-<td align="center">6.732</td>
-<td align="center">0.386</td>
-<td align="center">&lt;0.001</td>
+<td style="text-align:center">Intercept</td>
+<td style="text-align:center">6.732</td>
+<td style="text-align:center">0.386</td>
+<td style="text-align:center">&lt;0.001</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h2 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h2><h3 id="What-are-overall-ratings-indicating-What-the-models-tell-the-game-publishers"><a href="#What-are-overall-ratings-indicating-What-the-models-tell-the-game-publishers" class="headerlink" title="What are overall ratings indicating? What the models tell the game publishers?"></a>What are overall ratings indicating? What the models tell the game publishers?</h3><p>Overall ratings may not be the most import measurement for game publishers, but actually it is the most important variable in the dataset I acquired. Firstly, as mentioned in introduction, the number of overall ratings is positively related to the selling volume. On the other hand, if there are lots of comments, publishers could get many reviews of the game, which could also help publishers and developers editing the game. Therefore, for each game, publishers do expect more comments / higher overall rating. The results of this analysis could help publishers expecting the overall ratings value (the number of total comments) by the setting of game price.</p>
 <p>On average, for each publisher, the higher price one game published with, the more comments (higher overall ratings) is expected to acquire. However, this not means that a game with infinity price would have infinity overall rating. From LME models of testing non-linearity (LME-3), and with other covariates (LME4, LME-5) should that there are other factors effecting the relationship between game price and overall ratings. Besides, publishers cannot based on the results to set the game prices unreasonable high. The results can only tell us games with higher price could have higher overall ratings. Actually speaking, to receive higher overall ratings, the publishers should publish games that worth that higher prices.</p>
 <h3 id="Which-model-is-the-best-to-describe-the-relationship-between-game-price-and-selling-volume"><a href="#Which-model-is-the-best-to-describe-the-relationship-between-game-price-and-selling-volume" class="headerlink" title="Which model is the best to describe the relationship between game price and selling volume?"></a>Which model is the best to describe the relationship between game price and selling volume?</h3><p>Since there will be many models discussed in this part, I will give my answer at first. In my opinion, the linear effect model with random intercept and random slope describes the relationship in a best way.<br>Firstly, compare with the cross sectional model, longitudinal models could control for the difference between each publisher, sot hat it could reduce the confounding effect between game prices and overall ratings. The regression coefficient of price in cross-sectional model is higher than the longitudinal models, which means that the proportion of publishers who have more overall ratings is higher in the dataset.</p>
@@ -803,7 +817,7 @@ height:50vh;
 <h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This analysis shows that on average, game price is positively related to the overall ratings. For one dollar increased on the game price for one publisher among publishers who published more than eight games, there is about 0.06 promotion in log overall rating of the game. This analysis also proved that this positively relationship is not linear. And games’ overall rating could also be effect by other variables like whether the game have English version or released date.</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1] Nik Davis, (2019) Steam Store Games (Clean dataset)<br>Combined data of 27,000 games scraped from Steam and SteamSpy APIs, <a target="_blank" rel="noopener" href="https://www.kaggle.com/nikdavis/steam-store-games">https://www.kaggle.com/nikdavis/steam-store-games</a></p>
 <p>[2]Wikipedia contributors. (2019, December 3). Steam Spy. In Wikipedia, The Free Encyclopedia. Retrieved 21:08, December 12, 2019, from <a target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?title=Steam_Spy&amp;oldid=929122689">https://en.wikipedia.org/w/index.php?title=Steam_Spy&amp;oldid=929122689</a></p>
-<p>[3] Hlavac, Marek (2018). stargazer: Well-Formatted Regression and Summary Statistics Tables. R package version 5.2.2. <a target="_blank" rel="noopener" href="https://cran.r-project.org/package=stargazer">https://CRAN.R-project.org/package=stargazer</a></p>
+<p>[3] Hlavac, Marek (2018). stargazer: Well-Formatted Regression and Summary Statistics Tables. R package version 5.2.2. <a target="_blank" rel="noopener" href="https://CRAN.R-project.org/package=stargazer">https://CRAN.R-project.org/package=stargazer</a></p>
 
     </article>
     <!-- license  -->
@@ -1348,7 +1362,22 @@ jsonContent:
     
         <script src="/scripts/share.js" async></script>    
      
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
 </html>
 
 

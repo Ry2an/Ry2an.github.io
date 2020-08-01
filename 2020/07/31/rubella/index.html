@@ -397,10 +397,9 @@ height:50vh;
     <article class="article-entry">
         <p>Capstone Project for my MPH degree</p>
 <a id="more"></a>
-
 <h1 id="Dynamic-modeling-analyses-of-Rubella-in-Henan-Province-China-2005-2016"><a href="#Dynamic-modeling-analyses-of-Rubella-in-Henan-Province-China-2005-2016" class="headerlink" title="Dynamic modeling analyses of Rubella in Henan Province, China, 2005 -2016"></a><strong>Dynamic modeling analyses of Rubella in Henan Province, China, 2005 -2016</strong></h1><p>Author: Ruoyan Han 23831597 (MPH Student)</p>
 <p>Capstone Advisor: Prof. Sheng Li, Prof. Mary Schooling</p>
-<p><em>City University of New York, Graduate School of Public Health and Health Policy</em></p>
+<p>_City University of New York, Graduate School of Public Health and Health Policy_</p>
 <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a><strong>Abstract</strong></h2><p>Background: Congenital rubella syndrome (CRS) is a severe disease for fetuses which is caused by maternal rubella infections. To prevent CRS, people need to have the antibody from vaccination or infections before adolescence. Studies indicate that small and remote areas may have a higher burden of CRS. Henan province is located at the geological center of China. It encompasses counties with very different population sizes and levels of economic development.<br>Methods: In this study, we identified attributes of counties in Henan province including the basic reproduction number (R0), critical community size and seasonality controlling for population size and local economic status using linear models.<br>Results: In Henan province, cities with larger population size is related with higher R0. And counties with small populations had more extinction periods of rubella and their basic reproduction numbers were lower. Rubella seasonal patterns are similar in different population sizes and economics levels.<br>Conclusion: Low population size and low per captita GDP of an area is related with lower rubella activity which could lead to a higher burden of CRS.</p>
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><strong>Introduction</strong></h2><p>Rubella, known as German Measles<sup>1</sup>, is a mild, viral infection among children and adults<sup>2</sup>. The rubella virus can only be carried by humans<sup>3</sup>. After infection, symptoms include fever, malaise, arthritis, and a rash over the entire body4,5. These symptoms disappear after a few weeks5. Once patients have recovered, they have lifelong immunity from rubella<sup>6</sup>.</p>
 <p>However, if women get infected by the virus during pregnancy, the virus can reach the fetus through the mothers’ viremia and placental infection<sup>4</sup>. Rubella in the fetus can cause abnormalities in the fetus’ tissue and organs, with life-long effects on function, resulting in blindness, cardiovascular abnormalities or brain damage<sup>4</sup>, called congenital rubella syndrome (CRS).</p>
@@ -1036,7 +1035,22 @@ jsonContent:
     
         <script src="/scripts/share.js" async></script>    
      
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
 </html>
 
 

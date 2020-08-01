@@ -401,18 +401,20 @@ height:50vh;
 <h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><h3 id="Data-setting"><a href="#Data-setting" class="headerlink" title="Data setting"></a>Data setting</h3><h4 id="Rate-calculation"><a href="#Rate-calculation" class="headerlink" title="Rate calculation"></a>Rate calculation</h4><p>Since the total death is gradually growing, comparing the absolute death number change in two law backgrounds could be affected. Therefore, as the same thing the author did, a death rate is calculated by the total death divide by the total person-year at risk for some linear regression calculation in this assignment.</p>
 <h3 id="Analysis-processes"><a href="#Analysis-processes" class="headerlink" title="Analysis processes"></a>Analysis processes</h3><p>At the first step, log (mean) and log (standard deviation) of the outcome measure (total non-firearm death) and their stratified results are calculated to see whether the outcome could be recognized as a Poisson distribution. If the outcome is in Poisson distribution, the log(mean) and log (standard deviation) should be similar.</p>
 <p>The second step is to calculate the mean and 95% confidence interval of the total non-firearm death rate in two law backgrounds (before 1997 and after 1997). Three solutions are attempt to get the result. The first one is to treat the means of non-firearm death rate before and after the law change are in two sample distributions (t distribution). Therefore, the standard error of the means could be calculated by standard deviation divided by square root of n into two periods of time, where n means that number of means in two periods of time. The degree of freedom is equal to n – 1. The formula is shown as (1).</p>
-<p>$$<br>\textrm{Sample SD} = \frac{\delta}{\sqrt{n}}<br>$$</p>
-<p>The second solution of calculating the mean and its 95%confidence interval is by linear regression. The model is shown as (2).</p>
-<p>$$<br>Rate_i = \beta_0 + \beta_1 * \textrm{Law}_i + \xi_i, \xi_i \sim N(0, \delta)<br>$$</p>
-<p>The third solution will use log negative binomial regression to calculate the mean and confidence interval of the total non-firearm death rate before and after the law change. The model is shown as (3). (in Negative Binomial Regression)</p>
-<p>$$<br>log(\textrm{TNF}_i) = \beta_0 + \beta_1 * \textrm{Law}_i + log(\textrm{personyearatrisk}_i) + \xi_i<br>$$</p>
-<p>By assuming law change is an effect modifier of the relationship between time (year) and total non-firearm death rate, three models shown in the article has been fitted. The formula is shown as (4) – (6). (in Negative Binomial Regression)</p>
-<p>$$<br>log(\textrm{TNF}_i) = \beta_0 + \beta_1 * \textrm{Law}_i + log(\textrm{personyearatrisk}_i) + \xi_i, \textrm{Year} \in [1979, 1997)<br>$$</p>
-<p>$$<br>log(\textrm{TNF}_i) = \beta_0 + \beta_1 * \textrm{Law}_i + log(\textrm{personyearatrisk}_i) + \xi_i, \textrm{Year} \in [1997, 2013)<br>$$</p>
-<p>$$<br>\textrm{Rate}_i = \beta_0 + \beta_1 * \textrm{Year}_i + \beta_2 * \textrm{Law}_i +<br>\beta_3 * \textrm{Year}_i * \textrm{Law}_i + \xi_i<br>$$</p>
-<p>A log Poisson regression is also fitted to compare with model  The model formula is shown as (7).</p>
-<p>$$<br>\textrm{Rate}_i = \beta_0 + \beta_1 * \textrm{Year}_i + \beta_2 * \textrm{Law}_i +<br>\beta_3 * \textrm{Year}_i * \textrm{Law}_i + \xi_i<br>$$</p>
-<p>Model (6) and model (7) are compared by Akaike information criterion (AIC), log (likelihood of regression), diagnose plots and regression curve with residuals. In order to compare the intercept change at the year of the law update, I will use ‘(year - 1996)’ to replace the original ‘year’ in the model (6) and model (7).</p>
+<script type="math/tex; mode=display">
+\textrm{Sample SD} = \frac{\delta}{\sqrt{n}}</script><p>The second solution of calculating the mean and its 95%confidence interval is by linear regression. The model is shown as (2).</p>
+<script type="math/tex; mode=display">
+Rate_i = \beta_0 + \beta_1 * \textrm{Law}_i + \xi_i, \xi_i \sim N(0, \delta)</script><p>The third solution will use log negative binomial regression to calculate the mean and confidence interval of the total non-firearm death rate before and after the law change. The model is shown as (3). (in Negative Binomial Regression)</p>
+<script type="math/tex; mode=display">
+log(\textrm{TNF}_i) = \beta_0 + \beta_1 * \textrm{Law}_i + log(\textrm{personyearatrisk}_i) + \xi_i</script><p>By assuming law change is an effect modifier of the relationship between time (year) and total non-firearm death rate, three models shown in the article has been fitted. The formula is shown as (4) – (6). (in Negative Binomial Regression)</p>
+<script type="math/tex; mode=display">
+log(\textrm{TNF}_i) = \beta_0 + \beta_1 * \textrm{Law}_i + log(\textrm{personyearatrisk}_i) + \xi_i, \textrm{Year} \in [1979, 1997)</script><script type="math/tex; mode=display">
+log(\textrm{TNF}_i) = \beta_0 + \beta_1 * \textrm{Law}_i + log(\textrm{personyearatrisk}_i) + \xi_i, \textrm{Year} \in [1997, 2013)</script><script type="math/tex; mode=display">
+\textrm{Rate}_i = \beta_0 + \beta_1 * \textrm{Year}_i + \beta_2 * \textrm{Law}_i + 
+\beta_3 * \textrm{Year}_i * \textrm{Law}_i + \xi_i</script><p>A log Poisson regression is also fitted to compare with model  The model formula is shown as (7).</p>
+<script type="math/tex; mode=display">
+\textrm{Rate}_i = \beta_0 + \beta_1 * \textrm{Year}_i + \beta_2 * \textrm{Law}_i + 
+\beta_3 * \textrm{Year}_i * \textrm{Law}_i + \xi_i</script><p>Model (6) and model (7) are compared by Akaike information criterion (AIC), log (likelihood of regression), diagnose plots and regression curve with residuals. In order to compare the intercept change at the year of the law update, I will use ‘(year - 1996)’ to replace the original ‘year’ in the model (6) and model (7).</p>
 <h3 id="Software"><a href="#Software" class="headerlink" title="Software:"></a>Software:</h3><p>The software I used for calculation and analysis in this assignment are R software 3.6.1 and MS Office Excel 2019.</p>
 <p>R packages and tools used:  R markdown; MASS; ggplot2; plotrix; plyr; countreg; gridExtra </p>
 <h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><p>The total log mean and log standard deviation for total non-firearm deaths rate is 2.41 and 0.32.<br>The log mean and log standard deviation before the law change for total non-firearm deaths rate is 2.36 and 0.27.</p>
@@ -438,9 +440,9 @@ height:50vh;
 <p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/fig5.jpg" alt="fig5"></p>
 <p><strong>Fig 5. Original results from the paper of Chapman, et al</strong></p>
 <h3 id="The-association-between-separate-model-and-combined-model"><a href="#The-association-between-separate-model-and-combined-model" class="headerlink" title="The association between separate model and combined model"></a>The association between separate model and combined model</h3><p>The reason that I didn’t do a separate log Poisson regression before and after the law change is because that they are equivalent with the model (7). Let’s look at model (4) – (6) as an example.<br>If we substitute the Law value in the model (6) as 0 and 1, which is also the value I generated in the dataset, the model will look like this:</p>
-<p>$$<br>log(\textrm{TNF}_i) = \beta_0 + \beta_1 * \textrm{Year}_i + log(\textrm{personyearatrisk}_i) + \xi_i, (\textrm{Law} = 0)<br>$$</p>
-<p>$$<br>log(\textrm{TNF}_i) = (\beta_0 + \beta_2) + (\beta_1 + \beta_3) * \textrm{Year}_i + log(\textrm{personyearatrisk}_i) + \xi_i, (\textrm{Law} = 1)<br>$$</p>
-<p>We can see that these two separated models look quite similar with model (4) and model (5). Actually, they are the same. Law = 0 equals to year &lt; 1997, and Law = 1 equals to year &gt;= 1997. If we add the β of Year * Law in model (6) with the β of Year in model (6), we could get the same value of Year’s β in model (5). If we do not add anything to the β of Year in model (6), it equals with the β of Year in model (4). In fact, the β of Year * Law in model (6) describes the differences between the Years’ beta of model (4) and model (5), and we can additionally notice the standard error and p-value of these difference in model (6). That’s why I don’t have to try another separated model for Poisson regression.</p>
+<script type="math/tex; mode=display">
+log(\textrm{TNF}_i) = \beta_0 + \beta_1 * \textrm{Year}_i + log(\textrm{personyearatrisk}_i) + \xi_i, (\textrm{Law} = 0)</script><script type="math/tex; mode=display">
+log(\textrm{TNF}_i) = (\beta_0 + \beta_2) + (\beta_1 + \beta_3) * \textrm{Year}_i + log(\textrm{personyearatrisk}_i) + \xi_i, (\textrm{Law} = 1)</script><p>We can see that these two separated models look quite similar with model (4) and model (5). Actually, they are the same. Law = 0 equals to year &lt; 1997, and Law = 1 equals to year &gt;= 1997. If we add the β of Year * Law in model (6) with the β of Year in model (6), we could get the same value of Year’s β in model (5). If we do not add anything to the β of Year in model (6), it equals with the β of Year in model (4). In fact, the β of Year * Law in model (6) describes the differences between the Years’ beta of model (4) and model (5), and we can additionally notice the standard error and p-value of these difference in model (6). That’s why I don’t have to try another separated model for Poisson regression.</p>
 <h3 id="Model-comparison"><a href="#Model-comparison" class="headerlink" title="Model comparison"></a>Model comparison</h3><p>From AIC, we can notice that the log negative binomial model fits better than log Poisson regression.</p>
 <p>The Log Likelihood of Negative Binomial model is higher than log Poisson, which also means the model (7) fits better.</p>
 <p>From the estimating lines (Fig 2.) the two models provided quite same estimating curve, the only difference I noticed is that the end of the blue line (total non-firearm death rate before law change) (in the green circle) in the log Poisson regression is a little bit higher than the log negative binomial regression.</p>
@@ -998,7 +1000,22 @@ jsonContent:
     
         <script src="/scripts/share.js" async></script>    
      
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
 </html>
 
 

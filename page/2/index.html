@@ -448,11 +448,11 @@ https://github.com/Ry2an/markdown_cheat_sheet/blob/master/markdown_cheat_sheet.t
 我展示的是一级标题我展示的是二级标题一级标题二级标题三级标题四级标题五级标题六级标题换行的方式可以两个空格加回车
 或者连续两个回车
 斜体文本
-斜体文本
+_斜体文本_
 粗体文本
 粗体文本
 粗斜体文本
-粗斜体文本
+_粗斜体文本_
 居中
 
 左对齐
@@ -464,8 +464,7 @@ https://github.com/Ry2an/markdown_cheat_sheet/blob/master/markdown_cheat_sheet.t
 
 删除线
 带下划线文本
-Markdown 列表
-第一...
+Markdown 列...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -1115,7 +1114,22 @@ jsonContent:
     </div>
     <!-- async load share.js -->
      
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
 </html>
 
 
