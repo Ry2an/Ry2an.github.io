@@ -399,9 +399,9 @@ height:50vh;
 <p>I also recorded videos about fourier transform and wavelet analysis under my bilibili account.(<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av86234912">Fourier Transform</a>, <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av86649868">Wavelet Analysis</a>)</p>
 <h2 id="What-is-Fourier-Transform"><a href="#What-is-Fourier-Transform" class="headerlink" title="What is Fourier Transform"></a>What is Fourier Transform</h2><p>Let’s begin with lights. We know that sunlight seems white but acutally it contain seven colors in that ‘white’ light. By only seeing the white light, I bet there is no one can say what are components in that.</p>
 <p>Foutunately, we have prisms. By let the white light going through prisms, it could be automatically separated as different colors. Actually speaking, they are ordered by different frequencies.</p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/ftwa/2.jpeg" alt="prism"></p>
+<p><img src="/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/2.jpeg" alt="2"></p>
 <p>There are some many other waves in our life. However, in most sicumstances, we cannot find any pattern in them even if they are repeating regularly. For example, the picture below is a record of sound wave:</p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/ftwa/0.jpg" alt="sound_wave"></p>
+<p><img src="/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/0.jpg" alt="0"></p>
 <p>and we cannot tell what different waves in different frequncy composed the wave.</p>
 <p>And here comes the fourier transform, it could tell us the proportion of different frequency waves in the complex wave.</p>
 <h2 id="Basic-Understanding-of-Fourier-Transform"><a href="#Basic-Understanding-of-Fourier-Transform" class="headerlink" title="Basic Understanding of Fourier Transform"></a>Basic Understanding of Fourier Transform</h2><h4 id="Feel-the-transformation"><a href="#Feel-the-transformation" class="headerlink" title="Feel the transformation:"></a>Feel the transformation:</h4><p>Let’s began with the simplest transforming situation: vector. We know that every vector could be transformed to 2 numbers. For example (1, 2) means the vector from (0, 0) and pointed to the point (1, 2). For every vector, we can transform is as two number. And for any two numbers, we can transform them as a vector.</p>
@@ -415,8 +415,10 @@ height:50vh;
 <p>In order to find what the unknown vector is, you draw a circle with r = 1 and created vectors with the point on that circle. Then based on the results I give to you, you drawn point on the space:</p>
 <p>For example, if you give me (1, 0) and my result is 1.7. Then you would draw a point on the direction of (1, 0) but the distance from (0, 0) is 1.7.</p>
 <p>After all, you get a plot like this: </p>
+<p><img src="/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/3.png" alt="3"></p>
 <p>So, can you tell me what is the unknown vector? We can see, in two directions, the result of point multiply is zero. <strong>The unknown vector must be on one of the two directions that vertical to the ‘zero-result’ direction!</strong></p>
 <h4 id="Same-calculation-in-fourier-transform"><a href="#Same-calculation-in-fourier-transform" class="headerlink" title="Same calculation in fourier transform"></a>Same calculation in fourier transform</h4><p>Same thing as fourier transformation does. We use orthogonal basis of different frequencies to point multiply the complex wave, and we could get result like this:</p>
+<p><img src="/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/4.png" alt="4"></p>
 <p>What this plot can tell us? It tells us that this complex wave do know have wave from some frequency because their point multiply is 0 and there are some major frequency in that complex wave whose results of ponit multiply is very high.</p>
 <hr>
 <p>This document is unfinished. Later, I will mention how wavelet analysis is a better solution than short period fouries transfrom.</p>
@@ -429,7 +431,7 @@ height:50vh;
             <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
             <p>Link of This Article：<a href="https://ry2an.github.io/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/">https://ry2an.github.io/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/</a>
             <p>Publish Date：<a href="https://ry2an.github.io/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/">February 9th 2020, 8:35:39 pm</a>
-            <p>Update Date：<a href="https://ry2an.github.io/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/">February 10th 2020, 9:37:35 am</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/">August 1st 2020, 8:33:33 pm</a>
             <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
         </div>
     
@@ -587,6 +589,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     

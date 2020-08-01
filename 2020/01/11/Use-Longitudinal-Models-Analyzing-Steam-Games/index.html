@@ -398,7 +398,7 @@ height:50vh;
         <p><strong>This is the final assignment of course BIOS 623 at CUNY GSPHHP in Fall 2019</strong><br><strong>Author: Ruoyan Han</strong></p>
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Video games, as an emerging merchandise, are usually selling their copies through online stores and physical storage disks. Before a game marked by a price and selling on markets, it should be developed by a developer group and be published by a publisher company. The game prices set by publisher could contain the cost of making the games and advertising fees, which is related to the quality of the games. Steam is the most famous video game digital distribution service developed by Valve Corporation. Most game publishers on the world publish soft copies of games on Steam game store. In the online store, developer, publisher, price, and customers’ reviews are recorded and updated on each game’s web-page.</p>
 <p>Overall rating is a count number of all negative reviews (comments) and positive reviews (comments), which in other words is total review numbers (Fig 1). This value should be positively related to sells volume, because on Steam, only players who bought the game can give comments on the web page (one comment per player). The actual selling volume are hidden from the published data I acquired, so that I chose this as dependent variable, which could be considered as a proxy of overall selling volume. In cross-sectional analyses, it is hard to directly analyze the relationship between the game prices with overall ratings. Because the games are not independent with each other, famous publishers and developers could always have some fans love whatever game they made, while small companies may not sell their games well even the quality of the games they made aren’t that worse. Besides, the volume between different publisher are not the same, larger publisher could have more game published in the online stores, which may bias the relationship between price and the game ratings.</p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/1.png" alt="fig1"></p>
+<p><img src="/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/1.png" alt="1"></p>
 <p><strong><center>Fig 1. Different Reviews (Negative and Positive) of a Game Called “Foxhole” on Steam Game Store</center></strong></p>
 <p>In this analysis, I will use different longitudinal models (linear mixed effect models, fixed effect models and generalized estimating equation) to analyze the relationship between game prices and overall ratings in steam online stores among different game publishers. From the results of this analysis, game publishers could see whether the game prices settings is positively or negatively related with overall ratings. And so that they could have a deeper understanding of requirement from player on the view of games prices when they want to publish new games in future.</p>
 <h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><h3 id="Data-Process"><a href="#Data-Process" class="headerlink" title="Data Process"></a>Data Process</h3><h4 id="Data-Source"><a href="#Data-Source" class="headerlink" title="Data Source"></a>Data Source</h4><p>Data for this analysis is created by Nik Davis and published on <a target="_blank" rel="noopener" href="https://www.kaggle.com/nikdavis/steam-store-games">kaggle website</a> [1]. The data collected all available games in U.S. steam online game store in May, 2019. The data is gathered through <a target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?title=Steam_Spy&amp;oldid=929122689">SteamSpy</a>, a website uses an application programming interface (API) to the Steam software distribution service owned by Valve Corporation to estimate the number of sales of software titles offered on the service created by Sergey Galyonkin [2].</p>
@@ -439,19 +439,19 @@ height:50vh;
 <p>$i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$</p>
 <h3 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h3><p>Tools I used in this analysis including R software 3.6.1, packages: ggplot2, lattice, gridExtra, nlme, lme4, geepack, stargazer[3], and ggpubr. Microsoft Excel are also used in some calculations.</p>
 <h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><h3 id="Data-Process-1"><a href="#Data-Process-1" class="headerlink" title="Data Process"></a>Data Process</h3><p>In the raw data, game counts for each publisher are generated and plotted.</p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/2.png" alt="fig2"></p>
+<p><img src="/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/2.png" alt="2"></p>
 <p><strong><center>Fig 2. Game Counts Distribution</center></strong></p>
 <p>In order to find a proper criteria to remove publishers only publisher one game or published too less game to bias the pattern of prices and overall ratings. From the plot, we can notice that there is a peak around log(counts) = 2, so that I decided to enroll publishers who have published more than exp(2) ≈ 8.</p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/3.png" alt="fig3"></p>
+<p><img src="/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/3.png" alt="3"></p>
 <p><strong><center>Fig 3. Game Price Distribution</center></strong></p>
 <p><em>Note: I added 0.1 in the free game prices to generate this plot, otherwise the log price for free games are negative infinity.</em></p>
 <p>From the plot, we can see the distribution of game price is that most game log prices are between 1 and 3. And also there is another peak of game frequency for free games and game prices less than 1 dollar.</p>
 <p>The publisher include criteria are created based on the results above. In raw data, their are 14137 game publisher and 27075 published games. Among them, 324 publishers and their 7299 games are selected to be analysis. </p>
 <p>In the subset for analysis, distribution of independent variable and dependent variable are plotted as following:</p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/4.png" alt="fig4"></p>
+<p><img src="/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/4.png" alt="4"></p>
 <p><strong><center>Fig 4. Basic Description of Subset Data</center></strong></p>
 <p>From the plot, we can see that price and mean price do not have an obvious distribution. The original overall ratings have some extremely high value cases, and skewed to the right. The log of overall rating is kind of a unimodal distribution. Therefore, in the longitudinal models, except GEE models (for discrete outcome), I would use the log of overall ratings as the dependent variable.</p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/5.png" alt="fig5"></p>
+<p><img src="/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/5.png" alt="5"></p>
 <p><strong><center>Fig 5. Line plot by comparing game prices and overall ratings for each publisher</center></strong></p>
 <p>From this plot, we can see that there is a weak correlation between log of overall ratings and price. Especially, over 20 dollars, the smoothed line is almost straight. The correlation for original overall ratings is not obvious.</p>
 <h3 id="Analyze-Process"><a href="#Analyze-Process" class="headerlink" title="Analyze Process"></a>Analyze Process</h3><p>As a comparison, a cross-sectional model is fitted.</p>
@@ -486,7 +486,7 @@ height:50vh;
 </tbody>
 </table>
 </div>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/6.png" alt="fig6"></p>
+<p><img src="/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/6.png" alt="6"></p>
 <p><strong><center>Fig 6. Diagnostic Plots of Cross-Sectional Model</center></strong></p>
 <p>From the results, we can see that the price is positively related to log of overall ratings (p- value &lt; 0.05). However, the R-square is not large, which means the residuals are relatively huge in this model. Other confounders may affect the association.</p>
 <h4 id="Table-2-Result-of-LME-Models"><a href="#Table-2-Result-of-LME-Models" class="headerlink" title="Table 2. Result of LME Models"></a>Table 2. Result of LME Models</h4><div class="table-container">
@@ -682,9 +682,9 @@ height:50vh;
 </table>
 </div>
 <p>Note: (*p&lt;0.1); (**p&lt;0.05); (***p&lt;0.01)</p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/7.png" alt="fig7"></p>
+<p><img src="/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/7.png" alt="7"></p>
 <p><strong><center>Fig 7. Residuals of LME Models</center></strong></p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/8.png" alt="fig8"></p>
+<p><img src="/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/8.png" alt="8"></p>
 <p><em>Note: the red lines mean estimated average intercept and slopes. The blues lines are 95% interval of random intercepts and slopes.</em></p>
 <p><strong><center>Fig 8. Estimated Curves of Model LME-1 and LME-2</center></strong></p>
 <h4 id="Table-3-Fixed-Effect-Models"><a href="#Table-3-Fixed-Effect-Models" class="headerlink" title="Table 3. Fixed Effect Models"></a>Table 3. Fixed Effect Models</h4><div class="table-container">
@@ -757,23 +757,23 @@ height:50vh;
 </tbody>
 </table>
 </div>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/9.png" alt="fig9"></p>
+<p><img src="/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/9.png" alt="9"></p>
 <p><strong><center>Fig 9. Distribution of Fixed Intercepts of FEM-1</center></strong></p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/10.png" alt="fig10"></p>
+<p><img src="/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/10.png" alt="10"></p>
 <p><strong><center>Fig 10. Distribution of Fixed Slopes (Estimated slope of price add by every individual interaction term) of FEM-2</center></strong></p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/11.png" alt="fig11"></p>
+<p><img src="/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/11.png" alt="11"></p>
 <p><strong><center>Fig 11. Residuals of FEM-1</center></strong></p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/13.png" alt="fig12"></p>
+<p><img src="/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/12.png" alt="12"></p>
 <p><strong><center>Fig 12. Residuals of FEM-2</center></strong></p>
 <p>From the results, we can see that both of the fixed intercepts and slopes are quite normally distributed.</p>
 <hr>
 <p>Before using GEE model, I generated a subset which contain all the 323 publishers who have more than 5 non-free games in the data and randomly picked 5 games for each publisher. Then randomly picked 100 publishers to fit the GEE model. The reason of why I chose 5 is because the following distribution of free game counts:</p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/13.png" alt="fig13"></p>
+<p><img src="/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/13.png" alt="13"></p>
 <p><strong><center>Fig 13. Non-Free Game Counts of Every Publisher</center></strong></p>
 <p>To choose what kind of correlated matrix to use in the GEE model, I plotted the correlation of games in five prices. When calculated in the correlation matrix, for each publisher, there could be duplicate prices for publishers. I randomly gave order for same prices.</p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/14.png" alt="fig14"></p>
+<p><img src="/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/14.png" alt="14"></p>
 <p><strong><center>Fig 14. Correlation Matrix of Overall ratings in Different Prices</center></strong></p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/steam_longitudinal/15.png" alt="fig15"></p>
+<p><img src="/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/15.png" alt="15"></p>
 <p>Note: ‘or’ means ‘Overall Ratings’, and ‘p*’ means the rank of five prices</p>
 <p><strong><center>Fig 15. Correlation Matrix of Overall</center></strong></p>
 <h4 id="Table-4-Generalized-Estimating-Equation"><a href="#Table-4-Generalized-Estimating-Equation" class="headerlink" title="Table 4. Generalized Estimating Equation"></a>Table 4. Generalized Estimating Equation</h4><div class="table-container">
@@ -826,7 +826,7 @@ height:50vh;
             <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
             <p>Link of This Article：<a href="https://ry2an.github.io/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/">https://ry2an.github.io/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/</a>
             <p>Publish Date：<a href="https://ry2an.github.io/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/">January 11th 2020, 5:03:26 pm</a>
-            <p>Update Date：<a href="https://ry2an.github.io/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/">May 21st 2020, 12:41:53 pm</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/">August 1st 2020, 8:37:16 pm</a>
             <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
         </div>
     
@@ -984,6 +984,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     

@@ -425,19 +425,19 @@ log(\textrm{TNF}_i) = \beta_0 + \beta_1 * \textrm{Law}_i + log(\textrm{personyea
 <p>Solution 2 gave us the average rate of total non-firearm death before the law change is 10.61 (95% CI: 10.00, 11.21) deaths per 100000 person-years. The average rate of total non-firearm death before the law change is 11.80 (95% CI: 11.19, 12.40) deaths per 100000 person-years.</p>
 <p>Solution 1 gave us the average rate of total non-firearm death before the law change is 10.61 (95% CI: 10.09, 11.16) deaths per 100000 person-years. The average rate of total non-firearm death before the law change is 11.79 (95% CI: 11.21, 12.41) deaths per 100000 person-years.</p>
 <p>A plot has generated to describe the mean calculation from three solutions.</p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/fig1.png" alt="fig1"></p>
+<p><img src="/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/fig1.png" alt="fig1"></p>
 <p><strong>Fig 1. Results of three solutions to calculate mean non-firearm death rate before and after the law change</strong></p>
 <p><strong>Table 1. Regression result</strong></p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/table1.PNG" alt="table1"></p>
+<p><img src="/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/table1.PNG" alt="table1"></p>
 <p>From the result, we can know that in the year of 1979 to 1996 before the law change, the average trend of total non-firearm death rate is 1.002 (rate ratio) from model (4), while in the year of 1997 to 2013 after the law change, the trend of  total non-firearm death rate is 0.986 (rate ratio). The change of this difference in log of the rate ratio is -0.0348 (the change of slope of two period log(rate ratio)) from model 6 and this difference is statistically significant.</p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/fig2.png" alt="fig2"></p>
+<p><img src="/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/fig2.png" alt="fig2"></p>
 <p><strong>Fig 2. Predicted Values of Model (6) (Left) and Model (7) (Right)</strong></p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/fig3.png" alt="fig3"></p>
+<p><img src="/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/fig3.png" alt="fig3"></p>
 <p><strong>Fig 3. Diagnostic Plots of Model (6) (Left 4 plots) and Model (7) (Right 4 Plots)</strong></p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/fig4.png" alt="fig4"></p>
+<p><img src="/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/fig4.png" alt="fig4"></p>
 <p><strong>Fig 4. Hang plots of Model (6) (Left) and Model (7) (Right)</strong></p>
 <h2 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h2><h3 id="Compare-with-the-paper’s-result"><a href="#Compare-with-the-paper’s-result" class="headerlink" title="Compare with the paper’s result"></a>Compare with the paper’s result</h3><p>The total non- firearm death results of Chapman, et al is copied as follows. The mean trend of death rate before the law change is equal to exp (0.0212) = 1.021 and its confidence interval has been shown above. The mean trend of death rate after the law change is equal to exp (0.0212 – 0.0348) = 0.986. The 95% confidence interval of this trend is exp (0.0157 – 0.0348) = 0.981 and exp (0.0226 – 0.0348) = 0.992, which is calculated by adding the coefficient of ‘Law’ into the confidence interval of coefficient of (Year - 1996). RT and RL are equal to the rate ratio at the law change and the exponential of the slope difference between the two status which has been shown above in the table.</p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/fig5.jpg" alt="fig5"></p>
+<p><img src="/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/fig5.jpg" alt="fig5"></p>
 <p><strong>Fig 5. Original results from the paper of Chapman, et al</strong></p>
 <h3 id="The-association-between-separate-model-and-combined-model"><a href="#The-association-between-separate-model-and-combined-model" class="headerlink" title="The association between separate model and combined model"></a>The association between separate model and combined model</h3><p>The reason that I didn’t do a separate log Poisson regression before and after the law change is because that they are equivalent with the model (7). Let’s look at model (4) – (6) as an example.<br>If we substitute the Law value in the model (6) as 0 and 1, which is also the value I generated in the dataset, the model will look like this:</p>
 <script type="math/tex; mode=display">
@@ -448,7 +448,7 @@ log(\textrm{TNF}_i) = (\beta_0 + \beta_2) + (\beta_1 + \beta_3) * \textrm{Year}_
 <p>From the estimating lines (Fig 2.) the two models provided quite same estimating curve, the only difference I noticed is that the end of the blue line (total non-firearm death rate before law change) (in the green circle) in the log Poisson regression is a little bit higher than the log negative binomial regression.</p>
 <p>The diagnostic plots of the two models (Fig 3.) are almost the same, the only difference I noticed is in the Q-Q plots. It seems that the error term in log negative binomial regression is better normally distributed than the log Poisson regression.</p>
 <h3 id="Limitation"><a href="#Limitation" class="headerlink" title="Limitation"></a>Limitation</h3><p>It’s understandable that the rate after the law change is still higher because the rate is just starting to decreasing after the low change by the result of the regressions. </p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as2/fig6.png" alt="fig6"></p>
+<p><img src="/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/fig6.png" alt="fig6"></p>
 <p><strong>Fig 6. Histogram of total non-firearm death rate in two interested period</strong></p>
 <p>However, what we should expect from the law change is that the death rate of firearm could be lower. So, what about the non-firearm deaths? Shall it increase because fewer people will be killed by gunshot? Or shall it be stable because people could still be alive if they avoid the gunshot? Or shall it decrease because people are healthier and healthier? We need a comparison. If we have a global or other comparable total non-firearm death rate, we could know whether the law has actually changed something. If naturally the total non-firearm death rate is decreased after 1996 if some grate medical product has been made, the curve could be same without the law change.  After comparing with a counterfactual rate, we could take a deeper insight in to the reason for total non-firearm deaths started to decrease after the law change.</p>
 <p>If we do not know the background of the law change, the curve of death rate could be seemed very normal, just a little peak in 1996. Actually, the most obvious change in the raw curve is around 1998 and after 2005. But we do not know whether something important happened at that time. Even there is a cause of raw curve changing happed in the year 1996, we could not distinguish whether it was the law upgrade or other potential mediators and confounders. </p>
@@ -464,7 +464,7 @@ log(\textrm{TNF}_i) = (\beta_0 + \beta_2) + (\beta_1 + \beta_3) * \textrm{Year}_
             <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
             <p>Link of This Article：<a href="https://ry2an.github.io/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/">https://ry2an.github.io/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/</a>
             <p>Publish Date：<a href="https://ry2an.github.io/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/">March 5th 2020, 7:58:10 pm</a>
-            <p>Update Date：<a href="https://ry2an.github.io/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/">March 6th 2020, 10:23:30 am</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/">August 1st 2020, 8:24:35 pm</a>
             <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
         </div>
     
@@ -622,6 +622,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     

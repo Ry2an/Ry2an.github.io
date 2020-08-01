@@ -423,7 +423,7 @@ height:50vh;
 <li><h4 id="Residuals-Analysis"><a href="#Residuals-Analysis" class="headerlink" title="Residuals Analysis:"></a>Residuals Analysis:</h4></li>
 </ul>
 <p>Martingale, Deviance and Scaled Schoenfeld Residual are drawn in R. Smoothed lines are drawn by the smooth.spline() function in R on each graphs. Additionally, Schoenfeld Residuals are also shown by cox.zph() function under ‘survival’ package in R.</p>
-<h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as3/fig1.png" alt="fig1"></p>
+<h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><p><img src="/2020/03/04/Repeat-Ancademic-Survival-Analysis/fig1.png" alt="fig1"></p>
 <p><strong>Fig 1.</strong> Survival Curve and Risk Table of Kaplan Meier Approach</p>
 <p>From the plot, we can see that the survival curve of people who received cART treatment in 8th week remains staying on the top of other two curves in the study period. Curves of ‘week 1’ and ‘week 4’ treatments have some crosses before the first 10 weeks. Then the curves of ‘week 1’ keeps staying at the bottom of the three curves. </p>
 <p><strong>Table 1.</strong> Result of Log - Rank Test</p>
@@ -476,13 +476,13 @@ height:50vh;
 </table>
 </div>
 <p><strong>Table 2.</strong> Estimated Values of Univariable Models (1 - 4) and the Multivariable Models (5)</p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as3/table2.png" alt="table2"></p>
+<p><img src="/2020/03/04/Repeat-Ancademic-Survival-Analysis/table2.png" alt="table2"></p>
 <p>The results of univariate analysis show that the hazard ratio of ‘week 8’ group compared by ‘week 1’ group and ‘week 4’ group are both not statistically significant by 1 (both parameters not statistically significant by 0). However, parameter of CD4, Albumin conditions and BMI are statistically significant than 0 at 0.05 critical criteria.</p>
 <p>In the multivariable analysis, the conditions of the p-values for covariates are roughly the same with the univariate analysis. Both parameter of ‘week 1’ and ‘week 4’ treatments are not statistically significant by 0. The parameter of CD4, Albumin and conditions are statistically significant than 0 at 0.05 critical criteria. The only difference happened in the parameter ‘BMI’. It is significant at 0.1 critical criteria but not significant at 0.05 critical criteria.</p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as3/fig2_1.png" alt="fig2_1"></p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as3/fig2_2.png" alt="fig2_2"></p>
+<p><img src="/2020/03/04/Repeat-Ancademic-Survival-Analysis/fig2_1.png" alt="fig2_1"></p>
+<p><img src="/2020/03/04/Repeat-Ancademic-Survival-Analysis/fig2_2.png" alt="fig2_2"></p>
 <p><strong>Fig 2.</strong> Scaled Schenfeld Residual for Each Covariates in Multivariable Analysis</p>
-<p><img src="https://raw.githubusercontent.com/Ry2an/my_picture_garage/master/bios623as3/fig3.png" alt="fig3"></p>
+<p><img src="/2020/03/04/Repeat-Ancademic-Survival-Analysis/fig3.png" alt="fig3"></p>
 <p><strong>Fig 3.</strong> Matingale Residuals and Deviance Residuals</p>
 <p>All of the residuals lying close to ‘0’. For Schenfeld residuals, we can the confidence intervals are always contain 0 for each covariates. This indicates that the multivariable model has a good fit so that the error term could stay in the distribution assumed by the model.</p>
 <h2 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h2><p>There are several discrepancy between my results with the original paper. In the univariate analysis multivariable analysis, the regression coefficient of ‘CD4’ and ‘Albumin’ are not same with the paper. Coefficient of ‘Week 1’ are not same in the multivariable analysis. I think the reason is because of the data from the supplement of the paper. Although I analyzed with people who lost follow up before the treatment by considering the intention to treat approach, which was the same as the authors did in their paper, we can see that there are discrepancy between the number of people who died or quit before the treatment. In the paper, the number of three groups (‘week1’, ‘week4’ and ‘week8’) who received the treatment is 149, 147 and 135, while from the data they are 150, 146, and 137. This could lead the survival probability of three treatments different with the original paper at least when first event happens. Besides, In this assignment, I didn’t include ‘Hepatotoxicity requiring interruption of TB therapy’ as a covariate in the model, which could also lead different results.</p>
@@ -585,7 +585,7 @@ height:50vh;
             <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
             <p>Link of This Article：<a href="https://ry2an.github.io/2020/03/04/Repeat-Ancademic-Survival-Analysis/">https://ry2an.github.io/2020/03/04/Repeat-Ancademic-Survival-Analysis/</a>
             <p>Publish Date：<a href="https://ry2an.github.io/2020/03/04/Repeat-Ancademic-Survival-Analysis/">March 4th 2020, 3:06:11 pm</a>
-            <p>Update Date：<a href="https://ry2an.github.io/2020/03/04/Repeat-Ancademic-Survival-Analysis/">May 21st 2020, 12:15:11 pm</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/03/04/Repeat-Ancademic-Survival-Analysis/">August 1st 2020, 8:25:54 pm</a>
             <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
         </div>
     
@@ -743,6 +743,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
