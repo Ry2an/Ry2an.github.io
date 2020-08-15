@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>Crawling Data From html Based Pages · Ry2an&#39;s Blog</title>
+    <title>Ry2an&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,23 +203,12 @@
 <meta name="generator" content="Hexo 5.0.0"></head>
 
     
-        <body class="post-body">
-    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
-    
-    <div class="banner">
-            <div class="blog-title">
-                <a href="/" >Ry2an&#39;s Studio</a>
-            </div>
-            <div class="post-title">
-                <a href="#" class="post-name">Crawling Data From html Based Pages</a>
-            </div>
-    </div>
     
     <a class="home-link" href=/>Ry2an's Studio</a>
 </header>
@@ -231,68 +220,24 @@
 
 
 
-
-height:50vh;
 ">
     
     <!-- 主页  -->
-    
-    
-    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/postbg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
-            
-            Crawling Data From html Based Pages
-            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-            
-            <!-- 404 -->
-            
         </p>
         <!-- 文章页meta -->
-        
-            <div class="post-intros">
-                <!-- 文章页标签  -->
-                
-                
-                    <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">606</span>Reading time: <span class="post-count reading-time">3 min</span></span>
-                    </div>
-                
-                <div class="post-intro-meta">
-                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/01/17</span>
-                    
-                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
-                        <span class="iconfont-archer">&#xe602;</span>
-                        <span id="busuanzi_value_page_pv"></span>
-                    </span>
-                    
-                    <span class="shareWrapper">
-                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
-                        <span class="shareText">Share</span>
-                        <ul class="shareList">
-                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
-                                <div class="share-qrcode"></div>
-                            </li>
-                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
-                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
-                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
-                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
-                        </ul>
-                    </span>
-                </div>
-            </div>
         
     </div>
 </div>
@@ -393,100 +338,33 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main post-page">
-    <article class="article-entry">
-        <p>This practicing project is going to crawl published infectious disease data from official website of health department of Shanghai (上海市卫生与计划生育委员会).</p>
-<p>This project is finished in 2016. I don’t know whether their website has been updated or not. The name of the department has already changed from “卫计委” to “卫健委”.</p>
-<p>However, the code should be valuable.</p>
-<h2 id="Basic-Processes"><a href="#Basic-Processes" class="headerlink" title="Basic Processes"></a>Basic Processes</h2><ul>
-<li>On the official sites, there is a special page where saved all history reports.</li>
-</ul>
-<p><img src="/2020/01/17/Crawling-Data-From-html-Based-Pages/1.png" alt="1"></p>
-<p><em><center>This screen shot was taken in 2016.</center></em></p>
-<p>From this picture, we can see there are for pages of the url. So the following processes are clear:</p>
-<ul>
-<li><p>Save the html file of the four pages.</p>
-</li>
-<li><p>Extract urls from the four pages by finding the special pattern of saving the urls.</p>
-</li>
-</ul>
-<p>Finally, all urls are recongized and downloaded:</p>
-<p><img src="/2020/01/17/Crawling-Data-From-html-Based-Pages/2.png" alt="2"></p>
-<p><img src="/2020/01/17/Crawling-Data-From-html-Based-Pages/3.png" alt="3"></p>
-<ul>
-<li>The next step is download all html pages of the urls, where data is saving.</li>
-</ul>
-<p><img src="/2020/01/17/Crawling-Data-From-html-Based-Pages/4.png" alt="4"></p>
-<p><em><center>This is a snapshot of one of the reporting pages.</center></em></p>
-<p><img src="/2020/01/17/Crawling-Data-From-html-Based-Pages/5.png" alt="5"></p>
-<p><img src="/2020/01/17/Crawling-Data-From-html-Based-Pages/6.png" alt="6"></p>
-<p><em><center>These are the html codes of one reporting page.</center></em></p>
-<ul>
-<li>The last step is recongnizing patterns of the data and save them.</li>
-</ul>
-<p>Maybe due to the changes of the staff, there are three patterns of the data. (I found this after trying for a huge times (^o^;).)</p>
-<p>But, finally, I made it.</p>
-<p><img src="/2020/01/17/Crawling-Data-From-html-Based-Pages/7.png" alt="7"></p>
-<h2 id="Core-Codes"><a href="#Core-Codes" class="headerlink" title="Core Codes"></a>Core Codes</h2><ul>
-<li>to get access to the server and require html codes, we should firstly let our program pretent to be a browser. And thus we need to have a “head claim”:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">for i in range(0,2):</span><br><span class="line">    url &#x3D; &#39;http:&#x2F;&#x2F;www.hnwst.gov.cn&#x2F;cms&#x2F;showsubpage.jsp?ocid&#x3D;363&amp;ncid&#x3D;363&amp;pno&#x3D;&#39;+str(i)+&#39;.html&#39;</span><br><span class="line"></span><br><span class="line">    headers &#x3D; &#123; &quot;Accept&quot;:&quot;text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;webp,*&#x2F;*;q&#x3D;0.8&quot;,</span><br><span class="line">                &quot;Accept-Encoding&quot;:&quot;gzip, deflate, sdch&quot;,</span><br><span class="line">                &quot;Accept-Language&quot;:&quot;zh-TW,zh;q&#x3D;0.8,en-US;q&#x3D;0.6,en;q&#x3D;0.4&quot;,</span><br><span class="line">                &quot;Referer&quot;:&#39;http:&#x2F;&#x2F;www.wsjsw.gov.cn&#x2F;wsj&#x2F;n429&#x2F;n426&#x2F;index.html&#39;</span><br><span class="line">                &quot;User-Agent&quot;:&quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36\</span><br><span class="line">                 (KHTML, like Gecko) Chrome&#x2F;51,.0.2704.106 Safari&#x2F;537.36&quot;</span><br><span class="line">                &#125;</span><br><span class="line">    tempp&#x3D;i+1</span><br><span class="line">    r &#x3D; requests.get(url,headers&#x3D;headers)</span><br><span class="line">    f&#x3D;open (&quot;D:\\pypj\\wjwhn\\page&quot;+str(tempp)+&quot;.txt&quot;,&#39;wb&#39;)</span><br><span class="line">    f.write(r.text)</span><br><span class="line">    f.close()</span><br></pre></td></tr></table></figure>
-<ul>
-<li>After we get the html file, we need to find the pattern and copy the “matched strings”</li>
-</ul>
-<p><em>Plase notice that this method is called ‘Regular Expression’, ‘regexp’, or ‘正则表达式’. There is a more advanced plug-in in python called ‘Beautiful Soup’.</em></p>
-<p><em>To understand what’s the meaning of ‘\\d’ or ‘\\w’, please find the tutorials of regexp by yourself.</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f &#x3D; open(&quot;D:&#x2F;&#x2F;pypj&#x2F;&#x2F;wjw&#x2F;&#x2F;page1.txt&quot;)</span><br><span class="line">line1 &#x3D; f.readlines()</span><br><span class="line">patternu &#x3D; re.compile(r&#39;&#x2F;wsj&#x2F;n\d\d\d&#x2F;n\d\d\d&#x2F;u1ai\d+\.html&#39;)</span><br><span class="line">result1u &#x3D; re.findall(patternu,str(line1))</span><br></pre></td></tr></table></figure>
-<hr>
-<p>To see full codes of this program, please forward to <a target="_blank" rel="noopener" href="https://github.com/Ry2an/crawler_prac">my github reporsitory</a>.</p>
-<hr>
-<p>Please use the getpip.py to install pip</p>
-<p>Since I am clearing up my code 4 years ago. The code for the 3rd pattern was lost. But the luckly I have enough codes to do the crawling processes.</p>
-
-    </article>
-    <!-- license  -->
+            <main class="main index-page">
     
-        <div class="license-wrapper">
-            <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
-            <p>Link of This Article：<a href="https://ry2an.github.io/2020/01/17/Crawling-Data-From-html-Based-Pages/">https://ry2an.github.io/2020/01/17/Crawling-Data-From-html-Based-Pages/</a>
-            <p>Publish Date：<a href="https://ry2an.github.io/2020/01/17/Crawling-Data-From-html-Based-Pages/">January 17th 2020, 3:36:40 pm</a>
-            <p>Update Date：<a href="https://ry2an.github.io/2020/01/17/Crawling-Data-From-html-Based-Pages/">August 1st 2020, 8:07:54 pm</a>
-            <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/08/15/SAS-codes/" >
+            
+                <span>SAS codes</span>
+        </a>
+        <div class="abstract-content">
+            <p>This file contains all SAS orders that I used and able to use in future.</p>
         </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/08/15</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
     
     <!-- paginator  -->
-    <ul class="post-paginator">
-        <li class="next">
-            
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/01/31/Simulating-SIR-Model/" title= "Simulating SIR Model">
-                    <div class="nextTitle">Simulating SIR Model</div>
-                </a>
-            
-        </li>
-        <li class="previous">
-            
-                <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/01/14/Vaccine-Making-Selling-Delivering-and-Using-System/" title= "Vaccine Making Selling Delivering and Using System">
-                    <div class="prevTitle">Vaccine Making Selling Delivering and Using System</div>
-                </a>
-            
-        </li>
-    </ul>
-    <!-- 评论插件 -->
-    <!-- 来必力City版安装代码 -->
-
-<!-- City版安装代码已完成 -->
     
-    
-    <!-- partial('_partial/comment/changyan') -->
-    <!--PC版-->
-
-
-    
-    
-
-    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -579,24 +457,6 @@ height:50vh;
 </footer>
     </div>
     <!-- toc -->
-    
-    <div class="toc-wrapper" style=
-    
-
-
-
-
-
-
-
-top:50vh;
-
-    >
-        <div class="toc-catalog">
-            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
-        </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic-Processes"><span class="toc-number">1.</span> <span class="toc-text">Basic Processes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Core-Codes"><span class="toc-number">2.</span> <span class="toc-text">Core Codes</span></a></li></ol>
-    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1001,8 +861,6 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
-    
-        <script src="/scripts/share.js" async></script>    
      
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({

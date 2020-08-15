@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="Ruoyan Han">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Ruoyan Han">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>SAS codes · Ry2an&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/hakase.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Ry2an&#39;s Studio</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">SAS codes</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Ry2an's Studio</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/postbg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            SAS codes
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">4.9k</span>Reading time: <span class="post-count reading-time">29 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/08/15</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>This file contains all SAS orders that I used and able to use in future.</p>
+<a id="more"></a>
+<h3 id="连接路径设置library"><a href="#连接路径设置library" class="headerlink" title="连接路径设置library"></a>连接路径设置library</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*Set library*&#x2F;</span><br><span class="line">LIBNAME assign &quot;D:\biossas\assign1&quot;;</span><br></pre></td></tr></table></figure>
+<h3 id="显示数据集-print"><a href="#显示数据集-print" class="headerlink" title="显示数据集 print"></a>显示数据集 print</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">proc print data&#x3D;epi2.test;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc print data&#x3D;epi2.test;</span><br><span class="line">   variables temp ph;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="禁用format"><a href="#禁用format" class="headerlink" title="禁用format"></a>禁用format</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">options nofmterr;</span><br><span class="line"></span><br><span class="line">options nodate nofmterr linesize&#x3D;100 formdlim&#x3D;&#39;-&#39;;</span><br><span class="line">ods trace on; </span><br><span class="line"></span><br><span class="line">options nofmterr;</span><br></pre></td></tr></table></figure>
+<h3 id="建立table"><a href="#建立table" class="headerlink" title="建立table"></a>建立table</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">data cohort;</span><br><span class="line">    input exposed outcome count;</span><br><span class="line">    datalines ;</span><br><span class="line">        1 1 11 </span><br><span class="line">        1 2 160</span><br><span class="line">        2 1 616</span><br><span class="line">        2 2 10020</span><br><span class="line">    ;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="建立一种format"><a href="#建立一种format" class="headerlink" title="建立一种format"></a>建立一种format</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">proc format lib&#x3D;library;</span><br><span class="line">value hypg 1&#x3D;&quot;Has hyperglycemia&quot;</span><br><span class="line">           0&#x3D;&quot;No hyperglycemia&quot;;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc format;</span><br><span class="line">    value yno     0&#x3D;&#39;No&#39; 1&#x3D;&#39;Yes&#39;;</span><br><span class="line">    value gen    0&#x3D;&#39;Male&#39; 1&#x3D;&#39;Female&#39;;</span><br><span class="line">    value inc    1&#x3D;&#39;&lt;$70&#x2F;month&#39; 2&#x3D;&#39;$70-$99&#x2F;month&#39; 3&#x3D;&#39;$100&#x2F;month or more&#39;;</span><br><span class="line">    value rac    1&#x3D;&#39;White&#39; 2&#x3D;&#39;Mestizo&#39; 3&#x3D;&#39;Indigenous&#39; 4&#x3D;&#39;African&#39;;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc format;</span><br><span class="line">    value agegrp</span><br><span class="line">    1 &#x3D; &#39;1 45-90&#39;</span><br><span class="line">    2 &#x3D; &#39;2 17-44&#39;;</span><br><span class="line">    value sex</span><br><span class="line">    1 &#x3D; &#39;1 Male&#39;</span><br><span class="line">    2 &#x3D; &#39;2 Female&#39;;</span><br><span class="line">    value yntwo</span><br><span class="line">    1 &#x3D; &#39;1 Yes&#39;</span><br><span class="line">    2 &#x3D; &#39;2 No&#39;;</span><br><span class="line">    value ynzero</span><br><span class="line">    1 &#x3D; &#39;1 Yes&#39;</span><br><span class="line">    0 &#x3D; &#39;0 No&#39;;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="为数据集使用format"><a href="#为数据集使用format" class="headerlink" title="为数据集使用format"></a>为数据集使用format</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">data work.rn2a; set library.rn2;</span><br><span class="line">hyperglycemia &#x3D; .;</span><br><span class="line">if  (LBXGLU &gt;&#x3D; 110) then hyperglycemia&#x3D;1; </span><br><span class="line">if  (. &lt; LBXGLU &lt;  110) then hyperglycemia&#x3D;0; </span><br><span class="line">label hyperglycemia &#x3D; &quot;Hyperglycemia (fasting glucose &gt;&#x3D; 110 mg&#x2F;dL)&quot;;</span><br><span class="line">format hyperglycemia hypg.;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">data exer1; set lab.exer1; </span><br><span class="line">    format anemia parasite yno. income inc. race rac. gender gen.;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="修改变量label"><a href="#修改变量label" class="headerlink" title="修改变量label"></a>修改变量label</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">DATA TEMP; </span><br><span class="line">    SET EPI.CONFOUNDING_DS; </span><br><span class="line"></span><br><span class="line">    LABEL EXPOS12 &#x3D; &quot;Exposure variable recoded as 1 exposed and 2 unexposed&quot;; </span><br><span class="line">    EXPOS12 &#x3D; 2 - EXPOSURE; </span><br><span class="line"></span><br><span class="line">    LABEL ASTHMA12 &#x3D; &quot;Asthma status recoded as 1 case and 2 control&quot;; </span><br><span class="line">    ASTHMA12 &#x3D; 2 - ASTHMA;</span><br><span class="line"></span><br><span class="line">    LABEL AGE5&#x3D; &quot;Age recoded as 1&gt;&#x3D;5 and 2 &lt;5&quot;;</span><br><span class="line">    AGE5&#x3D; 2- AGE;</span><br><span class="line"></span><br><span class="line">    LABEL SPRING &#x3D; &quot;Spring variable &#x3D; 1, not spring &#x3D; 2&quot;; </span><br><span class="line">    SPRING &#x3D; 2 - SEASON; </span><br><span class="line">run; </span><br></pre></td></tr></table></figure>
+<h3 id="时间变量读取year-hour"><a href="#时间变量读取year-hour" class="headerlink" title="时间变量读取year hour"></a>时间变量读取year hour</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">data test_year2;</span><br><span class="line">set Testdataredcap;</span><br><span class="line">where year(Date) &gt; 2020;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">data test_year4;</span><br><span class="line">set Testdataredcap;</span><br><span class="line">where hour(time) &gt; 20;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="在有比重的表格中使用比重"><a href="#在有比重的表格中使用比重" class="headerlink" title="在有比重的表格中使用比重"></a>在有比重的表格中使用比重</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">*2x2 table;</span><br><span class="line">*Here, exposed&#x3D;1 means exposed, and exposed&#x3D;2 means unexposed;</span><br><span class="line">*Similarly, outcome&#x3D;1 means D+, and outcome&#x3D;2 means D-;</span><br><span class="line">proc freq data&#x3D;cohort;</span><br><span class="line">    tables exposed*outcome&#x2F;relrisk riskdiff;</span><br><span class="line">    weight count;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc logistic data&#x3D;cohort desc;</span><br><span class="line">    model outcome&#x3D;exposed;</span><br><span class="line">    weight count; * weight here means the number of people</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="在逻辑回归中使用抽样的权重-surveylogistic-weight"><a href="#在逻辑回归中使用抽样的权重-surveylogistic-weight" class="headerlink" title="在逻辑回归中使用抽样的权重 surveylogistic weight"></a>在逻辑回归中使用抽样的权重 surveylogistic weight</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">proc surveylogistic data &#x3D; use_dat2;</span><br><span class="line">weight  EXAM_WT;</span><br><span class="line">model  obese_10 &#x3D; mental_10 SPAGE sex_10 mental_10*sex_10;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="显示变量"><a href="#显示变量" class="headerlink" title="显示变量"></a>显示变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*See Variables*&#x2F;</span><br><span class="line">proc contents data &#x3D; assign.sbpandkidney;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="显示头几行数据-head"><a href="#显示头几行数据-head" class="headerlink" title="显示头几行数据 head()"></a>显示头几行数据 head()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">proc print data&#x3D;a (obs&#x3D;100);</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="排序数据-sort"><a href="#排序数据-sort" class="headerlink" title="排序数据 sort"></a>排序数据 sort</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">proc sort data &#x3D; TEMP; by age; run;</span><br><span class="line"></span><br><span class="line">proc sort data &#x3D; Addressout</span><br><span class="line">OUT &#x3D; Addressout;</span><br><span class="line">BY MOM_MRN;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="写出排名-proc-rank"><a href="#写出排名-proc-rank" class="headerlink" title="写出排名 proc rank"></a>写出排名 proc rank</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">proc rank data&#x3D;est_prob out&#x3D;est_prob groups&#x3D;10;</span><br><span class="line">    var ps;</span><br><span class="line">    ranks ps_dec;</span><br><span class="line">proc sort; by ps_dec; run;</span><br></pre></td></tr></table></figure>
+<h3 id="读取上面一格和下面一格的值"><a href="#读取上面一格和下面一格的值" class="headerlink" title="读取上面一格和下面一格的值"></a>读取上面一格和下面一格的值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">data Addressout;</span><br><span class="line">set Addressout;</span><br><span class="line">judge &#x3D; 0;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">data Addressout;</span><br><span class="line">    set Addressout;</span><br><span class="line">    by MOM_MRN;</span><br><span class="line">    judge &#x3D; ^(first.MOM_MRN and last.MOM_MRN);</span><br><span class="line">run; </span><br><span class="line"></span><br><span class="line">data Addressout;</span><br><span class="line">set Addressout;</span><br><span class="line">where judge &#x3D; 0;</span><br><span class="line">drop judge;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="显示变量频数-不要用于连续型变量-统计缺失值数量-stratified-table"><a href="#显示变量频数-不要用于连续型变量-统计缺失值数量-stratified-table" class="headerlink" title="显示变量频数 (不要用于连续型变量)(统计缺失值数量)(stratified table)"></a>显示变量频数 (不要用于连续型变量)(统计缺失值数量)(stratified table)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">proc freq data&#x3D;work.Cat2;</span><br><span class="line">tables RaceEthnicity NHWH NHBL HSPA OTHE;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">&#x2F;* Step 4. Examination of results of the recoding.*&#x2F;</span><br><span class="line">proc freq data&#x3D;work.categorical2;</span><br><span class="line">tables Education NoHS HS College;</span><br><span class="line">run;</span><br><span class="line">*The &#39;missing&#39; option creates a separate row&#x2F;column for missing data;</span><br><span class="line"></span><br><span class="line">-----------------------</span><br><span class="line"></span><br><span class="line">proc freq data &#x3D; exer1; </span><br><span class="line">    title &#39;Parasitic infection&#39;;</span><br><span class="line">    table parasite &#x2F; missing; </span><br><span class="line">run; </span><br><span class="line"></span><br><span class="line">--------------------</span><br><span class="line"></span><br><span class="line">proc freq data &#x3D; TEMP; </span><br><span class="line">table EXPOS12 * EXPOSURE &#x2F; list missing; </span><br><span class="line">table ASTHMA12 * ASTHMA &#x2F; list missing; </span><br><span class="line">table age5 * age &#x2F;list missing;</span><br><span class="line">run; </span><br><span class="line"></span><br><span class="line">-------------------</span><br><span class="line"></span><br><span class="line">proc freq data &#x3D; TEMP; </span><br><span class="line">table AGE5 * EXPOS12 * ASTHMA12 &#x2F;relrisk cmh; *add stratifying variable to table statement; </span><br><span class="line">run; *order should be 1 stratifying var, 2 exposure var and 3 outcome var; </span><br></pre></td></tr></table></figure>
+<h3 id="显示连续型变量的最小值最大值均值标准差中位数百分位数"><a href="#显示连续型变量的最小值最大值均值标准差中位数百分位数" class="headerlink" title="显示连续型变量的最小值最大值均值标准差中位数百分位数"></a>显示连续型变量的最小值最大值均值标准差中位数百分位数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">*Examine the continuous variable &#39;BMI&#39;; </span><br><span class="line">proc means data &#x3D; exer1 n min max mean std median P25 P75; </span><br><span class="line">    var bmi; </span><br><span class="line">run; </span><br></pre></td></tr></table></figure>
+<h3 id="显示均值meas"><a href="#显示均值meas" class="headerlink" title="显示均值meas"></a>显示均值meas</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*Step 2. Descriptive statistics for the variables.*&#x2F;</span><br><span class="line">proc means data &#x3D; work.drfrenchm;</span><br><span class="line">  var Year Age Death_Rate ln_Death_Rate;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc means data &#x3D; exer1 n min max mean std median P25 P75;</span><br><span class="line">    title &#39;BMI&#39;; </span><br><span class="line">    var bmi; </span><br><span class="line">run; </span><br></pre></td></tr></table></figure>
+<h3 id="筛选数据"><a href="#筛选数据" class="headerlink" title="筛选数据"></a>筛选数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">data work.rn2b;</span><br><span class="line">set work.rn2a;</span><br><span class="line">if (MaritalStatus &#x3D; 1) or (MaritalStatus &#x3D; 5);</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc logistic data &#x3D; TEMP DESC;</span><br><span class="line">    where spring&#x3D;2;</span><br><span class="line">    model ASTHMA &#x3D; EXPOSURE ; </span><br><span class="line">run;</span><br><span class="line">*Association among spring births;</span><br><span class="line">proc logistic data &#x3D; TEMP DESC;</span><br><span class="line">    where spring&#x3D;1;</span><br><span class="line">    model ASTHMA &#x3D; EXPOSURE ; </span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="计算OR-RR-RD"><a href="#计算OR-RR-RD" class="headerlink" title="计算OR RR RD"></a>计算OR RR RD</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">proc freq data &#x3D; Rnone.Rn1agesq;</span><br><span class="line">table Sumldl * Male &#x2F; cmh relrisk riskdiff; </span><br><span class="line">*last two keywords provide PR or RR and AR depending on the study design;</span><br><span class="line">*cmh requests risks and odds;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="Odds-ratio-logistic-regression"><a href="#Odds-ratio-logistic-regression" class="headerlink" title="Odds ratio (logistic regression)"></a>Odds ratio (logistic regression)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*Odds ratio (logistic regression); </span><br><span class="line">proc logistic data &#x3D; exer1 descending; </span><br><span class="line">    title &#39;OR: Gender by parasite&#39;;</span><br><span class="line">    model parasite &#x3D; gender; </span><br><span class="line">run;   </span><br></pre></td></tr></table></figure>
+<h3 id="Risk-Ratio"><a href="#Risk-Ratio" class="headerlink" title="Risk Ratio"></a>Risk Ratio</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">proc genmod Data&#x3D;new desc ;</span><br><span class="line">    model fstat&#x3D;gender&#x2F;link&#x3D;log dist&#x3D;bin;</span><br><span class="line">    estimate &#39;Beta&#39; gender 1 &#x2F; exp;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="卡方检验"><a href="#卡方检验" class="headerlink" title="卡方检验"></a>卡方检验</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">proc freq data &#x3D; Rnone.Rn1agesq;</span><br><span class="line">table Sumldl * Sumpir &#x2F; chisq;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="所有变量correlation"><a href="#所有变量correlation" class="headerlink" title="所有变量correlation"></a>所有变量correlation</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*corralation all var*&#x2F;</span><br><span class="line">proc corr data &#x3D; assign.sbpandkidney;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc corr data&#x3D;cars1 ;</span><br><span class="line">VAR horsepower weight ;</span><br><span class="line">BY make; &#x2F;*like BY gender 分成几组分别cor*&#x2F;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="Cronbach-Alpha"><a href="#Cronbach-Alpha" class="headerlink" title="Cronbach Alpha"></a>Cronbach Alpha</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">proc univariate data &#x3D; use_dat;</span><br><span class="line">var MHQ_1;</span><br><span class="line">histogram MHQ_1 &#x2F; vscale&#x3D;count barlabel&#x3D;count;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc corr data&#x3D;temp alpha nocorr nomiss;</span><br><span class="line">VAR temp_code MHQ_2 MHQ_3 MHQ_4 MHQ_5 MHQ_6 MHQ_7;</span><br><span class="line">*title1 &#39;Some title&#39;;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc corr data&#x3D;temp alpha;</span><br><span class="line">VAR temp_code MHQ_2 MHQ_3 MHQ_4 MHQ_5 MHQ_6 MHQ_7;</span><br><span class="line">*title1 &#39;Some title&#39;;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="Pearson-and-Spearman-correlations"><a href="#Pearson-and-Spearman-correlations" class="headerlink" title="Pearson and Spearman correlations;"></a>Pearson and Spearman correlations;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*Pearson and Spearman correlations; </span><br><span class="line">proc corr data &#x3D; exer1 pearson spearman; </span><br><span class="line">    title &#39;BMI and cholesterol&#39;;</span><br><span class="line">    var bmi chol;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="Xy散点图-4-methods"><a href="#Xy散点图-4-methods" class="headerlink" title="Xy散点图 (4 methods)"></a>Xy散点图 (4 methods)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*plot SBP x BUN（ABC*&#x2F;</span><br><span class="line">proc plot data &#x3D; assign.sbpandkidney;</span><br><span class="line">  plot BPXSY1*LBXSBU;</span><br><span class="line">run;</span><br><span class="line">quit;</span><br><span class="line"></span><br><span class="line">&#x2F;* Step 4b. Scatterplot of residuals by predicted BMI values. （真实散点*&#x2F;</span><br><span class="line">&#x2F;* (We want to get a finer graph than that produced by [proc plot].) *&#x2F;</span><br><span class="line">goptions reset&#x3D;all;</span><br><span class="line">symbol1 value&#x3D;dot color&#x3D;black height&#x3D;1;</span><br><span class="line">proc gplot data&#x3D;work.ResidualsBMI;</span><br><span class="line">plot RESIDUAL*PREDICTED;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc sgplot data&#x3D;lab10.ecological;</span><br><span class="line">    SCATTER X &#x3D; foreign</span><br><span class="line">    Y &#x3D; fastfood;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">PROC SGSCATTER DATA &#x3D; lab10.ecological;</span><br><span class="line">    PLOT  fastfood*foreign;</span><br><span class="line">    TITLE &#39;Percent of foreign born population and fast food&#39;;</span><br><span class="line">run;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Plot-Curve"><a href="#Plot-Curve" class="headerlink" title="Plot Curve"></a>Plot Curve</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">data ratiopower;</span><br><span class="line">     input ratio power;</span><br><span class="line">     cards;</span><br><span class="line">1    .596</span><br><span class="line">2    .732</span><br><span class="line">3   .785</span><br><span class="line">4    .812</span><br><span class="line">5   .829</span><br><span class="line">6   .839</span><br><span class="line">7   .847</span><br><span class="line">8    .853</span><br><span class="line">9   .858</span><br><span class="line">10    .861</span><br><span class="line">;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc gplot data&#x3D;ratiopower;</span><br><span class="line">     plot power*ratio; symbol line&#x3D;1 width&#x3D;5 interpol&#x3D;join;</span><br><span class="line">     title &#39;Power curve with different cc ratios&#39;;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="条形图-sgplot"><a href="#条形图-sgplot" class="headerlink" title="条形图 sgplot"></a>条形图 sgplot</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">proc SGPLOT data &#x3D; work.tides;</span><br><span class="line">vbar center;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc sgplot data&#x3D;tmp3 sganno&#x3D;sganno noautolegend ;</span><br><span class="line">    format count0 count1  positive.  ;</span><br><span class="line">    vbar ps &#x2F; response&#x3D;count0   legendlabel&#x3D;&quot; &quot;   datalabel datalabelattrs&#x3D;(size&#x3D;10)   name&#x3D;&#39;a0&#39; nofill ;</span><br><span class="line">    vbar ps &#x2F; response&#x3D;count1   legendlabel&#x3D;&quot; &quot;   datalabel datalabelattrs&#x3D;(size&#x3D;10)   name&#x3D;&#39;a1&#39;   fill fillattrs&#x3D;(color&#x3D;gray) ;</span><br><span class="line">    xaxis labelattrs&#x3D;(size&#x3D;15) valueattrs&#x3D;(size &#x3D; 10) min &#x3D; 0 max &#x3D; 1.0;</span><br><span class="line">    yaxis labelattrs&#x3D;(size&#x3D;15) valueattrs&#x3D;(size &#x3D; 10) ;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="Histogram-check-whether-normal"><a href="#Histogram-check-whether-normal" class="headerlink" title="Histogram (check whether normal)"></a>Histogram (check whether normal)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">proc univariate normal data&#x3D;epi2.nhanes3;</span><br><span class="line"> var age;</span><br><span class="line"> histogram age;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="Histogram"><a href="#Histogram" class="headerlink" title="Histogram"></a>Histogram</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">proc sgpanel data &#x3D; work.tides;</span><br><span class="line">histogram t1_appt_date;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*regression only let BUN as X*&#x2F;</span><br><span class="line">proc reg data &#x3D; assign.sbpandkidney;</span><br><span class="line">  model BPXSY1 &#x3D; LBXSBU;</span><br><span class="line">run;</span><br><span class="line">&#x2F;*regression let BUN and Age as X*&#x2F;</span><br><span class="line">proc reg data &#x3D; assign.sbpandkidney;</span><br><span class="line">  model BPXSY1 &#x3D; LBXSBU Exactage;</span><br><span class="line">run;</span><br><span class="line">quit;</span><br><span class="line"></span><br><span class="line">&#x2F;*Do a temp regression to find the highest negtive beta among races, this time reference &#39;Others&#39; as default*&#x2F;</span><br><span class="line">proc reg data &#x3D; work.Cat2;</span><br><span class="line">    model BPXSY1 &#x3D; Male Exactage NHWH NHBL HSPA;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">&#x2F;*NHWH was only one who got a negtive beta, thus we set it as the reference*&#x2F;</span><br><span class="line">proc reg data &#x3D; work.Cat2;</span><br><span class="line">    model BPXSY1 &#x3D; Male Exactage NHBL HSPA OTHE;</span><br><span class="line">run;</span><br><span class="line">quit;</span><br><span class="line"></span><br><span class="line">----------------------------</span><br><span class="line"></span><br><span class="line">proc genmod data &#x3D; nhefs;</span><br><span class="line">    class exercise active education;</span><br><span class="line">    model wt82_71 &#x3D; qsmk sex race age age*age education</span><br><span class="line">                smokeintensity smokeintensity*smokeintensity smokeyrs smokeyrs*smokeyrs</span><br><span class="line">                exercise active wt71 wt71*wt71</span><br><span class="line">                qsmk*smokeintensity;</span><br><span class="line">run;</span><br><span class="line">quit;</span><br></pre></td></tr></table></figure>
+<h3 id="线性回归并计算残差和回归均方"><a href="#线性回归并计算残差和回归均方" class="headerlink" title="线性回归并计算残差和回归均方"></a>线性回归并计算残差和回归均方</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* Step 2. Linear regression of systolic blood pressure </span><br><span class="line">on gender, age, education, race&#x2F;ethnicity and marital status.</span><br><span class="line">Predicted values and residuals are saved in a dataset named ResidualsSBP. *&#x2F;</span><br><span class="line">proc reg data&#x3D;library.rn1;</span><br><span class="line">  model BPXSY1 &#x3D; Male Exactage NH_Black Hispanic Others NoHS graduatedHS Widowed Divorced_or_separated Never_married Living_with_partner;</span><br><span class="line">output out &#x3D; work.ResidualsSBP</span><br><span class="line">P &#x3D; PREDICTED  &#x2F;* unstandardized predicted value*&#x2F;</span><br><span class="line">R  &#x3D; RESIDUAL; &#x2F;* unstandardized residuals*&#x2F;</span><br><span class="line">run;</span><br><span class="line">quit;</span><br><span class="line"></span><br><span class="line">&#x2F;* Step 3. Correlations between observed SBP, predicted SBP and residuals. *&#x2F;</span><br><span class="line">proc corr data &#x3D; work.ResidualsSBP;</span><br><span class="line">var BPXSY1 PREDICTED RESIDUAL;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">&#x2F;* Step 4. Variances of observed SBP, predicted SBP and residuals. *&#x2F;</span><br><span class="line">proc means data &#x3D; work.ResidualsSBP var;</span><br><span class="line">var BPXSY1 PREDICTED RESIDUAL;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="General-Linear-Model"><a href="#General-Linear-Model" class="headerlink" title="General Linear Model"></a>General Linear Model</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">*ANOVA test for comparing a continuous and normally distributed variable across a categorical variable with 2+ categories;</span><br><span class="line">proc glm data &#x3D; exer1; </span><br><span class="line">    title &#39;ANOVA: BMI by race&#39;;</span><br><span class="line">    class race; *4 category race variable; </span><br><span class="line">    model bmi &#x3D; race;</span><br><span class="line">    means race;  </span><br><span class="line">run; </span><br><span class="line"></span><br><span class="line">proc glm data&#x3D; est_prob;</span><br><span class="line">    class ps_dec;</span><br><span class="line">    model wt82_71&#x3D; qsmk ps_dec &#x2F;clparm solution; &#x2F;*these options use for showing 95% CI*&#x2F;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="建立新数据集并设置一些变量"><a href="#建立新数据集并设置一些变量" class="headerlink" title="建立新数据集并设置一些变量"></a>建立新数据集并设置一些变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">data work.Cat2;</span><br><span class="line">set datasets.Cat;</span><br><span class="line"></span><br><span class="line">if RaceEthnicity &#x3D; 1 then NHWH &#x3D; 1; Else NHWH &#x3D; 0;</span><br><span class="line">if RaceEthnicity &#x3D; 2 then NHBL &#x3D; 1; Else NHBL &#x3D; 0;</span><br><span class="line">if RaceEthnicity &#x3D; 3 then HSPA &#x3D; 1; Else HSPA &#x3D; 0;</span><br><span class="line">if RaceEthnicity &#x3D; 4 then OTHE &#x3D; 1; Else OTHE &#x3D; 0;</span><br><span class="line"></span><br><span class="line">if RaceEthnicity &#x3D; . then NHWH &#x3D; .;</span><br><span class="line">if RaceEthnicity &#x3D; . then NHBL &#x3D; .;</span><br><span class="line">if RaceEthnicity &#x3D; . then HSPA &#x3D; .;</span><br><span class="line">if RaceEthnicity &#x3D; . then OTHE &#x3D; .;</span><br><span class="line"></span><br><span class="line">label NHWH &#x3D; Non-Hispanic White;</span><br><span class="line">label NHBL &#x3D; Non-Hispanic Black;</span><br><span class="line">label HSPA &#x3D; Hispanic;</span><br><span class="line">label OTHE &#x3D; Others;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">&#x2F;* Step 3. Recode Education as three new binary variables*&#x2F;</span><br><span class="line">data work.categorical2; </span><br><span class="line">set datasets.categorical1;</span><br><span class="line"></span><br><span class="line">if Education&#x3D;1 then NoHS&#x3D;1; Else NoHS&#x3D;0;</span><br><span class="line">if Education&#x3D;2 then HS&#x3D;1;Else HS&#x3D;0;</span><br><span class="line">if Education&#x3D;3 then College&#x3D;1;Else College&#x3D;0;</span><br><span class="line"></span><br><span class="line">if Education&#x3D;. then NoHS&#x3D;.;</span><br><span class="line">if Education&#x3D;. then HS&#x3D;.;</span><br><span class="line">if Education&#x3D;. then College&#x3D;.;</span><br><span class="line"></span><br><span class="line">label NoHS &#x3D; Not graduated from HS;</span><br><span class="line">label HS &#x3D; Graduated from HS;</span><br><span class="line">label College &#x3D; Graduated from College;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="建立手动输入的数据表"><a href="#建立手动输入的数据表" class="headerlink" title="建立手动输入的数据表"></a>建立手动输入的数据表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">data cohort;</span><br><span class="line">    input exposed outcome count; * name of columns</span><br><span class="line">    datalines ;</span><br><span class="line">        1 1 11 </span><br><span class="line">        1 2 160</span><br><span class="line">        2 1 616</span><br><span class="line">        2 2 10020</span><br><span class="line">    ;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="导入csv"><a href="#导入csv" class="headerlink" title="导入csv"></a>导入csv</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*Importing a text (csv) data file (assuming the model folder system). *&#x2F;</span><br><span class="line">* Enter the address of the folder in which you saved DRfrenchM.csv </span><br><span class="line">(e.g., the instructor saved the file in C:\Users\shoriuchi\Desktop\Bios1 SAS files\introduction )  ;</span><br><span class="line">proc import </span><br><span class="line">  out &#x3D; work.drfrenchm </span><br><span class="line">  datafile &#x3D; &quot;*** enter the file address here ***\DRfrenchM.csv&quot;</span><br><span class="line">  dbms &#x3D; excel;</span><br><span class="line">  sheet &#x3D; &quot;death rates for French males&quot;;</span><br><span class="line">run; </span><br></pre></td></tr></table></figure>
+<h3 id="导入xls"><a href="#导入xls" class="headerlink" title="导入xls"></a>导入xls</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*Importing an Excel data file (assuming the model folder system). *&#x2F;</span><br><span class="line">* Enter the address of the folder in which you saved DRfrenchM.xls </span><br><span class="line">(e.g., the instructor saved the file in C:\Users\shoriuchi\Desktop\Bios1 SAS files\introduction )  ;</span><br><span class="line">proc import </span><br><span class="line">  out &#x3D; work.drfrenchm </span><br><span class="line">  datafile &#x3D; &quot;*** enter the file address here ***\DRfrenchM.xls&quot;</span><br><span class="line">  dbms &#x3D; excel;</span><br><span class="line">  sheet &#x3D; &quot;death rates for French males&quot;;</span><br><span class="line">run; </span><br><span class="line"></span><br><span class="line">proc import DATAFILE &#x3D; &quot;R:\NYU_CHES\EPIC Clarity\Received 04112019\Mothers_2019-04-11.xlsx&quot;</span><br><span class="line">OUT &#x3D; addressout</span><br><span class="line">DBMS &#x3D; xlsx</span><br><span class="line">replace;</span><br><span class="line">sheet &#x3D; &quot;1. Address&quot;;</span><br><span class="line">getnames &#x3D; yes;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="导出csv"><a href="#导出csv" class="headerlink" title="导出csv"></a>导出csv</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PROC EXPORT DATA&#x3D; WORK.RANDOM200 </span><br><span class="line">            OUTFILE&#x3D; &#39;F:\Epi 2\random200.csv&#39; </span><br><span class="line">             REPLACE;</span><br><span class="line">RUN;</span><br></pre></td></tr></table></figure>
+<h3 id="导出xls"><a href="#导出xls" class="headerlink" title="导出xls"></a>导出xls</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PROC EXPORT DATA&#x3D; WORK.RANDOM200 </span><br><span class="line">            OUTFILE&#x3D; &#39;F:\Epi 2\random200.xls&#39; </span><br><span class="line">            DBMS&#x3D;EXCEL4 REPLACE;</span><br><span class="line">RUN;</span><br></pre></td></tr></table></figure>
+<h3 id="残差分布"><a href="#残差分布" class="headerlink" title="残差分布"></a>残差分布</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* Step 5. Histogram of residuals in comparison with the corresponding normal distribution. *&#x2F;</span><br><span class="line">&#x2F;* (We want to get a larger graph than that in the default graphic output.) *&#x2F;</span><br><span class="line">proc univariate data &#x3D; work.ResidualsBMI;</span><br><span class="line">var RESIDUAL;</span><br><span class="line">histogram RESIDUAL &#x2F; normal;</span><br><span class="line">run; quit;</span><br></pre></td></tr></table></figure>
+<h3 id="检测是否正态-qq-plot"><a href="#检测是否正态-qq-plot" class="headerlink" title="检测是否正态(qq-plot)"></a>检测是否正态(qq-plot)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">proc sort; by parasite; run;</span><br><span class="line">proc univariate normal;</span><br><span class="line">    var bmi;</span><br><span class="line">    qqplot bmi &#x2F; normal ;</span><br><span class="line">    by parasite;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="单样本t检验"><a href="#单样本t检验" class="headerlink" title="单样本t检验"></a>单样本t检验</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">proc ttest data&#x3D;cars1 alpha&#x3D;0.05 h0&#x3D;0;</span><br><span class="line">     var horsepower;</span><br><span class="line">   run;</span><br><span class="line"></span><br><span class="line">proc ttest data &#x3D; exer1;</span><br><span class="line">    title &#39;BMI by parasite&#39;;</span><br><span class="line">    class parasite;</span><br><span class="line">     var bmi;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="配对样本t检验"><a href="#配对样本t检验" class="headerlink" title="配对样本t检验"></a>配对样本t检验</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">proc ttest data&#x3D;cars1 ;</span><br><span class="line">    paired weight*length;</span><br><span class="line">   run;</span><br></pre></td></tr></table></figure>
+<h3 id="两样本t检验"><a href="#两样本t检验" class="headerlink" title="两样本t检验"></a>两样本t检验</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">proc ttest data&#x3D;cars1 sides&#x3D;2 alpha&#x3D;0.05 h0&#x3D;0;</span><br><span class="line">     title &quot;Two sample t-test example&quot;;</span><br><span class="line">     class make; </span><br><span class="line">    var horsepower;</span><br><span class="line">   run;</span><br></pre></td></tr></table></figure>
+<h3 id="Fisher’s-exact-test"><a href="#Fisher’s-exact-test" class="headerlink" title="Fisher’s exact test"></a>Fisher’s exact test</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">*Fisher&#39;s exact test;</span><br><span class="line">*This is to demonstrate that the values of the dichotomous variables are arbitrary, but </span><br><span class="line">    be careful about interpreting the measures of association;</span><br><span class="line">*Look at how the risk differences, the RRs, and the ORs change (or do not) depending on how you code the variables; </span><br><span class="line">proc freq data &#x3D; new;</span><br><span class="line">    title &#39;Fishers exact tests&#39;;</span><br><span class="line">    tables parasite*parasite12 anemia*anemia12;</span><br><span class="line">    tables  parasite*anemia parasite12*anemia12 &#x2F; chisq relrisk riskdiff fisher; *also obtained in previous PROC;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="Wilcoxon-rank-sum-Mann-Whitney-test"><a href="#Wilcoxon-rank-sum-Mann-Whitney-test" class="headerlink" title="Wilcoxon rank sum/Mann-Whitney test"></a>Wilcoxon rank sum/Mann-Whitney test</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">*Wilcoxon rank sum&#x2F;Mann-Whitney test for comparing a continuous variable across a categorical variable with 2 categories;</span><br><span class="line">*Non-parametric form of the independent samples t-test; </span><br><span class="line">proc npar1way data &#x3D; exer1 wilcoxon;</span><br><span class="line">    title &#39;Wilcoxon: BMI by parasite&#39;;</span><br><span class="line">    class parasite; *2 category parasite variable;</span><br><span class="line">    var bmi;</span><br><span class="line">run; </span><br></pre></td></tr></table></figure>
+<h3 id="Kruskal-Wallis-test"><a href="#Kruskal-Wallis-test" class="headerlink" title="Kruskal-Wallis test"></a>Kruskal-Wallis test</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">*Kruskal-Wallis test for comparing a continuous variable across a categorical variable with 2+ categories (non-parametric test); </span><br><span class="line">proc npar1way data &#x3D; exer1 wilcoxon; </span><br><span class="line">    title &#39;K-W: BMI by race&#39;;</span><br><span class="line">    class race; *4 category race variable;</span><br><span class="line">    var bmi; </span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="One-way-anova"><a href="#One-way-anova" class="headerlink" title="One way anova"></a>One way anova</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PROC ANOVA data &#x3D; ***;</span><br><span class="line">CLASS *分类变量*</span><br><span class="line">MODEL *连续变量（因变量）* &#x3D; *** *** ***; &#x2F;*效应变量列表（不是值）*&#x2F;</span><br><span class="line">MEANS *分类变量*</span><br><span class="line">RUN;</span><br></pre></td></tr></table></figure>
+<h3 id="非线性回归并对categorical自变量的β值进行方差检验"><a href="#非线性回归并对categorical自变量的β值进行方差检验" class="headerlink" title="非线性回归并对categorical自变量的β值进行方差检验"></a>非线性回归并对categorical自变量的β值进行方差检验</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* Step 3. Regression of diastolic blood pressure on gender, age(quadratic function), race&#x2F;ethnicity and education. *&#x2F;</span><br><span class="line">proc reg data&#x3D;library.rn1a;</span><br><span class="line">  model BPXDI1 &#x3D; Male Exactage Agesquared NH_Black Hispanic Others NoHS graduatedHS;</span><br><span class="line">Diff_raceethnicity: test NH_Black&#x3D;Hispanic&#x3D;Others&#x3D;0;</span><br><span class="line">Diff_education: test NoHS&#x3D;graduatedHS&#x3D;0;</span><br><span class="line">run;</span><br><span class="line">quit; </span><br></pre></td></tr></table></figure>
+<h3 id="保存逻辑回归的预测值-surveylogistic"><a href="#保存逻辑回归的预测值-surveylogistic" class="headerlink" title="保存逻辑回归的预测值 surveylogistic"></a>保存逻辑回归的预测值 surveylogistic</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">proc surveylogistic data &#x3D; use_dat2;</span><br><span class="line">OUTPUT OUT &#x3D; use_dat3 PREDICTED &#x3D; pscore;</span><br><span class="line">weight  EXAM_WT;</span><br><span class="line">model  mental_10 &#x3D; diabete_10 hypert_10 asthma_10 kidney_10 cancer_10;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="Logistic回归并储存结果"><a href="#Logistic回归并储存结果" class="headerlink" title="Logistic回归并储存结果"></a>Logistic回归并储存结果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* Step 4. Logistic regression of self-reported general health condition on selected demographic variables *&#x2F;</span><br><span class="line">proc logistic data&#x3D;library.rn2;</span><br><span class="line">    class RIAGENDR (ref&#x3D;&#39;Male&#39;) RaceEthnicity (ref&#x3D;&#39;Non-Hispanic White&#39;)  Education  (ref&#x3D;&#39;Graduated from College&#39;)  MaritalStatus (ref&#x3D;&#39;Married&#39;) &#x2F; PARAM&#x3D;ref;</span><br><span class="line">    model HealthCondition(DESC)&#x3D;Exactage RIAGENDR RaceEthnicity Education MaritalStatus;</span><br><span class="line">    score out&#x3D;work.logisticmodel;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Why DESC?</p>
+<p>The purposes of the analysis in the posted example was to set up and estimate a logistic regression model of the probability of having hyperglycemia. If the sentence under the Response Profile table of the SAS output is as shown below, the probability of having hyperglycemia was modelled.</p>
+<p>However, if the sentence is as shown below, the probability of not having hyperglycemia was modelled. It needs to be switched to the probability of having hyperglycemia.</p>
+<p>The event/condition whose probability is modelled can be switched between the two by adding “(DESC)” or “(DESCENDING)” after the dependent variable name in the “model” statement or by removing it:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;model hyperglycemia(DESC) &#x3D; RIAGENDR Agegroup RaceEthnicity Education PIRgroup &#x2F; expb;</span><br></pre></td></tr></table></figure></p>
+<p>or</p>
+<h2 id><a href="#" class="headerlink" title></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;model hyperglycemia &#x3D; RIAGENDR Agegroup RaceEthnicity Education PIRgroup &#x2F; expb;</span><br></pre></td></tr></table></figure></h2></blockquote>
+<h3 id="logistic-回归中变连续变量为有序变量"><a href="#logistic-回归中变连续变量为有序变量" class="headerlink" title="logistic 回归中变连续变量为有序变量"></a>logistic 回归中变连续变量为有序变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">*** If we want to express the odds ratio, as every 5, 10, 15 or 20 year increase in age, we can add;</span><br><span class="line">*** a units command and it will calculate the ORs and 95% CIs for us;</span><br><span class="line"></span><br><span class="line">proc logistic data&#x3D;lab3 descending;</span><br><span class="line">model hypertension10 &#x3D; diabetes10 age &#x2F; clodds&#x3D;wald;</span><br><span class="line">units age&#x3D;5 10 15 20;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="等级变量logistic回归"><a href="#等级变量logistic回归" class="headerlink" title="等级变量logistic回归"></a>等级变量logistic回归</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">proc logistic data&#x3D;library.rn2;</span><br><span class="line">class RIAGENDR (ref&#x3D;&#39;Male&#39;) RaceEthnicity (ref&#x3D;&#39;Non-Hispanic White&#39;)  </span><br><span class="line">Education (ref&#x3D;&#39;Graduated from College&#39;) smoking (ref&#x3D;&quot;Never smoked (&lt; 100 cigarettes)&quot;) </span><br><span class="line">Physical_activity (ref&#x3D;&#39;Did not do vigorous or moderate activity&#39;) &#x2F; PARAM&#x3D;ref;</span><br><span class="line">model HSD010 (order&#x3D;internal descending) &#x3D; RIAGENDR Exactage RaceEthnicity Education </span><br><span class="line">Smoking Physical_activity &#x2F; expb;</span><br><span class="line">* &quot;order&#x3D;internal&quot; for following the order of values of HSD010 (First, &quot;Excellent&quot;, </span><br><span class="line">then &quot;Very Good&quot;, ...&quot;).; </span><br><span class="line">* &quot;descending&quot; for [from poor to excellent] instead of [from excellent to poor] </span><br><span class="line">so probabilities and odds of being less healthy are computed;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">*    By default, proc logistic will model the lowest value of the outcome variable.</span><br><span class="line">    That means it models NO disease, unless use the option &quot;desc&quot; which means to flip the ordering. ;</span><br><span class="line">proc logistic data &#x3D; new desc;</span><br><span class="line">    *class exposure;</span><br><span class="line">    model esophagealC&#x3D;exposure;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">*    For a binary predictor, it&#39;s not necessary, but for a categorical with 3 or more levels, you need to declare it as a &quot;class&quot; variable;</span><br><span class="line">proc logistic data &#x3D;new desc;</span><br><span class="line">    class exposure12;</span><br><span class="line">    model esophagealC&#x3D;exposure12;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="多分无序变量logistic回归"><a href="#多分无序变量logistic回归" class="headerlink" title="多分无序变量logistic回归"></a>多分无序变量logistic回归</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">proc logistic data&#x3D;work.rn2a;</span><br><span class="line">class BMI3 (ref&#x3D;&quot;20.00-29.99&quot;) RIAGENDR (ref&#x3D;&#39;Male&#39;) Agegroup (ref&#x3D;&quot;25-29&quot;) </span><br><span class="line">RaceEthnicity (ref&#x3D;&#39;Non-Hispanic White&#39;) Education (ref&#x3D;&#39;Graduated from College&#39;)  </span><br><span class="line">smoking (ref&#x3D;&quot;Never smoked (&lt; 100 cigarettes)&quot;) </span><br><span class="line">Physical_activity (ref&#x3D;&#39;Did not do vigorous or moderate activity&#39;) </span><br><span class="line">&#x2F; PARAM&#x3D;ref;</span><br><span class="line">model BMI3 &#x3D; RIAGENDR Agegroup RaceEthnicity Education Smoking Physical_activity </span><br><span class="line">&#x2F; expb link&#x3D;glogit;</span><br><span class="line">*&quot;link&quot; gives choices among logit, probit, cloglog and glogit  (generalized logit model </span><br><span class="line">for polytomous&#x2F;multinomial logistic regression);</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="EMM-amp-Interaction的两种方法"><a href="#EMM-amp-Interaction的两种方法" class="headerlink" title="EMM &amp; Interaction的两种方法"></a>EMM &amp; Interaction的两种方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* Step 3. Logistic regression of hyperglycemia on gender, age, race&#x2F;ethnicity, education, </span><br><span class="line">income and physical activity with gender-education interaction. *&#x2F;</span><br><span class="line">proc logistic data&#x3D;work.rn2a;</span><br><span class="line">class RIAGENDR (ref&#x3D;&#39;Male&#39;) Agegroup (ref&#x3D;&#39;25-29&#39;) RaceEthnicity (ref&#x3D;&#39;Non-Hispanic White&#39;)  Education  </span><br><span class="line">(ref&#x3D;&#39;Graduated from College&#39;)  PIRgroup (ref&#x3D;&#39;5.00+&#39;) Physical_activity (ref&#x3D;&#39;Did vigorous activity&#39;) </span><br><span class="line">&#x2F; PARAM&#x3D;ref;</span><br><span class="line">model hyperglycemia &#x3D; RIAGENDR Agegroup RaceEthnicity Education PIRgroup Physical_activity RIAGENDR*Education &#x2F; expb;</span><br><span class="line">run;</span><br><span class="line">-------------------------</span><br><span class="line">data work.rn2a; set work.rn2a;</span><br><span class="line">gen_edu &#x3D; .;</span><br><span class="line">if (RIAGENDR&#x3D;1) and (Education&#x3D;1) then gen_edu&#x3D;1;</span><br><span class="line">if (RIAGENDR&#x3D;1) and (Education&#x3D;2) then gen_edu&#x3D;2;</span><br><span class="line">if (RIAGENDR&#x3D;1) and (Education&#x3D;3) then gen_edu&#x3D;3;</span><br><span class="line">if (RIAGENDR&#x3D;2) and (Education&#x3D;1) then gen_edu&#x3D;4;</span><br><span class="line">if (RIAGENDR&#x3D;2) and (Education&#x3D;2) then gen_edu&#x3D;5;</span><br><span class="line">if (RIAGENDR&#x3D;2) and (Education&#x3D;3) then gen_edu&#x3D;6;</span><br><span class="line">label gen_edu&#x3D;&quot;Gender x Education&quot;;</span><br><span class="line">format gen_edu GEN_EDU.;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">&#x2F;* Step A2. Logistic regression of hyperglycemia on age, race&#x2F;ethnicity, income, </span><br><span class="line">physical activity, and the new variable gen_edu, for comparison with results of step 3. *&#x2F;</span><br><span class="line">proc logistic data&#x3D;work.rn2a;</span><br><span class="line">class RIAGENDR (ref&#x3D;&#39;Male&#39;) Agegroup (ref&#x3D;&#39;25-29&#39;) RaceEthnicity (ref&#x3D;&#39;Non-Hispanic White&#39;)  Education  </span><br><span class="line">(ref&#x3D;&#39;Graduated from College&#39;)  PIRgroup (ref&#x3D;&#39;5.00+&#39;) Physical_activity (ref&#x3D;&#39;Did vigorous activity&#39;) </span><br><span class="line">gen_edu (ref &#x3D; &#39;M, College&#39;) &#x2F; PARAM&#x3D;ref;</span><br><span class="line">model hyperglycemia &#x3D; Agegroup RaceEthnicity PIRgroup Physical_activity gen_edu &#x2F; expb;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="SQL-嵌套"><a href="#SQL-嵌套" class="headerlink" title="SQL 嵌套"></a>SQL 嵌套</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">proc sql;</span><br><span class="line">  create table as</span><br><span class="line">    select a.level China USA</span><br><span class="line">    from resdat.china as a</span><br><span class="line">    inner join</span><br><span class="line">    resdat.usa as b</span><br><span class="line">    on a.level&#x3D;b.level</span><br><span class="line">;</span><br><span class="line">  select * from pingpang;</span><br><span class="line">quit;</span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line">output</span><br><span class="line">level    china   usa</span><br><span class="line">1        c02     u00</span><br><span class="line">2        c03     u02</span><br><span class="line">2        c03     u01</span><br><span class="line">3        c04     u03</span><br><span class="line">*&#x2F;</span><br></pre></td></tr></table></figure>
+<h2 id="Survival-Analysis"><a href="#Survival-Analysis" class="headerlink" title="Survival Analysis"></a>Survival Analysis</h2><h3 id="Kaplan-Meier-survival-analysis"><a href="#Kaplan-Meier-survival-analysis" class="headerlink" title="Kaplan Meier survival analysis"></a>Kaplan Meier survival analysis</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">proc lifetest data&#x3D;lab1 plots&#x3D;(S) method&#x3D;km;</span><br><span class="line">  time permth_int*death(0);</span><br><span class="line">  title &#39;Kaplan Meier time to all cause mortality&#39;;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc lifetest data&#x3D;lab1 plots&#x3D;(S) method&#x3D;km;</span><br><span class="line"> time permth_int*death(0);</span><br><span class="line"> where age&gt;&#x3D;65;</span><br><span class="line"> strata sex;</span><br><span class="line"> title &#39;KM of time to all cause mortality by gender among those 65+&#39;;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">* If you want to add 95% confidence bands (using Hall-Wellner method) to your plots you can do so with the following syntax;</span><br><span class="line">proc lifetest data&#x3D;lab1 plots&#x3D;survival(cb&#x3D;hw test) method&#x3D;km;</span><br><span class="line"> time permth_int*death(0);</span><br><span class="line"> where age&gt;&#x3D;65;</span><br><span class="line"> strata sex;</span><br><span class="line"> title &#39;KM of time to all cause mortality by gender among those 65+&#39;;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="Life-table-survival-analysis"><a href="#Life-table-survival-analysis" class="headerlink" title="Life table survival analysis"></a>Life table survival analysis</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">proc lifetest data&#x3D;lab1 plots&#x3D;(S) method&#x3D;life width&#x3D;6;</span><br><span class="line">  time permth_int*death(0);</span><br><span class="line">  title &#39;Lifetable time to all cause mortality&#39;;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="Proportionsal-Hazard-Cox-Model"><a href="#Proportionsal-Hazard-Cox-Model" class="headerlink" title="Proportionsal Hazard Cox Model"></a>Proportionsal Hazard Cox Model</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">**Hazard ratio;</span><br><span class="line">*     1) You can code exposed as 1 and unexposed as 0 or 2, but diseased should be coded as 1 and non-diseased as 0.</span><br><span class="line">    2) SAS orders variables from lower to higher values. If your exposure is coded 0&#x2F;1 or 1&#x2F;2, by default, </span><br><span class="line">        SAS will use the last category as the reference. If it is coded differently, we can used the REF </span><br><span class="line">        keyword and assign our reference (FIRST or LAST);</span><br><span class="line"></span><br><span class="line">*Gender only;</span><br><span class="line">proc phreg data &#x3D;new;</span><br><span class="line">    class gender (ref&#x3D;first);</span><br><span class="line">    model lenfol*fstat(0) &#x3D; gender &#x2F; risklimits ;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">*Gender and age;</span><br><span class="line">proc phreg data &#x3D; new;</span><br><span class="line">    class gender (ref&#x3D;first);;</span><br><span class="line">    model lenfol*fstat(0) &#x3D; gender age &#x2F; risklimits;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc phreg data&#x3D;lab4;</span><br><span class="line">model stime*stroke(0)&#x3D;age;</span><br><span class="line">strata diabetes10;</span><br><span class="line">baseline out&#x3D;temp loglogs&#x3D;lls;</span><br><span class="line">run;</span><br><span class="line">----------</span><br><span class="line"></span><br><span class="line">** Example with person-time;</span><br><span class="line">data cohort2;</span><br><span class="line">    input exposed outcome count PT;</span><br><span class="line">    datalines ;</span><br><span class="line">    1 1 25 105 </span><br><span class="line">    1 2 175 875</span><br><span class="line">    2 1 10  24</span><br><span class="line">    2 2 190 950</span><br><span class="line">    ;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc freq data&#x3D;cohort;</span><br><span class="line">    tables exposed*outcome  &#x2F;relrisk riskdiff;</span><br><span class="line">    weight count;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc phreg data&#x3D;cohort;</span><br><span class="line">    class exposed;</span><br><span class="line">    model PT*outcome(2)&#x3D; exposed&#x2F;risklimits;</span><br><span class="line">    weight count;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">*** Using the Assess PH test;</span><br><span class="line">proc phreg data&#x3D;lab4;</span><br><span class="line">    model stime*stroke(0)&#x3D;age diabetes10 &#x2F; rl; &#x2F;* rl:risk limit;*&#x2F;</span><br><span class="line">    assess ph&#x2F;resample;</span><br><span class="line">run; </span><br></pre></td></tr></table></figure>
+<h3 id="surveyphreg-weighting"><a href="#surveyphreg-weighting" class="headerlink" title="surveyphreg (weighting)"></a>surveyphreg (weighting)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">proc surveyphreg data&#x3D;lab4;</span><br><span class="line">strata strata;</span><br><span class="line">cluster psu;</span><br><span class="line">weight weight;</span><br><span class="line">model stime*stroke(0)&#x3D; age diabetes10 &#x2F;rl;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="Survival-Plot"><a href="#Survival-Plot" class="headerlink" title="Survival Plot"></a>Survival Plot</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">proc gplot data&#x3D;temp;</span><br><span class="line">plot lls*stime&#x3D;age;</span><br><span class="line">symbol1 interpol&#x3D;join color&#x3D;blue line&#x3D;1 ;</span><br><span class="line">symbol2 interpol&#x3D;join color&#x3D;red line&#x3D;1 ;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h2 id="Power-and-Sample-size"><a href="#Power-and-Sample-size" class="headerlink" title="Power and Sample size"></a>Power and Sample size</h2><h3 id="Simple-sample-size-calculation"><a href="#Simple-sample-size-calculation" class="headerlink" title="Simple sample size calculation"></a>Simple sample size calculation</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">proc power;</span><br><span class="line">  twosamplefreq </span><br><span class="line">  sides &#x3D; 2</span><br><span class="line">  groupproportions &#x3D; (.02 .057692)</span><br><span class="line">  power &#x3D; .8</span><br><span class="line">  alpha &#x3D; .05</span><br><span class="line">  npergroup&#x3D;.;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="using-a-Fisher’s-exact-test"><a href="#using-a-Fisher’s-exact-test" class="headerlink" title="using a Fisher’s exact test;"></a>using a Fisher’s exact test;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">proc power;</span><br><span class="line">  twosamplefreq </span><br><span class="line">  test&#x3D;fisher</span><br><span class="line">  sides &#x3D; 2</span><br><span class="line">  groupproportions &#x3D; (.02 .057692)</span><br><span class="line">  power &#x3D; .8</span><br><span class="line">  alpha &#x3D; .05</span><br><span class="line">  npergroup&#x3D;.;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">proc power;</span><br><span class="line">  twosamplefreq </span><br><span class="line">  test&#x3D;fisher</span><br><span class="line">  proportiondiff&#x3D;0.03 to 0.10 by 0.01</span><br><span class="line">  refproportion&#x3D;.02</span><br><span class="line">  power &#x3D; .8</span><br><span class="line">  alpha &#x3D; .05</span><br><span class="line">  npergroup&#x3D;.;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="Simple-power-calculation"><a href="#Simple-power-calculation" class="headerlink" title="Simple power calculation"></a>Simple power calculation</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">proc power;</span><br><span class="line">  twosamplefreq </span><br><span class="line">  test&#x3D;fisher</span><br><span class="line">  sides &#x3D; 2</span><br><span class="line">  groupproportions &#x3D; (.02 .057692)</span><br><span class="line">  power &#x3D; .</span><br><span class="line">  alpha &#x3D; .05</span><br><span class="line">  npergroup&#x3D;500;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="A2-Comparing-means"><a href="#A2-Comparing-means" class="headerlink" title="A2.  Comparing means;"></a>A2.  Comparing means;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">proc power;</span><br><span class="line">  twosamplemeans</span><br><span class="line">  test &#x3D; diff</span><br><span class="line">  dist &#x3D; normal</span><br><span class="line">  alpha &#x3D; .05</span><br><span class="line">  groupmeans &#x3D; (8 12)</span><br><span class="line">  stddev &#x3D; 5</span><br><span class="line">  power &#x3D; .8</span><br><span class="line">  groupweights &#x3D; 1|1</span><br><span class="line">  ntotal &#x3D; .;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="A3-Single-proportion"><a href="#A3-Single-proportion" class="headerlink" title="A3.  Single proportion;"></a>A3.  Single proportion;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">proc power;</span><br><span class="line">  onesamplefreq</span><br><span class="line">  test&#x3D;Z</span><br><span class="line">  method&#x3D;normal</span><br><span class="line">  sides &#x3D; 2</span><br><span class="line">  nullproportion &#x3D; .2</span><br><span class="line">  proportion &#x3D; .3</span><br><span class="line">  power &#x3D; .8</span><br><span class="line">  alpha &#x3D; .05</span><br><span class="line">  ntotal &#x3D; .;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="Single-means"><a href="#Single-means" class="headerlink" title="Single means;"></a>Single means;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">proc power;</span><br><span class="line"> onesamplemeans</span><br><span class="line"> test &#x3D; t</span><br><span class="line"> sides&#x3D;2</span><br><span class="line"> nullm&#x3D;22</span><br><span class="line"> mean&#x3D;24</span><br><span class="line"> stddev&#x3D;3</span><br><span class="line"> power&#x3D;0.8</span><br><span class="line"> alpha&#x3D;0.05 </span><br><span class="line"> ntotal&#x3D;.;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc power;</span><br><span class="line"> onesamplemeans</span><br><span class="line"> test &#x3D; t</span><br><span class="line"> sides&#x3D;1</span><br><span class="line"> nullm&#x3D;22</span><br><span class="line"> mean&#x3D;24</span><br><span class="line"> stddev&#x3D;3</span><br><span class="line"> power&#x3D;0.8</span><br><span class="line"> alpha&#x3D;0.05 </span><br><span class="line"> ntotal&#x3D;.;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="Testing"><a href="#Testing" class="headerlink" title="Testing"></a>Testing</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">** Exploring what happens to the ratio;</span><br><span class="line">** If we hold all else constant, which ratio gives us the most power?;</span><br><span class="line"></span><br><span class="line">proc power;</span><br><span class="line">  twosamplefreq </span><br><span class="line">  test&#x3D;fisher</span><br><span class="line">  sides&#x3D;2</span><br><span class="line">  groupproportions &#x3D; (.2 .4)</span><br><span class="line">  power &#x3D; .</span><br><span class="line">  alpha &#x3D; .05</span><br><span class="line">  ntotal&#x3D;500</span><br><span class="line">  groupweights &#x3D; 1 2 3 4 5 6 7 8 9 10 | 1;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">*** What happens to our power as we increase our sample size by increasing our case to control ratio?;</span><br><span class="line"></span><br><span class="line">proc power;</span><br><span class="line">  twosamplefreq </span><br><span class="line">  test&#x3D;fisher</span><br><span class="line">  sides&#x3D;2</span><br><span class="line">  groupproportions &#x3D; (.2 .3)</span><br><span class="line">  power &#x3D; .</span><br><span class="line">  alpha &#x3D; .05</span><br><span class="line">  groupns &#x3D; (200 200) (400 200) (600 200) (800 200) (1000 200) (1200 200) (1400 200) (1600 200) (1800 200) (2000 200);</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h2 id="随机与分组"><a href="#随机与分组" class="headerlink" title="随机与分组"></a>随机与分组</h2><h3 id="Random-number"><a href="#Random-number" class="headerlink" title="Random number"></a>Random number</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">data randomnumbers;</span><br><span class="line">  do n&#x3D;1 to 200 by 1;</span><br><span class="line">  group &#x3D; int(ranuni(0)*2+1);</span><br><span class="line">  output;</span><br><span class="line">  end;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc print data&#x3D;randomnumbers;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc freq data&#x3D;randomnumbers;</span><br><span class="line">table group;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="Random-Grouping"><a href="#Random-Grouping" class="headerlink" title="Random Grouping"></a>Random Grouping</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">*** First 100 mentions are in group 1 &#x2F; Second 100 mentions are in group 2;</span><br><span class="line">proc plan;</span><br><span class="line"> factors id&#x3D;200 random;</span><br><span class="line"> output out&#x3D;random200;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc print data&#x3D;random200;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<h3 id="Block-Randomization"><a href="#Block-Randomization" class="headerlink" title="Block Randomization"></a>Block Randomization</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">***  Block randomization;</span><br><span class="line">***  You can also use &quot;proc plan&quot; for block randomization;</span><br><span class="line">***  Suppose I want to ensure more or less equal groups throughout the study;</span><br><span class="line">***  I could do 20 blocks of 10;</span><br><span class="line">***  Within each block the first five mentions would be group 1 and the second five group 2;</span><br><span class="line"></span><br><span class="line">proc plan;</span><br><span class="line">  factors block &#x3D; 20 ordered treat &#x3D; 10 random ;</span><br><span class="line">  output out&#x3D;randblock ;</span><br><span class="line"> run;</span><br></pre></td></tr></table></figure>
+<h3 id="proc-survey-select"><a href="#proc-survey-select" class="headerlink" title="proc survey select"></a>proc survey select</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">*** C. To obtain a random subsample from a dataset use proc surveyselect;</span><br><span class="line">*** Note, srs means simple random sample without replacement;</span><br><span class="line"></span><br><span class="line">libname epi2 &#39;\\tsclient\USB Disk\Epi 2\&#39;;</span><br><span class="line"></span><br><span class="line">*** If using SAS on my desktop;</span><br><span class="line"></span><br><span class="line">libname epi2 &#39;F:\Epi 2&#39;;</span><br><span class="line"></span><br><span class="line">proc surveyselect data&#x3D;epi2.class</span><br><span class="line">  out &#x3D; subset</span><br><span class="line">  method&#x3D;srs  </span><br><span class="line">  sampsize&#x3D;4;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc freq data&#x3D;subset;</span><br><span class="line">tables name;</span><br><span class="line">run;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="数字格式"><a href="#数字格式" class="headerlink" title="数字格式"></a>数字格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">data x;</span><br><span class="line">input X1 X2 X3;</span><br><span class="line">datalines;</span><br><span class="line">1 3 0</span><br><span class="line">2 4 0</span><br><span class="line">3 2 0</span><br><span class="line">4 2 0</span><br><span class="line">5 4 0</span><br><span class="line">6 2 0</span><br><span class="line">7 3 0</span><br><span class="line">8 5 0</span><br><span class="line">;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">data x(Drop &#x3D; X2);</span><br><span class="line">set x;</span><br><span class="line">X3 &#x3D; X1;</span><br><span class="line">format X3 z9.;</span><br><span class="line">run;</span><br><span class="line">data x2;</span><br><span class="line">set x2;</span><br><span class="line">X2 &#x3D; put(X1,z9.);</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">data x3;</span><br><span class="line">set x2;</span><br><span class="line">X4 &#x3D; X3;</span><br><span class="line">X5 &#x3D; input(X2, 9.);</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">data x4(Drop &#x3D; X2 X3);</span><br><span class="line">set x;</span><br><span class="line">run;</span><br><span class="line">data x4;</span><br><span class="line">set x4;</span><br><span class="line">X2 &#x3D; put(X1, z9.);</span><br><span class="line">run;</span><br><span class="line">data x4;</span><br><span class="line">set x4;</span><br><span class="line">X3 &#x3D; input(X2, 9.);</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line">best666.</span><br><span class="line">z9.</span><br><span class="line">*&#x2F;</span><br></pre></td></tr></table></figure>
+<h2 id="proc-univariate"><a href="#proc-univariate" class="headerlink" title="proc univariate"></a>proc univariate</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">proc univariate data &#x3D; wasiraw;</span><br><span class="line">var wasi_fsiq2_comp;</span><br><span class="line">output out &#x3D; dataset pctlpts &#x3D; 5 95 * save  5% 95% percentile</span><br><span class="line">pctlpre &#x3D; Autoname;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">ods csv file &#x3D; &quot;******\wasi\total_IQ.csv&quot;;</span><br><span class="line">proc print data &#x3D; wasiraw noobs label; </span><br><span class="line">&#x2F;*NOOBS - 禁止输出中按列号标识每个观察的列 LABEL - 使用变量&#39;标签作为列标题*&#x2F;</span><br><span class="line">    var wasi_subid wasi_fsiq2_comp;</span><br><span class="line">    where wasi_fsiq2_comp &lt; 0 or wasi_fsiq2_comp &gt; 0; &#x2F;*change 0 to the previous output*&#x2F;</span><br><span class="line">run;</span><br><span class="line">options nodate nonumber;</span><br><span class="line">ods csv close;</span><br></pre></td></tr></table></figure>
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
+            <p>Link of This Article：<a href="https://ry2an.github.io/2020/08/15/SAS-codes/">https://ry2an.github.io/2020/08/15/SAS-codes/</a>
+            <p>Publish Date：<a href="https://ry2an.github.io/2020/08/15/SAS-codes/">August 15th 2020, 9:28:27 pm</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/08/15/SAS-codes/">August 15th 2020, 9:30:01 pm</a>
+            <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/07/31/rubella/" title= "Dynamic modeling analyses of Rubella in Henan Province, China, 2005 -2016">
+                    <div class="prevTitle">Dynamic modeling analyses of Rubella in Henan Province, China, 2005 -2016</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:ruoyan.han94@outlook.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Ry2an" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/my_wechat.jpg" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.zhihu.com/people/tui-mao-39" class="iconfont-archer zhihu" target="_blank" title=zhihu></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://space.bilibili.com/2477951" class="iconfont-archer bilibili" target="_blank" title=bilibili></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E8%B7%AF%E5%BE%84%E8%AE%BE%E7%BD%AElibrary"><span class="toc-number">1.</span> <span class="toc-text">连接路径设置library</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E6%95%B0%E6%8D%AE%E9%9B%86-print"><span class="toc-number">2.</span> <span class="toc-text">显示数据集 print</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A6%81%E7%94%A8format"><span class="toc-number">3.</span> <span class="toc-text">禁用format</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8Btable"><span class="toc-number">4.</span> <span class="toc-text">建立table</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E4%B8%80%E7%A7%8Dformat"><span class="toc-number">5.</span> <span class="toc-text">建立一种format</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BD%BF%E7%94%A8format"><span class="toc-number">6.</span> <span class="toc-text">为数据集使用format</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%8F%98%E9%87%8Flabel"><span class="toc-number">7.</span> <span class="toc-text">修改变量label</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%8F%98%E9%87%8F%E8%AF%BB%E5%8F%96year-hour"><span class="toc-number">8.</span> <span class="toc-text">时间变量读取year hour</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%9C%89%E6%AF%94%E9%87%8D%E7%9A%84%E8%A1%A8%E6%A0%BC%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%AF%94%E9%87%8D"><span class="toc-number">9.</span> <span class="toc-text">在有比重的表格中使用比重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%8A%BD%E6%A0%B7%E7%9A%84%E6%9D%83%E9%87%8D-surveylogistic-weight"><span class="toc-number">10.</span> <span class="toc-text">在逻辑回归中使用抽样的权重 surveylogistic weight</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E5%8F%98%E9%87%8F"><span class="toc-number">11.</span> <span class="toc-text">显示变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E5%A4%B4%E5%87%A0%E8%A1%8C%E6%95%B0%E6%8D%AE-head"><span class="toc-number">12.</span> <span class="toc-text">显示头几行数据 head()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E6%95%B0%E6%8D%AE-sort"><span class="toc-number">13.</span> <span class="toc-text">排序数据 sort</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%87%BA%E6%8E%92%E5%90%8D-proc-rank"><span class="toc-number">14.</span> <span class="toc-text">写出排名 proc rank</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E4%B8%8A%E9%9D%A2%E4%B8%80%E6%A0%BC%E5%92%8C%E4%B8%8B%E9%9D%A2%E4%B8%80%E6%A0%BC%E7%9A%84%E5%80%BC"><span class="toc-number">15.</span> <span class="toc-text">读取上面一格和下面一格的值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E5%8F%98%E9%87%8F%E9%A2%91%E6%95%B0-%E4%B8%8D%E8%A6%81%E7%94%A8%E4%BA%8E%E8%BF%9E%E7%BB%AD%E5%9E%8B%E5%8F%98%E9%87%8F-%E7%BB%9F%E8%AE%A1%E7%BC%BA%E5%A4%B1%E5%80%BC%E6%95%B0%E9%87%8F-stratified-table"><span class="toc-number">16.</span> <span class="toc-text">显示变量频数 (不要用于连续型变量)(统计缺失值数量)(stratified table)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E8%BF%9E%E7%BB%AD%E5%9E%8B%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC%E6%9C%80%E5%A4%A7%E5%80%BC%E5%9D%87%E5%80%BC%E6%A0%87%E5%87%86%E5%B7%AE%E4%B8%AD%E4%BD%8D%E6%95%B0%E7%99%BE%E5%88%86%E4%BD%8D%E6%95%B0"><span class="toc-number">17.</span> <span class="toc-text">显示连续型变量的最小值最大值均值标准差中位数百分位数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E5%9D%87%E5%80%BCmeas"><span class="toc-number">18.</span> <span class="toc-text">显示均值meas</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%9B%E9%80%89%E6%95%B0%E6%8D%AE"><span class="toc-number">19.</span> <span class="toc-text">筛选数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97OR-RR-RD"><span class="toc-number">20.</span> <span class="toc-text">计算OR RR RD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Odds-ratio-logistic-regression"><span class="toc-number">21.</span> <span class="toc-text">Odds ratio (logistic regression)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Risk-Ratio"><span class="toc-number">22.</span> <span class="toc-text">Risk Ratio</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%A1%E6%96%B9%E6%A3%80%E9%AA%8C"><span class="toc-number">23.</span> <span class="toc-text">卡方检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%80%E6%9C%89%E5%8F%98%E9%87%8Fcorrelation"><span class="toc-number">24.</span> <span class="toc-text">所有变量correlation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cronbach-Alpha"><span class="toc-number">25.</span> <span class="toc-text">Cronbach Alpha</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pearson-and-Spearman-correlations"><span class="toc-number">26.</span> <span class="toc-text">Pearson and Spearman correlations;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Xy%E6%95%A3%E7%82%B9%E5%9B%BE-4-methods"><span class="toc-number">27.</span> <span class="toc-text">Xy散点图 (4 methods)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Plot-Curve"><span class="toc-number">28.</span> <span class="toc-text">Plot Curve</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E5%BD%A2%E5%9B%BE-sgplot"><span class="toc-number">29.</span> <span class="toc-text">条形图 sgplot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Histogram-check-whether-normal"><span class="toc-number">30.</span> <span class="toc-text">Histogram (check whether normal)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Histogram"><span class="toc-number">31.</span> <span class="toc-text">Histogram</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">32.</span> <span class="toc-text">线性回归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%B9%B6%E8%AE%A1%E7%AE%97%E6%AE%8B%E5%B7%AE%E5%92%8C%E5%9B%9E%E5%BD%92%E5%9D%87%E6%96%B9"><span class="toc-number">33.</span> <span class="toc-text">线性回归并计算残差和回归均方</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#General-Linear-Model"><span class="toc-number">34.</span> <span class="toc-text">General Linear Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E6%96%B0%E6%95%B0%E6%8D%AE%E9%9B%86%E5%B9%B6%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%BA%9B%E5%8F%98%E9%87%8F"><span class="toc-number">35.</span> <span class="toc-text">建立新数据集并设置一些变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E6%89%8B%E5%8A%A8%E8%BE%93%E5%85%A5%E7%9A%84%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="toc-number">36.</span> <span class="toc-text">建立手动输入的数据表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5csv"><span class="toc-number">37.</span> <span class="toc-text">导入csv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5xls"><span class="toc-number">38.</span> <span class="toc-text">导入xls</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%87%BAcsv"><span class="toc-number">39.</span> <span class="toc-text">导出csv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%87%BAxls"><span class="toc-number">40.</span> <span class="toc-text">导出xls</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AE%8B%E5%B7%AE%E5%88%86%E5%B8%83"><span class="toc-number">41.</span> <span class="toc-text">残差分布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E6%98%AF%E5%90%A6%E6%AD%A3%E6%80%81-qq-plot"><span class="toc-number">42.</span> <span class="toc-text">检测是否正态(qq-plot)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E6%A0%B7%E6%9C%ACt%E6%A3%80%E9%AA%8C"><span class="toc-number">43.</span> <span class="toc-text">单样本t检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E5%AF%B9%E6%A0%B7%E6%9C%ACt%E6%A3%80%E9%AA%8C"><span class="toc-number">44.</span> <span class="toc-text">配对样本t检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E6%A0%B7%E6%9C%ACt%E6%A3%80%E9%AA%8C"><span class="toc-number">45.</span> <span class="toc-text">两样本t检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fisher%E2%80%99s-exact-test"><span class="toc-number">46.</span> <span class="toc-text">Fisher’s exact test</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Wilcoxon-rank-sum-Mann-Whitney-test"><span class="toc-number">47.</span> <span class="toc-text">Wilcoxon rank sum&#x2F;Mann-Whitney test</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kruskal-Wallis-test"><span class="toc-number">48.</span> <span class="toc-text">Kruskal-Wallis test</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#One-way-anova"><span class="toc-number">49.</span> <span class="toc-text">One way anova</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%B9%B6%E5%AF%B9categorical%E8%87%AA%E5%8F%98%E9%87%8F%E7%9A%84%CE%B2%E5%80%BC%E8%BF%9B%E8%A1%8C%E6%96%B9%E5%B7%AE%E6%A3%80%E9%AA%8C"><span class="toc-number">50.</span> <span class="toc-text">非线性回归并对categorical自变量的β值进行方差检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E5%AD%98%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E7%9A%84%E9%A2%84%E6%B5%8B%E5%80%BC-surveylogistic"><span class="toc-number">51.</span> <span class="toc-text">保存逻辑回归的预测值 surveylogistic</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Logistic%E5%9B%9E%E5%BD%92%E5%B9%B6%E5%82%A8%E5%AD%98%E7%BB%93%E6%9E%9C"><span class="toc-number">52.</span> <span class="toc-text">Logistic回归并储存结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number"></span> <span class="toc-text">1
+&gt;model hyperglycemia &#x3D; RIAGENDR Agegroup RaceEthnicity Education PIRgroup &#x2F; expb;
+</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#logistic-%E5%9B%9E%E5%BD%92%E4%B8%AD%E5%8F%98%E8%BF%9E%E7%BB%AD%E5%8F%98%E9%87%8F%E4%B8%BA%E6%9C%89%E5%BA%8F%E5%8F%98%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text">logistic 回归中变连续变量为有序变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%89%E7%BA%A7%E5%8F%98%E9%87%8Flogistic%E5%9B%9E%E5%BD%92"><span class="toc-number">2.</span> <span class="toc-text">等级变量logistic回归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E5%88%86%E6%97%A0%E5%BA%8F%E5%8F%98%E9%87%8Flogistic%E5%9B%9E%E5%BD%92"><span class="toc-number">3.</span> <span class="toc-text">多分无序变量logistic回归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EMM-amp-Interaction%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">EMM &amp; Interaction的两种方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL-%E5%B5%8C%E5%A5%97"><span class="toc-number">5.</span> <span class="toc-text">SQL 嵌套</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Survival-Analysis"><span class="toc-number"></span> <span class="toc-text">Survival Analysis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Kaplan-Meier-survival-analysis"><span class="toc-number">1.</span> <span class="toc-text">Kaplan Meier survival analysis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Life-table-survival-analysis"><span class="toc-number">2.</span> <span class="toc-text">Life table survival analysis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Proportionsal-Hazard-Cox-Model"><span class="toc-number">3.</span> <span class="toc-text">Proportionsal Hazard Cox Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#surveyphreg-weighting"><span class="toc-number">4.</span> <span class="toc-text">surveyphreg (weighting)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Survival-Plot"><span class="toc-number">5.</span> <span class="toc-text">Survival Plot</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Power-and-Sample-size"><span class="toc-number"></span> <span class="toc-text">Power and Sample size</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Simple-sample-size-calculation"><span class="toc-number">1.</span> <span class="toc-text">Simple sample size calculation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#using-a-Fisher%E2%80%99s-exact-test"><span class="toc-number">2.</span> <span class="toc-text">using a Fisher’s exact test;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Simple-power-calculation"><span class="toc-number">3.</span> <span class="toc-text">Simple power calculation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A2-Comparing-means"><span class="toc-number">4.</span> <span class="toc-text">A2.  Comparing means;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A3-Single-proportion"><span class="toc-number">5.</span> <span class="toc-text">A3.  Single proportion;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Single-means"><span class="toc-number">6.</span> <span class="toc-text">Single means;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Testing"><span class="toc-number">7.</span> <span class="toc-text">Testing</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E4%B8%8E%E5%88%86%E7%BB%84"><span class="toc-number"></span> <span class="toc-text">随机与分组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Random-number"><span class="toc-number">1.</span> <span class="toc-text">Random number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Random-Grouping"><span class="toc-number">2.</span> <span class="toc-text">Random Grouping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Block-Randomization"><span class="toc-number">3.</span> <span class="toc-text">Block Randomization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#proc-survey-select"><span class="toc-number">4.</span> <span class="toc-text">proc survey select</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E6%A0%BC%E5%BC%8F"><span class="toc-number"></span> <span class="toc-text">数字格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#proc-univariate"><span class="toc-number"></span> <span class="toc-text">proc univariate</span></a>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 17
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span><a class="archive-post-title" href= "/2020/08/15/SAS-codes/" >SAS codes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/31</span><a class="archive-post-title" href= "/2020/07/31/rubella/" >Dynamic modeling analyses of Rubella in Henan Province, China, 2005 -2016</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span><a class="archive-post-title" href= "/2020/07/29/flight-back-china/" >回国航班</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/20</span><a class="archive-post-title" href= "/2020/05/20/EPID622/" >Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/Portfolio-as-MPH-Student/" >Portfolio as MPH</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/05</span><a class="archive-post-title" href= "/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/" >Repeat Academic Poisson and Negative Binomial Regression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2020/03/04/Repeat-Ancademic-Survival-Analysis/" >Repeat Academic Survival Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/" >Understanding Fourier Transform and Wavelet Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/31</span><a class="archive-post-title" href= "/2020/01/31/Simulating-SIR-Model/" >Simulating SIR Model</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/17</span><a class="archive-post-title" href= "/2020/01/17/Crawling-Data-From-html-Based-Pages/" >Crawling Data From html Based Pages</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/2020/01/14/Vaccine-Making-Selling-Delivering-and-Using-System/" >Vaccine Making Selling Delivering and Using System</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/11</span><a class="archive-post-title" href= "/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/" >Using Longitudinal Models To Analyze Steam Games</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/10</span><a class="archive-post-title" href= "/2020/01/10/Connect-Four-Chess/" >Connect Four Chess</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2016 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/01</span><a class="archive-post-title" href= "/2016/09/01/summer-survey-2016/" >2016年暑期实践</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1994 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/10</span><a class="archive-post-title" href= "/1994/10/10/Markdown-Cheat-Sheet/" >Markdown Cheat Sheet</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/09</span><a class="archive-post-title" href= "/1994/10/09/MySQL-Hand-Book/" >MySQL Hand Book</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1990 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/30</span><a class="archive-post-title" href= "/1990/07/30/test/" >test</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
+    
+        <span class="sidebar-tag-name" data-tags="trip"><span class="iconfont-archer">&#xe606;</span>trip</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Ruoyan Han"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
+
+
