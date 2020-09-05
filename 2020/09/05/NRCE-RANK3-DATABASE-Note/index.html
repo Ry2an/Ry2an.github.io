@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="Ruoyan Han">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Ruoyan Han">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>NRCE_RANK3_DATABASE_Note · Ry2an&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/hakase.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Ry2an&#39;s Studio</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">NRCE_RANK3_DATABASE_Note</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Ry2an's Studio</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/postbg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            NRCE_RANK3_DATABASE_Note
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">9.8k</span>Reading time: <span class="post-count reading-time">33 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/09/05</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>2020年全国计算机等级考试三级数据库技术刷题错题知识点</p>
+<a id="more"></a>
+<h2 id="Chapter-I"><a href="#Chapter-I" class="headerlink" title="Chapter I"></a>Chapter I</h2><ul>
+<li>数据库应用系统实现与部署内容包括：①建立数据库结构；②数据加载；③事务和应用程序的编码及测试；④系统集成、测试与试运行；⑤系统部署。故答案为D。</li>
+</ul>
+<ul>
+<li>在IDEF0需求建模</li>
+</ul>
+<p><img src="/2020/09/05/NRCE-RANK3-DATABASE-Note/NRCE-RANK3-DATABASE-Note\1.jpg" alt="1"></p>
+<p>IDEF0图的基本元素是矩形框和箭头。矩形框代表功能活动，写在矩形框内的动词短语描述功能活动的名称，活动编号按照要求写在矩形框右下角指定的位置。<br>左边的输入箭头表示完成活动需要的数据；上方的控制箭头描述了影响这个活动执行的事件或约束条件；右边的输出箭头说明由活动产生的结果及信息；下方的机制箭头表示实施该活动的物理手段或完成活动的所需资源。每个箭头的数据可以是信息或对象</p>
+<p><img src="/2020/09/05/NRCE-RANK3-DATABASE-Note/NRCE-RANK3-DATABASE-Note\3.jpg" alt="3"></p>
+<ul>
+<li>在IDEF1X建模方法: 联系</li>
+</ul>
+<blockquote>
+<ol>
+<li>非标定联系: 如果子女实体集中的每一个实例都能被唯一地确认而无须了解与之相联系的双亲实体集的实例，该联系就被称为“非标定型联系”，使用一条虚线进行连接，用实心圆点表示联系的基数是n（一对多）。老师和学生之间的一对多”导师”联系属于非标定型联系。</li>
+<li>标定联系： 两个实体集之间的多对多联系可以通过引入第三个实体集转化为两个一对多联系，</li>
+<li>分类联系</li>
+<li>确定联系： “确定型连接联系”或简称”连接联系”是实体集之间的一种连接或关系（还可称为”父子联系”或”依存联系”）。在这种连接联系中，被称为双亲实体集的每一个实例与子女实体集的0个、1个或多个实例相连接。在”确定型连接联系”中，如果子女实体集中的每个实例都是由它与双亲的联系而确定的，那么这个联系就被称为”标定型联系”。</li>
+<li>非确定性联系：学生和图书馆之间的借阅。一个非确定联系又称为”多对多关系”或m:n联系。在这种联系关联的两个实体集之间，任一实体集的一个实例都将对应另一实体集的0 个、1个或多个实例。</li>
+</ol>
+</blockquote>
+<p>在IDEF1X中，如果实体集的一个实例的唯一标识依赖于该实体集与其他实体集的联系，那么它就是从属标识符实体集或简称为从属实体集。如果子女实体集中的每一个实例都能被唯一的确认而无需了解与之相联系的双亲实体集的实例，该联系就被称为”非标定型联系”。<br>_IDEF1X用矩形框来表示独立实体集，用加了圆角的矩形框来表示从属实体集。_<br>独立实体集与从属实体集语法如图所示：</p>
+<p><img src="/2020/09/05/NRCE-RANK3-DATABASE-Note/NRCE-RANK3-DATABASE-Note\2.jpg" alt="2"></p>
+<ul>
+<li><p>事务概要设计内容包括：事务名称、事务所访问的关系表及关系属性、事务处理逻辑、事务用户（指使用、启动、调用该事务的软件模块或系统）。</p>
+</li>
+<li><p>事务规范包括了事务名称、事务描述、事务所访问的数据项、事务用户。</p>
+</li>
+<li><p>降低事务隔离级别可以提高事务的吞吐量，提高活锁的可能性，降低发生死锁、发生阻塞的可能性。</p>
+</li>
+<li><p>DBAS实现与部署包括以下工作内容：</p>
+</li>
+</ul>
+<blockquote>
+<p>建立数据库结构。<br>数据加载。<br>事务和应用程序的编码及测试。<br>系统集成、测试及运行<br>系统部署。</p>
+</blockquote>
+<ul>
+<li><p>完整性约束条件的作用对象分为列、元组和关系三种级别，其中对列的约束主要指对其值类型、范围、精度、排序等的约束条件。对元组的约束主要指对记录中各个属性之间的联系的约束条件。对关系的约束是指对若干纪录间、关系集合上以及关系之间联系的约束条件（比如是否重复）。</p>
+</li>
+<li><p>在数据文件的非主属性上建立的索引称为辅索引</p>
+</li>
+<li><p>为减少表连接操作而将两个表合并为一个表，这属于数据库的物理结构调整。数据库物理设计阶段，将根据数据库中存储的数据量、用户对数据库的使用要求和使用方式，选择数据存储方案以加快数据检索速度。减少了操作，检索速度相应的就会提高。</p>
+</li>
+<li><p>减少死锁： 按相同顺序访问资源；采用小事务模式；使用绑定链接</p>
+</li>
+</ul>
+<ul>
+<li><p>业务逻辑层概要设计</p>
+<blockquote>
+<ol>
+<li>一个构件或模块只负责完成一项任务，也就是单一责任原则。</li>
+<li>各个构件均应具有独立的功能，并最大限度地减少与其他构件功能重叠。</li>
+<li>构件之间的接口应尽量简单明确。</li>
+<li>如果两个构件间的关系比较复杂，应考虑进一步进行模块划分。</li>
+<li>如果构件过于复杂，可以考虑将其细分。</li>
+</ol>
+</blockquote>
+</li>
+<li><p>如果数据文件中的每个查找码值在索引文件中都对应一个索引记录，则称该索引为稠密索引。</p>
+</li>
+<li><p>数据库完整性约束条件的作用对象分为列、元组和关系三种级别。元组对应于行，关系对应于表。</p>
+</li>
+<li><p>在数据文件的主码属性集上建立的索引称为主索引，在数据文件的非主属性上建立的索引称为辅索引。</p>
+</li>
+<li><p>在三层浏览器/服务器体系结构的数据库应用系统中，数据层位于数据库服务器，通过DBMS完成具体的数据储存和数据存取等数据管理功能。触发器是一种特殊的存储过程，它是存储在数据库中供所有用户程序调用的子程序。</p>
+</li>
+<li><p>一个非确定联系又称为”多对多关系”或m:n联系。</p>
+</li>
+<li><p>数据库中文件结构有：索引文件、顺序文件、堆文件、散列文件和聚集文件。如果一个数据库中的一个基本表中的数据量很少，并且插入、删除、更新等操作非常频繁，该基本表可以采用堆文件组织方式。</p>
+</li>
+<li><p>DBAS需求分析阶段的另外一项重要工作是分析DBAS应具有的性能指标，主要包括：</p>
+<blockquote>
+<p>（1）数据操作响应时间，或数据访问响应时间；<br>（2）系统吞吐量；<br>（3）允许并发访问的最大用户数；<br>（4）每TPS代价值。</p>
+</blockquote>
+</li>
+<li><p>需求分为：功能需求 信息需求 性能需求 环境要求 其他需求</p>
+</li>
+<li><p>DFD方法由四种基本元素（模型对象）组成：数据流、处理、数据存储和外部项。</p>
+</li>
+<li><p>在数据文件的主码属性集上建立的索引称之为主索引。</p>
+</li>
+<li><p>在浏览器/服务器体系中，分为三层：</p>
+<blockquote>
+<p>1、表示层，位于客户端，由web浏览器实现，属于”瘦客户端”。<br>2、功能层，位于web应用服务器<br>3、数据层，位于数据库服务器。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Chapter-V-UML-DBAS"><a href="#Chapter-V-UML-DBAS" class="headerlink" title="Chapter V: UML DBAS"></a>Chapter V: UML DBAS</h2><ul>
+<li><p>状态图中只能有一个起始状态，可以有多个结束状态。</p>
+</li>
+<li><p>元元模型层组成了UML的最基本的元素”事物”，代表要定义的所有事物。模型层中的每个概念都是元模型层中概念的一个实例。用户模型层中的每个概念都是模型层的一个实例。元模型层中的每个概念都是元元模型层”事物”概念的一个实例。</p>
+</li>
+<li><p>用例用于描述从系统用户的角度来观察，系统应该具有哪些功能，帮助分析人员理解系统的行为。角色是与系统进行交互的外部实体，可以是系统用户也可以是其他系统或者硬件设备。系统是在边界线以内的区域（即用例的活动区域）抽象地表示能够实现的所有基本功能。一个角色可以执行多个用例，反过来，一个用例也可以被多个角色使用。</p>
+</li>
+<li><p>在UML中，用类图来描述系统的静态结构，而用顺序图和通信图来表示系统的动态结构。类图主要表达的是问题领域的概念模型，在这个抽象的概念中，除了表达该抽象概念的名称外，另外需要表达该抽象概念的”属性”和”行为”。这是静态的。</p>
+</li>
+<li><p>完整性约束条件的作用对象分为列、元组和关系三种级别，其中对列的约束主要指对其值类型、范围、精度、排序等的约束条件。对元组的约束主要指对记录中各个属性之间的联系的约束条件。对关系的约束是指对若干纪录间、关系集合上以及关系之间联系的约束条件（比如是否重复）。</p>
+</li>
+<li><p>UML用例图是用于表达DBAS需求的工具。用例是需求搜索及整理的工具，主要应用在项目开发的需求分析阶段。</p>
+</li>
+<li><p>用例之间包括扩展、使用、组合三种关系。</p>
+</li>
+<li><p>UML中，椭圆表示用例，位于系统边界内部</p>
+</li>
+<li><p>数据库安全性保护的主要保护方式有用户身份鉴别、权限控制、视图机制</p>
+</li>
+<li><p>对象图主要用于解释类图以及验证所设计的类图是否符合实际状况，也可用于协助程序设计人员理解复杂的类图结构</p>
+</li>
+<li><p>对象图可以看成是系统在某一时间点的快照，用于描述特定时间点上所有对象在系统中的结构</p>
+</li>
+<li><p>一般情况下，时间图作为状态机图的辅助说明工具，一张时间图通常会对应至少一张状态图</p>
+</li>
+<li><p>部署图又叫配置图，描述系统中硬件和软件的物理配置情况和系统体系结构。在UML图中，描述系统中硬件和软件的物理配置情况和系统体系结构的图成为部署图或配置图。</p>
+</li>
+<li><p>在UML图中，用于表达系统中不同的包、命名空间或不同的顶目间彼此关系的图称为包图。</p>
+</li>
+<li><p>用例之间存在关系，包括扩展、使用、组合。扩展和使用是继承关系，即通用化关系的另一种体现形式。组合则是把相关的用例打成包，当作一个整体看待。</p>
+</li>
+<li><p>活动图主要用于描述系统、用例和程序模块中逻辑流程的先后执行次序，并行次序。</p>
+</li>
+<li><p>通信图是交互图的一种，也被称为协作图。</p>
+</li>
+<li><p>状态机是一个类的对象所有可能的生命历程的模型。当对象探测到一个事件后，它依照当前的状态做出反应，反应包括执行一个动作和转换到新状态。所以在UML的状态机图中，状态之间的转移是由事件驱动的。</p>
+</li>
+</ul>
+<h2 id="Chapter-VI"><a href="#Chapter-VI" class="headerlink" title="Chapter VI"></a>Chapter VI</h2><ul>
+<li><p>使用FOR或者AFTER选项定义的触发器为后触发型触发器，即只有在引发触发器执行的语句中的操作都已成功执行，并且所有的约束检查也成功完成后，才执行该触发器。使用INSTEAD OF选项定义的触发器为前触发型触发器，在这种模式（前）的触发器中，指定执行触发器而不是执行引发触发器执行的SQL语句，从而替代触发的操作。</p>
+</li>
+<li><p>索引所基于的一个列或多个列。如果指定多个列名，则可为指定列的组合值创建组合索引</p>
+</li>
+<li><p>唯一索引可以确保索引列不包含重复的值。在多列唯一索引的情况下，可以确保索引列中每个值的组合都是唯一的。</p>
+</li>
+</ul>
+<p>CREATE PARTITION FUNCTION PFl(int)<br>AS RANGE <strong>LEFT</strong> FOR VALUES (100,200)<br>该语句的功能是创建了3个分区，区间分别是：&lt;=100,(101,200),&gt;=201。</p>
+<h2 id="Chapter-VII-数据库及数据库对象"><a href="#Chapter-VII-数据库及数据库对象" class="headerlink" title="Chapter VII 数据库及数据库对象"></a>Chapter VII 数据库及数据库对象</h2><ul>
+<li><p>日志文件不包括在文件组内，日志文件和数据文件是分开管理的。在物理层面上，日志文件也是想存哪存哪。</p>
+</li>
+<li><p>tempdb是临时数据库，用于保存临时对象或中间结果集，并为数据的排序等操作提供一个临时工作空间。每次启动SQL Server时都会重新创建tempdb数据库。</p>
+</li>
+<li><p>tempdb用于存放临时信息，用户创建的局部和全局临时表均被自动放置在该数据库中</p>
+</li>
+<li><p>架构名可写可不写。 架构（Schema，也称为模式）是数据库下的一个逻辑命名空间，可以存放表、视图等数据库对象。一个数据库可以包含一个或多个架构，架构由特定的授权用户所拥有；在同一个数据库中，架构名必须唯一；架构名可以是显示的，也可以由DBMS提供默认名</p>
+</li>
+<li><p>在不同的架构下，数据库对象可以重名</p>
+</li>
+<li><p>唯一索引的作用是保证索引键值的不重复。在多列唯一索引的情况下，可以确保索引列中每个值的组合都是唯一的。唯一索引和非聚集索引之间没有限定关系</p>
+</li>
+<li><p>一个表上只能有一个聚集索引</p>
+</li>
+<li><p>在表上建立聚集索引会引起表中数据的物理排序</p>
+</li>
+<li><p>在一个表上可以同时有聚集索引和非聚集索引</p>
+</li>
+<li><p>唯一索引既可以是聚集的也可以是非聚集的</p>
+</li>
+<li><p>建立索引一般会降低数据的增、删、改效率</p>
+</li>
+<li><p>在表上建立聚集索引后，系统将对表中数据按聚集索引键值进行物理排序</p>
+</li>
+<li><p>在表上建立索引没有先后顺序</p>
+</li>
+<li><p>分区表中的每个分区并不是一定要映射到不同的文件组中</p>
+</li>
+<li><p>分区函数：分区方式，怎么分； 分区方案：分到哪</p>
+</li>
+</ul>
+<h2 id="Chapter-VIII-数据库后台编程技术"><a href="#Chapter-VIII-数据库后台编程技术" class="headerlink" title="Chapter VIII 数据库后台编程技术"></a>Chapter VIII 数据库后台编程技术</h2><ul>
+<li><p>在对游标数据进行提取的过程中，可以使用@@FETCH_STATUS全局变量判断数据提取的状态。由于@@FETCH_STATUS对于在一个连接上的所有游标是全局性的，不管是对哪个游标，只要执行一次FETCH语句，系统都会对@@FETCH_STATUS赋一次值，以表明该FETCH语句的执行情况</p>
+</li>
+<li><p>使用INSTEAD OF选项定义的触发器为前触发器。在这种模式的触发器中，指定执行触发器而不是执行引发触发器执行的SQL语句，从而替代触发的操作。在一个表上可以建立多个名称不同、类型各异的触发器，每个触发器可由所有三个操作来引发。对于前触发器，在一个表上针对同一个数据操作只能定义一个前触发器；对于后触发器，可以在同一种操作上建立多个触发器</p>
+</li>
+<li><p>NEXT关键字的作用是返回紧跟在当前行之后的数据行，并且当前行递增为结果行。PRIOR关键字返回紧临当前行前面的数据行，并且当前行递减为结果行。ABSOLUTE n和RELATIVE n关键字用于指定特定行。FIRST关键字返回游标中的第一行并将其作为当前行。LAST关键字返回游标中的最后一行并将其作为当前行。</p>
+</li>
+<li><p>FETCH NEXT表示先将游标当前行指针移动到下一行，并提取所指向的行数据</p>
+</li>
+<li><p>存储过程可以接受多个输入参数，也可以接受多个输出参数。</p>
+</li>
+<li><p>存储过程可以提高数据的操作性能和安全性</p>
+</li>
+<li><p>利用存储过程可以进行模块化程序设计</p>
+</li>
+<li><p>存储过程是调用执行的、存储在服务器端的代码段</p>
+</li>
+<li><p>在调用存储过程时，只需要声明参数的类型，不能指明参数为输出参数。只有再执行时才能指明参数为输出参数</p>
+</li>
+<li><p>调用存储过程输入参数时，要么按顺序输入，要么@a = , @b = 这样子输入，不能混着。</p>
+</li>
+<li><p>收缩数据库就是释放数据库中未使用的空间，并将释放的空间交还给操作系统。数据文件和日志文件的空间都可以收缩。</p>
+</li>
+<li><p>定义触发器时一个触发器可以定义为在多个动作（更新，删除，插入）时被触发</p>
+</li>
+</ul>
+<h2 id="Chapter-IX-安全管理"><a href="#Chapter-IX-安全管理" class="headerlink" title="Chapter IX 安全管理"></a>Chapter IX 安全管理</h2><ul>
+<li><p>guest是SQL Server中一个特殊的数据库用户。guest并不是一个登陆账户。</p>
+</li>
+<li><p>注意：由于没有查询权限，有些指令是仅有更新权限的人做不了的：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UPDATE T1 SET c1 &#x3D; c1 + 100</span><br><span class="line">UPDATE T1 SET c1 &#x3D; c3 + c1</span><br><span class="line">UPDATE T1 SET c1 &#x3D; 100 WHERE c2 &#x3D; &#39;A&#39;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Oracle的安全控制机制可分为数据库级的安全控制、表级、行级和列级的安全控制。数据库级的安全性通过用户身份认证和授予用户相应系统权限来保证，而表级、行级、列级的安全性是通过授予或回收对象特权保证的。Oracle数据库中的用户按其操作权限大小可分DBA用户和普通用户。</p>
+</li>
+<li><p>授予用户U1在DB1数据库中具有建表权限</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GRANT CREATE TABLE ON DB1 TO U1 &#x2F;*(X)*&#x2F;</span><br><span class="line">GRANT CREATE TABLE TO U1 &#x2F;*(O)*&#x2F;</span><br></pre></td></tr></table></figure>
+<p>= 当登录账户成为数据库中的合法用户之后，该账户除了具有一些系统视图的查询权限之外，并不对数据库中的用户数据和对象具有任何操作权限，因此，下一步就需要为数据库中的用户授予数据库数据及对象的操作权限（包括查询其他用户的权限）</p>
+<ul>
+<li>db_datareader只能查用户数据，不能查系统数据</li>
+</ul>
+<h2 id="Chapter-X-数据库运行维护于优化"><a href="#Chapter-X-数据库运行维护于优化" class="headerlink" title="Chapter X 数据库运行维护于优化"></a>Chapter X 数据库运行维护于优化</h2><ul>
+<li><p>除了删除或创建索引，以及非聚簇索引和聚簇索引的相互转换外，通过重建索引可以改进系统的性能。</p>
+</li>
+<li><p>数据库应用系统投入运行标志着系统开发任务的基本完成(不是完全结束)和系统运行维护工作的开始</p>
+</li>
+<li><p>根据监控分析实现的方法不同，监控分析机制分为两种，一种是由数据库系统建立的自动监控机制，另一种是由管理员手动实施的监控机制（并不都是自动的）</p>
+</li>
+<li><p>数据库运行维护工作主要包括数据库的转储和恢复；数据库的安全性和完整性控制；数据库性能的监控分析和改进；数据库的重组和重构。其中新建数据库用户属于数据库的安全性和完整性控制的一项功能。</p>
+</li>
+<li><p>RAID1提高了读速度， 加强了系统的可靠性，但是磁盘的利用率低，冗余度高，写的速度并未提高。RAID5是RAID0和RAID1的折中方案。RAID0的优势是数据读取速度高，RAID1的优势是数据保护和安全性更好。数据库系统运行需要依赖服务器、操作系统、存储、网络等多种因素。与RAID5相比，RAID1提高了读速度，加强了系统的可靠性，但是磁盘的利用率低，冗余度高，并且写入速度并未提高。将RAID5改为RAID1，明显是为因为要改善读取速度或可靠性才进行的调整。这是根据系统运行性能的优化而做出的调整</p>
+</li>
+<li><p>维护工作主要包括：数据库的转储和恢复；数据库的安全性和完整性控制；数据库性能的监控分析和改进；数据库的重组和重构。</p>
+</li>
+<li><p>如果运行队列数量超过了CPU处理的数目，服务器性能就会受到CPU的限制而下降，解决方法是为服务器适当增加CPU的数量或者是终止需要许多资源的进程。</p>
+</li>
+<li><p>将数据文件和索引文件放置在同一磁盘上不利于提高查询效率。数据文件和索引文件放置在不同硬盘上有利于提高查询效率</p>
+</li>
+<li><p>聚簇索引的顺序就是数据的物理存储顺序，而对非聚簇索引的解释是:索引顺序与数据物理排列顺序无关</p>
+</li>
+<li><p>维护工作主要包括：数据库的转储和恢复；数据库的安全性和完整性控制；数据库性能的监控分析和改进；数据库的重组和重构。调整索引，优化查询效率属于数据库性能的改进。服务器操作系统不属于数据库运维的范畴。</p>
+</li>
+<li><p>SQL Server提供了一套综合的工具，用于监视SQLServer中的事件和优化物理数据库的设计。物化视图不需要通过手动更新。</p>
+</li>
+<li><p>对于一台数据库服务器来说，如果其在业务空闲时使用率超过90%，说明服务器缺乏CPU资源；如果工作高峰时CPU使用率仍然较低，则说明服务器CPU资源充足。</p>
+</li>
+<li><p>大部分关系数据库管理系统使用B+树作为索引。如果在索引码上执行大量删除操作，索引页可能会出现空间的浪费，而被浪费的空间可能需要在重建索引后才可以被重用，所以需要重建B树索引。</p>
+</li>
+<li><p>散列索引适用于等值查询，尤其是在连接操作中查找匹配记录时。</p>
+</li>
+</ul>
+<h2 id="Chapter-XI-XII-故障管理、备份与回复数据库"><a href="#Chapter-XI-XII-故障管理、备份与回复数据库" class="headerlink" title="Chapter XI, XII 故障管理、备份与回复数据库"></a>Chapter XI, XII 故障管理、备份与回复数据库</h2><ul>
+<li><p>检查点技术大幅度减少了数据库完全恢复时所必须执行的日志部分。</p>
+</li>
+<li><p>差量转储和增量转储相比，速度慢，占用空间较多，但恢复速度比增量转储快</p>
+</li>
+<li><p>数据库备份设备可以是磁带也可以是磁盘，数据库备份设备可以为本地设备，也可以使用远程网络设备。SQL Server支持两种备份方式，一种是先建立备份设备，然后再将数据库备份到备份设备上，这样的备份设备称为永久备份设备；另一种是直接将数据库备份到物理文件上，这样的备份设备称为临时备份设备。创建备份设备的 T-SQL存储过程为sp_addumpdevice。</p>
+</li>
+<li><p>事务日志备份仅用于完整恢复模式和大容量日志恢复模式，它并不备份数据库本身，只备份日志记录，而且只备份从上次备份之后到当前备份时间发生变化的日志内容。但是不允许对大容量操作日志备份进行时点恢复。结尾日志备份在出现故障时进行，用于防止丢失数据，可以包含纯日志记录或者大容量操作日志记录</p>
+</li>
+<li><p>通常，对于用户数据库，简单恢复模式只用于测试和开发数据库，或用于主要包含只读数据的数据库（如数据仓库），这种模式并不适合生产系统，因为对生产系统而言，丢失最新的更改是无法接受的。</p>
+</li>
+<li><p>SQL Server 2008支持数据库、数据文件两个级别的数据恢复。</p>
+</li>
+<li><p>静态转储可以保证数据的有效性，但是却降低数据库的可用性，动态转储可以提高数据库的可用性，但数据的有效性得不到保证。为了保证数据的一致性，需使用日志文件和动态转储结合使用。</p>
+</li>
+<li><p>在制定备份策略时，需要考虑备份空间、时间等因素。完全转储是对数据库中所有数据进行转储，此种方式占用较多的时间和空间。</p>
+</li>
+<li><p>差量转储是对最近一次数据库完全转储以来发生的数据库变化进行转储。差量转储和完全转储相比速度快，占用空间小；差量转储和增量转储相比速度慢、占用空间多，但是恢复速度快。</p>
+</li>
+<li><p>增量转储只复制上次转储后发生变化的文件或数据块。增量转储所需的时间和空间都比较短，但增量转储数据只能和完全转储配合，才能对数据库进行恢复。增量转储的恢复时间比完全转储要长。</p>
+</li>
+<li><p>在SQL Server 2008系统数据库中，只有tempdb数据库不需要备份，其他的都需要备份。tempdb只是一个临时数据库，每次SQL Server启动时都会重新新建tempdb数据库。</p>
+</li>
+<li><p>对于非预期的事物内部故障，在保证该事务对其他事务没有影响的条件下，利用日志文件撤销其对数据库的修改，使数据库恢复到该事物运行之前的状态（非人工）。事务故障的恢复是由系统自动完成的，对用户是透明的。</p>
+</li>
+<li><p>数据库更改频繁、数据丢失造成影响比较大的情况不适用于完整备份</p>
+<blockquote>
+<ul>
+<li>与完整恢复模式（完全记录所有事务）相比，大容量日志恢复模式只对大容量操作进行最小记录（尽管会完全记录其他事务）。大容量日志恢复模式保护大容量操作不受媒体故障的危害，提供最佳性能并占用最小日志空间。</li>
+</ul>
+<p>但是，大容量日志恢复模式会增加这些大容量复制操作丢失数据的风险，因为大容量日志操作阻止再次捕获对每个事务逐一所做的更改。如果日志备份包含大容量日志操作，则无法还原到该日志备份中的时点，而只能还原整个日志备份。</p>
+<p>在大容量日志恢复模式下，如果日志备份覆盖了任何大容量操作，则日志备份包含由大容量操作所更改的日志记录和数据页。这对于捕获大容量日志操作的结果至关重要。合并的数据区可使日志备份变得非常庞大。此外，备份日志需要访问包含大容量日志事务的数据文件。如果无法访问任何受影响的数据库文件，则事务日志将无法备份，并且在此日志中提交的所有操作都会丢失。</p>
+<p>为跟踪数据页，日志备份操作依赖于位图页的大容量更改，位图页针对每个区包含一位。对于自上次日志备份后由大容量日志操作所更新的每个区，在位图中将每个位都设置为 1。数据区将复制到日志中，后跟日志数据。下图显示了日志备份的构造方式。</p>
+</blockquote>
+</li>
+<li><p>静态转储不必须使用日志文件</p>
+</li>
+<li><p>备份策略的制定包括<strong>定义备份的类型和频率</strong>、<strong>备份所需硬件的特性和速度</strong>、<strong>备份的测试方法</strong>以及<strong>备份媒体的存储位置和方法</strong>。</p>
+</li>
+<li><p>为非介质故障一般只需要执行REDO（重做）和UNDO（回滚）即可。III中RAID是磁盘级别的，数据写入时自动完成备份，即便数据有问题，也将会在驱动程序的协调下自动完成恢复。镜像数据库恢复和增量备份数据库恢复一般在介质故障时使用。</p>
+</li>
+<li><p>完整备份是备份特定数据库中的所有数据，以及可以恢复这些数据的足够的日志</p>
+</li>
+<li><p>事务日志备份仅用于完整恢复模式和大容量日志恢复模式</p>
+</li>
+<li><p>差异备份包含最近一次完整备份之后发生了更改的数据区（下一次差异备份也是从最近一次完整备份）</p>
+</li>
+<li><p>使用差异备份时，应定期进行完整备份而不是定期进行日志备份。</p>
+</li>
+</ul>
+<h2 id="Chapter-XIII-大规模数据库架构"><a href="#Chapter-XIII-大规模数据库架构" class="headerlink" title="Chapter XIII 大规模数据库架构"></a>Chapter XIII 大规模数据库架构</h2><ul>
+<li><p>轮转法保证了元组在多个磁盘上平均分配，适合扫描整个关系的应用，负载均衡，并行性好，但是点查询和范围查询效率很低。</p>
+</li>
+<li><p>散列划分使用散列函数，根据一个或多个属性进行散列，适合点查询，对于顺序扫描也非常高效，但是对散列函数的优劣依赖很大</p>
+</li>
+<li><p>范围划分有利于范围查询以及点查询，但是也可能引起数据分布不均匀，导致并行处理能力下降</p>
+</li>
+<li><p>范围划分是按照关系中某个属性的取值范围将数据文件划分为n部分，分别存放到磁盘上。</p>
+</li>
+<li><p>聚集函数的并行化计算可以釆取”先分后合”的方法</p>
+</li>
+<li><p>相比轮转法，散列划分方法能够使划分结果更适合于点查询</p>
+</li>
+<li><p>在并行数据库中的数据划分与并行算法中，范围划分会引起数据分布不均匀，导致并行处理能力下降。</p>
+</li>
+<li><p>范围划分按照关系中某个属性的取值范围将数据文件划分为n部分，分别存放到磁盘上称为二维范围划分。</p>
+</li>
+<li><p>用轮转法对数据进行划分最适合于需扫描整个关系的应用，对这种应用可以更好地实现负载均衡，充分发挥并行性</p>
+</li>
+<li><p>如果排序属性恰好为范围划分的划分属性，则可以直接将各个划分的排序结果串接起来，得到完全排好序的关系</p>
+</li>
+<li><p>位置独立性、数据分片独立性和数据复制独立性是使分布式数据库具有分布式透明性的主要因素。</p>
+</li>
+<li><p>分布式数据库最基本特征是本地自治、非集中式管理及高可用性。而位置独立性、数据分片独立性和数据复制独立性形成了分布式数据库系统中的分布透明性。</p>
+</li>
+<li><p>分片透明性是最高级别的透明性，是指数据分片用户无需考虑的，完全透明的，在编写程序时用户只需要对全局关系进行操作。</p>
+</li>
+<li><p>分布透明性有如下几种级别：<br> （1）分片透明性。分片透明性是最高级别的透明性，位于全局模式与分片模式之间。<br> （2）位置透明性。位置透明性是指数据分片的分配位置对用户是透明的，用户编写程序时只需要考虑数据分片情况，不需要了解各分片在各个场地的分配情况。<br> （3）局部数据模型透明性。局部数据模型透明性处于分配模式与局部概念模式之间。</p>
+</li>
+<li><p>分片透明性是指数据分片是用户无需考虑的，完全透明的，在编写程序时用户只需要对全局关系进行操作，是最高级别的透明性；位置透明性是指数据分片的分配位置对用户是透明的，用户编写程序时只需要考虑数据分片情况；局部数据模型透明性，使用户在编写程序时不但要了解全局数据的分片情况，还要了解各片断的副本复制情况及各片断和它们副本的场地位置分配情况。所以三种级别从高到低的排序是：分片透明性、位置透明性、局部透明性。</p>
+</li>
+<li><p>共享磁盘结构所有的处理机拥有独立的内存，通过互联网共享磁盘。这种结构可以克服共享内存结构，但是由于是通过互联网实现处理器之间的信息交换，会产生一定的通信代价。</p>
+</li>
+<li><p>层次结构综合了共享内存、共享磁盘和无共享结构的特点，分为两层，顶层是无共享结构，底层是共享内存或共享磁盘结构    </p>
+</li>
+<li><p>共享内存结构与单机系统的差别只在于以多个处理器代替单个处理器，并行执行事务，通过共享内存传送消息与数据    </p>
+</li>
+<li><p>与传统数据库相比，XML数据库具有以下优势：</p>
+</li>
+</ul>
+<p>（1）XML数据库能够对半结构化数据进行有效的存取和管理。如网页内容就是一种半结构化数据，而传统的关系数据库对于类似网页内容这类半结构化数据无法进行有效的管理。</p>
+<p>（2）提供对标签和路径的操作。传统数据库语言允许对数据元素的值进行操作，但不能对元素名称进行操作，半结构化数据库提供了对标签名称的操作，包括对路径的操作。</p>
+<p>（3）当数据本身具有层次特征时，由于XML数据格式能够清晰表达数据的层次特征，因此XML数据库便于对层次化的数据进行操作。XML数据库适合管理复杂数据结构的数据集。</p>
+<p>现阶段在现实环境中，一边使用的是原有的关系数据库厂商在其传统商业产品中进行了相关的扩充，使其能够处理XML数据的产品。</p>
+<ul>
+<li><p>BigTable表的索引是行关键字、列关键字和时间戳，每个单元由行关键字、列关键字和时间戳共同定位。<br>在BigTable中，不仅可以随意地增减行的数量，同在一定的约束条件下，还可以对列的数量进行扩展。<br>BigTable数据模型的特点是：<br>（1）表中的行关键字可以是任意的字符串。<br>（2）列族是由列关键字组成的集合，是访问控制的基本单位。<br>（3）时间戳记录了BigTable中每一个数据项所包含的不同版本的数据的时间标识。</p>
+</li>
+<li><p>全局外模式是全局应用的用户视图，即终端用户看到的逻辑上并未分布的表、视图等。</p>
+</li>
+<li><p>并行数据库系统结构<br>  有四种结构：<br>  1、共享内存结构：通过互联网共享一个公共的主存储器，与单机系统的区别是以多个处理器代替单个处理器并行执行事务，通过共享内存传送消息和数据，实现对一个或多个磁盘的访问。<br>  2、共享磁盘结构：所有处理机拥有独立的主存储器，通过互联网共享磁盘。<br>  3、无共享结构：每个处理机拥有独立的主存储器和磁盘，不共享任何资源。<br>  4、层次结构：前三种的结合，分两层，顶层无共享结构，底层共享内存或共享磁盘。<br>  主存储器就是内存。</p>
+</li>
+</ul>
+<h2 id="Chapter-XIV-数据仓库与数据挖掘"><a href="#Chapter-XIV-数据仓库与数据挖掘" class="headerlink" title="Chapter XIV 数据仓库与数据挖掘"></a>Chapter XIV 数据仓库与数据挖掘</h2><ul>
+<li><p>快照是关于指定数据集合的一个完全可用拷贝，该拷贝包括相应数据在某个时间点（拷贝开始的时间点）的映像。快照可以是其所表示的数据的一个副本，也可以是数据的一个复制品。它反映的是某个时间点内的数据，该数据具有不可以改变性。而商场商品销售表、电信公司通话详单属于动态数据，不适合用快照的方式获取数据。</p>
+</li>
+<li><p>元数据是关于数据的数据，或者叫做描述数据的数据，它描述了数据的结构、内容、链和索引等项的内容。</p>
+</li>
+<li><p>数据仓库中数据特征包括面向主题性，集成性，不可更新性，时间特性。</p>
+</li>
+<li><p>分类器的构造方法有统计方法、机器学习方法、神经网络方法等。统计方法包括贝叶斯法和非参数法；机器学习方法包括决策树法和规则归纳法；神经网络方法主要是BP算法。K-means属于聚类算法。</p>
+</li>
+<li><p>数据挖掘可以简单地理解为从大量数据中提取或挖掘知识，是数据库知识发现的一个步骤。</p>
+</li>
+<li><p>粒度高的数据是由粒度低的数据综合而成的。</p>
+</li>
+<li><p>数据集成是将源自不同数据源的数据经过抽取、转换、清理、装载等操作载入数据仓库的过程，是实施数据仓库的重要步骤。由于对大量的原始数据要加以提炼，要减轻分析工作给处理业务数据的服务器带来的压力，要规范各源数据，以及要处理那些难以直接使用的数据，数据集成在数据仓库设计中是必不可少的一环，ETL是实现数据集成的主要技术。</p>
+</li>
+<li><p>建立数据仓库的主要目的在于根据决策需求对企业的数据采取适当的手段进行集成，形成一个综合的、面相分析的数据环境，用于支持企业的信息型、决策型的分析应用。</p>
+</li>
+</ul>
+<h2 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h2><ul>
+<li>存储过程和用户自定义函数的区别</li>
+</ul>
+<p>存储过程（用户定义的存储过程）和自定义函数（用户定义的函数）的区别：</p>
+<p>1.存储过程，功能强大，可以执行包括修改表等一系列数据库操作，也可以创建为 SQL Server 启动时自动运行的存储过程。<br>自定义函数，用户定义函数不能用于执行一组修改全局数据库状态的操作。<br>2.存储过程，可以使用非确定函数。<br>自定义函数，不允许在用户定义函数主体中内置非确定函数。<br>3.存储过程，可返回记录集。<br>自定义函数，可以返回表变量。<br>4.存储过程，其返回值不能被直接引用。<br>自定义函数，其返回值可以被直接引用。<br>5.存储过程，用 EXECUTE 语句执行。<br>自定义函数，在查询语句中调用。</p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
+            <p>Link of This Article：<a href="https://ry2an.github.io/2020/09/05/NRCE-RANK3-DATABASE-Note/">https://ry2an.github.io/2020/09/05/NRCE-RANK3-DATABASE-Note/</a>
+            <p>Publish Date：<a href="https://ry2an.github.io/2020/09/05/NRCE-RANK3-DATABASE-Note/">September 5th 2020, 9:12:38 am</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/09/05/NRCE-RANK3-DATABASE-Note/">September 5th 2020, 9:16:27 am</a>
+            <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/08/15/SAS-codes/" title= "SAS codes">
+                    <div class="prevTitle">SAS codes</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:ruoyan.han94@outlook.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Ry2an" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/my_wechat.jpg" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.zhihu.com/people/tui-mao-39" class="iconfont-archer zhihu" target="_blank" title=zhihu></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://space.bilibili.com/2477951" class="iconfont-archer bilibili" target="_blank" title=bilibili></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-I"><span class="toc-number">1.</span> <span class="toc-text">Chapter I</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-V-UML-DBAS"><span class="toc-number">2.</span> <span class="toc-text">Chapter V: UML DBAS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-VI"><span class="toc-number">3.</span> <span class="toc-text">Chapter VI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-VII-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%B9%E8%B1%A1"><span class="toc-number">4.</span> <span class="toc-text">Chapter VII 数据库及数据库对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-VIII-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8E%E5%8F%B0%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF"><span class="toc-number">5.</span> <span class="toc-text">Chapter VIII 数据库后台编程技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-IX-%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">Chapter IX 安全管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-X-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E8%A1%8C%E7%BB%B4%E6%8A%A4%E4%BA%8E%E4%BC%98%E5%8C%96"><span class="toc-number">7.</span> <span class="toc-text">Chapter X 数据库运行维护于优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-XI-XII-%E6%95%85%E9%9A%9C%E7%AE%A1%E7%90%86%E3%80%81%E5%A4%87%E4%BB%BD%E4%B8%8E%E5%9B%9E%E5%A4%8D%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">8.</span> <span class="toc-text">Chapter XI, XII 故障管理、备份与回复数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-XIII-%E5%A4%A7%E8%A7%84%E6%A8%A1%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9E%B6%E6%9E%84"><span class="toc-number">9.</span> <span class="toc-text">Chapter XIII 大规模数据库架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-XIV-%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98"><span class="toc-number">10.</span> <span class="toc-text">Chapter XIV 数据仓库与数据挖掘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other"><span class="toc-number">11.</span> <span class="toc-text">Other</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 18
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2020/09/05/NRCE-RANK3-DATABASE-Note/" >NRCE_RANK3_DATABASE_Note</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span><a class="archive-post-title" href= "/2020/08/15/SAS-codes/" >SAS codes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/31</span><a class="archive-post-title" href= "/2020/07/31/rubella/" >Dynamic modeling analyses of Rubella in Henan Province, China, 2005 -2016</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span><a class="archive-post-title" href= "/2020/07/29/flight-back-china/" >回国航班</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/20</span><a class="archive-post-title" href= "/2020/05/20/EPID622/" >Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/Portfolio-as-MPH-Student/" >Portfolio as MPH</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/05</span><a class="archive-post-title" href= "/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/" >Repeat Academic Poisson and Negative Binomial Regression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2020/03/04/Repeat-Ancademic-Survival-Analysis/" >Repeat Academic Survival Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/" >Understanding Fourier Transform and Wavelet Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/31</span><a class="archive-post-title" href= "/2020/01/31/Simulating-SIR-Model/" >Simulating SIR Model</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/17</span><a class="archive-post-title" href= "/2020/01/17/Crawling-Data-From-html-Based-Pages/" >Crawling Data From html Based Pages</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/2020/01/14/Vaccine-Making-Selling-Delivering-and-Using-System/" >Vaccine Making Selling Delivering and Using System</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/11</span><a class="archive-post-title" href= "/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/" >Using Longitudinal Models To Analyze Steam Games</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/10</span><a class="archive-post-title" href= "/2020/01/10/Connect-Four-Chess/" >Connect Four Chess</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2016 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/01</span><a class="archive-post-title" href= "/2016/09/01/summer-survey-2016/" >2016年暑期实践</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1994 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/10</span><a class="archive-post-title" href= "/1994/10/10/Markdown-Cheat-Sheet/" >Markdown Cheat Sheet</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/09</span><a class="archive-post-title" href= "/1994/10/09/MySQL-Hand-Book/" >MySQL Hand Book</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1990 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/30</span><a class="archive-post-title" href= "/1990/07/30/test/" >test</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
+    
+        <span class="sidebar-tag-name" data-tags="trip"><span class="iconfont-archer">&#xe606;</span>trip</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Ruoyan Han"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
+
+
