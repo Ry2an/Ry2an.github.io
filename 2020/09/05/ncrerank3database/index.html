@@ -266,7 +266,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">9.8k</span>Reading time: <span class="post-count reading-time">33 min</span></span>
+                        <span>Word count: <span class="post-count word-count">11.2k</span>Reading time: <span class="post-count reading-time">38 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -522,7 +522,30 @@ height:50vh;
 <li><p>状态机是一个类的对象所有可能的生命历程的模型。当对象探测到一个事件后，它依照当前的状态做出反应，反应包括执行一个动作和转换到新状态。所以在UML的状态机图中，状态之间的转移是由事件驱动的。</p>
 </li>
 </ul>
-<h2 id="Chapter-VI"><a href="#Chapter-VI" class="headerlink" title="Chapter VI"></a>Chapter VI</h2><ul>
+<h2 id="Chapter-VI-高级查询"><a href="#Chapter-VI-高级查询" class="headerlink" title="Chapter VI 高级查询"></a>Chapter VI 高级查询</h2><ul>
+<li>having和where的本质的区别就是where筛选的是数据库表里面本来就有的字段，而having筛选的字段是从前筛选的字段筛选的。</li>
+</ul>
+<blockquote>
+<p>where和having都可以使用的场景：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select goods_price,goods_name from sw_goods where goods_price&gt;100</span><br><span class="line"></span><br><span class="line">select goods_price,goods_name from sw_goods having goods_price&gt;100</span><br><span class="line"></span><br><span class="line">-- 原因：goods_price作为条件也出现在了查询字段中。</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>只可以使用where，不可以使用having的情况：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select goods_name,goods_number from sw_goods where goods_price&gt;100</span><br><span class="line"></span><br><span class="line">select goods_name,goods_number from sw_goods having goods_price&gt;100(X)</span><br><span class="line"></span><br><span class="line">-- 原因：goods_price作为筛选条件没有出现在查询字段中，所以就会报错。</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>having的原理是先select 然后从select出来的进行筛选。而where是先筛选在select。</p>
+<p>只可以使用having，不可以使用where的情况：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select goods_category_id,avg(good_price) as ag from sw_goods group by goods_category having ag&gt;1000</span><br><span class="line"></span><br><span class="line">select  goods_category_id,avg(goods_price) as ag from sw_goods where ag&gt;1000 group by goods_category(X)</span><br><span class="line">-- 报错，这个表里没有这个ag这个字段。</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>where子句中一般不使用聚合函数那种情况。</p>
+</blockquote>
+<ul>
+<li><p>写的顺序：select … from… where…. group by… having… order by.. limit [offset](rows)<br>执行顺序：from… where…group by… having…. select … order by… limit</p>
+</li>
+<li><p>SELECT INTO语句表示从一个表中选取数据，然后把该数据插入到另一个表中。该语句结构通常用于创建表的备份复件或者用于对记录进行存档。该语句使用时要求目标表不存在，因为在插入时会自动创建。(SELECT <em> INTO T2 FROM T1) 对于已经存在的表，一般使用INSERT INTO语句插入数据，通常有两种方式，一种是插入一个元组，另一种是插入查询结果。（INSERT/INSERT INTO T2 SELECT </em> FROM T1）</p>
+</li>
 <li><p>使用FOR或者AFTER选项定义的触发器为后触发型触发器，即只有在引发触发器执行的语句中的操作都已成功执行，并且所有的约束检查也成功完成后，才执行该触发器。使用INSTEAD OF选项定义的触发器为前触发型触发器，在这种模式（前）的触发器中，指定执行触发器而不是执行引发触发器执行的SQL语句，从而替代触发的操作。</p>
 </li>
 <li><p>索引所基于的一个列或多个列。如果指定多个列名，则可为指定列的组合值创建组合索引</p>
@@ -531,6 +554,15 @@ height:50vh;
 </li>
 </ul>
 <p>CREATE PARTITION FUNCTION PFl(int)<br>AS RANGE <strong>LEFT</strong> FOR VALUES (100,200)<br>该语句的功能是创建了3个分区，区间分别是：&lt;=100,(101,200),&gt;=201。</p>
+<ul>
+<li><p>SQL Server提供了四个排名函数：RANK、DENSE_RANK、NTILE和ROW_NUMBER，其中RANK()函数返回结果集中每个分区内行的序列号，每个分区的第一行从1开始。函数返回结果集中每行数据在每个分区内的排名，并且每个分区内的排名从1开始，但排名中间数值可能有间断。DENSE_RANK()函数与RANK()函数的作用基本一样，使用方法也一样，唯一的区别是DENSE_RANK()的函数排名中间没有任何间断，即该函数返回的是一个连贯的整数值。</p>
+</li>
+<li><p>[]匹配指定范围内或者属于方括号所指定的集合中的任意单个字符；<br>  _匹配一个字符；<br>  <sup><a href="#fn_" id="reffn_"></a></sup>匹配不在方括号之间指定的范围或集合内的任何单个字符；<br>  %匹配包含零个或多个字符的任意字符串。</p>
+</li>
+<li><p>SQL Server提供了两种开窗函数：排名开窗函数和聚合开窗函数。PARTITION BY：将结果集划分为多个分区，OVER子句用于确定在应用关联的开窗函数之前对行集的分区和排序。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ SELECT COUNT(DISTINCT C1) FROM T1 &#x2F;*统计T1表C1列取不同值的个数*&#x2F;</span><br></pre></td></tr></table></figure>
 <h2 id="Chapter-VII-数据库及数据库对象"><a href="#Chapter-VII-数据库及数据库对象" class="headerlink" title="Chapter VII 数据库及数据库对象"></a>Chapter VII 数据库及数据库对象</h2><ul>
 <li><p>日志文件不包括在文件组内，日志文件和数据文件是分开管理的。在物理层面上，日志文件也是想存哪存哪。</p>
 </li>
@@ -564,6 +596,17 @@ height:50vh;
 </li>
 </ul>
 <h2 id="Chapter-VIII-数据库后台编程技术"><a href="#Chapter-VIII-数据库后台编程技术" class="headerlink" title="Chapter VIII 数据库后台编程技术"></a>Chapter VIII 数据库后台编程技术</h2><ul>
+<li>日期函数 dateadd 例子：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE 出租表 SET 到期日期 &#x3D; dateadd(month, 租期, 出租日期) &#x2F;*把int字段租期当作月份加到出租日期上并赋值给到期日期*&#x2F;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>区分in和exists (！！！注意加s！！！)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">where var1 not in (select var 1 from...)</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">where not exists (select * from ...)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>游标指针各个参数含义：<br>  NEXT:返回紧跟在当前行之后的数据行，并且当前行递增为结果行。<br>  PRIOR:返回紧跟当前行前面的数据行，并且当前行递减为结果行。<br>  FIRST:返回游标中的第一行并将其作为当前行。<br>  LAST:返回游标中的最后一行并将其作为当前行。</li>
+</ul>
+<ul>
 <li><p>在对游标数据进行提取的过程中，可以使用@@FETCH_STATUS全局变量判断数据提取的状态。由于@@FETCH_STATUS对于在一个连接上的所有游标是全局性的，不管是对哪个游标，只要执行一次FETCH语句，系统都会对@@FETCH_STATUS赋一次值，以表明该FETCH语句的执行情况</p>
 </li>
 <li><p>使用INSTEAD OF选项定义的触发器为前触发器。在这种模式的触发器中，指定执行触发器而不是执行引发触发器执行的SQL语句，从而替代触发的操作。在一个表上可以建立多个名称不同、类型各异的触发器，每个触发器可由所有三个操作来引发。对于前触发器，在一个表上针对同一个数据操作只能定义一个前触发器；对于后触发器，可以在同一种操作上建立多个触发器</p>
@@ -638,6 +681,12 @@ height:50vh;
 </li>
 </ul>
 <h2 id="Chapter-XI-XII-故障管理、备份与回复数据库"><a href="#Chapter-XI-XII-故障管理、备份与回复数据库" class="headerlink" title="Chapter XI, XII 故障管理、备份与回复数据库"></a>Chapter XI, XII 故障管理、备份与回复数据库</h2><ul>
+<li>数据库备份命令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BACKUP DATABASE DB1 TO BK &#x2F;*将数据库DB1完整备份到BK设备上*&#x2F;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>在备份语句（BACKUP)中默认情况下使用完整数据库备份，而关键字DIFFERENTIAL专门改变备份为差异备份。</p>
+</li>
 <li><p>检查点技术大幅度减少了数据库完全恢复时所必须执行的日志部分。</p>
 </li>
 <li><p>差量转储和增量转储相比，速度慢，占用空间较多，但恢复速度比增量转储快</p>
@@ -650,6 +699,8 @@ height:50vh;
 </li>
 <li><p>SQL Server 2008支持数据库、数据文件两个级别的数据恢复。</p>
 </li>
+<li><p>SQL Server 2008支持三种恢复模式：简单恢复模式、完整恢复模式和大容量日志恢复模式。如果能够在出现故障后备份日志尾部，则可以使用完整恢复模式将数据库恢复到故障点。</p>
+</li>
 <li><p>静态转储可以保证数据的有效性，但是却降低数据库的可用性，动态转储可以提高数据库的可用性，但数据的有效性得不到保证。为了保证数据的一致性，需使用日志文件和动态转储结合使用。</p>
 </li>
 <li><p>在制定备份策略时，需要考虑备份空间、时间等因素。完全转储是对数据库中所有数据进行转储，此种方式占用较多的时间和空间。</p>
@@ -660,7 +711,11 @@ height:50vh;
 </li>
 <li><p>在SQL Server 2008系统数据库中，只有tempdb数据库不需要备份，其他的都需要备份。tempdb只是一个临时数据库，每次SQL Server启动时都会重新新建tempdb数据库。</p>
 </li>
+<li><p>事务内部故障可以分为预期的和非预期的，其中大部分的故障都是非预期的，预期的事务内部故障是指可以通过事务程序本身发现的事务内部故障；非预期的事务内部故障是不能由事务程序处理的，如运算溢出故障、并发事务死锁故障、违反了某些完整性限制而导致的故障等。</p>
+</li>
 <li><p>对于非预期的事物内部故障，在保证该事务对其他事务没有影响的条件下，利用日志文件撤销其对数据库的修改，使数据库恢复到该事物运行之前的状态（非人工）。事务故障的恢复是由系统自动完成的，对用户是透明的。</p>
+</li>
+<li><p>数据库镜像有三种实现方式：高可用性、高保护、高性能。</p>
 </li>
 <li><p>数据库更改频繁、数据丢失造成影响比较大的情况不适用于完整备份</p>
 <blockquote>
@@ -688,6 +743,8 @@ height:50vh;
 </li>
 </ul>
 <h2 id="Chapter-XIII-大规模数据库架构"><a href="#Chapter-XIII-大规模数据库架构" class="headerlink" title="Chapter XIII 大规模数据库架构"></a>Chapter XIII 大规模数据库架构</h2><ul>
+<li><p>两阶段的提交协议将场地的事务管理器分为协调者和参与者，通过协调者在第一阶段询问所有参与者事务是否可以提交，参与者做出应答，在第二阶段协调者根据参与者的回答决定事务是否提交。</p>
+</li>
 <li><p>轮转法保证了元组在多个磁盘上平均分配，适合扫描整个关系的应用，负载均衡，并行性好，但是点查询和范围查询效率很低。</p>
 </li>
 <li><p>散列划分使用散列函数，根据一个或多个属性进行散列，适合点查询，对于顺序扫描也非常高效，但是对散列函数的优劣依赖很大</p>
@@ -714,7 +771,7 @@ height:50vh;
 </li>
 <li><p>分片透明性是最高级别的透明性，是指数据分片用户无需考虑的，完全透明的，在编写程序时用户只需要对全局关系进行操作。</p>
 </li>
-<li><p>分布透明性有如下几种级别：<br> （1）分片透明性。分片透明性是最高级别的透明性，位于全局模式与分片模式之间。<br> （2）位置透明性。位置透明性是指数据分片的分配位置对用户是透明的，用户编写程序时只需要考虑数据分片情况，不需要了解各分片在各个场地的分配情况。<br> （3）局部数据模型透明性。局部数据模型透明性处于分配模式与局部概念模式之间。</p>
+<li><p>分布透明性有如下几种级别：<br> （1）数据分片透明性。分片透明性是最高级别的透明性，位于全局模式与分片模式之间。<br> （2）位置透明性。位置透明性是指数据分片的分配位置对用户是透明的，用户编写程序时只需要考虑数据分片情况，不需要了解各分片在各个场地的分配情况。<br> （3）局部数据模型透明性。局部数据模型透明性处于分配模式与局部概念模式之间。</p>
 </li>
 <li><p>分片透明性是指数据分片是用户无需考虑的，完全透明的，在编写程序时用户只需要对全局关系进行操作，是最高级别的透明性；位置透明性是指数据分片的分配位置对用户是透明的，用户编写程序时只需要考虑数据分片情况；局部数据模型透明性，使用户在编写程序时不但要了解全局数据的分片情况，还要了解各片断的副本复制情况及各片断和它们副本的场地位置分配情况。所以三种级别从高到低的排序是：分片透明性、位置透明性、局部透明性。</p>
 </li>
@@ -723,6 +780,8 @@ height:50vh;
 <li><p>层次结构综合了共享内存、共享磁盘和无共享结构的特点，分为两层，顶层是无共享结构，底层是共享内存或共享磁盘结构    </p>
 </li>
 <li><p>共享内存结构与单机系统的差别只在于以多个处理器代替单个处理器，并行执行事务，通过共享内存传送消息与数据    </p>
+</li>
+<li><p>云计算通过集中所有的计算资源，采用硬件虚拟化技术，为云计算使用者提供强大的计算能力、存储和带宽等资源。</p>
 </li>
 <li><p>与传统数据库相比，XML数据库具有以下优势：</p>
 </li>
@@ -737,6 +796,8 @@ height:50vh;
 <li><p>全局外模式是全局应用的用户视图，即终端用户看到的逻辑上并未分布的表、视图等。</p>
 </li>
 <li><p>并行数据库系统结构<br>  有四种结构：<br>  1、共享内存结构：通过互联网共享一个公共的主存储器，与单机系统的区别是以多个处理器代替单个处理器并行执行事务，通过共享内存传送消息和数据，实现对一个或多个磁盘的访问。<br>  2、共享磁盘结构：所有处理机拥有独立的主存储器，通过互联网共享磁盘。<br>  3、无共享结构：每个处理机拥有独立的主存储器和磁盘，不共享任何资源。<br>  4、层次结构：前三种的结合，分两层，顶层无共享结构，底层共享内存或共享磁盘。<br>  主存储器就是内存。</p>
+</li>
+<li><p>分布式事务管理主要包括恢复控制和并发控制。由于在分布式数据库系统中一个全局事务的完成需要多个场地共同参与，为了保持事务的原子性，参与事务执行的所有场地或者全部提交，或者全部撤消/回滚。</p>
 </li>
 </ul>
 <h2 id="Chapter-XIV-数据仓库与数据挖掘"><a href="#Chapter-XIV-数据仓库与数据挖掘" class="headerlink" title="Chapter XIV 数据仓库与数据挖掘"></a>Chapter XIV 数据仓库与数据挖掘</h2><ul>
@@ -770,7 +831,7 @@ height:50vh;
             <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
             <p>Link of This Article：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">https://ry2an.github.io/2020/09/05/ncrerank3database/</a>
             <p>Publish Date：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">September 5th 2020, 9:12:38 am</a>
-            <p>Update Date：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">September 5th 2020, 9:38:33 am</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">September 7th 2020, 5:15:05 pm</a>
             <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
         </div>
     
@@ -910,7 +971,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-I"><span class="toc-number">1.</span> <span class="toc-text">Chapter I</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-V-UML-DBAS"><span class="toc-number">2.</span> <span class="toc-text">Chapter V: UML DBAS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-VI"><span class="toc-number">3.</span> <span class="toc-text">Chapter VI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-VII-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%B9%E8%B1%A1"><span class="toc-number">4.</span> <span class="toc-text">Chapter VII 数据库及数据库对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-VIII-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8E%E5%8F%B0%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF"><span class="toc-number">5.</span> <span class="toc-text">Chapter VIII 数据库后台编程技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-IX-%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">Chapter IX 安全管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-X-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E8%A1%8C%E7%BB%B4%E6%8A%A4%E4%BA%8E%E4%BC%98%E5%8C%96"><span class="toc-number">7.</span> <span class="toc-text">Chapter X 数据库运行维护于优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-XI-XII-%E6%95%85%E9%9A%9C%E7%AE%A1%E7%90%86%E3%80%81%E5%A4%87%E4%BB%BD%E4%B8%8E%E5%9B%9E%E5%A4%8D%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">8.</span> <span class="toc-text">Chapter XI, XII 故障管理、备份与回复数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-XIII-%E5%A4%A7%E8%A7%84%E6%A8%A1%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9E%B6%E6%9E%84"><span class="toc-number">9.</span> <span class="toc-text">Chapter XIII 大规模数据库架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-XIV-%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98"><span class="toc-number">10.</span> <span class="toc-text">Chapter XIV 数据仓库与数据挖掘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other"><span class="toc-number">11.</span> <span class="toc-text">Other</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-I"><span class="toc-number">1.</span> <span class="toc-text">Chapter I</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-V-UML-DBAS"><span class="toc-number">2.</span> <span class="toc-text">Chapter V: UML DBAS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-VI-%E9%AB%98%E7%BA%A7%E6%9F%A5%E8%AF%A2"><span class="toc-number">3.</span> <span class="toc-text">Chapter VI 高级查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-VII-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%B9%E8%B1%A1"><span class="toc-number">4.</span> <span class="toc-text">Chapter VII 数据库及数据库对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-VIII-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8E%E5%8F%B0%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF"><span class="toc-number">5.</span> <span class="toc-text">Chapter VIII 数据库后台编程技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-IX-%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">Chapter IX 安全管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-X-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E8%A1%8C%E7%BB%B4%E6%8A%A4%E4%BA%8E%E4%BC%98%E5%8C%96"><span class="toc-number">7.</span> <span class="toc-text">Chapter X 数据库运行维护于优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-XI-XII-%E6%95%85%E9%9A%9C%E7%AE%A1%E7%90%86%E3%80%81%E5%A4%87%E4%BB%BD%E4%B8%8E%E5%9B%9E%E5%A4%8D%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">8.</span> <span class="toc-text">Chapter XI, XII 故障管理、备份与回复数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-XIII-%E5%A4%A7%E8%A7%84%E6%A8%A1%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9E%B6%E6%9E%84"><span class="toc-number">9.</span> <span class="toc-text">Chapter XIII 大规模数据库架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-XIV-%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98"><span class="toc-number">10.</span> <span class="toc-text">Chapter XIV 数据仓库与数据挖掘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other"><span class="toc-number">11.</span> <span class="toc-text">Other</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -923,6 +984,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
@@ -1265,9 +1328,9 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="trip"><span class="iconfont-archer">&#xe606;</span>trip</span>
-    
         <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
+    
+        <span class="sidebar-tag-name" data-tags="trip"><span class="iconfont-archer">&#xe606;</span>trip</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
