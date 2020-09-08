@@ -266,7 +266,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">11.2k</span>Reading time: <span class="post-count reading-time">38 min</span></span>
+                        <span>Word count: <span class="post-count word-count">13.2k</span>Reading time: <span class="post-count reading-time">45 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -651,6 +651,12 @@ height:50vh;
 <li>db_datareader只能查用户数据，不能查系统数据</li>
 </ul>
 <h2 id="Chapter-X-数据库运行维护于优化"><a href="#Chapter-X-数据库运行维护于优化" class="headerlink" title="Chapter X 数据库运行维护于优化"></a>Chapter X 数据库运行维护于优化</h2><ul>
+<li><p>为 SELECT 商品编号, sum(总价), from 销售明细表 where 单价 &gt; 50 group by 商品编号 建立索引提高效率：<br>答案：[1]:使用索引视图，即先建立针对销售明细表中的商品编号和总价的汇总建立视图，然后针对该视图建立索引。<br>建立视图：<br>  creat view s(商品编号，总价)<br>  as<br>  select 商品编号，sum(总价) from 销售明细表<br>  where 单价&gt;50<br>  group by 商品编号<br>建立索引：<br>  creat unique index 商品编号 on s(商品编号，总价）<br>  视图是从一个或多个表中导出来的虚拟表，就像一个窗口，通过这个窗口可以看到系统专门提供的数据。这样，用户可以不用看到整个数据库中的数据，而只关心对自己有用的数据。<br>  如有需要，可以在视图上派生出虚拟列，例如本题中的视图s的总价字段，就是由sum（总价）计算而来。<br>  数据库中只存放了视图的定义，而没有存放视图中的数据，这些数据存放在原来的表中，使用视图查询数据时，数据库系统会从原来的表中取出对应的数据。视图中的数据依赖于原来表中的数据，一旦表中数据发生改变，显示在视图中的数据也会发生改变。<br>  如此操作，既能提高查询效率，又在基本表中数据发生更改时不会影响查询结果。</p>
+</li>
+<li><p>事务四大特征：原子性，一致性，隔离性和持久性。<br>1.原子性：一个原子事务要么完整执行，要么干脆不执行。<br>2.一致性：代表了底层数据存储的完整性。<br>3.隔离性：事务必须在不干扰其他进程或事务的前提下独立执行。<br>4.持久性：在某个事务的执行过程中，对数据所作的所有改动都必须在事务成功结束前保存至某种物理存储设备。</p>
+</li>
+<li><p>实现数据库并发控制最常见的方法是封锁技术，即在某一时间内禁止某用户对数据对象做某些操作以避免产生数据的不一致的问题。结合粒度的概念，可知锁的粒度越大，事物并发执行程度越低。</p>
+</li>
 <li><p>除了删除或创建索引，以及非聚簇索引和聚簇索引的相互转换外，通过重建索引可以改进系统的性能。</p>
 </li>
 <li><p>数据库应用系统投入运行标志着系统开发任务的基本完成(不是完全结束)和系统运行维护工作的开始</p>
@@ -679,6 +685,15 @@ height:50vh;
 </li>
 <li><p>散列索引适用于等值查询，尤其是在连接操作中查找匹配记录时。</p>
 </li>
+<li><p>Active-Standby模式指的是一种服务器容错技术，具体方式是部署两台相同的服务器，共享存储设备，其中一台正常工作，当该服务器出现问题时，另一台（备用服务器）接管数据库。<br>  由于在服务器出现问题的时候，备用服务器能够接替主服务器进行工作，对其他任何配置均不存在任何影响，所以Active-Standby模式能够提高可靠性。但是由于无论何时，都是一台服务器提供服务，所以Active-Standby模式对性能没有任何的改善。</p>
+</li>
+<li><p>SQL UNION 操作符<br>UNION 操作符用于合并两个或多个 SELECT 语句的结果集。</p>
+</li>
+</ul>
+<p>请注意，UNION 内部的 SELECT 语句必须拥有相同数量的列。列也必须拥有相似的数据类型。同时，每条 SELECT 语句中的列的顺序必须相同。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">--SQL UNION 语法</span><br><span class="line">SELECT column_name(s) FROM table_name1</span><br><span class="line">UNION</span><br><span class="line">SELECT column_name(s) FROM table_name2</span><br><span class="line">--注释：默认地，UNION 操作符选取不同的值。如果允许重复的值，请使用 UNION ALL。</span><br><span class="line"></span><br><span class="line">--SQL UNION ALL 语法</span><br><span class="line">SELECT column_name(s) FROM table_name1</span><br><span class="line">UNION ALL</span><br><span class="line">SELECT column_name(s) FROM table_name2</span><br><span class="line">--另外，UNION 结果集中的列名总是等于 UNION 中第一个 SELECT 语句中的列名。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>物化视图是一种包含查询结果的数据库对象，其数据不是在视图使用时读取的，而是预先计算好的。</li>
 </ul>
 <h2 id="Chapter-XI-XII-故障管理、备份与回复数据库"><a href="#Chapter-XI-XII-故障管理、备份与回复数据库" class="headerlink" title="Chapter XI, XII 故障管理、备份与回复数据库"></a>Chapter XI, XII 故障管理、备份与回复数据库</h2><ul>
 <li>数据库备份命令</li>
@@ -801,11 +816,27 @@ height:50vh;
 </li>
 </ul>
 <h2 id="Chapter-XIV-数据仓库与数据挖掘"><a href="#Chapter-XIV-数据仓库与数据挖掘" class="headerlink" title="Chapter XIV 数据仓库与数据挖掘"></a>Chapter XIV 数据仓库与数据挖掘</h2><ul>
+<li><p>数据库镜像有三种实现方式，分别是：<br> 1、高可用性：两台服务器上同步事务写入，并支持自动错误恢复。<br> 2、高保护：两台服务器上同步事务写入，但错误恢复是手工的。<br> 3、高性能：两台服务器上的写入可以不同步，因此性能上有所提高，只允许手工的错误恢复。</p>
+</li>
+<li><p>数据仓库中导出数据的维护方法有两种：<br> 1、根据维护对象的数据源对其进行重新计算。<br> 2、根据数据源的变化量在维护对象原有的数据基础上进行数据添加和修改，即增量式维护。</p>
+</li>
+<li><p>在数据仓库中，元数据一般分成技术元数据和业务元数据。</p>
+</li>
+<li><p>在数据仓库的导出数据或物化视图（实视图）的维护策略中，只在用户查询时发现数据已经过期才进行更新的策略称为延时维护策略。</p>
+</li>
+<li><p>在关联规则挖掘中，关联规则的成立与否一般用支持度和置信度两个指标进行描述。</p>
+</li>
+<li><p>关联规则挖掘中，需要给定两个阈值：最小支持度和最小可信度。</p>
+</li>
+<li><p>操作型数据存储ODS主要包括即时OLAP和全局型OLTP（事务处理）应用。</p>
+</li>
+<li><p>ETL（Extract Transfrom Load）是实现数据集成的主要技术，即填充更新数据仓库的数据抽取、转换、装载的数据采集过程。三个字母的含义分别是：抽取、转换、装载</p>
+</li>
 <li><p>快照是关于指定数据集合的一个完全可用拷贝，该拷贝包括相应数据在某个时间点（拷贝开始的时间点）的映像。快照可以是其所表示的数据的一个副本，也可以是数据的一个复制品。它反映的是某个时间点内的数据，该数据具有不可以改变性。而商场商品销售表、电信公司通话详单属于动态数据，不适合用快照的方式获取数据。</p>
 </li>
 <li><p>元数据是关于数据的数据，或者叫做描述数据的数据，它描述了数据的结构、内容、链和索引等项的内容。</p>
 </li>
-<li><p>数据仓库中数据特征包括面向主题性，集成性，不可更新性，时间特性。</p>
+<li><p>数据仓库中数据特征包括面向主题性，集成性，不可更新性，时间特性（随时间变化）。数据仓库是符合这些特点的一个数据集合。</p>
 </li>
 <li><p>分类器的构造方法有统计方法、机器学习方法、神经网络方法等。统计方法包括贝叶斯法和非参数法；机器学习方法包括决策树法和规则归纳法；神经网络方法主要是BP算法。K-means属于聚类算法。</p>
 </li>
@@ -813,11 +844,30 @@ height:50vh;
 </li>
 <li><p>粒度高的数据是由粒度低的数据综合而成的。</p>
 </li>
+<li><p>钻取/下钻/drill down与卷起是OLAP分析的两个基本操作。钻取是指对应某一维逐步向更细节层方向观察数据，卷起则反之，</p>
+</li>
+<li><p>在数据仓库环境中，粒度是一个重要的设计问题，它影响到数据仓库的数据量以及系统能回答的查询的类型。显然，粒度越小，细节程度越高，能回答的查询就越多。</p>
+</li>
 <li><p>数据集成是将源自不同数据源的数据经过抽取、转换、清理、装载等操作载入数据仓库的过程，是实施数据仓库的重要步骤。由于对大量的原始数据要加以提炼，要减轻分析工作给处理业务数据的服务器带来的压力，要规范各源数据，以及要处理那些难以直接使用的数据，数据集成在数据仓库设计中是必不可少的一环，ETL是实现数据集成的主要技术。</p>
 </li>
 <li><p>建立数据仓库的主要目的在于根据决策需求对企业的数据采取适当的手段进行集成，形成一个综合的、面相分析的数据环境，用于支持企业的信息型、决策型的分析应用。</p>
 </li>
+<li><p>对一个数据集的数据进行分组，使得每一组内的数据尽可能相似而不同组间的数据尽可能的不同，这样的数据挖掘方法称为聚类算法。</p>
+</li>
+<li><p>在机器学习中，一般需要将样本分成独立的三部分：训练集、测试集和验证集三类。</p>
+</li>
+<li><p>一个形象的比喻：</p>
+<p>  训练集—————-学生的课本；学生 根据课本里的内容来掌握知识。</p>
+<p>  验证集—————-作业，通过作业可以知道 不同学生学习情况、进步的速度快慢。</p>
+<p>  测试集—————-考试，考的题是平常都没有见过，考察学生举一反三的能力。</p>
+</li>
 </ul>
+<p>　　传统上，一般三者切分的比例是：6：2：2，验证集并不是必须的。</p>
+<p>　　那么为什么要测试集呢？</p>
+<p>　　　　a)训练集直接参与了模型调参的过程，显然不能用来反映模型真实的能力（防止课本死记硬背的学生拥有最好的成绩，即防止过拟合)。</p>
+<p>　　　　b)验证集参与了人工调参(超参数)的过程，也不能用来最终评判一个模型（刷题库的学生不能算是学习好的学生）。</p>
+<p>　　　　c)所以要通过最终的考试(测试集)来考察一个学(模)生(型)真正的能力（期末考试）。</p>
+<p>　　但是仅凭一次考试就对模型的好坏进行评判显然是不合理的，所以就要使用交叉验证法。交叉验证法的作用就是尝试利用不同的训练集/验证集划分来对模型做多组不同的训练/验证，来应对单独测试结果过于片面以及训练数据不足的问题。（就像通过多次考试，才得知哪些学生是比较厉害的）</p>
 <h2 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h2><ul>
 <li>存储过程和用户自定义函数的区别</li>
 </ul>
@@ -831,7 +881,7 @@ height:50vh;
             <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
             <p>Link of This Article：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">https://ry2an.github.io/2020/09/05/ncrerank3database/</a>
             <p>Publish Date：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">September 5th 2020, 9:12:38 am</a>
-            <p>Update Date：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">September 7th 2020, 5:15:05 pm</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">September 8th 2020, 5:11:47 pm</a>
             <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
         </div>
     
@@ -1188,8 +1238,6 @@ top:50vh;
     
     
     
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 18
@@ -1328,9 +1376,9 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
-    
         <span class="sidebar-tag-name" data-tags="trip"><span class="iconfont-archer">&#xe606;</span>trip</span>
+    
+        <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
