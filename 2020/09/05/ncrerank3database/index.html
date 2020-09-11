@@ -266,7 +266,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">13.2k</span>Reading time: <span class="post-count reading-time">45 min</span></span>
+                        <span>Word count: <span class="post-count word-count">14.2k</span>Reading time: <span class="post-count reading-time">48 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -413,7 +413,7 @@ height:50vh;
 <ol>
 <li>非标定联系: 如果子女实体集中的每一个实例都能被唯一地确认而无须了解与之相联系的双亲实体集的实例，该联系就被称为“非标定型联系”，使用一条虚线进行连接，用实心圆点表示联系的基数是n（一对多）。老师和学生之间的一对多”导师”联系属于非标定型联系。</li>
 <li>标定联系： 两个实体集之间的多对多联系可以通过引入第三个实体集转化为两个一对多联系，</li>
-<li>分类联系</li>
+<li>分类联系： 在现实世界中，有些事务是其他事务的类。例如本题中本科生和研究生都是学生类分类。在IDEF1X模型中，可以通过一个分类联系来表达这类事务。</li>
 <li>确定联系： “确定型连接联系”或简称”连接联系”是实体集之间的一种连接或关系（还可称为”父子联系”或”依存联系”）。在这种连接联系中，被称为双亲实体集的每一个实例与子女实体集的0个、1个或多个实例相连接。在”确定型连接联系”中，如果子女实体集中的每个实例都是由它与双亲的联系而确定的，那么这个联系就被称为”标定型联系”。</li>
 <li>非确定性联系：学生和图书馆之间的借阅。一个非确定联系又称为”多对多关系”或m:n联系。在这种联系关联的两个实体集之间，任一实体集的一个实例都将对应另一实体集的0 个、1个或多个实例。</li>
 </ol>
@@ -592,6 +592,8 @@ height:50vh;
 </li>
 <li><p>分区表中的每个分区并不是一定要映射到不同的文件组中</p>
 </li>
+<li><p>分区表是从物理上将一个大表分成几个小表，但从逻辑上来看还是一个大表。对于用户而言，所面对的仍然是一个大表，用户只要对大表进行操作就可以了，数据库管理系统会自动对小表进行操作。</p>
+</li>
 <li><p>分区函数：分区方式，怎么分； 分区方案：分到哪</p>
 </li>
 </ul>
@@ -608,6 +610,10 @@ height:50vh;
 </ul>
 <ul>
 <li><p>在对游标数据进行提取的过程中，可以使用@@FETCH_STATUS全局变量判断数据提取的状态。由于@@FETCH_STATUS对于在一个连接上的所有游标是全局性的，不管是对哪个游标，只要执行一次FETCH语句，系统都会对@@FETCH_STATUS赋一次值，以表明该FETCH语句的执行情况</p>
+</li>
+<li><p>游标使用时会对行加锁，可能会影响其他业务的正常进行。同时数据量大时，游标会导致效率低下</p>
+</li>
+<li><p>游标其实是相当于把磁盘数据整体放入了内存中，可能会带来巨量的内存占用的情况</p>
 </li>
 <li><p>使用INSTEAD OF选项定义的触发器为前触发器。在这种模式的触发器中，指定执行触发器而不是执行引发触发器执行的SQL语句，从而替代触发的操作。在一个表上可以建立多个名称不同、类型各异的触发器，每个触发器可由所有三个操作来引发。对于前触发器，在一个表上针对同一个数据操作只能定义一个前触发器；对于后触发器，可以在同一种操作上建立多个触发器</p>
 </li>
@@ -663,7 +669,11 @@ height:50vh;
 </li>
 <li><p>根据监控分析实现的方法不同，监控分析机制分为两种，一种是由数据库系统建立的自动监控机制，另一种是由管理员手动实施的监控机制（并不都是自动的）</p>
 </li>
+<li><p>根据监控对象的不同，监控分析可以分为两种：<br>  （1）对数据库架构体系的监控<br>  主要监控内容：空间基本信息、空间使用率与剩余空间大小、空间是否具有自动扩展的能力、哪些表的扩展将引起空间的扩展，以及段的占用空间与区间数等。<br>  （2）对数据库性能的监控<br>  主要监控内容：数据缓冲区的命中率、库缓冲、用户锁、锁与等待、回滚段、临时段使用情况、索引的使用情况、等待事件和共享池等。<br>  用户登录次数及执行的语句不属于监控内容</p>
+</li>
 <li><p>数据库运行维护工作主要包括数据库的转储和恢复；数据库的安全性和完整性控制；数据库性能的监控分析和改进；数据库的重组和重构。其中新建数据库用户属于数据库的安全性和完整性控制的一项功能。</p>
+</li>
+<li><p>数据库重组是指按照系统设计要求对数据库存储空间进行全面调整，如调整磁盘分区方法和存储空间、重新安排数据的存储、整理回收碎块等，以提高数据库性能。<br>  数据库的重构是指由于数据库应用环境的不断变化，增加了新的应用或新的实体，取消了某些应用，有的实体与实体间的联系也发生了变化等，使得原有的数据库设计不能满足新的需求，此时需要调整数据库的模式和内模式。<br>  数据库的重组并不修改数据库原有设计的逻辑结构和物理结构，而数据库的重构则不同，它可以部分修改数据库的模式和内模式。</p>
 </li>
 <li><p>RAID1提高了读速度， 加强了系统的可靠性，但是磁盘的利用率低，冗余度高，写的速度并未提高。RAID5是RAID0和RAID1的折中方案。RAID0的优势是数据读取速度高，RAID1的优势是数据保护和安全性更好。数据库系统运行需要依赖服务器、操作系统、存储、网络等多种因素。与RAID5相比，RAID1提高了读速度，加强了系统的可靠性，但是磁盘的利用率低，冗余度高，并且写入速度并未提高。将RAID5改为RAID1，明显是为因为要改善读取速度或可靠性才进行的调整。这是根据系统运行性能的优化而做出的调整</p>
 </li>
@@ -693,7 +703,14 @@ height:50vh;
 <p>请注意，UNION 内部的 SELECT 语句必须拥有相同数量的列。列也必须拥有相似的数据类型。同时，每条 SELECT 语句中的列的顺序必须相同。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">--SQL UNION 语法</span><br><span class="line">SELECT column_name(s) FROM table_name1</span><br><span class="line">UNION</span><br><span class="line">SELECT column_name(s) FROM table_name2</span><br><span class="line">--注释：默认地，UNION 操作符选取不同的值。如果允许重复的值，请使用 UNION ALL。</span><br><span class="line"></span><br><span class="line">--SQL UNION ALL 语法</span><br><span class="line">SELECT column_name(s) FROM table_name1</span><br><span class="line">UNION ALL</span><br><span class="line">SELECT column_name(s) FROM table_name2</span><br><span class="line">--另外，UNION 结果集中的列名总是等于 UNION 中第一个 SELECT 语句中的列名。</span><br></pre></td></tr></table></figure>
 <ul>
-<li>物化视图是一种包含查询结果的数据库对象，其数据不是在视图使用时读取的，而是预先计算好的。</li>
+<li><p>物化视图是一种包含查询结果的数据库对象，其数据不是在视图使用时读取的，而是预先计算好的。</p>
+</li>
+<li><p>增加数据库内存数量可以在一定程度上降低数据库服务器IO操作</p>
+</li>
+<li><p>为了提高系统写性能，可以考虑将RAID5改为RAID1</p>
+</li>
+<li><p>数据库应用系统投入运行标志着系统开发任务的基本完成和系统运行维护工作的开始</p>
+</li>
 </ul>
 <h2 id="Chapter-XI-XII-故障管理、备份与回复数据库"><a href="#Chapter-XI-XII-故障管理、备份与回复数据库" class="headerlink" title="Chapter XI, XII 故障管理、备份与回复数据库"></a>Chapter XI, XII 故障管理、备份与回复数据库</h2><ul>
 <li>数据库备份命令</li>
@@ -710,13 +727,17 @@ height:50vh;
 </li>
 <li><p>事务日志备份仅用于完整恢复模式和大容量日志恢复模式，它并不备份数据库本身，只备份日志记录，而且只备份从上次备份之后到当前备份时间发生变化的日志内容。但是不允许对大容量操作日志备份进行时点恢复。结尾日志备份在出现故障时进行，用于防止丢失数据，可以包含纯日志记录或者大容量操作日志记录</p>
 </li>
+<li><p>事务日志备份并不备份数据库本身，它只备份日志记录，而且只备份从上次备份之后到当前备份时间发生变化的日志内容</p>
+</li>
 <li><p>通常，对于用户数据库，简单恢复模式只用于测试和开发数据库，或用于主要包含只读数据的数据库（如数据仓库），这种模式并不适合生产系统，因为对生产系统而言，丢失最新的更改是无法接受的。</p>
 </li>
 <li><p>SQL Server 2008支持数据库、数据文件两个级别的数据恢复。</p>
 </li>
-<li><p>SQL Server 2008支持三种恢复模式：简单恢复模式、完整恢复模式和大容量日志恢复模式。如果能够在出现故障后备份日志尾部，则可以使用完整恢复模式将数据库恢复到故障点。</p>
+<li><p>SQL Server 2008支持三种恢复模式：简单恢复模式、完整恢复模式和大容量日志恢复模式。如果能够在出现故障后备份日志尾部，则可以使用完整恢复模式将数据库恢复到故障点。对可能损坏的数据库进行日志备份的方式是结尾备份。</p>
 </li>
 <li><p>静态转储可以保证数据的有效性，但是却降低数据库的可用性，动态转储可以提高数据库的可用性，但数据的有效性得不到保证。为了保证数据的一致性，需使用日志文件和动态转储结合使用。</p>
+</li>
+<li><p>静态转储可以保证数据的有效性，但是却降低数据库的可用性，动态转储可以提高数据库的可用性，但数据的有效性得不到保证。为了保证数据的一致性，需使用日志文件和动态转储结合使用。在制定备份策略时，需要考虑备份空间、时间等因素。<br>  完全转储是对数据库中所有数据进行转储，此种方式占用较多的时间和空间。<br>  差量转储是对最近一次数据库完全转储以来发生的数据库变化进行转储。差量转储和完全转储相比速度快，占用空间小；差量转储和增量转储相比速度慢、占用空间多，但是恢复速度快。<br>  增量转储只复制上次转储后发生变化的文件或数据块。增量转储所需的时间和空间都比较短，但增量转储数据只能和完全转储配合，才能对数据库进行恢复。增量转储的恢复时间比完全转储要长。</p>
 </li>
 <li><p>在制定备份策略时，需要考虑备份空间、时间等因素。完全转储是对数据库中所有数据进行转储，此种方式占用较多的时间和空间。</p>
 </li>
@@ -881,7 +902,7 @@ height:50vh;
             <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
             <p>Link of This Article：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">https://ry2an.github.io/2020/09/05/ncrerank3database/</a>
             <p>Publish Date：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">September 5th 2020, 9:12:38 am</a>
-            <p>Update Date：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">September 8th 2020, 5:11:47 pm</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">September 11th 2020, 9:46:11 am</a>
             <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
         </div>
     
@@ -1238,6 +1259,8 @@ top:50vh;
     
     
     
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 18
@@ -1376,9 +1399,9 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="trip"><span class="iconfont-archer">&#xe606;</span>trip</span>
-    
         <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
+    
+        <span class="sidebar-tag-name" data-tags="trip"><span class="iconfont-archer">&#xe606;</span>trip</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
