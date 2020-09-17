@@ -266,7 +266,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">16.3k</span>Reading time: <span class="post-count reading-time">55 min</span></span>
+                        <span>Word count: <span class="post-count word-count">16.4k</span>Reading time: <span class="post-count reading-time">56 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -397,11 +397,40 @@ height:50vh;
     <article class="article-entry">
         <p>2020年9月全国计算机等级考试三级数据库技术刷题错题知识点</p>
 <a id="more"></a>
+<h2 id="最后想要在课本上过一遍的知识点"><a href="#最后想要在课本上过一遍的知识点" class="headerlink" title="最后想要在课本上过一遍的知识点"></a>最后想要在课本上过一遍的知识点</h2><ul>
+<li><p>IDEF1X 的各种关系</p>
+</li>
+<li><p>UML 的 各种图</p>
+</li>
+<li><p>XML数据库特征</p>
+</li>
+<li><p>事务详细设计？（物理设计？）</p>
+</li>
+<li><p>系统规划与分析阶段任务</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>备份策略包括：</p>
+</li>
+<li><p>分布与分片透明性</p>
+</li>
+<li><p>开窗函数</p>
+</li>
+<li><p>数据库运行维护工作包括<strong>_</strong>。</p>
+</li>
+<li><p>简单恢复模式，完整恢复模式，大容量日志模式</p>
+</li>
+<li><p>增量式维护？</p>
+</li>
+<li><p>建立视图的T-SQL</p>
+</li>
+</ul>
 <h2 id="Chapter-I"><a href="#Chapter-I" class="headerlink" title="Chapter I"></a>Chapter I</h2><ul>
-<li>数据库应用系统实现与部署内容包括：①建立数据库结构；②数据加载；③事务和应用程序的编码及测试；④系统集成、测试与试运行；⑤系统部署。故答案为D。</li>
+<li>数据库应用系统实现与部署内容包括：①建立数据库结构；②数据加载；③事务和应用程序的编码及测试；④系统集成、测试与试运行；⑤系统部署。</li>
 </ul>
 <ul>
-<li><table><tr><td bgcolor="#D1EEEE"> 统规划与定义的内容包括任务陈述、确定任务目标、确定系统范围和边界、确定用户视图；可行性分析阶段的任务包括技术可行性、经济可行性、操作可行性、开发方案选择 </td></tr></table>
+<li><table><tr><td bgcolor="#D1EEEE"> 系统规划与定义的内容包括任务陈述、确定任务目标、确定系统范围和边界、确定用户视图；可行性分析阶段的任务包括技术可行性、经济可行性、操作可行性、开发方案选择 </td></tr></table>
 </li>
 <li><p>论证是否具备数据库应用系统开发所需的人力资源，这属于数据库应用系统的操作可行性分析。</p>
 </li>
@@ -668,10 +697,19 @@ height:50vh;
 <li>db_datareader只能查用户数据，不能查系统数据</li>
 </ul>
 <h2 id="Chapter-X-数据库运行维护于优化"><a href="#Chapter-X-数据库运行维护于优化" class="headerlink" title="Chapter X 数据库运行维护于优化"></a>Chapter X 数据库运行维护于优化</h2><ul>
-<li><p>为 SELECT 商品编号, sum(总价), from 销售明细表 where 单价 &gt; 50 group by 商品编号 建立索引提高效率：<br>答案：[1]:使用索引视图，即先建立针对销售明细表中的商品编号和总价的汇总建立视图，然后针对该视图建立索引。<br>建立视图：<br>  creat view s(商品编号，总价)<br>  as<br>  select 商品编号，sum(总价) from 销售明细表<br>  where 单价&gt;50<br>  group by 商品编号<br>建立索引：<br>  creat unique index 商品编号 on s(商品编号，总价）<br>  视图是从一个或多个表中导出来的虚拟表，就像一个窗口，通过这个窗口可以看到系统专门提供的数据。这样，用户可以不用看到整个数据库中的数据，而只关心对自己有用的数据。<br>  如有需要，可以在视图上派生出虚拟列，例如本题中的视图s的总价字段，就是由sum（总价）计算而来。<br>  数据库中只存放了视图的定义，而没有存放视图中的数据，这些数据存放在原来的表中，使用视图查询数据时，数据库系统会从原来的表中取出对应的数据。视图中的数据依赖于原来表中的数据，一旦表中数据发生改变，显示在视图中的数据也会发生改变。<br>  如此操作，既能提高查询效率，又在基本表中数据发生更改时不会影响查询结果。</p>
-</li>
-<li><p>事务四大特征：原子性，一致性，隔离性和持久性。<br>1.原子性：一个原子事务要么完整执行，要么干脆不执行。<br>2.一致性：代表了底层数据存储的完整性。<br>3.隔离性：事务必须在不干扰其他进程或事务的前提下独立执行。<br>4.持久性：在某个事务的执行过程中，对数据所作的所有改动都必须在事务成功结束前保存至某种物理存储设备。</p>
-</li>
+<li>为 SELECT 商品编号, sum(总价), from 销售明细表 where 单价 &gt; 50 group by 商品编号 建立索引提高效率：<br>答案：[1]:使用索引视图，即先建立针对销售明细表中的商品编号和总价的汇总建立视图，然后针对该视图建立索引。<br>建立视图：<br>  creat view s(商品编号，总价)<br>  as<br>  select 商品编号，sum(总价) from 销售明细表<br>  where 单价&gt;50<br>  group by 商品编号<br>建立索引：<br>  creat unique index 商品编号 on s(商品编号，总价）<br>  视图是从一个或多个表中导出来的虚拟表，就像一个窗口，通过这个窗口可以看到系统专门提供的数据。这样，用户可以不用看到整个数据库中的数据，而只关心对自己有用的数据。<br>  如有需要，可以在视图上派生出虚拟列，例如本题中的视图s的总价字段，就是由sum（总价）计算而来。<br>  数据库中只存放了视图的定义，而没有存放视图中的数据，这些数据存放在原来的表中，使用视图查询数据时，数据库系统会从原来的表中取出对应的数据。视图中的数据依赖于原来表中的数据，一旦表中数据发生改变，显示在视图中的数据也会发生改变。<br>  如此操作，既能提高查询效率，又在基本表中数据发生更改时不会影响查询结果。</li>
+</ul>
+<table><tr><td bgcolor="#D1EEEE"> 
+
++ 事务四大特征：原子性，一致性，隔离性和持久性。
+1.原子性：一个原子事务要么完整执行，要么干脆不执行。
+2.一致性：代表了底层数据存储的完整性。
+3.隔离性：事务必须在不干扰其他进程或事务的前提下独立执行。
+4.持久性：在某个事务的执行过程中，对数据所作的所有改动都必须在事务成功结束前保存至某种物理存储设备。
+
+</td></tr></table>
+
+<ul>
 <li><p>实现数据库并发控制最常见的方法是封锁技术，即在某一时间内禁止某用户对数据对象做某些操作以避免产生数据的不一致的问题。结合粒度的概念，可知锁的粒度越大，事物并发执行程度越低。</p>
 </li>
 <li><p>除了删除或创建索引，以及非聚簇索引和聚簇索引的相互转换外，通过重建索引可以改进系统的性能。</p>
@@ -686,8 +724,18 @@ height:50vh;
 </li>
 <li><p>服务器操作系统不属于数据库运维的范畴</p>
 </li>
-<li><p>数据库重组是指按照系统设计要求对数据库存储空间进行全面调整，如调整磁盘分区方法和存储空间、重新安排数据的存储、整理回收碎块等，以提高数据库性能。<br>  数据库的重构是指由于数据库应用环境的不断变化，增加了新的应用或新的实体，取消了某些应用，有的实体与实体间的联系也发生了变化等，使得原有的数据库设计不能满足新的需求，此时需要调整数据库的模式和内模式。<br>  数据库的重组并不修改数据库原有设计的逻辑结构和物理结构，而数据库的重构则不同，它可以部分修改数据库的模式和内模式。</p>
-</li>
+</ul>
+<table><tr><td bgcolor="#D1EEEE"> 
+
++ 数据库重组是指按照系统设计要求对数据库存储空间进行全面调整，如调整磁盘分区方法和存储空间、重新安排数据的存储、整理回收碎块等，以提高数据库性能。
+
++ 数据库的重构是指由于数据库应用环境的不断变化，增加了新的应用或新的实体，取消了某些应用，有的实体与实体间的联系也发生了变化等，使得原有的数据库设计不能满足新的需求，此时需要调整数据库的模式和内模式。
+
++ 数据库的重组并不修改数据库原有设计的逻辑结构和物理结构，而数据库的重构则不同，它可以部分修改数据库的模式和内模式。
+
+</td></tr></table>
+
+<ul>
 <li><p>RAID1提高了读速度， 加强了系统的可靠性，但是磁盘的利用率低，冗余度高，写的速度并未提高。RAID5是RAID0和RAID1的折中方案。RAID0的优势是数据读取速度高，RAID1的优势是数据保护和安全性更好。数据库系统运行需要依赖服务器、操作系统、存储、网络等多种因素。与RAID5相比，RAID1提高了读速度，加强了系统的可靠性，但是磁盘的利用率低，冗余度高，并且写入速度并未提高。将RAID5改为RAID1，明显是为因为要改善读取速度或可靠性才进行的调整。这是根据系统运行性能的优化而做出的调整</p>
 </li>
 <li><p>维护工作主要包括：数据库的转储和恢复；数据库的安全性和完整性控制；数据库性能的监控分析和改进；数据库的重组和重构。</p>
@@ -801,9 +849,13 @@ height:50vh;
 <li><p>完整数据库备份+差异数据库备份+日志备份策略的备份和恢复速度都比较快</p>
 </li>
 </ul>
-<h2 id="Chapter-XIII-大规模数据库架构"><a href="#Chapter-XIII-大规模数据库架构" class="headerlink" title="Chapter XIII 大规模数据库架构"></a>Chapter XIII 大规模数据库架构</h2><ul>
-<li><p>两阶段的提交协议将场地的事务管理器分为协调者和参与者，通过协调者在第一阶段询问所有参与者事务是否可以提交，参与者做出应答，在第二阶段协调者根据参与者的回答决定事务是否提交。</p>
-</li>
+<h2 id="Chapter-XIII-大规模数据库架构"><a href="#Chapter-XIII-大规模数据库架构" class="headerlink" title="Chapter XIII 大规模数据库架构"></a>Chapter XIII 大规模数据库架构</h2><table><tr><td bgcolor="#D1EEEE"> 
+
++ 两阶段的提交协议将场地的事务管理器分为协调者和参与者，通过协调者在第一阶段询问所有参与者事务是否可以提交，参与者做出应答，在第二阶段协调者根据参与者的回答决定事务是否提交。
+
+</td></tr></table>
+
+<ul>
 <li><p>轮转法保证了元组在多个磁盘上平均分配，适合扫描整个关系的应用，负载均衡，并行性好，但是点查询和范围查询效率很低。</p>
 </li>
 <li><p>散列划分使用散列函数，根据一个或多个属性进行散列，适合点查询，对于顺序扫描也非常高效，但是对散列函数的优劣依赖很大</p>
@@ -852,10 +904,18 @@ height:50vh;
 <p>复制透明仅仅谈及副本的存在，而不是它们的实际位置。</p>
 <p>副本在网络上的分布透明属于网络透明的范畴。</p>
 <ul>
-<li><p>分片透明性是最高级别的透明性，是指数据分片用户无需考虑的，完全透明的，在编写程序时用户只需要对全局关系进行操作。</p>
-</li>
-<li><p>分布透明性有如下几种级别：<br> （1）数据分片透明性。分片透明性是最高级别的透明性，位于全局模式与分片模式之间。<br> （2）位置透明性。位置透明性是指数据分片的分配位置对用户是透明的，用户编写程序时只需要考虑数据分片情况，不需要了解各分片在各个场地的分配情况。<br> （3）局部数据模型透明性。局部数据模型透明性处于分配模式与局部概念模式之间。</p>
-</li>
+<li>分片透明性是最高级别的透明性，是指数据分片用户无需考虑的，完全透明的，在编写程序时用户只需要对全局关系进行操作。</li>
+</ul>
+<table><tr><td bgcolor="#D1EEEE"> 
+
++ 分布透明性有如下几种级别：
+（1）数据分片透明性。分片透明性是最高级别的透明性，位于全局模式与分片模式之间。
+（2）位置透明性。位置透明性是指数据分片的分配位置对用户是透明的，用户编写程序时只需要考虑数据分片情况，不需要了解各分片在各个场地的分配情况。
+(3）局部数据模型透明性。局部数据模型透明性处于分配模式与局部概念模式之间。
+
+</td></tr></table>
+
+<ul>
 <li><p>分片透明性是指数据分片是用户无需考虑的，完全透明的，在编写程序时用户只需要对全局关系进行操作，是最高级别的透明性；位置透明性是指数据分片的分配位置对用户是透明的，用户编写程序时只需要考虑数据分片情况；局部数据模型透明性，使用户在编写程序时不但要了解全局数据的分片情况，还要了解各片断的副本复制情况及各片断和它们副本的场地位置分配情况。所以三种级别从高到低的排序是：分片透明性、位置透明性、局部透明性。</p>
 </li>
 <li><p>共享磁盘结构所有的处理机拥有独立的内存，通过互联网共享磁盘。这种结构可以克服共享内存结构，但是由于是通过互联网实现处理器之间的信息交换，会产生一定的通信代价。</p>
@@ -896,6 +956,8 @@ height:50vh;
   4、动态性：数据需要定期更新。</td></tr></table>
 </li>
 <li><p>数据仓库中导出数据的维护方法有两种：<br> 1、根据维护对象的数据源对其进行重新计算。<br> 2、根据数据源的变化量在维护对象原有的数据基础上进行数据添加和修改，即增量式维护。</p>
+</li>
+<li><table><tr><td bgcolor="#D1EEEE">数据库应用系统日常维护包括：备份与恢复、完整性维护、安全性维护、存储空间管理和并发控制。模式调整属于数据库应用系统的性能优化调整的范围。</td></tr></table>
 </li>
 <li><p>在数据仓库中，元数据一般分成技术元数据和业务元数据。</p>
 </li>
@@ -980,7 +1042,7 @@ height:50vh;
             <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
             <p>Link of This Article：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">https://ry2an.github.io/2020/09/05/ncrerank3database/</a>
             <p>Publish Date：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">September 5th 2020, 9:12:38 am</a>
-            <p>Update Date：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">September 13th 2020, 10:50:24 am</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">September 16th 2020, 5:21:56 pm</a>
             <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
         </div>
     
@@ -1120,7 +1182,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-I"><span class="toc-number">1.</span> <span class="toc-text">Chapter I</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-V-UML-DBAS"><span class="toc-number">2.</span> <span class="toc-text">Chapter V: UML DBAS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-VI-%E9%AB%98%E7%BA%A7%E6%9F%A5%E8%AF%A2"><span class="toc-number">3.</span> <span class="toc-text">Chapter VI 高级查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-VII-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%B9%E8%B1%A1"><span class="toc-number">4.</span> <span class="toc-text">Chapter VII 数据库及数据库对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-VIII-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8E%E5%8F%B0%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF"><span class="toc-number">5.</span> <span class="toc-text">Chapter VIII 数据库后台编程技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-IX-%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">Chapter IX 安全管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-X-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E8%A1%8C%E7%BB%B4%E6%8A%A4%E4%BA%8E%E4%BC%98%E5%8C%96"><span class="toc-number">7.</span> <span class="toc-text">Chapter X 数据库运行维护于优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-XI-XII-%E6%95%85%E9%9A%9C%E7%AE%A1%E7%90%86%E3%80%81%E5%A4%87%E4%BB%BD%E4%B8%8E%E5%9B%9E%E5%A4%8D%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">8.</span> <span class="toc-text">Chapter XI, XII 故障管理、备份与回复数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-XIII-%E5%A4%A7%E8%A7%84%E6%A8%A1%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9E%B6%E6%9E%84"><span class="toc-number">9.</span> <span class="toc-text">Chapter XIII 大规模数据库架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-XIV-%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98"><span class="toc-number">10.</span> <span class="toc-text">Chapter XIV 数据仓库与数据挖掘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other"><span class="toc-number">11.</span> <span class="toc-text">Other</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E6%83%B3%E8%A6%81%E5%9C%A8%E8%AF%BE%E6%9C%AC%E4%B8%8A%E8%BF%87%E4%B8%80%E9%81%8D%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-number">1.</span> <span class="toc-text">最后想要在课本上过一遍的知识点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-I"><span class="toc-number">2.</span> <span class="toc-text">Chapter I</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-V-UML-DBAS"><span class="toc-number">3.</span> <span class="toc-text">Chapter V: UML DBAS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-VI-%E9%AB%98%E7%BA%A7%E6%9F%A5%E8%AF%A2"><span class="toc-number">4.</span> <span class="toc-text">Chapter VI 高级查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-VII-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%B9%E8%B1%A1"><span class="toc-number">5.</span> <span class="toc-text">Chapter VII 数据库及数据库对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-VIII-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8E%E5%8F%B0%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF"><span class="toc-number">6.</span> <span class="toc-text">Chapter VIII 数据库后台编程技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-IX-%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86"><span class="toc-number">7.</span> <span class="toc-text">Chapter IX 安全管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-X-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E8%A1%8C%E7%BB%B4%E6%8A%A4%E4%BA%8E%E4%BC%98%E5%8C%96"><span class="toc-number">8.</span> <span class="toc-text">Chapter X 数据库运行维护于优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-XI-XII-%E6%95%85%E9%9A%9C%E7%AE%A1%E7%90%86%E3%80%81%E5%A4%87%E4%BB%BD%E4%B8%8E%E5%9B%9E%E5%A4%8D%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">9.</span> <span class="toc-text">Chapter XI, XII 故障管理、备份与回复数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-XIII-%E5%A4%A7%E8%A7%84%E6%A8%A1%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9E%B6%E6%9E%84"><span class="toc-number">10.</span> <span class="toc-text">Chapter XIII 大规模数据库架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-XIV-%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98"><span class="toc-number">11.</span> <span class="toc-text">Chapter XIV 数据仓库与数据挖掘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other"><span class="toc-number">12.</span> <span class="toc-text">Other</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1549,22 +1611,7 @@ jsonContent:
     
         <script src="/scripts/share.js" async></script>    
      
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+    </body>
 </html>
 
 
