@@ -266,7 +266,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">16.5k</span>Reading time: <span class="post-count reading-time">56 min</span></span>
+                        <span>Word count: <span class="post-count word-count">17.6k</span>Reading time: <span class="post-count reading-time">60 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -398,20 +398,95 @@ height:50vh;
         <p>2020年9月全国计算机等级考试三级数据库技术刷题错题知识点</p>
 <a id="more"></a>
 <h2 id="最后想要在课本上过一遍的知识点"><a href="#最后想要在课本上过一遍的知识点" class="headerlink" title="最后想要在课本上过一遍的知识点"></a>最后想要在课本上过一遍的知识点</h2><ul>
-<li><p>IDEF1X 的各种关系</p>
+<li><p>IDEF1X 的各种关系 （P40）</p>
 </li>
 <li><p>UML 的 各种图</p>
 </li>
-<li><p>XML数据库特征</p>
-</li>
-<li><p>事务详细设计？（物理设计？）</p>
-</li>
-<li><p>系统规划与分析阶段任务</p>
-</li>
 </ul>
-<hr>
+<blockquote>
+<p>业务流程 -&gt; 活动图</p>
+<p>系统需求 -&gt; 用例图</p>
+<p>系统结构 -&gt; 类图 顺序图 通信图</p>
+<p>微观设计 -&gt; 对象图 状态机图 时间图</p>
+<p>宏观设计 -&gt; 包图 交互概述图(顺序图和活动图的合体) 复合结构图(系统之间的沟通接口)</p>
+<p>系统实现 -&gt; 组件图 部署图</p>
+</blockquote>
 <ul>
-<li><p>备份策略包括：</p>
+<li>XML数据库特征（P263）</li>
+</ul>
+<blockquote>
+<p>对半结构化数据（如网页信息有效存储和管理）</p>
+<p>提供对标签和路径的操作</p>
+<p>有层级特征，可用于管理复杂数据</p>
+</blockquote>
+<p>DBAS 生命周期：</p>
+<p>项目规划、需求分析、系统设计（也叫DBAS设计阶段）、实现部署、运行维护</p>
+<h3 id="DBAS-生命周期"><a href="#DBAS-生命周期" class="headerlink" title="DBAS 生命周期"></a>DBAS 生命周期</h3><h4 id="1-规划与分析"><a href="#1-规划与分析" class="headerlink" title="1. 规划与分析"></a>1. 规划与分析</h4><h5 id="1-1-系统规划与定义"><a href="#1-1-系统规划与定义" class="headerlink" title="1.1. 系统规划与定义"></a>1.1. 系统规划与定义</h5><p>1.1.1. 任务陈述</p>
+<p>1.1.2. 确定任务目标</p>
+<p>1.1.3. 确定系统范围和边界</p>
+<p>1.1.4. 确定用户视图</p>
+<h5 id="1-2-可行性分析"><a href="#1-2-可行性分析" class="headerlink" title="1.2. 可行性分析"></a>1.2. 可行性分析</h5><p>1.2.1 经济可行性（购买硬件）</p>
+<p>1.2.2. 技术可行性 （硬件可行性和软件可行性）</p>
+<p>1.2.3. 操作可行性 （人员资源与开发环境）</p>
+<p>1.2.4. 卡法方案选择 （瀑布模型、快速原型模型、螺旋模型等）</p>
+<h5 id="1-3-项目规划"><a href="#1-3-项目规划" class="headerlink" title="1.3. 项目规划"></a>1.3. 项目规划</h5><p>1.3.1. 确定项目的目标和范围</p>
+<p>1.3.2. 定义项目工作活动和任务（根据DBAS开发模型）</p>
+<p>1.3.3. 估算项目所需资源</p>
+<p>1.3.4. 制定项目计划</p>
+<h4 id="2-需求分析"><a href="#2-需求分析" class="headerlink" title="2. 需求分析"></a>2. 需求分析</h4><p>2.1. 数据需求（数据项和数据结构）</p>
+<p>2.2. 功能需求 （数据处理需求和业务规则需求）</p>
+<p>2.3. 性能需求</p>
+<p>2.4. 其他需求（存储和安全）</p>
+<h4 id="3-系统设计"><a href="#3-系统设计" class="headerlink" title="3. 系统设计"></a>3. 系统设计</h4><h5 id="3-1-概念设计"><a href="#3-1-概念设计" class="headerlink" title="3.1. 概念设计"></a>3.1. 概念设计</h5><p>3.1.1. 数据库概念设计</p>
+<p>3.1.2. 系统总体设计</p>
+<h5 id="3-2-逻辑设计"><a href="#3-2-逻辑设计" class="headerlink" title="3.2. 逻辑设计"></a>3.2. 逻辑设计</h5><p>3.2.1. 数据库逻辑结构设计</p>
+<p>3.2.2. 应用程序概要设计</p>
+<p>3.2.3. 数据库事务概要设计</p>
+<h5 id="3-3-物理设计"><a href="#3-3-物理设计" class="headerlink" title="3.3. 物理设计"></a>3.3. 物理设计</h5><p>3.3.1. 数据库物理结构设计</p>
+<p>3.3.2. 数据库详细事务设计</p>
+<p>3.3.3. 应用程序详细设计</p>
+<h4 id="4-实现与部署"><a href="#4-实现与部署" class="headerlink" title="4. 实现与部署"></a>4. 实现与部署</h4><p><em>前四部为实现或者叫实施，最后一步为部署</em></p>
+<p>4.1. 建立数据库结构</p>
+<p>4.2. 数据加载</p>
+<p>4.3. 事务和应用程序的编码及测试</p>
+<p>4.4. 系统集成、测试与试运行</p>
+<p>4.5. 系统部署</p>
+<h4 id="5-运行管理与维护"><a href="#5-运行管理与维护" class="headerlink" title="5. 运行管理与维护"></a>5. 运行管理与维护</h4><h5 id="5-1-日常维护（基本工作）"><a href="#5-1-日常维护（基本工作）" class="headerlink" title="5.1. 日常维护（基本工作）"></a>5.1. 日常维护（基本工作）</h5><p>5.1.1. 数据库的转储与恢复</p>
+<p>5.1.2. 数据库的安全性、完整性控制</p>
+<p>5.1.3. 检测改善数据库的性能</p>
+<p>5.1.4. 数据库的<strong>重组</strong>（不修改数据库原有设计的逻辑结构和物理结构）和<strong>重构</strong>（部分修改数据库的模式和内模式）</p>
+<h5 id="5-2-系统监控与分析"><a href="#5-2-系统监控与分析" class="headerlink" title="5.2. 系统监控与分析"></a>5.2. 系统监控与分析</h5><p>5.2.1. 自动监控机制</p>
+<p>5.2.2. 手动监控机制</p>
+<p>5.2.3. 对数据库架构体系的监控</p>
+<p>5.2.4. 对数据库性能的监控</p>
+<h5 id="5-3-数据库存储空间管理"><a href="#5-3-数据库存储空间管理" class="headerlink" title="5.3. 数据库存储空间管理"></a>5.3. 数据库存储空间管理</h5><h5 id="5-4-系统性能优化调整"><a href="#5-4-系统性能优化调整" class="headerlink" title="5.4. 系统性能优化调整"></a>5.4. 系统性能优化调整</h5><p>5.4.1. 数据库运行环境与参数调整</p>
+<p>外部调整： CPU 网络</p>
+<p>内存分配</p>
+<p>IO调整</p>
+<p>调整竞争</p>
+<p>5.4.2. 调整模式与优化：</p>
+<p>增加派生性冗余列</p>
+<p>增加冗余列</p>
+<p>重新组表（把学生和课程信息添加到选课表内以减少连接操作）</p>
+<p>分割表</p>
+<p>新增汇总表</p>
+<p>5.4.3. 存储优化：</p>
+<p>物化视图</p>
+<p>聚集（经常使用的具有同一公共列值的多个表中的数据行存储在一起）， 可以减小IO的消耗，但劣势是插入更新删除性能差</p>
+<p>5.4.4. 查询优化</p>
+<p>合理使用索引</p>
+<p>避免或简化排序</p>
+<p>消除对大型表的顺序存取（where 命令注意）</p>
+<p>避免复杂的正则表达式</p>
+<p>使用临时表加速查询</p>
+<p>用排序来取代非顺序存取</p>
+<p>不充分连接条件</p>
+<p>存储过程</p>
+<p>不要随意使用游标（占内存、锁行、要及时释放）</p>
+<p>事务处理：在保证数据一致性的前提下将频繁操作的处理过程拆成多个存储过程</p>
+<h5 id="5-5-系统进化（升级）"><a href="#5-5-系统进化（升级）" class="headerlink" title="5.5. 系统进化（升级）"></a>5.5. 系统进化（升级）</h5><hr>
+<ul>
+<li><p>备份策略包括：P228 + P235 注意区分完成恢复模式和完全转储的区别（一个是恢复模式，一个是转储方法）</p>
 </li>
 <li><p>分布与分片透明性</p>
 </li>
@@ -465,7 +540,7 @@ height:50vh;
 <li>非标定联系: 如果子女实体集中的每一个实例都能被唯一地确认而无须了解与之相联系的双亲实体集的实例，该联系就被称为“非标定型联系”，使用一条虚线进行连接，用实心圆点表示联系的基数是n（一对多）。老师和学生之间的一对多”导师”联系属于非标定型联系。（普通1：n）</li>
 <li>标定联系： 两个实体集之间的多对多联系可以通过引入第三个实体集转化为两个一对多联系，（由m:n转化成的1:n）</li>
 <li>分类联系： 在现实世界中，有些事务是其他事务的类。例如本题中本科生和研究生都是学生类分类。在IDEF1X模型中，可以通过一个分类联系来表达这类事务。</li>
-<li>确定联系： “确定型连接联系”或简称”连接联系”是实体集之间的一种连接或关系（还可称为”父子联系”或”依存联系”）。在这种连接联系中，被称为双亲实体集的每一个实例与子女实体集的0个、1个或多个实例相连接。在”确定型连接联系”中，如果子女实体集中的每个实例都是由它与双亲的联系而确定的，那么这个联系就被称为”标定型联系”。</li>
+<li>确定联系： “确定型连接联系”或简称”连接联系”是实体集之间的一种连接或关系（还可称为”父子联系”或”依存联系”）。在这种连接联系中，被称为双亲实体集的每一个实例与子女实体集的0个、1个或多个实例相连接。在”确定型连接联系”中，如果子女实体集中的每个实例都是由它与双亲的联系而确定的，那么这个联系就被称为”标定型联系”。？？？书上压根没说确定型联系</li>
 <li>非确定性联系：学生和图书馆之间的借阅。一个非确定联系又称为”多对多关系”或m:n联系。在这种联系关联的两个实体集之间，任一实体集的一个实例都将对应另一实体集的0 个、1个或多个实例。（普通m：n）</li>
 </ol>
 </blockquote>
@@ -1059,7 +1134,7 @@ height:50vh;
             <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
             <p>Link of This Article：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">https://ry2an.github.io/2020/09/05/ncrerank3database/</a>
             <p>Publish Date：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">September 5th 2020, 9:12:38 am</a>
-            <p>Update Date：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">September 18th 2020, 9:14:52 am</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">September 20th 2020, 4:43:12 pm</a>
             <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
         </div>
     
@@ -1199,7 +1274,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E6%83%B3%E8%A6%81%E5%9C%A8%E8%AF%BE%E6%9C%AC%E4%B8%8A%E8%BF%87%E4%B8%80%E9%81%8D%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-number">1.</span> <span class="toc-text">最后想要在课本上过一遍的知识点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8nt%E9%94%99%E8%AF%AF-%EF%BC%81%EF%BC%81%EF%BC%81"><span class="toc-number">2.</span> <span class="toc-text">经典nt错误 ！！！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-I"><span class="toc-number">3.</span> <span class="toc-text">Chapter I</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-V-UML-DBAS"><span class="toc-number">4.</span> <span class="toc-text">Chapter V: UML DBAS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-VI-%E9%AB%98%E7%BA%A7%E6%9F%A5%E8%AF%A2"><span class="toc-number">5.</span> <span class="toc-text">Chapter VI 高级查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-VII-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%B9%E8%B1%A1"><span class="toc-number">6.</span> <span class="toc-text">Chapter VII 数据库及数据库对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-VIII-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8E%E5%8F%B0%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF"><span class="toc-number">7.</span> <span class="toc-text">Chapter VIII 数据库后台编程技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-IX-%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86"><span class="toc-number">8.</span> <span class="toc-text">Chapter IX 安全管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-X-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E8%A1%8C%E7%BB%B4%E6%8A%A4%E4%BA%8E%E4%BC%98%E5%8C%96"><span class="toc-number">9.</span> <span class="toc-text">Chapter X 数据库运行维护于优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-XI-XII-%E6%95%85%E9%9A%9C%E7%AE%A1%E7%90%86%E3%80%81%E5%A4%87%E4%BB%BD%E4%B8%8E%E5%9B%9E%E5%A4%8D%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">10.</span> <span class="toc-text">Chapter XI, XII 故障管理、备份与回复数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-XIII-%E5%A4%A7%E8%A7%84%E6%A8%A1%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9E%B6%E6%9E%84"><span class="toc-number">11.</span> <span class="toc-text">Chapter XIII 大规模数据库架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-XIV-%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98"><span class="toc-number">12.</span> <span class="toc-text">Chapter XIV 数据仓库与数据挖掘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other"><span class="toc-number">13.</span> <span class="toc-text">Other</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E6%83%B3%E8%A6%81%E5%9C%A8%E8%AF%BE%E6%9C%AC%E4%B8%8A%E8%BF%87%E4%B8%80%E9%81%8D%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-number">1.</span> <span class="toc-text">最后想要在课本上过一遍的知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DBAS-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.1.</span> <span class="toc-text">DBAS 生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%A7%84%E5%88%92%E4%B8%8E%E5%88%86%E6%9E%90"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 规划与分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-%E7%B3%BB%E7%BB%9F%E8%A7%84%E5%88%92%E4%B8%8E%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">1.1. 系统规划与定义</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-%E5%8F%AF%E8%A1%8C%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">1.2. 可行性分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-%E9%A1%B9%E7%9B%AE%E8%A7%84%E5%88%92"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">1.3. 项目规划</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 需求分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.1.3.</span> <span class="toc-text">3. 系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-%E6%A6%82%E5%BF%B5%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">3.1. 概念设计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">3.2. 逻辑设计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-%E7%89%A9%E7%90%86%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">3.3. 物理设计</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%AE%9E%E7%8E%B0%E4%B8%8E%E9%83%A8%E7%BD%B2"><span class="toc-number">1.1.4.</span> <span class="toc-text">4. 实现与部署</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E8%BF%90%E8%A1%8C%E7%AE%A1%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4"><span class="toc-number">1.1.5.</span> <span class="toc-text">5. 运行管理与维护</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-1-%E6%97%A5%E5%B8%B8%E7%BB%B4%E6%8A%A4%EF%BC%88%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%EF%BC%89"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">5.1. 日常维护（基本工作）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-2-%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%88%86%E6%9E%90"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">5.2. 系统监控与分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-3-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%AE%A1%E7%90%86"><span class="toc-number">1.1.5.3.</span> <span class="toc-text">5.3. 数据库存储空间管理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-4-%E7%B3%BB%E7%BB%9F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E8%B0%83%E6%95%B4"><span class="toc-number">1.1.5.4.</span> <span class="toc-text">5.4. 系统性能优化调整</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-%E7%B3%BB%E7%BB%9F%E8%BF%9B%E5%8C%96%EF%BC%88%E5%8D%87%E7%BA%A7%EF%BC%89"><span class="toc-number">1.1.5.5.</span> <span class="toc-text">5.5. 系统进化（升级）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8nt%E9%94%99%E8%AF%AF-%EF%BC%81%EF%BC%81%EF%BC%81"><span class="toc-number">2.</span> <span class="toc-text">经典nt错误 ！！！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-I"><span class="toc-number">3.</span> <span class="toc-text">Chapter I</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-V-UML-DBAS"><span class="toc-number">4.</span> <span class="toc-text">Chapter V: UML DBAS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-VI-%E9%AB%98%E7%BA%A7%E6%9F%A5%E8%AF%A2"><span class="toc-number">5.</span> <span class="toc-text">Chapter VI 高级查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-VII-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%B9%E8%B1%A1"><span class="toc-number">6.</span> <span class="toc-text">Chapter VII 数据库及数据库对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-VIII-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8E%E5%8F%B0%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF"><span class="toc-number">7.</span> <span class="toc-text">Chapter VIII 数据库后台编程技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-IX-%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86"><span class="toc-number">8.</span> <span class="toc-text">Chapter IX 安全管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-X-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E8%A1%8C%E7%BB%B4%E6%8A%A4%E4%BA%8E%E4%BC%98%E5%8C%96"><span class="toc-number">9.</span> <span class="toc-text">Chapter X 数据库运行维护于优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-XI-XII-%E6%95%85%E9%9A%9C%E7%AE%A1%E7%90%86%E3%80%81%E5%A4%87%E4%BB%BD%E4%B8%8E%E5%9B%9E%E5%A4%8D%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">10.</span> <span class="toc-text">Chapter XI, XII 故障管理、备份与回复数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-XIII-%E5%A4%A7%E8%A7%84%E6%A8%A1%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9E%B6%E6%9E%84"><span class="toc-number">11.</span> <span class="toc-text">Chapter XIII 大规模数据库架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-XIV-%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98"><span class="toc-number">12.</span> <span class="toc-text">Chapter XIV 数据仓库与数据挖掘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other"><span class="toc-number">13.</span> <span class="toc-text">Other</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1212,6 +1287,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
@@ -1556,9 +1633,9 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
-    
         <span class="sidebar-tag-name" data-tags="trip"><span class="iconfont-archer">&#xe606;</span>trip</span>
+    
+        <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
