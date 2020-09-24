@@ -266,7 +266,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">18.1k</span>Reading time: <span class="post-count reading-time">62 min</span></span>
+                        <span>Word count: <span class="post-count word-count">18.5k</span>Reading time: <span class="post-count reading-time">63 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -521,6 +521,30 @@ height:50vh;
 </li>
 </ul>
 <h2 id="Chapter-I"><a href="#Chapter-I" class="headerlink" title="Chapter I"></a>Chapter I</h2><ul>
+<li><p>查询处理器中的DML编译器会对用户提交的DML语句进行优化，并将其转换成能够执行的底层数据库操作指令</p>
+</li>
+<li><p>存储管理器中的缓冲区管理器负责将从磁盘读出的数据块放人内存缓冲区，同时也负责对缓冲区中的数据块进行维护</p>
+</li>
+<li><p>查询处理器中的DDL编译器编译或解释用户提交的DDL语句，并将生成的元数据存储在数据库的数据字典中</p>
+</li>
+<li><p>数据库中只存储标准视图的定义，并不存储标准视图的内容</p>
+</li>
+<li><p>如果在视图上创建了一聚集索引，则数据库中将保存该视图的内容</p>
+</li>
+<li><p>当很少对基表数据进行更改操作时或对于经常执行连接和聚合操作的查询，适合建立索引视图</p>
+</li>
+<li><p>如果Group By列具有高基数度的数据聚合，则不适合建立索引视图</p>
+</li>
+<li><p>索引视图的数据源只能是基本表</p>
+</li>
+<li><p>索引视图引用的基本表必须与视图在同一个数据库中</p>
+</li>
+<li><p>ER图是概念设计不是逻辑设计</p>
+</li>
+<li><p>每行5000字节的话，每个数据页就只能存储1行，因为行不能跨页。所以1000行就会占用1000个数据页，每个页面8K，那总的存储空间就是8000KB</p>
+</li>
+<li><p>在数据模型三个要素中，表述客观世界中数据对象之间关联的是数据结构</p>
+</li>
 <li><p>关系数据模型以集合论为基础表示和处理数据</p>
 </li>
 <li><p>数据库应用系统实现与部署内容包括：①建立数据库结构；②数据加载；③事务和应用程序的编码及测试；④系统集成、测试与试运行；⑤系统部署。</p>
@@ -773,6 +797,8 @@ height:50vh;
 <li><p>收缩数据库就是释放数据库中未使用的空间，并将释放的空间交还给操作系统。数据文件和日志文件的空间都可以收缩。</p>
 </li>
 <li><p>定义触发器时一个触发器可以定义为在多个动作（更新，删除，插入）时被触发</p>
+</li>
+<li><p>日志文件的格式主要有以记录为单位的日志文件和以数据块为单位的日志文件两种</p>
 </li>
 </ul>
 <h2 id="Chapter-IX-安全管理"><a href="#Chapter-IX-安全管理" class="headerlink" title="Chapter IX 安全管理"></a>Chapter IX 安全管理</h2><ul>
@@ -1160,7 +1186,7 @@ height:50vh;
             <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
             <p>Link of This Article：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">https://ry2an.github.io/2020/09/05/ncrerank3database/</a>
             <p>Publish Date：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">September 5th 2020, 9:12:38 am</a>
-            <p>Update Date：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">September 22nd 2020, 10:46:14 pm</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/09/05/ncrerank3database/">September 24th 2020, 9:34:46 am</a>
             <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
         </div>
     
@@ -1519,8 +1545,6 @@ top:50vh;
     
     
     
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 18
@@ -1659,9 +1683,9 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
-    
         <span class="sidebar-tag-name" data-tags="trip"><span class="iconfont-archer">&#xe606;</span>trip</span>
+    
+        <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
