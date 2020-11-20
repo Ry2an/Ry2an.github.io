@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="Ruoyan Han">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Ruoyan Han">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>meta analysis learning · Ry2an&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/hakase.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Ry2an&#39;s Studio</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">meta analysis learning</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Ry2an's Studio</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/postbg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            meta analysis learning
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">1.2k</span>Reading time: <span class="post-count reading-time">4 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/11/19</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>This is some notes for Meta Analysis</p>
+<p>Part of this page is a note of the video: <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1QW411S7S2">https://www.bilibili.com/video/BV1QW411S7S2</a></p>
+<a id="more"></a>
+<h2 id="选题和检索"><a href="#选题和检索" class="headerlink" title="选题和检索"></a>选题和检索</h2><h3 id="选题"><a href="#选题" class="headerlink" title="选题"></a>选题</h3><ul>
+<li><strong>选题的重要性：</strong></li>
+</ul>
+<p>今天选题的高度界定了你日后发文的高度。</p>
+<p>开始已注定结局之归属。</p>
+<p>磨刀不误砍柴工，好好选题，良好的开端是成功的一半。</p>
+<ul>
+<li><strong>优质题目的特征</strong></li>
+</ul>
+<ol>
+<li><p>是临床现有的争议点，大家对此还不是很统一，指南也模棱两可</p>
+</li>
+<li><p>对现有操作的一种challenge</p>
+</li>
+<li><p>如果之前已经有一篇meta了，但后来因为加入新的articles，挑战了之前的结果，能引起一定的讨论</p>
+</li>
+</ol>
+<ul>
+<li><strong>技巧与原则 (如何能想出好的题目)</strong></li>
+</ul>
+<ol>
+<li><p>看本专业Top临床期刊最新的articles和review</p>
+</li>
+<li><p>看指南的治疗部份</p>
+</li>
+<li><p>去逛逛临床试验的注册网站</p>
+</li>
+<li><p>中医方面的meta</p>
+</li>
+</ol>
+<h3 id="检索策略"><a href="#检索策略" class="headerlink" title="检索策略"></a>检索策略</h3><p>外文：pubmed, google scholar, Cochrance clinical trail</p>
+<p>中文：万方 CNKI</p>
+<h4 id="检索词：-xx药治疗xx病"><a href="#检索词：-xx药治疗xx病" class="headerlink" title="检索词： xx药治疗xx病"></a>检索词： xx药治疗xx病</h4><p>主题词(MeSH) + 自由词</p>
+<p>控制在1000-2000篇</p>
+<p><img src="/2020/11/19/meta-analysis-learning/meta-analysis-learning\01.png" alt="01.png"></p>
+<p><img src="/2020/11/19/meta-analysis-learning/meta-analysis-learning\02.png" alt="02.png"></p>
+<p><img src="/2020/11/19/meta-analysis-learning/meta-analysis-learning\03.png" alt="03.png"></p>
+<p>一般情况下，我们的问题方向都有好几个主题词，我们这样检索：</p>
+<blockquote>
+<p>(主题词1(mh)) OR 自由词1_1 OR 自由词1_2 <strong>…</strong></p>
+<p>AND</p>
+<p>(主题词2(mh)) OR 自由词2_1 OR 自由词2_2 <strong>…</strong></p>
+<p>AND</p>
+<p><strong>…</strong></p>
+</blockquote>
+<h2 id="特征表和质量评价"><a href="#特征表和质量评价" class="headerlink" title="特征表和质量评价"></a>特征表和质量评价</h2><h3 id="特征表"><a href="#特征表" class="headerlink" title="特征表"></a>特征表</h3><ul>
+<li><p>对下载的文章进行特征上的总结，让阅读者无需阅读文章就能了解所有我们需要从这个文章中获取的信息。</p>
+</li>
+<li><p>特征表一定要详细、充实，同时保持美观大方</p>
+</li>
+<li><p>阅读几篇文章后先对自己想要知道的信息进行排版（同时看几篇相关的meta分析文章，看看别人是怎么做的）</p>
+</li>
+<li><p><strong>千万不要自己瞎想乱画</strong></p>
+</li>
+<li><p>对自己的delivery要挑剔，不要自己都看着不顺眼还拿给别人看</p>
+</li>
+<li><p>熟练掌握工具</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>一篇文章中我们要提取的内容(以RCT为例)：</li>
+</ul>
+<blockquote>
+<p>作者姓名</p>
+<p>发表时间</p>
+<p>实验组和对照组的纳入规范</p>
+<p>随访时间多长</p>
+<p>干预手段是什么</p>
+<p>结局指标都有哪些</p>
+<p><strong>…</strong></p>
+</blockquote>
+<p>它是没有固定框架的，提前根据自己阅读文献积攒下来</p>
+<h3 id="质量评价表"><a href="#质量评价表" class="headerlink" title="质量评价表"></a>质量评价表</h3><p>用来评价纳入文献的质量</p>
+<p>流行的三种质量评价量表：cochrane手册 jadad量表 delphi共识</p>
+<h4 id="Cochrane-评价条目："><a href="#Cochrane-评价条目：" class="headerlink" title="Cochrane 评价条目："></a>Cochrane 评价条目：</h4><p>评价结果：<strong>YES, NO, UNCLEAR</strong></p>
+<ol>
+<li><p><strong>Sequence generation (序列产生)</strong>：使用随机数字表、计算机随机、抛硬币、洗扑克或者信封、抽签、掷骰子时给1分</p>
+</li>
+<li><p><strong>Allocation concealment (分配隐藏)</strong>：中心化分配、统一外观、连续编号的药物容器、不透明的信封给药</p>
+</li>
+<li><p><strong>Blinding (盲法)</strong>：有采用盲法的给1分</p>
+</li>
+<li><p><strong>Incomplete outcome data (不完全结局资料)</strong>：没有丢失结局的数据，采用意向性分析(ITT, Intention to Treat)给1分</p>
+</li>
+<li><p><strong>No selective outcome reporting (选择性结局报告)</strong>：无选择性结局报告给1分</p>
+</li>
+<li><p><strong>Other sources of bias (其他偏倚来源)</strong>：研究表现出没有其他偏倚来源的、给1分</p>
+</li>
+</ol>
+<h2 id="数据分析与发表偏倚"><a href="#数据分析与发表偏倚" class="headerlink" title="数据分析与发表偏倚"></a>数据分析与发表偏倚</h2><p>数据分析的目的：使用多方结果，通过数据合并，达到了扩大样本量的效果。结果可用于指导临床。</p>
+<ul>
+<li>数据类型：</li>
+</ul>
+<p>二分类变量</p>
+<p>连续型变量</p>
+<p>meta分析主要使用森林图，文章中有几个结局指标，就有几个森林图。</p>
+<p>森林图看以下几个方面：</p>
+<blockquote>
+<ul>
+<li>异质性检验</li>
+<li>p value</li>
+<li>效应尺度 (Difference)在连续型变量中，mean difference 分为 weighted mean difference 和 standard mean difference 其中WMD在当对同一干预措施的测量方法或单位相同时使用；SMD在不同的测量方法或测量不同的单位时使用</li>
+<li>效应模型 (分为随机效应模型和固定效应模型)</li>
+</ul>
+</blockquote>
+<h3 id="异质性检验"><a href="#异质性检验" class="headerlink" title="异质性检验"></a>异质性检验</h3><p>I<sup>2</sup> &gt; 50% 为异质性 使用随机效应模型</p>
+<p>I<sup>2</sup> &lt; 50% 为同质性 使用固定效应模型</p>
+<h3 id="发表偏倚"><a href="#发表偏倚" class="headerlink" title="发表偏倚"></a>发表偏倚</h3><p>在同类研究中，有统计学意义的研究结果比无统计学意义的结果更容易发表，可以会产生错误的结论</p>
+<p>发表偏倚的检验方法：</p>
+<ul>
+<li><p>漏斗图：样本量越大越集中在上方；样本量越小越集中在下方。若两边对称则无明显发表偏倚，两边不对称则可能存在发表偏倚</p>
+</li>
+<li><p>Egger test // Begg test：给出了统计描述。其中p&gt;0.05提示无明显发表偏倚，p&lt;0.05存在发表偏倚</p>
+</li>
+</ul>
+<p>当三者结果不一致时，Egger test &gt; Begg test &gt; Funnel plot</p>
+<p>检测发表偏倚也是需要文献达到一定数量的 (7 - 10篇以上)</p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
+            <p>Link of This Article：<a href="https://ry2an.github.io/2020/11/19/meta-analysis-learning/">https://ry2an.github.io/2020/11/19/meta-analysis-learning/</a>
+            <p>Publish Date：<a href="https://ry2an.github.io/2020/11/19/meta-analysis-learning/">November 19th 2020, 8:51:06 am</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/11/19/meta-analysis-learning/">November 20th 2020, 3:09:57 pm</a>
+            <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/10/28/studynote/" title= "生统流病学习笔记">
+                    <div class="prevTitle">生统流病学习笔记</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:ruoyan.han94@outlook.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Ry2an" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/my_wechat.jpg" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.zhihu.com/people/tui-mao-39" class="iconfont-archer zhihu" target="_blank" title=zhihu></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://space.bilibili.com/2477951" class="iconfont-archer bilibili" target="_blank" title=bilibili></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E9%A2%98%E5%92%8C%E6%A3%80%E7%B4%A2"><span class="toc-number">1.</span> <span class="toc-text">选题和检索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">选题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E7%B4%A2%E7%AD%96%E7%95%A5"><span class="toc-number">1.2.</span> <span class="toc-text">检索策略</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A3%80%E7%B4%A2%E8%AF%8D%EF%BC%9A-xx%E8%8D%AF%E6%B2%BB%E7%96%97xx%E7%97%85"><span class="toc-number">1.2.1.</span> <span class="toc-text">检索词： xx药治疗xx病</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E8%A1%A8%E5%92%8C%E8%B4%A8%E9%87%8F%E8%AF%84%E4%BB%B7"><span class="toc-number">2.</span> <span class="toc-text">特征表和质量评价</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E8%A1%A8"><span class="toc-number">2.1.</span> <span class="toc-text">特征表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%A8%E9%87%8F%E8%AF%84%E4%BB%B7%E8%A1%A8"><span class="toc-number">2.2.</span> <span class="toc-text">质量评价表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Cochrane-%E8%AF%84%E4%BB%B7%E6%9D%A1%E7%9B%AE%EF%BC%9A"><span class="toc-number">2.2.1.</span> <span class="toc-text">Cochrane 评价条目：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%8F%91%E8%A1%A8%E5%81%8F%E5%80%9A"><span class="toc-number">3.</span> <span class="toc-text">数据分析与发表偏倚</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E8%B4%A8%E6%80%A7%E6%A3%80%E9%AA%8C"><span class="toc-number">3.1.</span> <span class="toc-text">异质性检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E8%A1%A8%E5%81%8F%E5%80%9A"><span class="toc-number">3.2.</span> <span class="toc-text">发表偏倚</span></a></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 20
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/19</span><a class="archive-post-title" href= "/2020/11/19/meta-analysis-learning/" >meta analysis learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/28</span><a class="archive-post-title" href= "/2020/10/28/studynote/" >生统流病学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2020/09/05/ncrerank3database/" >三级数据库技术知识点</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span><a class="archive-post-title" href= "/2020/08/15/SAS-codes/" >SAS codes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/31</span><a class="archive-post-title" href= "/2020/07/31/rubella/" >Dynamic modeling analyses of Rubella in Henan Province, China, 2005 -2016</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span><a class="archive-post-title" href= "/2020/07/29/flight-back-china/" >回国航班</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/20</span><a class="archive-post-title" href= "/2020/05/20/EPID622/" >Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/Portfolio-as-MPH-Student/" >Portfolio as MPH</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/05</span><a class="archive-post-title" href= "/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/" >Repeat Academic Poisson and Negative Binomial Regression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2020/03/04/Repeat-Ancademic-Survival-Analysis/" >Repeat Academic Survival Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/" >Understanding Fourier Transform and Wavelet Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/31</span><a class="archive-post-title" href= "/2020/01/31/Simulating-SIR-Model/" >Simulating SIR Model</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/17</span><a class="archive-post-title" href= "/2020/01/17/Crawling-Data-From-html-Based-Pages/" >Crawling Data From html Based Pages</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/2020/01/14/Vaccine-Making-Selling-Delivering-and-Using-System/" >Vaccine Making Selling Delivering and Using System</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/11</span><a class="archive-post-title" href= "/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/" >Using Longitudinal Models To Analyze Steam Games</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/10</span><a class="archive-post-title" href= "/2020/01/10/Connect-Four-Chess/" >Connect Four Chess</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2016 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/01</span><a class="archive-post-title" href= "/2016/09/01/summer-survey-2016/" >2016年暑期实践</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1994 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/10</span><a class="archive-post-title" href= "/1994/10/10/Markdown-Cheat-Sheet/" >Markdown Cheat Sheet</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/09</span><a class="archive-post-title" href= "/1994/10/09/MySQL-Hand-Book/" >MySQL Hand Book</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1990 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/30</span><a class="archive-post-title" href= "/1990/07/30/test/" >test</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
+    
+        <span class="sidebar-tag-name" data-tags="trip"><span class="iconfont-archer">&#xe606;</span>trip</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Ruoyan Han"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
+
+
