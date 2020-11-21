@@ -266,7 +266,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">1.2k</span>Reading time: <span class="post-count reading-time">4 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.7k</span>Reading time: <span class="post-count reading-time">6 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -494,6 +494,9 @@ height:50vh;
 </ul>
 <p>二分类变量</p>
 <p>连续型变量</p>
+<p><strong></strong></p>
+<p><font color="red"><br>所谓荟萃分析，其所使用的数据不过是每个研究的统计量（RR OR RD SRD WRD 等）以及这个统计量的标准误（SE），由于写教程的人貌似都不是很懂统计，总是把这个标准误叫做方差。
+</font><br>&lt;/strong&gt;<br><br><br></p>
 <p>meta分析主要使用森林图，文章中有几个结局指标，就有几个森林图。</p>
 <p>森林图看以下几个方面：</p>
 <blockquote>
@@ -504,7 +507,16 @@ height:50vh;
 <li>效应模型 (分为随机效应模型和固定效应模型)</li>
 </ul>
 </blockquote>
-<h3 id="异质性检验"><a href="#异质性检验" class="headerlink" title="异质性检验"></a>异质性检验</h3><p>I<sup>2</sup> &gt; 50% 为异质性 使用随机效应模型</p>
+<h3 id="异质性检验"><a href="#异质性检验" class="headerlink" title="异质性检验"></a>异质性检验</h3><p><strong></strong></p>
+<p><font color="red"><br>公式：
+</font><br>&lt;/strong&gt;</p>
+<script type="math/tex; mode=display">
+Q = \sum W_i(d_i - \overline{d})^2 = \sum W_id_i^2 - \frac{(\sum W_id_i)^2}{\sum W_i}</script><p>其中W是每一个研究统计量的权重，d是每一个研究统计量的标准误</p>
+<script type="math/tex; mode=display">
+W_i = \frac{1}{Var(d_i)}</script><p>Q是一个服从自由度为K-1卡方分布的统计量 （K是研究统计量的个数）</p>
+<p>I<sup>2</sup>是一个与Q相关的统计量</p>
+<script type="math/tex; mode=display">
+I^2 = \frac{Q - (K - 1)}{Q} * 100\%</script><p>I<sup>2</sup> &gt; 50% 为异质性 使用随机效应模型</p>
 <p>I<sup>2</sup> &lt; 50% 为同质性 使用固定效应模型</p>
 <h3 id="发表偏倚"><a href="#发表偏倚" class="headerlink" title="发表偏倚"></a>发表偏倚</h3><p>在同类研究中，有统计学意义的研究结果比无统计学意义的结果更容易发表，可以会产生错误的结论</p>
 <p>发表偏倚的检验方法：</p>
@@ -516,6 +528,49 @@ height:50vh;
 </ul>
 <p>当三者结果不一致时，Egger test &gt; Begg test &gt; Funnel plot</p>
 <p>检测发表偏倚也是需要文献达到一定数量的 (7 - 10篇以上)</p>
+<h2 id="敏感性分析和亚组分析"><a href="#敏感性分析和亚组分析" class="headerlink" title="敏感性分析和亚组分析"></a>敏感性分析和亚组分析</h2><p>当有异质性怎么办？</p>
+<ol>
+<li><p>强迫症就此放弃这个meta分析</p>
+</li>
+<li><p>分析异质性的来源</p>
+</li>
+</ol>
+<h3 id="2-1-敏感性分析"><a href="#2-1-敏感性分析" class="headerlink" title="2.1. 敏感性分析"></a>2.1. 敏感性分析</h3><ul>
+<li><p>改变分析模型 （随机或固定效应模型）</p>
+</li>
+<li><p>逐篇排除文献（逐个找，找到后评价为什么它是异质性的来源）</p>
+</li>
+<li><p>剪补法（减去漏斗图中不对称的小样本研究，用修剪后的对称部分估计漏斗图的中心值，然后沿中心两侧添补被剪切的以及相应的估计缺失研究）</p>
+</li>
+</ul>
+<p>当敏感性分析前后结果一致，说明结果较为稳健</p>
+<p>当敏感性分析前后结果不一致，说明结果不稳健，需谨慎对待</p>
+<h3 id="2-2-亚组分析"><a href="#2-2-亚组分析" class="headerlink" title="2.2. 亚组分析"></a>2.2. 亚组分析</h3><p>分性别组、年龄组、药物浓度、治疗时间长短等等</p>
+<p>比如按研究类型分两压阻，两组内都同质，合并后就成了异质，说明研究类型可能是异质性的来源</p>
+<h2 id="合并统计量"><a href="#合并统计量" class="headerlink" title="合并统计量"></a>合并统计量</h2><p><strong></strong></p>
+<p><font color="red"><br>我们要把多个独立研究的多对儿统计量合和标准误成一个统计量和标准误。合成出来的统计量叫效应量，合成的标准误是效应尺度。
+</font><br>&lt;/strong&gt;</p>
+<p>合并统计量的两种模型：</p>
+<p>固定效应模型： Fixed Effect model</p>
+<p>随机效应模型： Random Effect Model</p>
+<p><img src="/2020/11/19/meta-analysis-learning/Meta分析的统计方法教程_30.png" alt></p>
+<p><img src="/2020/11/19/meta-analysis-learning/Meta分析的统计方法教程_31.png" alt></p>
+<p><img src="/2020/11/19/meta-analysis-learning/Meta分析的统计方法教程_32.png" alt></p>
+<p><img src="/2020/11/19/meta-analysis-learning/Meta分析的统计方法教程_33.png" alt></p>
+<p><img src="/2020/11/19/meta-analysis-learning/Meta分析的统计方法教程_34.png" alt></p>
+<p><img src="/2020/11/19/meta-analysis-learning/Meta分析的统计方法教程_35.png" alt></p>
+<p><img src="/2020/11/19/meta-analysis-learning/Meta分析的统计方法教程_36.png" alt></p>
+<p><img src="/2020/11/19/meta-analysis-learning/Meta分析的统计方法教程_37.png" alt></p>
+<p><img src="/2020/11/19/meta-analysis-learning/Meta分析的统计方法教程_38.png" alt></p>
+<p><img src="/2020/11/19/meta-analysis-learning/Meta分析的统计方法教程_39.png" alt></p>
+<p><img src="/2020/11/19/meta-analysis-learning/Meta分析的统计方法教程_40.png" alt></p>
+<p><img src="/2020/11/19/meta-analysis-learning/Meta分析的统计方法教程_41.png" alt></p>
+<p><img src="/2020/11/19/meta-analysis-learning/Meta分析的统计方法教程_42.png" alt></p>
+<p><img src="/2020/11/19/meta-analysis-learning/Meta分析的统计方法教程_43.png" alt></p>
+<p><img src="/2020/11/19/meta-analysis-learning/Meta分析的统计方法教程_44.png" alt></p>
+<p><img src="/2020/11/19/meta-analysis-learning/Meta分析的统计方法教程_45.png" alt></p>
+<p><img src="/2020/11/19/meta-analysis-learning/Meta分析的统计方法教程_46.png" alt></p>
+<p><img src="/2020/11/19/meta-analysis-learning/Meta分析的统计方法教程_47.png" alt></p>
 
     </article>
     <!-- license  -->
@@ -524,7 +579,7 @@ height:50vh;
             <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
             <p>Link of This Article：<a href="https://ry2an.github.io/2020/11/19/meta-analysis-learning/">https://ry2an.github.io/2020/11/19/meta-analysis-learning/</a>
             <p>Publish Date：<a href="https://ry2an.github.io/2020/11/19/meta-analysis-learning/">November 19th 2020, 8:51:06 am</a>
-            <p>Update Date：<a href="https://ry2an.github.io/2020/11/19/meta-analysis-learning/">November 20th 2020, 3:25:42 pm</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/11/19/meta-analysis-learning/">November 20th 2020, 8:56:02 pm</a>
             <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
         </div>
     
@@ -664,7 +719,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E9%A2%98%E5%92%8C%E6%A3%80%E7%B4%A2"><span class="toc-number">1.</span> <span class="toc-text">选题和检索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">选题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E7%B4%A2%E7%AD%96%E7%95%A5"><span class="toc-number">1.2.</span> <span class="toc-text">检索策略</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A3%80%E7%B4%A2%E8%AF%8D%EF%BC%9A-xx%E8%8D%AF%E6%B2%BB%E7%96%97xx%E7%97%85"><span class="toc-number">1.2.1.</span> <span class="toc-text">检索词： xx药治疗xx病</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E8%A1%A8%E5%92%8C%E8%B4%A8%E9%87%8F%E8%AF%84%E4%BB%B7"><span class="toc-number">2.</span> <span class="toc-text">特征表和质量评价</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E8%A1%A8"><span class="toc-number">2.1.</span> <span class="toc-text">特征表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%A8%E9%87%8F%E8%AF%84%E4%BB%B7%E8%A1%A8"><span class="toc-number">2.2.</span> <span class="toc-text">质量评价表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Cochrane-%E8%AF%84%E4%BB%B7%E6%9D%A1%E7%9B%AE%EF%BC%9A"><span class="toc-number">2.2.1.</span> <span class="toc-text">Cochrane 评价条目：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%8F%91%E8%A1%A8%E5%81%8F%E5%80%9A"><span class="toc-number">3.</span> <span class="toc-text">数据分析与发表偏倚</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E8%B4%A8%E6%80%A7%E6%A3%80%E9%AA%8C"><span class="toc-number">3.1.</span> <span class="toc-text">异质性检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E8%A1%A8%E5%81%8F%E5%80%9A"><span class="toc-number">3.2.</span> <span class="toc-text">发表偏倚</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E9%A2%98%E5%92%8C%E6%A3%80%E7%B4%A2"><span class="toc-number">1.</span> <span class="toc-text">选题和检索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">选题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E7%B4%A2%E7%AD%96%E7%95%A5"><span class="toc-number">1.2.</span> <span class="toc-text">检索策略</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A3%80%E7%B4%A2%E8%AF%8D%EF%BC%9A-xx%E8%8D%AF%E6%B2%BB%E7%96%97xx%E7%97%85"><span class="toc-number">1.2.1.</span> <span class="toc-text">检索词： xx药治疗xx病</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E8%A1%A8%E5%92%8C%E8%B4%A8%E9%87%8F%E8%AF%84%E4%BB%B7"><span class="toc-number">2.</span> <span class="toc-text">特征表和质量评价</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E8%A1%A8"><span class="toc-number">2.1.</span> <span class="toc-text">特征表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%A8%E9%87%8F%E8%AF%84%E4%BB%B7%E8%A1%A8"><span class="toc-number">2.2.</span> <span class="toc-text">质量评价表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Cochrane-%E8%AF%84%E4%BB%B7%E6%9D%A1%E7%9B%AE%EF%BC%9A"><span class="toc-number">2.2.1.</span> <span class="toc-text">Cochrane 评价条目：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%8F%91%E8%A1%A8%E5%81%8F%E5%80%9A"><span class="toc-number">3.</span> <span class="toc-text">数据分析与发表偏倚</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E8%B4%A8%E6%80%A7%E6%A3%80%E9%AA%8C"><span class="toc-number">3.1.</span> <span class="toc-text">异质性检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E8%A1%A8%E5%81%8F%E5%80%9A"><span class="toc-number">3.2.</span> <span class="toc-text">发表偏倚</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%8F%E6%84%9F%E6%80%A7%E5%88%86%E6%9E%90%E5%92%8C%E4%BA%9A%E7%BB%84%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">敏感性分析和亚组分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%95%8F%E6%84%9F%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-number">4.1.</span> <span class="toc-text">2.1. 敏感性分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E4%BA%9A%E7%BB%84%E5%88%86%E6%9E%90"><span class="toc-number">4.2.</span> <span class="toc-text">2.2. 亚组分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="toc-number">5.</span> <span class="toc-text">合并统计量</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -677,8 +732,6 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
     
     
     
@@ -1057,9 +1110,9 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="trip"><span class="iconfont-archer">&#xe606;</span>trip</span>
-    
         <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
+    
+        <span class="sidebar-tag-name" data-tags="trip"><span class="iconfont-archer">&#xe606;</span>trip</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
