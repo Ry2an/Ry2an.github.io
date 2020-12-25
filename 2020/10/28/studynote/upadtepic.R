@@ -1,6 +1,6 @@
 ##update blog pic
 
-for(i in 0:47){
+for(i in 0:55){
   if(i < 10){
     cat(
       "![](studynote/教学笔记/教学笔记_0", 
