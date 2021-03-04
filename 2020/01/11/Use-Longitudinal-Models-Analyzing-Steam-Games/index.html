@@ -409,17 +409,17 @@ height:50vh;
 <p>I also added 0.1 to overall ratings for all games in case that some games’ overall rating is 0, which may not able to do the log transformation. (I would chose to use the log transformation because of the results of descriptive statistics (Fig 4).)</p>
 <h3 id="Analyzing-Process"><a href="#Analyzing-Process" class="headerlink" title="Analyzing Process"></a>Analyzing Process</h3><h4 id="Descriptive-Statistics"><a href="#Descriptive-Statistics" class="headerlink" title="Descriptive Statistics"></a>Descriptive Statistics</h4><p>After data cleaning, basic descriptive plots (including game counts distribution, scatter plots of game price, and overall volume) and values (including correlation value, game counts for each publisher) are created and calculated to determine what kind of formats of independent variable and dependent variable to use in the models and cleaning processes.</p>
 <h4 id="Cross-sectional-Model"><a href="#Cross-sectional-Model" class="headerlink" title="Cross-sectional Model"></a>Cross-sectional Model</h4><p>To compare the difference between longitudinal models and cross-sectional model, a linear regression is fitted as a comparison. The model is written as following:</p>
-<p>$log(\textrm{Overall Ratings}_i)=\beta_0+\beta_1*\textrm{Price}_i+\xi_i$, $i\in\textrm{Publishers}$</p>
+<p>$log(\textrm{Overall Ratings}_{i})=\beta_{0}+\beta_{1}*\textrm{Price}_{i}+\xi_{i}$, $i\in\textrm{Publishers}$</p>
 <p><em>The following models are longitudinal models I fitted for the data:</em></p>
 <h4 id="Longitudinal-Models-LME"><a href="#Longitudinal-Models-LME" class="headerlink" title="Longitudinal Models (LME)"></a>Longitudinal Models (LME)</h4><p>$log(\textrm{Overall Ratings}_{ij}) = \beta_0 + b_i + \beta_1*(\textrm{Price}_{ij}) + \xi_{ij}$, </p>
 <p>$b_i \in N(0, \delta)$, $i\in\textrm{Publishers}$, (LME-1)</p>
 <h4 id="Linear-Mixed-Effect-Model-Random-Intercept-and-Slope"><a href="#Linear-Mixed-Effect-Model-Random-Intercept-and-Slope" class="headerlink" title="Linear Mixed Effect Model - Random Intercept and Slope"></a>Linear Mixed Effect Model - Random Intercept and Slope</h4><p>$log(\textrm{Overall Ratings}_{ij}) = \beta_0 + b_{i1} + \beta_1*(b_{i2} + \textrm{Price}_{ij}) + \xi_{ij}$, </p>
 <p>$b_{i1} \in N(0, \delta_1)$, $b_{i2} \in N(0, \delta_2)$, $i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (LME-2)</p>
-<h4 id="Non-linear-Relationship"><a href="#Non-linear-Relationship" class="headerlink" title="Non linear Relationship"></a>Non linear Relationship</h4><p>$log(\textrm{Overall Ratings}_{ij}) = \beta_0 + b_i + \beta_1*(\textrm{Price}_{ij}^2) + \beta_2*(\textrm{Price}_{ij}) + \beta_3*(\textrm{Price}_{ij}^{0.5})+ \xi_{ij}$, </p>
+<h4 id="Non-linear-Relationship"><a href="#Non-linear-Relationship" class="headerlink" title="Non linear Relationship"></a>Non linear Relationship</h4><p>$log(\textrm{Overall Ratings}_{ij}) = \beta_0 + b_i + \beta_1<em>(\textrm{Price}_{ij}^2) + \beta_2</em>(\textrm{Price}_{ij}) + \beta_3*(\textrm{Price}_{ij}^{0.5})+ \xi_{ij}$, </p>
 <p>$b_i \in N(0, \delta)$, $i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (LME-3)</p>
-<h4 id="Effect-measurement-modifier-and-confounding-effect-of-whether-the-game-have-English-version"><a href="#Effect-measurement-modifier-and-confounding-effect-of-whether-the-game-have-English-version" class="headerlink" title="Effect measurement modifier and confounding effect of whether the game have English version"></a>Effect measurement modifier and confounding effect of whether the game have English version</h4><p>$log(\textrm{Overall Ratings}_{ij}) = \beta_0 + b_i + \beta_1 * (\textrm{Price}_{ij}) + \beta_2 * (\textrm{English}_{ij}) + \beta_3 * (\textrm{Price}_{ij} * \textrm{English}_{ij}) + \xi_{ij}$, </p>
+<h4 id="Effect-measurement-modifier-and-confounding-effect-of-whether-the-game-have-English-version"><a href="#Effect-measurement-modifier-and-confounding-effect-of-whether-the-game-have-English-version" class="headerlink" title="Effect measurement modifier and confounding effect of whether the game have English version"></a>Effect measurement modifier and confounding effect of whether the game have English version</h4><p>$log(\textrm{Overall Ratings}_{ij}) = \beta_0 + b_i + \beta_1 <em> (\textrm{Price}_{ij}) + \beta_2 </em> (\textrm{English}_{ij}) + \beta_3 <em> (\textrm{Price}_{ij} </em> \textrm{English}_{ij}) + \xi_{ij}$, </p>
 <p>$b_i \in N(0, \delta)$, $i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (LME-4)</p>
-<h4 id="Confouder-of-released-date"><a href="#Confouder-of-released-date" class="headerlink" title="Confouder of released date"></a>Confouder of released date</h4><p>$log(\textrm{Overall Ratings}_{ij}) = \beta_0 + b_i + \beta_1 * (\textrm{Price}_{ij}) + \beta_2 * (\textrm{Released Date}_{ij}) + \xi_{ij}$, </p>
+<h4 id="Confouder-of-released-date"><a href="#Confouder-of-released-date" class="headerlink" title="Confouder of released date"></a>Confouder of released date</h4><p>$log(\textrm{Overall Ratings}_{ij}) = \beta_0 + b_i + \beta_1 <em> (\textrm{Price}_{ij}) + \beta_2 </em> (\textrm{Released Date}_{ij}) + \xi_{ij}$, </p>
 <p>$b_i \in N(0, \delta)$, $i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (LME-5)</p>
 <h4 id="Estimating-line"><a href="#Estimating-line" class="headerlink" title="Estimating line"></a>Estimating line</h4><p>The estimated value of LME models are calculated and combined with the scatter plots.</p>
 <h4 id="Fixed-Effect-Model-FEM"><a href="#Fixed-Effect-Model-FEM" class="headerlink" title="Fixed Effect Model (FEM)"></a>Fixed Effect Model (FEM)</h4><p>Fixed effect models in this analysis are used to test whether the assumption of LME models (random intercept and random slope) are applicable. Rather than focusing the estimated parameter of ‘price’ in the FEM models, I would pay more attention of the distributions of fixed terms in the models. Distribution of fixed intercepts and slopes are plotted to see whether they are normally distributed. If they are normally distributed, we could use a stronger assumption and use LME the models to fit the data.</p>
@@ -427,7 +427,7 @@ height:50vh;
 <p>$log(\textrm{Overall Ratings}_{ij}) = \alpha_i +  \beta_1*(\textrm{Price}_{ij}) + \xi_i$, </p>
 <p>$i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (FEM-1)</p>
 <p><em>Slope:</em></p>
-<p>$log(\textrm{Overall Ratings}_{ij}) = \beta_0 + \beta_1 * (\textrm{Price}_{ij}) + \beta_2 * (\alpha_i * \textrm{Price}_{ij}) + \xi_i$, </p>
+<p>$log(\textrm{Overall Ratings}_{ij}) = \beta_0 + \beta_1 <em> (\textrm{Price}_{ij}) + \beta_2 </em> (\alpha_i * \textrm{Price}_{ij}) + \xi_i$, </p>
 <p>$i\in\textrm{Publishers}$, $j \in {\textrm{Games of Each Publisher}}$, (FEM-2)</p>
 <p>For the “fixed slopes”, I mean the actually slope of price fitted by this fixed effect model for each publisher.</p>
 <p>$\textrm{Fixed Slope} = \beta_1+ \beta_2 * \alpha_i$</p>
@@ -826,7 +826,7 @@ height:50vh;
             <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
             <p>Link of This Article：<a href="https://ry2an.github.io/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/">https://ry2an.github.io/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/</a>
             <p>Publish Date：<a href="https://ry2an.github.io/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/">January 11th 2020, 5:03:26 pm</a>
-            <p>Update Date：<a href="https://ry2an.github.io/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/">August 1st 2020, 8:37:16 pm</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/">February 25th 2021, 4:43:05 pm</a>
             <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
         </div>
     
@@ -984,14 +984,6 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1411,9 +1403,9 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
-    
         <span class="sidebar-tag-name" data-tags="trip"><span class="iconfont-archer">&#xe606;</span>trip</span>
+    
+        <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

@@ -1,16 +1,16 @@
 ##update blog pic
 
-for(i in 65:69){
+for(i in 0:87){
   if(i < 10){
     cat(
-      "![](studynote/教学笔记/教学笔记_0", 
+      "![](studynote/教学笔记/studynote_0", 
       i,
       ".png)\n\n",
       sep = ""
     )
   }else{
     cat(
-      "![](studynote/教学笔记/教学笔记_", 
+      "![](studynote/教学笔记/studynote_", 
       i,
       ".png)\n\n",
       sep = ""
