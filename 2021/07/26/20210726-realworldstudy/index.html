@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="Ruoyan Han">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Ruoyan Han">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>20210726_realworldstudy · Ry2an&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/hakase.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Ry2an&#39;s Studio</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">20210726_realworldstudy</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Ry2an's Studio</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/postbg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            20210726_realworldstudy
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">10.2k</span>Reading time: <span class="post-count reading-time">35 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2021/07/26</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>  目录</p>
+<ul>
+<li><a href="#一真实世界研究的定义与简介">一、真实世界研究的定义与简介</a><ul>
+<li><a href="#11-真实世界数据的定义">1.1 真实世界数据的定义</a><ul>
+<li><a href="#111-真实世界数据的来源">1.1.1 真实世界数据的来源</a></li>
+</ul>
+</li>
+<li><a href="#12-真实世界数据的特征">1.2 真实世界数据的特征</a></li>
+</ul>
+</li>
+<li><a href="#二真实世界研究的方法">二、真实世界研究的方法</a><ul>
+<li><a href="#21-programatic-clinical-trial-pct-实效临床试验">2.1 Programatic Clinical Trial, PCT 实效临床试验</a></li>
+<li><a href="#22-observational-study-观察性研究">2.2 Observational Study 观察性研究</a></li>
+<li><a href="#23-单臂试验的平行对照或历史对照">2.3 单臂试验的平行对照或历史对照</a></li>
+</ul>
+</li>
+<li><a href="#三真实世界研究的统计方法">三、真实世界研究的统计方法</a><ul>
+<li><a href="#31-描述统计">3.1 描述统计</a></li>
+<li><a href="#32-调整分析">3.2 调整分析</a><ul>
+<li><a href="#321-协变量的选择">3.2.1 协变量的选择</a></li>
+<li><a href="#322-利用回归分析调整模型">3.2.2 利用回归分析调整模型</a></li>
+<li><a href="#323-倾向性评分-propensity-score">3.2.3 倾向性评分 Propensity Score</a></li>
+<li><a href="#324-疾病风险评分-disease-risk-score-drs">3.2.4 疾病风险评分 Disease Risk Score, DRS</a></li>
+<li><a href="#325-工具变量-instrument-variable">3.2.5 工具变量 Instrument Variable</a></li>
+</ul>
+</li>
+<li><a href="#33-敏感性分析">3.3 敏感性分析</a></li>
+<li><a href="#34-缺失数据的考虑">3.4 缺失数据的考虑</a><ul>
+<li><a href="#341-数据的缺失类型">3.4.1 数据的缺失类型</a></li>
+<li><a href="#342-插值填充">3.4.2 插值填充</a></li>
+</ul>
+</li>
+<li><a href="#35-样本量计算">3.5 样本量计算</a></li>
+<li><a href="#36-偏倚与混杂分析">3.6 偏倚与混杂分析</a></li>
+</ul>
+</li>
+<li><a href="#四真实世界研究的用途">四、真实世界研究的用途</a><ul>
+<li><a href="#41-新药上市的证据">4.1 新药上市的证据</a></li>
+<li><a href="#42-为已上市的药物说明书指南变更提供证据">4.2 为已上市的药物说明书（指南）变更提供证据</a></li>
+<li><a href="#43-为药物上市后要求或再评价提供证据">4.3 为药物上市后要求或再评价提供证据</a></li>
+<li><a href="#44-名老中医经验方中药医疗机构制剂的人用经验总结与临床研发">4.4 名老中医经验方、中药医疗机构制剂的人用经验总结与临床研发</a></li>
+<li><a href="#45-指导临床研究设计">4.5 指导临床研究设计</a></li>
+<li><a href="#46-精准定位目标人群">4.6 精准定位目标人群</a></li>
+</ul>
+</li>
+<li><a href="#五真实世界研究的法规可行性">五、真实世界研究的法规可行性</a><ul>
+<li><a href="#51-有关规章的解释">5.1 有关规章的解释</a></li>
+<li><a href="#52-chictr注册情况">5.2 ChiCTR注册情况</a></li>
+<li><a href="#53-规范拟定">5.3 规范拟定</a></li>
+</ul>
+</li>
+<li><a href="#六真实世界研究的评价方法">六、真实世界研究的评价方法</a><ul>
+<li><a href="#61-研究设计">6.1 研究设计</a></li>
+<li><a href="#62-数据与统计相关">6.2 数据与统计相关</a><ul>
+<li><a href="#621-数据来源">6.2.1 数据来源</a></li>
+<li><a href="#622-数据多样性">6.2.2 数据多样性</a></li>
+<li><a href="#623-样本量">6.2.3 样本量</a></li>
+<li><a href="#624-数据处理与保存措施">6.2.4 数据处理与保存措施</a></li>
+<li><a href="#625-使用何种统计方法">6.2.5 使用何种统计方法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#七研究者进行真实世界研究前需要考虑的内容">七、研究者进行真实世界研究前需要考虑的内容</a><ul>
+<li><a href="#71-研究背景与立意">7.1 研究背景与立意</a></li>
+<li><a href="#72-判别自己的研究类型">7.2 判别自己的研究类型</a><ul>
+<li><a href="#721-实效临床试验-programatic-clinical-trial-pct">7.2.1 实效临床试验 Programatic Clinical Trial, PCT</a></li>
+<li><a href="#722-观察性研究-observational-study">7.2.2 观察性研究 Observational Study</a></li>
+</ul>
+</li>
+<li><a href="#73-判别自己研究所使用的数据的质量">7.3 判别自己研究所使用的数据的质量</a></li>
+<li><a href="#74-是否有翔实的数据管理方案">7.4 是否有翔实的数据管理方案</a></li>
+<li><a href="#75-统计方案选择">7.5 统计方案选择</a></li>
+<li><a href="#76-真实世界研究不是低质量研究的试错场">7.6 真实世界研究不是低质量研究的试错场</a></li>
+<li><a href="#77-真实世界研究同样需要进行注册">7.7 真实世界研究同样需要进行注册</a></li>
+</ul>
+</li>
+<li><a href="#八示例研究">八、示例研究</a></li>
+<li><a href="#参考文献">参考文献</a></li>
+</ul>
+<h2 id="一、真实世界研究的定义与简介"><a href="#一、真实世界研究的定义与简介" class="headerlink" title="一、真实世界研究的定义与简介"></a>一、真实世界研究的定义与简介</h2><p>真实世界研究(Real World Study, RWS)是指使用诸如电子健康档案(Electronic Health Records, EHR)、公共健康监测(Public Health Surveillance)等非因研究发生而存在的真实世界数据(Real World Data, RWD)，通过预测模型或因果解释模型的形式，产生相关推论的研究。产生的结论被称为真实世界证据(Real World Evidence, RWE)。</p>
+<p>真实世界研究与随机对照试验(Random Controlled Trials, RCT)相辅相成，补足了期入组严格、样本量小、干预归一化、研究时间短等问题。成为了评价药品等在更广泛人群中个性化使用的背景下相关指标的有效手段。</p>
+<h3 id="1-1-真实世界数据的定义"><a href="#1-1-真实世界数据的定义" class="headerlink" title="1.1 真实世界数据的定义"></a>1.1 真实世界数据的定义</h3><p>如前文所述，真实世界数据，即在真实世界研究中使用的数据，应为非因研究而产生的数据。在临床研究中，常见的数据来源如下：</p>
+<h4 id="1-1-1-真实世界数据的来源"><a href="#1-1-1-真实世界数据的来源" class="headerlink" title="1.1.1 真实世界数据的来源"></a>1.1.1 真实世界数据的来源</h4><p>真实世界数据的来源包括但不限于以下方面：</p>
+<ul>
+<li><p>健康管理报告</p>
+</li>
+<li><p>电子健康档案 EMR</p>
+</li>
+<li><p>病例报告 (Medical Records, MR)</p>
+</li>
+<li><p>医保数据</p>
+</li>
+<li><p>出生死亡登记</p>
+</li>
+<li><p>公共健康监测数据</p>
+</li>
+<li><p>疾病登记系统</p>
+</li>
+<li><p>自然队列、专病队列数据库</p>
+</li>
+<li><p>组学相关数据库</p>
+</li>
+</ul>
+<h3 id="1-2-真实世界数据的特征"><a href="#1-2-真实世界数据的特征" class="headerlink" title="1.2 真实世界数据的特征"></a>1.2 真实世界数据的特征</h3><p>真实世界的数据特征主要体现为临床实践的<strong>多样性</strong>。在RCT中，暴露因素可能被简单而又固定地设定为2至数种。而在实际的临床实践中，每一位患者的治疗方式都会有所不同，不管是从单药的用量、用药组合或治疗周期的方面。尤其是重要的方剂，更加符合<strong>多样性</strong>的特征。在真实世界研究中，数据的多样性可以很好地帮助研究者总结药物在各类人群以及各种用法用量上所带来的结果的差异。也可以方便使用机器学习算法拟合预测模型的研究，优化训练结果。</p>
+<h2 id="二、真实世界研究的方法"><a href="#二、真实世界研究的方法" class="headerlink" title="二、真实世界研究的方法"></a>二、真实世界研究的方法</h2><h3 id="2-1-Programatic-Clinical-Trial-PCT-实效临床试验"><a href="#2-1-Programatic-Clinical-Trial-PCT-实效临床试验" class="headerlink" title="2.1 Programatic Clinical Trial, PCT 实效临床试验"></a>2.1 Programatic Clinical Trial, PCT 实效临床试验</h3><p>PCT即为使用干预手段的真实世界研究。真实世界研究的干预可以是标准化的，可以是非标准化的。分组可以是随机化的，也可以是非随机化的。一个拥有标准干预，随机分组的PCT和一个纳排标准非常不规范的RCT基本相当。注意：即便是干预性研究，既然是作为真实世界研究的一部分，期数据来源也应来自于上述数据来源。否则应当作为其他实验性研究(Experimental Study)，需建立专用CRF保证监察与稽查的顺利开展。注意，进行干预性研究前需有扎实的前期研究基础。据民法典第一千零八条：临床试验不得向受试者收取费用。据国家卫健委2020年发布的关于医疗卫生机构开展研究者发起的临床研究管理办法：机构和研究者应当对干预性研究可能出现的风险进行评估，具备与风险相适应的处置能力，妥善保护干预性研究的研究对象（以下简称受试者）的健康权益，不得向受试者收取与研究相关的费用和因研究增加的费用。</p>
+<p>在进行真实世界干预性试验时，需要怀揣着这样的心态：这种新的治疗方案就是已经被写入指南中的治疗方法。需要对广大患者按需使用，并记录使用结果。如果还是希望对精挑细选的患者做干预，那么应该进行非真实世界的干预性的研究。</p>
+<h3 id="2-2-Observational-Study-观察性研究"><a href="#2-2-Observational-Study-观察性研究" class="headerlink" title="2.2 Observational Study 观察性研究"></a>2.2 Observational Study 观察性研究</h3><p>观察性研究即非干预性研究，包括前瞻性与非前瞻性两类。对于观察性的研究，要求研究所产生的数据并非因干预而产生，即患者受到的临床实践并非因研究而产生或发生改变（患者不参加观察性研究时会受到的临床实践不应因参加观察性研究而发生改变）。<br>真实世界的观察性研究所采用的试验设计与普通观察性研究相同，可分为队列研究、病例对照和横断面研究，其区别在于真实世界研究的数据来源为真实世界数据且对于源人群、抽样方式、纳排标准的论证与定义上没有普通观察性研究严格。但是，上述三点的宽松会造成严重的偏倚与混杂因素的问题。因此，在观察性的真实世界研究中，数据处理与统计方法是重中之重，详细信息请阅读本手册“真实世界研究统计方法”的部分。</p>
+<h3 id="2-3-单臂试验的平行对照或历史对照"><a href="#2-3-单臂试验的平行对照或历史对照" class="headerlink" title="2.3 单臂试验的平行对照或历史对照"></a>2.3 单臂试验的平行对照或历史对照</h3><p>单臂的临床试验可以使用真实世界数据设立对照组，分为平行对照和历史对照。其中，历史对照需要考虑当年诊断与临床试验指南与试验时的区别以保证两组间的可比性。此外，使用真实世界数据作为对照组需要其与试验组抽样/入组方式不同所带来的混杂因素。需要使用标化的方式使两组具有可比性，常用的方法为Invers Probability of Treatment Weighting, IPTW即使用倾向性评分为样本生成权重。详细信息请阅读本手册“真实世界研究统计方法”的部分。</p>
+<h2 id="三、真实世界研究的统计方法"><a href="#三、真实世界研究的统计方法" class="headerlink" title="三、真实世界研究的统计方法"></a>三、真实世界研究的统计方法</h2><p>真实世界研究的统计方法是研究的核心，本手册从以下几个方面进行表述：</p>
+<h3 id="3-1-描述统计"><a href="#3-1-描述统计" class="headerlink" title="3.1 描述统计"></a>3.1 描述统计</h3><p>描述统计是进一步分析的基本步骤。其目的是验证数据的分布是否符合常识与进一步分析对于数据分布的要求。在真实世界研究中，各变量的分布还需用来验证数据的多样性。</p>
+<h3 id="3-2-调整分析"><a href="#3-2-调整分析" class="headerlink" title="3.2 调整分析"></a>3.2 调整分析</h3><p>调整分析是真实世界研究的核心步骤，其目的在于减小研究数据中的统计和偏倚。包括且不限于以下几种解决方案：</p>
+<h4 id="3-2-1-协变量的选择"><a href="#3-2-1-协变量的选择" class="headerlink" title="3.2.1 协变量的选择"></a>3.2.1 协变量的选择</h4><p>真实世界研究为了尽可能的消除或减小偏倚与混杂，需要纳入大量的协变量。包括但不限于人口学信息、既往病史、治疗方式与过程、预后情况、生活习惯、工作信息等。其目的是打造对单个研究对象的全息化信息，依此把握暴露的影响因素与结局。此外，还需要对协变量进行敏感性分析，详情请见下文。</p>
+<h4 id="3-2-2-利用回归分析调整模型"><a href="#3-2-2-利用回归分析调整模型" class="headerlink" title="3.2.2 利用回归分析调整模型"></a>3.2.2 利用回归分析调整模型</h4><p>回归分析是临床试验中用于综合拟合多协变量状态下多因素分析的手段。在使用回归分析时，须要结合实际情况对模型类型做出调整。不能简单地使用线性回归或逻辑回归对待所有的情况。对于因变量为离散性变量的模型，可根据因变量分布选择Possion Regression或Negative Binomial Regression。对于夹杂常数的混合分布，可以考虑对因变量进行平移后使用Zero-Inflated Regression。</p>
+<h4 id="3-2-3-倾向性评分-Propensity-Score"><a href="#3-2-3-倾向性评分-Propensity-Score" class="headerlink" title="3.2.3 倾向性评分 Propensity Score"></a>3.2.3 倾向性评分 Propensity Score</h4><p>倾向性评分是根据需要与目的选择合适的因变量与协变量拟合出来的回归分析预测值。其主要用于以下四个方面：</p>
+<ul>
+<li><p>配对(Propensity Score Matching)</p>
+</li>
+<li><p>分层(Propensity Score Stratification)</p>
+</li>
+<li><p>添加权重(Inverse Probability of Treatment Weighting, IPTW)</p>
+</li>
+<li><p>消除共线性混杂(Propensity Score Covariate Adjustment)</p>
+</li>
+</ul>
+<h4 id="3-2-4-疾病风险评分-Disease-Risk-Score-DRS"><a href="#3-2-4-疾病风险评分-Disease-Risk-Score-DRS" class="headerlink" title="3.2.4 疾病风险评分 Disease Risk Score, DRS"></a>3.2.4 疾病风险评分 Disease Risk Score, DRS</h4><p>疾病风险评分与倾向评分作用相似，是一个基于所有协变量的综合指标，定义为假定无暴露和特定协变量条件下，发生结局事件的概率。估计DRS的方法一般分为两类：一类是利用研究样本的所有观测值进行拟合，将暴露（设值为无暴露）与协变量作为自变量，研究结局作为因变量得到相应的DRS预测值；另一类是仅利用无暴露的样本估计DRS，然后将所有研究样本的协变量取值回代入DRS模型，对所有研究样本计算相应的DRS预测值。对于结局事件常见但处理（暴露）因素罕见、或者可能存在多重暴露的研究，DRS方法是一种较好的选择，能够平衡不同组间样本的基线疾病风险。对于处理（暴露）因素多水平，且部分水平较罕见的情况，建议选择DRS方法而非PS方法。</p>
+<h4 id="3-2-5-工具变量-Instrument-Variable"><a href="#3-2-5-工具变量-Instrument-Variable" class="headerlink" title="3.2.5 工具变量 Instrument Variable"></a>3.2.5 工具变量 Instrument Variable</h4><p>工具变量可以理解为不受暴露与结局间混杂因素影响的变量。其与暴露之间的关系的影响越少越好。常用的工具变量有基因信息。当确认了工具变量后，一个不受混杂因素干扰的暴露与结局间的关系可以由以下方式得出：</p>
+<p>Odds Ratio(暴露到结局) = Odds Ratio(工具到结局) / Odds Ratio(工具到暴露)</p>
+<p>注意：请保证工具变量到暴露变量的统计学指标经过了调整分析。</p>
+<h3 id="3-3-敏感性分析"><a href="#3-3-敏感性分析" class="headerlink" title="3.3 敏感性分析"></a>3.3 敏感性分析</h3><p>敏感性分析也可理解为稳健性分析。在通过增添、去除部分协变量后检验统计结果的一致性。敏感性检验的目的可分为两方面，除了验证研究结果的稳健性外，还可以找出对暴露于结局间影响最敏感的协变量。</p>
+<p>如果检验结果显示统计学结果对于每一个变量都敏感，可以使用岭回归(Ridge Regression)的方式对统计学指标进行拟合估计。</p>
+<h3 id="3-4-缺失数据的考虑"><a href="#3-4-缺失数据的考虑" class="headerlink" title="3.4 缺失数据的考虑"></a>3.4 缺失数据的考虑</h3><p>由于使用真实世界数据进行研究，数据中的缺失情况要远高于其他临床研究，需要专门对缺失数据进行考量。</p>
+<h4 id="3-4-1-数据的缺失类型"><a href="#3-4-1-数据的缺失类型" class="headerlink" title="3.4.1 数据的缺失类型"></a>3.4.1 数据的缺失类型</h4><p>首先，需要考虑数据的缺失是否与自变量、因变量相关。分为以下三种类型：</p>
+<ul>
+<li><p>Missing Completely At Random MCAR 即数据的缺失完全随机于自变量、因变量与其他协变量。这种缺失形式在现实中基本不存在。其对于数据的准确性没有影响，仅影响精确性。当研究者随机屏蔽部分数据（比如使一半研究对象单周随访，另一部分双周随访）时，属于这种情况。</p>
+</li>
+<li><p>Missing At Random MAR 即数据的缺失基本与自变量、因变量随机。这种情况下可以通过调整分析或插值填补的方式减少有缺失带来的偏倚与混杂。另需注明在这种缺失模式下偏倚与混杂对统计学指标影响的方向与大小。</p>
+</li>
+<li><p>Missing Not At Random 即数据缺失与自变量、因变量强相关。建议重新考虑试验方向或采样范围。这种缺失模式下做出的研究结果基本没有意义。</p>
+</li>
+</ul>
+<h4 id="3-4-2-插值填充"><a href="#3-4-2-插值填充" class="headerlink" title="3.4.2 插值填充"></a>3.4.2 插值填充</h4><p>对于缺失值的处理，可以保持空缺或进行插值填充。以下列出的为常用的插值填充方式。注意：插值填充会使统计学指标趋近于原假设。</p>
+<ul>
+<li><p>Multiple Imputation, MI 多重填补</p>
+</li>
+<li><p>传统回归模型</p>
+</li>
+<li><p>Markov Chain Monte Carlo, MCMC 马尔卡夫链蒙特卡洛法</p>
+</li>
+<li><p>Fully Conditional Specification, FCS 全条件定义法</p>
+</li>
+<li><p>Pattern Mixture Models, PMM 模式混合模型</p>
+</li>
+</ul>
+<h3 id="3-5-样本量计算"><a href="#3-5-样本量计算" class="headerlink" title="3.5 样本量计算"></a>3.5 样本量计算</h3><p>由于真实世界研究使用大量协变量，所需样本量也有所提高。均属统计中通常样本量计算需要考虑到的指标为：两组数据均方差、预计均数差异、检验水准(通常取双侧0.05)、数据检验效能(power, 通常取0.8)与各组样本数量。多协变量的样本量计算较为复杂，现做出如下定义。每多使用1个协变量，则需要多一倍的样本量。如样本量计算共需45样本，但研究中还需要使用9个协变量，则总共需要450的样本量。考虑10%的脱落率，则需要500的样本量。</p>
+<p>温馨提示：无论是否是真实世界研究，计算出的样本量都是至少的样本量。如果把样本量按照任务完成指标去做，那么即便两组均数差异达到预计水平，p值也仅为0.05。若均数差异稍有缩小，则将没有足够的统计学意义来拒绝原假设。</p>
+<p>由于真实世界研究往往对接大型数据库，其样本量相对于传统的研究和试验也往往是海量的，这也是真实世界研究可以选择纳入多协变量进行分析的基础。这里鼓励研究者在获取数据时不进行严格的筛选（如限制年龄、限制时间、限制性别等），尽可能多地获取数据。最好能多到无需计算样本量，而是转而计算在0.05检验标准和0.8的检验效能下样本能区分的最小差异是多少。</p>
+<h3 id="3-6-偏倚与混杂分析"><a href="#3-6-偏倚与混杂分析" class="headerlink" title="3.6 偏倚与混杂分析"></a>3.6 偏倚与混杂分析</h3><p>由于真实世界研究存在大量的偏倚与混杂，且在试验设计层面的避免方式有限，在对研究结果进行归纳总结时需注明研究结果所存在的偏倚的方向与大小。</p>
+<h2 id="四、真实世界研究的用途"><a href="#四、真实世界研究的用途" class="headerlink" title="四、真实世界研究的用途"></a>四、真实世界研究的用途</h2><p>根据真实世界证据支持药物研发与审评的指导原则(试行)，真实世界研究所产生的真实世界证据可以由以下用途：（注意：以下使用的可以使用真实世界研究作为证据指导原则中并未说明可作为充分条件）</p>
+<h3 id="4-1-新药上市的证据"><a href="#4-1-新药上市的证据" class="headerlink" title="4.1 新药上市的证据"></a>4.1 新药上市的证据</h3><p>用于新药上市的临床证据基本需要干预性质的临床试验。在真实世界研究中，可用的研究模式为<strong>PCT</strong>或<strong>单臂试验的对照组</strong>。观察性研究不作为新药上市的证据。此外，真实世界研究从定义的角度来看不能作为I期研究的实施手段。</p>
+<h3 id="4-2-为已上市的药物说明书（指南）变更提供证据"><a href="#4-2-为已上市的药物说明书（指南）变更提供证据" class="headerlink" title="4.2 为已上市的药物说明书（指南）变更提供证据"></a>4.2 为已上市的药物说明书（指南）变更提供证据</h3><p>为已上市的药物说明书变更提供证据通常需要使用RCT产生的证据，但是RCT也面临着以下问题：</p>
+<blockquote>
+<ul>
+<li><p>病例数少</p>
+</li>
+<li><p>入组严格（如接收放疗的病人不能入组）</p>
+</li>
+<li><p>干预过于标准化</p>
+</li>
+<li><p>研究时间短，无法显示长时间用药的效果</p>
+</li>
+</ul>
+</blockquote>
+<p>当因为以上原因使得RCT在为已上市的药物说明书变更提供证据上不可行或非最优时，可以使用<strong>PCT</strong>或<strong>观察性</strong>的真实世界研究产生的真实世界证据已上市的药物说明书变更提供证据。</p>
+<p>变更说明书的主要情形如下：</p>
+<blockquote>
+<ul>
+<li><p>增加或者修改适应症</p>
+</li>
+<li><p>改变剂量、给药方案或者用药途径</p>
+</li>
+<li><p>增加新的适用人群</p>
+</li>
+<li><p>添加实效比较研究的结果</p>
+</li>
+<li><p>增加安全性信息</p>
+</li>
+<li><p>说明书的其它修改</p>
+</li>
+</ul>
+</blockquote>
+<p>此外，指导原则标注：<strong>真实世界证据支持新增适应症可能更具可行性和合理性</strong>, <strong>在儿童用药领域，利用真实世界证据支持适应症人群的扩大也是药物监管决策可能适用的情形之一</strong>。</p>
+<h3 id="4-3-为药物上市后要求或再评价提供证据"><a href="#4-3-为药物上市后要求或再评价提供证据" class="headerlink" title="4.3 为药物上市后要求或再评价提供证据"></a>4.3 为药物上市后要求或再评价提供证据</h3><p>一般看来，RCT用于药物上市后在评价并不适合，因为一旦进行了严格地入排规则与分组，则丧失了真实世界中的种种可能性导致安全性信息有限、疗效结论外推不确定、用药方案未必最优、经济学效益缺乏等不足。所以药物上市后的再评价是真实世界研究的一个很好的舞台。</p>
+<p>利用真实世界研究可以用于评估药物在真实医疗实践中的：</p>
+<ul>
+<li><p>效果</p>
+</li>
+<li><p>安全性</p>
+</li>
+<li><p>使用情况</p>
+</li>
+<li><p>经济学效益</p>
+</li>
+</ul>
+<p>并依据真实世界证据进行更全面的<strong>决策调整</strong>。</p>
+<h3 id="4-4-名老中医经验方、中药医疗机构制剂的人用经验总结与临床研发"><a href="#4-4-名老中医经验方、中药医疗机构制剂的人用经验总结与临床研发" class="headerlink" title="4.4 名老中医经验方、中药医疗机构制剂的人用经验总结与临床研发"></a>4.4 名老中医经验方、中药医疗机构制剂的人用经验总结与临床研发</h3><p>中药方剂或其他相关治疗措施与愈后评价由于非常具有个性化，很适合真实世界研究。对于已有人使用的经验药物，在处方固定、生产路线基本成型的基础上，可以进行名老中医经验方、中药医疗机构制剂的人用经验总结与临床研发。</p>
+<p><img src="/2021/07/26/20210726-realworldstudy/02.png" alt></p>
+<ul>
+<li>可以探索将观察性研究（包括回顾性和前瞻性）代替常规临床研发中I期和/或II期临床试验</li>
+</ul>
+<p><img src="/2021/07/26/20210726-realworldstudy/01.png" alt></p>
+<ul>
+<li><p>在观察性研究的基础上，再通过RCT或PCT进一步确证已有人用经验中药的有效性</p>
+</li>
+<li><p>如果数据够好可以直接与药监部门沟通，作为支持产品上市的依据。</p>
+</li>
+</ul>
+<h3 id="4-5-指导临床研究设计"><a href="#4-5-指导临床研究设计" class="headerlink" title="4.5 指导临床研究设计"></a>4.5 指导临床研究设计</h3><p>此目的即为后续的RCT指明方向。</p>
+<p>以此为目的的真实世界研究可以使用预测模型进行不限于以下方向的研究：</p>
+<ul>
+<li><p>疾病自然史</p>
+</li>
+<li><p>疾病在目标人群中的流行率</p>
+</li>
+<li><p>标准化治疗的疗效和效果</p>
+</li>
+<li><p>关键协变量在目标人群中的分布和变化</p>
+</li>
+</ul>
+<p>通过这些研究，可以对后续RCT起到参考<strong>入选排除标准</strong>、<strong>样本量估计参数</strong>、<strong>非劣效界值</strong>、<strong>评审中对设计合理性的判断的作用</strong>。</p>
+<h3 id="4-6-精准定位目标人群"><a href="#4-6-精准定位目标人群" class="headerlink" title="4.6 精准定位目标人群"></a>4.6 精准定位目标人群</h3><p>传统的RCT由于样本量有限，易导致忽略或无暇顾及亚组效应、潜在治疗应答不能体现、高风险信息不能体现、目标人群失准。</p>
+<p>而真实世界研究，可以利用不同类型的大数据<strong>充分考察不同亚组的治疗获益和风险</strong>，依此可更精准地评估治疗方法或治疗方案的目标人群定位。</p>
+<h2 id="五、真实世界研究的法规可行性"><a href="#五、真实世界研究的法规可行性" class="headerlink" title="五、真实世界研究的法规可行性"></a>五、真实世界研究的法规可行性</h2><p>通过以上对于真实世界研究的介绍。绝大多数的真实世界研究可以套用已有的法律法规进行监管。</p>
+<p>但是，在以肿瘤为代表的高频接触终末期病人的学科的临床实践中，时会出现指南中所有治疗方案用尽的情况。此时，根据药品未注册用法专家共识和执业医师法修订草案，在临床实践中可以根据实际情况使用超出说明书、超出指南的治疗方式。当研究者以前瞻性的视角观察这些超说明书、超指南、跨线、联合用药（以下简称IIT前观超跨联类研究）的情况时，会产生此研究是否符合伦理要求的疑问。本部分对此问题做出解答：</p>
+<p>其他类型研究一并在这里做出归类：</p>
+<ul>
+<li><p>回顾性分析一律按照观察性研究管理</p>
+</li>
+<li><p>PCT一律按照干预性研究尽心管理</p>
+</li>
+</ul>
+<h3 id="5-1-有关规章的解释"><a href="#5-1-有关规章的解释" class="headerlink" title="5.1 有关规章的解释"></a>5.1 有关规章的解释</h3><p>一些规章可以部分解释这一问题。但均未明确说明IIT前观超跨联类研究可以按照观察性研究进行管理：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">发布单位/时间</th>
+<th style="text-align:left">文件名称</th>
+<th style="text-align:left">是否对IIT前观超跨联有指导性意见</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">U.S. FDA 2016</td>
+<td style="text-align:left">21世纪治愈法案</td>
+<td style="text-align:left">RWE可以为新适应症提供证据，但未说明可以以前瞻性非干预的方式</td>
+</tr>
+<tr>
+<td style="text-align:left">U.S. FDA 2017</td>
+<td style="text-align:left">使用真实世界证据支持医疗器械管理决策</td>
+<td style="text-align:left">认定仅记录、分类、计量和分析的真实世界研究为观察性研究</td>
+</tr>
+<tr>
+<td style="text-align:left">中国胸部肿瘤协作组 2018</td>
+<td style="text-align:left">真实世界研究指南</td>
+<td style="text-align:left">RWS可为上市后药物开展补充研究、治疗性研究的范围、将健康监测作为前瞻性数据</td>
+</tr>
+<tr>
+<td style="text-align:left">NMPA CDE 2020</td>
+<td style="text-align:left">真实世界证据支持药物研发与审评的指导原则（试行）</td>
+<td style="text-align:left">观察性研究包括前瞻性研究并可为说明书变更提供依据</td>
+</tr>
+<tr>
+<td style="text-align:left">NMPA 2012</td>
+<td style="text-align:left">已上市抗肿瘤药物增加新适应症技术指导原则</td>
+<td style="text-align:left">通常抗肿瘤药物增加新适应症应进行RCT</td>
+</tr>
+<tr>
+<td style="text-align:left">国家卫健委 2020</td>
+<td style="text-align:left">关于医疗卫生机构开展研究者发起的临床研究管理办法</td>
+<td style="text-align:left">观察性研究为不包括研究性干预措施并不包括随机化分组</td>
+</tr>
+<tr>
+<td style="text-align:left">广东省药学会 2010</td>
+<td style="text-align:left">药品未注册用法专家共识</td>
+<td style="text-align:left">药品未注册用法不能以试验研究为目的</td>
+</tr>
+<tr>
+<td style="text-align:left">全国人大2021</td>
+<td style="text-align:left">执业医师法修订草案 第二十七条</td>
+<td style="text-align:left">超指南超说明书用法须满足：无更好手段、有循证医学证据、患者知情同意</td>
+</tr>
+<tr>
+<td style="text-align:left">国家卫健委2016</td>
+<td style="text-align:left">涉及人的生物医学研究伦理审查办法</td>
+<td style="text-align:left">解读：观察性研究为不干预受试者常规临床诊治，仅观察、收集和分析记录的研究</td>
+</tr>
+<tr>
+<td style="text-align:left">全国人大 2021</td>
+<td style="text-align:left">民法典第一千零八条</td>
+<td style="text-align:left">临床试验不得向受试者收取试验费用</td>
+</tr>
+<tr>
+<td style="text-align:left">国家卫健委医学伦理专家委员会 2020</td>
+<td style="text-align:left">涉及人的临床研究伦理审查委员会建设指南</td>
+<td style="text-align:left">临床试验指干预性研究（包括干预新药试验、干预使用方法和目的）；临床研究包括临床观察性研究和干预性研究</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="5-2-ChiCTR注册情况"><a href="#5-2-ChiCTR注册情况" class="headerlink" title="5.2 ChiCTR注册情况"></a>5.2 ChiCTR注册情况</h3><p>虽然有关规定并未明确IIT前观超跨联类研究可以按照观察性研究进行管理，但在<a target="_blank" rel="noopener" href="http://www.chictr.org.cn/index.aspx">ChiCTR.org</a>网站上，也不乏使用真实世界数据进行的前瞻性观察性研究（共359个），其中也有部分研究使用未上市药物进行探索性研究的情况（以下为截取的部分研究）：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">申报单位</th>
+<th style="text-align:left">研究内容</th>
+<th style="text-align:left">是否超说明书、超适应症等</th>
+<th style="text-align:left">研究类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">山东省肿瘤医院</td>
+<td style="text-align:left">阿法替尼或吉非替尼联合化疗一线治疗 EGFR 突变晚期非鳞状 NSCLC 的多中心、 前瞻性真实世界临床研究</td>
+<td style="text-align:left">探索性研究/预试验</td>
+<td style="text-align:left">观察性</td>
+</tr>
+<tr>
+<td style="text-align:left">广西医科大学第一附属医院</td>
+<td style="text-align:left">评估真实世界中注射用曲妥珠单抗（汉曲优）治疗乳腺癌的疗效和安全性</td>
+<td style="text-align:left">上市后药物</td>
+<td style="text-align:left">观察性</td>
+</tr>
+<tr>
+<td style="text-align:left">上海交通大学医学院附属瑞金医院</td>
+<td style="text-align:left">本研究主要目的是在CD30+的淋巴瘤患者中收集维布妥昔单抗（BV）使用的安全性、真实世界实践用药（治疗开始、计划和可能的用药调整，治疗周期）和有效性的数据。</td>
+<td style="text-align:left">上市后药物</td>
+<td style="text-align:left">观察性</td>
+</tr>
+<tr>
+<td style="text-align:left">广西医科大学第一附属医院</td>
+<td style="text-align:left">观察真实世界中安可达用于结直肠癌患者的治疗方式、疗效及安全性。</td>
+<td style="text-align:left">上市后药物</td>
+<td style="text-align:left">观察性</td>
+</tr>
+<tr>
+<td style="text-align:left">内江市第二人民医院</td>
+<td style="text-align:left">白蛋白结合型紫杉醇联合信迪利单抗在非小细胞肺癌应用中的前瞻性真实世界临床研究 记录真实诊疗实践中使用了白蛋白结合型紫杉醇和/或信迪利单抗的中晚期非小细胞肺癌患者的有效性和安全性数据； 2.收集患者血液及尿液标本，为进一步探索临床疗效预测的生物标记物建立标本库； 3.系统收集整理肿瘤患者治疗转归，总结经验，提高诊疗技能水平，形成系统性。</td>
+<td style="text-align:left">探索性研究/预试验</td>
+<td style="text-align:left">观察性</td>
+</tr>
+<tr>
+<td style="text-align:left">中国人民解放军总医院</td>
+<td style="text-align:left">卡瑞利珠单抗联合阿帕替尼用于肝癌术后高危复发人群辅助治疗的真实世界研究</td>
+<td style="text-align:left">上市后药物</td>
+<td style="text-align:left">观察性</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>但是，也有部分真实世界研究注册为干预性试验（70个，以下截取部分研究）</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">注册单位</th>
+<th style="text-align:left">注册题目</th>
+<th style="text-align:left">研究类型</th>
+<th style="text-align:left">注册时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">广西中医药大学第一附属医院</td>
+<td style="text-align:left">基于真实世界芪石升降归元颗粒治疗胃食管反流病的实效性临床研究</td>
+<td style="text-align:left">干预性研究</td>
+<td style="text-align:left">2021/6/11</td>
+</tr>
+<tr>
+<td style="text-align:left">北京同仁医院</td>
+<td style="text-align:left">请于伦理委员会批准后才开始征募参试者，并与我们联系上传伦理批件。 一项前瞻性、单中心、随观察性真实世界研究：评估不同TP53以及PIK3CA状态下帕博利珠单抗联合标准化疗（顺铂/卡铂+紫杉醇）用于局部复发头颈鳞癌一线治疗的疗效及安全性</td>
+<td style="text-align:left">干预性研究</td>
+<td style="text-align:left">2021/5/27</td>
+</tr>
+<tr>
+<td style="text-align:left">福建医科大学附属南平第一医院</td>
+<td style="text-align:left">请于伦理委员会批准后才开始征募参试者，并与我们联系上传伦理批件。 恩度联合卡瑞利珠单抗及化疗用于驱动基因阴的晚期NSCLC一线治疗真实世界研究 一项开放性、单臂、探索性临床研究</td>
+<td style="text-align:left">干预性研究</td>
+<td style="text-align:left">2021/5/21</td>
+</tr>
+<tr>
+<td style="text-align:left">广西医科大学第一附属医院</td>
+<td style="text-align:left">请于伦理委员会批准后才开始征募参试者，并与我们联系上传伦理批件。 氟维司群（晴可依） 治疗激素受体阳性晚期乳腺癌真实世界研究</td>
+<td style="text-align:left">干预性研究</td>
+<td style="text-align:left">2021/5/14</td>
+</tr>
+<tr>
+<td style="text-align:left">北京中医药大学东直门医院</td>
+<td style="text-align:left">灵泽片治疗良性前列腺增生患者真实世界临床应用的疗效观察</td>
+<td style="text-align:left">干预性研究</td>
+<td style="text-align:left">2021/4/23</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="5-3-规范拟定"><a href="#5-3-规范拟定" class="headerlink" title="5.3 规范拟定"></a>5.3 规范拟定</h3><p>虽然在真实的临床实践中，根据药品未注册用法专家共识和执业医师法修订草案，允许在<strong>患者知情、无其他用药选择、院内备案、高等级循证医学证据</strong>的前提下进行超出药品注册用法的使用，但是若依此开展多样本的前瞻性观察性真实世界研究，则会因临床研究的进行造成无法论证的超说明书用药的原因，疑似违反受试者获益小于风险的原则，尤其是在IIT研究中。但由于相关指导原则并没有对此类研究做出明确规定，且已有此类研究进行。现对本院前瞻性超说明书的观察性真实世界研究做如下规范：</p>
+<p><strong>该类试验中的暴露因素（即超说明用药情况）需在国际认可的指南中被推荐至对应适应症的对应线数治疗，包括NCCN、 ESMO、 ASCO、 ASGE、 JGSE/JGCA。未满足此要求的试验应当作为干预性研究进行设计。</strong></p>
+<h2 id="六、真实世界研究的评价方法"><a href="#六、真实世界研究的评价方法" class="headerlink" title="六、真实世界研究的评价方法"></a>六、真实世界研究的评价方法</h2><h3 id="6-1-研究设计"><a href="#6-1-研究设计" class="headerlink" title="6.1 研究设计"></a>6.1 研究设计</h3><ul>
+<li>研究模式方式是否明确</li>
+</ul>
+<p>研究模式是否为下列之一：</p>
+<blockquote>
+<ol>
+<li><p>实效临床试验 PCT</p>
+</li>
+<li><p>单臂干预试验的平行对照或历史对照</p>
+</li>
+<li><p>观察性研究（前瞻性或回顾性）</p>
+</li>
+</ol>
+</blockquote>
+<ul>
+<li>研究目的是否明确且符合其对研究模式的规定</li>
+</ul>
+<p>研究目的是否为下列之一（且满足括号内对于试验模式的要求）：</p>
+<blockquote>
+<ol>
+<li><p>新药上市的证据（I 期不可用）（PCT、RCT + 单臂RWD）</p>
+</li>
+<li><p>为已上市的药物变更说明书提供证据 （PCT、观察性研究）</p>
+</li>
+<li><p>为药物上市后要求或再评价提供证据 （PCT、观察性研究、RCT + 单臂RWD）</p>
+</li>
+<li><p>名老中医经验方、中药医疗机构制剂的人用经验总结与临床研发 （PCT、观察性研究、RCT + 单臂RWD）</p>
+</li>
+<li><p>据用于监管决策的其它应用 （PCT、观察性研究、RCT + 单臂RWD）</p>
+</li>
+<li><p>指导临床研究设计 （PCT、观察性研究、RCT + 单臂RWD）</p>
+</li>
+<li><p>精准定位目标人群 （PCT、观察性研究、RCT + 单臂RWD）</p>
+</li>
+</ol>
+</blockquote>
+<ul>
+<li><p>采用干预性试验方案时，是否拥有明确的不进行RCT研究的条件</p>
+</li>
+<li><p>干预是否标准化（不要求标准化，结合实际情况即可）</p>
+</li>
+<li><p>分组是否随机化（不要求随机化，结合实际情况即可）</p>
+</li>
+</ul>
+<h3 id="6-2-数据与统计相关"><a href="#6-2-数据与统计相关" class="headerlink" title="6.2 数据与统计相关"></a>6.2 数据与统计相关</h3><h4 id="6-2-1-数据来源"><a href="#6-2-1-数据来源" class="headerlink" title="6.2.1 数据来源"></a>6.2.1 数据来源</h4><p>须判别其数据来源是否为真实世界数据，否则不应称为真实世界研究，包括但不限于下列之一：</p>
+<blockquote>
+<ol>
+<li><p>健康管理报告</p>
+</li>
+<li><p>电子健康档案 EMR</p>
+</li>
+<li><p>病例报告 (Medical Records, MR)</p>
+</li>
+<li><p>医保数据</p>
+</li>
+<li><p>出生死亡登记</p>
+</li>
+<li><p>公共健康监测数据</p>
+</li>
+<li><p>疾病登记系统</p>
+</li>
+<li><p>自然队列、专病队列数据库</p>
+</li>
+<li><p>组学相关数据库</p>
+</li>
+</ol>
+</blockquote>
+<h4 id="6-2-2-数据多样性"><a href="#6-2-2-数据多样性" class="headerlink" title="6.2.2 数据多样性"></a>6.2.2 数据多样性</h4><p>须列出所使用因变量、自变量与其他相关协变量的取值范围与分布（分类变量须列出每种取值的计数）以查验数据的多样性表现。</p>
+<h4 id="6-2-3-样本量"><a href="#6-2-3-样本量" class="headerlink" title="6.2.3 样本量"></a>6.2.3 样本量</h4><p>作为真实世界研究，尤其是观察性的真实世界研究，希望研究者尽可能地获取更多的样本，而不是仅仅满足于达到统计学软件计算出的样本量。</p>
+<h4 id="6-2-4-数据处理与保存措施"><a href="#6-2-4-数据处理与保存措施" class="headerlink" title="6.2.4 数据处理与保存措施"></a>6.2.4 数据处理与保存措施</h4><p>评估该研究是否有良好的数据提取、保存、保密、分析机制。是否能保证统计结果的复现性。</p>
+<h4 id="6-2-5-使用何种统计方法"><a href="#6-2-5-使用何种统计方法" class="headerlink" title="6.2.5 使用何种统计方法"></a>6.2.5 使用何种统计方法</h4><ul>
+<li><p>是否使用合适的调整分析方式。</p>
+</li>
+<li><p>是否对缺失数据采取合适的预案与处理方式。</p>
+</li>
+<li><p>是否计划对协变量进行敏感性分析。</p>
+</li>
+</ul>
+<h2 id="七、研究者进行真实世界研究前需要考虑的内容"><a href="#七、研究者进行真实世界研究前需要考虑的内容" class="headerlink" title="七、研究者进行真实世界研究前需要考虑的内容"></a>七、研究者进行真实世界研究前需要考虑的内容</h2><h3 id="7-1-研究背景与立意"><a href="#7-1-研究背景与立意" class="headerlink" title="7.1 研究背景与立意"></a>7.1 研究背景与立意</h3><p>在进行研究前，首先需要明确自己进行研究的目的不是发一篇文章就结束了。真实世界研究的研究目的可以是下列之一。此外，选择的研究类型（研究模式）需要满足研究目的的要求（下方已用括号标出）。</p>
+<blockquote>
+<ol>
+<li><p>新药上市的证据（I 期不可用）（PCT、RCT + 单臂RWD）</p>
+</li>
+<li><p>为已上市的药物变更说明书提供证据 （PCT、观察性研究）</p>
+</li>
+<li><p>为药物上市后要求或再评价提供证据 （PCT、观察性研究、RCT + 单臂RWD）</p>
+</li>
+<li><p>名老中医经验方、中药医疗机构制剂的人用经验总结与临床研发 （PCT、观察性研究、RCT + 单臂RWD）</p>
+</li>
+<li><p>据用于监管决策的其它应用 （PCT、观察性研究、RCT + 单臂RWD）</p>
+</li>
+<li><p>指导临床研究设计 （PCT、观察性研究、RCT + 单臂RWD）</p>
+</li>
+<li><p>精准定位目标人群 （PCT、观察性研究、RCT + 单臂RWD）</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="7-2-判别自己的研究类型"><a href="#7-2-判别自己的研究类型" class="headerlink" title="7.2 判别自己的研究类型"></a>7.2 判别自己的研究类型</h3><p>真实世界的研究类型（研究模式）包括以下三种，请确保自己的研究模式为以下三种之一：</p>
+<h4 id="7-2-1-实效临床试验-Programatic-Clinical-Trial-PCT"><a href="#7-2-1-实效临床试验-Programatic-Clinical-Trial-PCT" class="headerlink" title="7.2.1 实效临床试验 Programatic Clinical Trial, PCT"></a>7.2.1 实效临床试验 Programatic Clinical Trial, PCT</h4><p>想进行PCT试验，首先需要有充足的理由证明无法进行RCT研究或其他试验性研究。下方列出了一些可能的原因：</p>
+<ul>
+<li><p>RCT病例数少，无法进行多协变量分析</p>
+</li>
+<li><p>RCT入组严格，受试者不具有多样性</p>
+</li>
+<li><p>RCT试验进展时间有限，无法满足研究终点的要求</p>
+</li>
+<li><p>RCT干预过于标准化，无法对多样化的用药方案进行分析</p>
+</li>
+</ul>
+<p>此外，在进行PCT试验时，需要怀揣着这样的心态：这种新的治疗方案就是已经被写入指南中的治疗方法。需要面向广大患者按需使用，并记录使用结果。如果还是希望对精挑细选的患者做干预，那么应该进行非真实世界的干预性的研究。</p>
+<h4 id="7-2-2-观察性研究-Observational-Study"><a href="#7-2-2-观察性研究-Observational-Study" class="headerlink" title="7.2.2 观察性研究 Observational Study"></a>7.2.2 观察性研究 Observational Study</h4><p>观察性研究分为前瞻性和回顾性。回顾性的没有特别需要注意的。在前瞻性的观察性研究中，若存在超说明书、超指南、跨治疗线数的新药和联合用药的情况，请参考本方案第五部分，需要满足下列要求，才可以被认定为观察性研究：</p>
+<blockquote>
+<ol>
+<li><p>药品具有循证医学证据</p>
+</li>
+<li><p>没有其他更好的治疗手段</p>
+</li>
+<li><p>患者知情同意</p>
+</li>
+<li><p>需要向医院进行报备</p>
+</li>
+</ol>
+</blockquote>
+<p>若进行的前瞻性观察性研究不存在超说明书、超指南、跨治疗线数的新药和联合用药的情况则按照其他观察性研究的要求进行。</p>
+<h3 id="7-3-判别自己研究所使用的数据的质量"><a href="#7-3-判别自己研究所使用的数据的质量" class="headerlink" title="7.3 判别自己研究所使用的数据的质量"></a>7.3 判别自己研究所使用的数据的质量</h3><ul>
+<li>数据来源</li>
+</ul>
+<p>进行真实世界研究首先需要判断自己的研究究竟是否符合真实世界研究的标准。如果您的研究数据来源为下列之一，则可被认为是真实世界研究：</p>
+<blockquote>
+<ol>
+<li><p>健康管理报告</p>
+</li>
+<li><p>电子健康档案 EMR</p>
+</li>
+<li><p>病例报告 (Medical Records, MR)</p>
+</li>
+<li><p>医保数据</p>
+</li>
+<li><p>出生死亡登记</p>
+</li>
+<li><p>公共健康监测数据</p>
+</li>
+<li><p>疾病登记系统</p>
+</li>
+<li><p>自然队列、专病队列数据库</p>
+</li>
+<li><p>组学相关数据库</p>
+</li>
+</ol>
+</blockquote>
+<p>如果您的研究需要向受访者发布调查问卷收集数据库中不存在的新信息且有严格的入排标准或源人群定义，则不应考虑按照真实世界研究进行实施。</p>
+<ul>
+<li>数据多样性</li>
+</ul>
+<p>需要对收集到的数据或即将收集的数据做一定的了解，满足真实世界研究对于数据多样性的要求。</p>
+<h3 id="7-4-是否有翔实的数据管理方案"><a href="#7-4-是否有翔实的数据管理方案" class="headerlink" title="7.4 是否有翔实的数据管理方案"></a>7.4 是否有翔实的数据管理方案</h3><p>由于真实世界研究常会有大样本的数据被记录和研究，其对于数据的管理要求也更加高。需要有良好的数据提取、保存、保密、分析机制。分析前的数据需要进行脱敏化的处理，且在研究人员间流转时需要有明晰的管理方案。这里推荐使用REDCap软件对数据进行管理。在研究结束后能保证通过锁定的数据统计分析后复现相同的统计结果。</p>
+<h3 id="7-5-统计方案选择"><a href="#7-5-统计方案选择" class="headerlink" title="7.5 统计方案选择"></a>7.5 统计方案选择</h3><p>由于真实世界数据往往存在较大的偏倚和混杂，其统计学分析是产生高质量结果的关键点。请根据自身的研究设计，在研究中进行下列统计学考量（具体请参见本方案第三部分）：</p>
+<ul>
+<li><p>合适的调整分析。</p>
+</li>
+<li><p>对缺失数据采取合适的预案与处理方式。</p>
+</li>
+<li><p>对协变量进行敏感性分析。</p>
+</li>
+</ul>
+<h3 id="7-6-真实世界研究不是低质量研究的试错场"><a href="#7-6-真实世界研究不是低质量研究的试错场" class="headerlink" title="7.6 真实世界研究不是低质量研究的试错场"></a>7.6 真实世界研究不是低质量研究的试错场</h3><p><strong>强调</strong>：不可因为研究设计不足以满足RCT的高标准就改称研究为真实世界研究希望依此降低自己的方案被审核的严谨程度。真实世界研究同样需要被高质量、高标准地进行。</p>
+<p>真实世界研究作为临床研究的一种，同样需要满足医学伦理中知情同意、控制风险、免费和补偿、保护隐私、依法赔偿、特殊保护的原则。</p>
+<h3 id="7-7-真实世界研究同样需要进行注册"><a href="#7-7-真实世界研究同样需要进行注册" class="headerlink" title="7.7 真实世界研究同样需要进行注册"></a>7.7 真实世界研究同样需要进行注册</h3><h2 id="八、示例研究"><a href="#八、示例研究" class="headerlink" title="八、示例研究"></a>八、示例研究</h2><p>2018年南佛罗里达大学进行了一个关于奥马珠治疗哮喘的前瞻性观察性真实世界研究，结论为奥马珠的治疗方式缩短了住院时间，提升了ACT分数。在该研究中，要求参与研究的受试者需要有覆盖奥马珠治疗方案的保险。</p>
+<p>2014年在丹麦Arhus大学进行了一项关于髋关节置换术后抗血栓治疗的前瞻性观察性真实世界研究。其结论为抗血栓治疗对于静脉血管栓塞（VTE）出血和死亡的风险与未进行治疗的患者没有差异。在该研究中，所有治疗费用均对患者免费。</p>
+<p>2017年，北京大学血液科牵头进行了多中心的来那度胺治疗多发性骨髓瘤的前瞻性观察性研究。该研究纳入了25例初治多发性骨髓瘤患者，使用了来那度胺的治疗方案，数据跨线的治疗。在文章中未提及对于受访者的补偿。</p>
+<p>2020年，内蒙古医科大学赤峰临床医学院开展了阿帕替尼联合紫杉醇治疗胃癌的真实世界研究。该研究属于实效临床试验。试验将受试者分为两组，一组联合用药，另一组使用紫杉醇单药。该研究结论发现联合用药PFS与单药相比延长且具有统计学意义。但文章中并未提及分组策略或随机化。文章中也未提及对于受试者的补助。</p>
+<p>2020年北京大学肿瘤医院进行了吡咯替尼联合其他化疗药物治疗HER2阳性的转移性乳腺癌的疗效及安全性。该研究为回顾性的观察性研究。该研究结论为吡咯替尼联合化疗药物治疗HER2阳性的转移性乳腺癌在包括拉帕替尼治疗失败及脑转移的患者中不良反应已腹泻为主且可耐受。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2>
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
+            <p>Link of This Article：<a href="https://ry2an.github.io/2021/07/26/20210726-realworldstudy/">https://ry2an.github.io/2021/07/26/20210726-realworldstudy/</a>
+            <p>Publish Date：<a href="https://ry2an.github.io/2021/07/26/20210726-realworldstudy/">July 26th 2021, 9:54:43 am</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2021/07/26/20210726-realworldstudy/">July 26th 2021, 10:04:42 am</a>
+            <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2021/05/11/20210511papers-submitting/" title= "20210511征文投稿">
+                    <div class="prevTitle">20210511征文投稿</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:ruoyan.han94@outlook.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Ry2an" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/my_wechat.jpg" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.zhihu.com/people/tui-mao-39" class="iconfont-archer zhihu" target="_blank" title=zhihu></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://space.bilibili.com/2477951" class="iconfont-archer bilibili" target="_blank" title=bilibili></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%9C%9F%E5%AE%9E%E4%B8%96%E7%95%8C%E7%A0%94%E7%A9%B6%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">一、真实世界研究的定义与简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%9C%9F%E5%AE%9E%E4%B8%96%E7%95%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 真实世界数据的定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-%E7%9C%9F%E5%AE%9E%E4%B8%96%E7%95%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9D%A5%E6%BA%90"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1.1 真实世界数据的来源</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E7%9C%9F%E5%AE%9E%E4%B8%96%E7%95%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E7%89%B9%E5%BE%81"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 真实世界数据的特征</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%9C%9F%E5%AE%9E%E4%B8%96%E7%95%8C%E7%A0%94%E7%A9%B6%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">二、真实世界研究的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Programatic-Clinical-Trial-PCT-%E5%AE%9E%E6%95%88%E4%B8%B4%E5%BA%8A%E8%AF%95%E9%AA%8C"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 Programatic Clinical Trial, PCT 实效临床试验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Observational-Study-%E8%A7%82%E5%AF%9F%E6%80%A7%E7%A0%94%E7%A9%B6"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 Observational Study 观察性研究</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%8D%95%E8%87%82%E8%AF%95%E9%AA%8C%E7%9A%84%E5%B9%B3%E8%A1%8C%E5%AF%B9%E7%85%A7%E6%88%96%E5%8E%86%E5%8F%B2%E5%AF%B9%E7%85%A7"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 单臂试验的平行对照或历史对照</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%9C%9F%E5%AE%9E%E4%B8%96%E7%95%8C%E7%A0%94%E7%A9%B6%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">三、真实世界研究的统计方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 描述统计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E8%B0%83%E6%95%B4%E5%88%86%E6%9E%90"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 调整分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-%E5%8D%8F%E5%8F%98%E9%87%8F%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1 协变量的选择</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-%E5%88%A9%E7%94%A8%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90%E8%B0%83%E6%95%B4%E6%A8%A1%E5%9E%8B"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2 利用回归分析调整模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-3-%E5%80%BE%E5%90%91%E6%80%A7%E8%AF%84%E5%88%86-Propensity-Score"><span class="toc-number">3.2.3.</span> <span class="toc-text">3.2.3 倾向性评分 Propensity Score</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-4-%E7%96%BE%E7%97%85%E9%A3%8E%E9%99%A9%E8%AF%84%E5%88%86-Disease-Risk-Score-DRS"><span class="toc-number">3.2.4.</span> <span class="toc-text">3.2.4 疾病风险评分 Disease Risk Score, DRS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-5-%E5%B7%A5%E5%85%B7%E5%8F%98%E9%87%8F-Instrument-Variable"><span class="toc-number">3.2.5.</span> <span class="toc-text">3.2.5 工具变量 Instrument Variable</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E6%95%8F%E6%84%9F%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 敏感性分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E7%BC%BA%E5%A4%B1%E6%95%B0%E6%8D%AE%E7%9A%84%E8%80%83%E8%99%91"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 缺失数据的考虑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-1-%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BC%BA%E5%A4%B1%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.4.1.</span> <span class="toc-text">3.4.1 数据的缺失类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-2-%E6%8F%92%E5%80%BC%E5%A1%AB%E5%85%85"><span class="toc-number">3.4.2.</span> <span class="toc-text">3.4.2 插值填充</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E6%A0%B7%E6%9C%AC%E9%87%8F%E8%AE%A1%E7%AE%97"><span class="toc-number">3.5.</span> <span class="toc-text">3.5 样本量计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-%E5%81%8F%E5%80%9A%E4%B8%8E%E6%B7%B7%E6%9D%82%E5%88%86%E6%9E%90"><span class="toc-number">3.6.</span> <span class="toc-text">3.6 偏倚与混杂分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%9C%9F%E5%AE%9E%E4%B8%96%E7%95%8C%E7%A0%94%E7%A9%B6%E7%9A%84%E7%94%A8%E9%80%94"><span class="toc-number">4.</span> <span class="toc-text">四、真实世界研究的用途</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%96%B0%E8%8D%AF%E4%B8%8A%E5%B8%82%E7%9A%84%E8%AF%81%E6%8D%AE"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 新药上市的证据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E4%B8%BA%E5%B7%B2%E4%B8%8A%E5%B8%82%E7%9A%84%E8%8D%AF%E7%89%A9%E8%AF%B4%E6%98%8E%E4%B9%A6%EF%BC%88%E6%8C%87%E5%8D%97%EF%BC%89%E5%8F%98%E6%9B%B4%E6%8F%90%E4%BE%9B%E8%AF%81%E6%8D%AE"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 为已上市的药物说明书（指南）变更提供证据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E4%B8%BA%E8%8D%AF%E7%89%A9%E4%B8%8A%E5%B8%82%E5%90%8E%E8%A6%81%E6%B1%82%E6%88%96%E5%86%8D%E8%AF%84%E4%BB%B7%E6%8F%90%E4%BE%9B%E8%AF%81%E6%8D%AE"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 为药物上市后要求或再评价提供证据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E5%90%8D%E8%80%81%E4%B8%AD%E5%8C%BB%E7%BB%8F%E9%AA%8C%E6%96%B9%E3%80%81%E4%B8%AD%E8%8D%AF%E5%8C%BB%E7%96%97%E6%9C%BA%E6%9E%84%E5%88%B6%E5%89%82%E7%9A%84%E4%BA%BA%E7%94%A8%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%E4%B8%8E%E4%B8%B4%E5%BA%8A%E7%A0%94%E5%8F%91"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 名老中医经验方、中药医疗机构制剂的人用经验总结与临床研发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-%E6%8C%87%E5%AF%BC%E4%B8%B4%E5%BA%8A%E7%A0%94%E7%A9%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">4.5.</span> <span class="toc-text">4.5 指导临床研究设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-%E7%B2%BE%E5%87%86%E5%AE%9A%E4%BD%8D%E7%9B%AE%E6%A0%87%E4%BA%BA%E7%BE%A4"><span class="toc-number">4.6.</span> <span class="toc-text">4.6 精准定位目标人群</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%9C%9F%E5%AE%9E%E4%B8%96%E7%95%8C%E7%A0%94%E7%A9%B6%E7%9A%84%E6%B3%95%E8%A7%84%E5%8F%AF%E8%A1%8C%E6%80%A7"><span class="toc-number">5.</span> <span class="toc-text">五、真实世界研究的法规可行性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E6%9C%89%E5%85%B3%E8%A7%84%E7%AB%A0%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 有关规章的解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-ChiCTR%E6%B3%A8%E5%86%8C%E6%83%85%E5%86%B5"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 ChiCTR注册情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E8%A7%84%E8%8C%83%E6%8B%9F%E5%AE%9A"><span class="toc-number">5.3.</span> <span class="toc-text">5.3 规范拟定</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E7%9C%9F%E5%AE%9E%E4%B8%96%E7%95%8C%E7%A0%94%E7%A9%B6%E7%9A%84%E8%AF%84%E4%BB%B7%E6%96%B9%E6%B3%95"><span class="toc-number">6.</span> <span class="toc-text">六、真实世界研究的评价方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E7%A0%94%E7%A9%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 研究设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%BB%9F%E8%AE%A1%E7%9B%B8%E5%85%B3"><span class="toc-number">6.2.</span> <span class="toc-text">6.2 数据与统计相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-1-%E6%95%B0%E6%8D%AE%E6%9D%A5%E6%BA%90"><span class="toc-number">6.2.1.</span> <span class="toc-text">6.2.1 数据来源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-2-%E6%95%B0%E6%8D%AE%E5%A4%9A%E6%A0%B7%E6%80%A7"><span class="toc-number">6.2.2.</span> <span class="toc-text">6.2.2 数据多样性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-3-%E6%A0%B7%E6%9C%AC%E9%87%8F"><span class="toc-number">6.2.3.</span> <span class="toc-text">6.2.3 样本量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-4-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B8%8E%E4%BF%9D%E5%AD%98%E6%8E%AA%E6%96%BD"><span class="toc-number">6.2.4.</span> <span class="toc-text">6.2.4 数据处理与保存措施</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-5-%E4%BD%BF%E7%94%A8%E4%BD%95%E7%A7%8D%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95"><span class="toc-number">6.2.5.</span> <span class="toc-text">6.2.5 使用何种统计方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E7%A0%94%E7%A9%B6%E8%80%85%E8%BF%9B%E8%A1%8C%E7%9C%9F%E5%AE%9E%E4%B8%96%E7%95%8C%E7%A0%94%E7%A9%B6%E5%89%8D%E9%9C%80%E8%A6%81%E8%80%83%E8%99%91%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-number">7.</span> <span class="toc-text">七、研究者进行真实世界研究前需要考虑的内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E7%A0%94%E7%A9%B6%E8%83%8C%E6%99%AF%E4%B8%8E%E7%AB%8B%E6%84%8F"><span class="toc-number">7.1.</span> <span class="toc-text">7.1 研究背景与立意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E5%88%A4%E5%88%AB%E8%87%AA%E5%B7%B1%E7%9A%84%E7%A0%94%E7%A9%B6%E7%B1%BB%E5%9E%8B"><span class="toc-number">7.2.</span> <span class="toc-text">7.2 判别自己的研究类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-1-%E5%AE%9E%E6%95%88%E4%B8%B4%E5%BA%8A%E8%AF%95%E9%AA%8C-Programatic-Clinical-Trial-PCT"><span class="toc-number">7.2.1.</span> <span class="toc-text">7.2.1 实效临床试验 Programatic Clinical Trial, PCT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-2-%E8%A7%82%E5%AF%9F%E6%80%A7%E7%A0%94%E7%A9%B6-Observational-Study"><span class="toc-number">7.2.2.</span> <span class="toc-text">7.2.2 观察性研究 Observational Study</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-%E5%88%A4%E5%88%AB%E8%87%AA%E5%B7%B1%E7%A0%94%E7%A9%B6%E6%89%80%E4%BD%BF%E7%94%A8%E7%9A%84%E6%95%B0%E6%8D%AE%E7%9A%84%E8%B4%A8%E9%87%8F"><span class="toc-number">7.3.</span> <span class="toc-text">7.3 判别自己研究所使用的数据的质量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4-%E6%98%AF%E5%90%A6%E6%9C%89%E7%BF%94%E5%AE%9E%E7%9A%84%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88"><span class="toc-number">7.4.</span> <span class="toc-text">7.4 是否有翔实的数据管理方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-5-%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%A1%88%E9%80%89%E6%8B%A9"><span class="toc-number">7.5.</span> <span class="toc-text">7.5 统计方案选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-6-%E7%9C%9F%E5%AE%9E%E4%B8%96%E7%95%8C%E7%A0%94%E7%A9%B6%E4%B8%8D%E6%98%AF%E4%BD%8E%E8%B4%A8%E9%87%8F%E7%A0%94%E7%A9%B6%E7%9A%84%E8%AF%95%E9%94%99%E5%9C%BA"><span class="toc-number">7.6.</span> <span class="toc-text">7.6 真实世界研究不是低质量研究的试错场</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-7-%E7%9C%9F%E5%AE%9E%E4%B8%96%E7%95%8C%E7%A0%94%E7%A9%B6%E5%90%8C%E6%A0%B7%E9%9C%80%E8%A6%81%E8%BF%9B%E8%A1%8C%E6%B3%A8%E5%86%8C"><span class="toc-number">7.7.</span> <span class="toc-text">7.7 真实世界研究同样需要进行注册</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E7%A4%BA%E4%BE%8B%E7%A0%94%E7%A9%B6"><span class="toc-number">8.</span> <span class="toc-text">八、示例研究</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">9.</span> <span class="toc-text">参考文献</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 29
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2021 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/26</span><a class="archive-post-title" href= "/2021/07/26/20210726-realworldstudy/" >20210726_realworldstudy</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2021/05/11/20210511papers-submitting/" >20210511征文投稿</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/07</span><a class="archive-post-title" href= "/2021/05/07/20210507redcaptutorial/" >REDCap使用手册预览版</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/17</span><a class="archive-post-title" href= "/2021/04/17/20210417paperreview/" >20210417文献阅读</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/13</span><a class="archive-post-title" href= "/2021/03/13/20210313-public-basic-konwledge/" >公共基础知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/13</span><a class="archive-post-title" href= "/2021/03/13/20210313study-plan/" >2021博士研究生科研计划（老年人群健康方向）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span><a class="archive-post-title" href= "/2021/03/06/20200306journal-reading/" >20200306 期刊检索</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2021/02/19/20200219gongkaobeikao/" >公务员事业单位备考</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/25</span><a class="archive-post-title" href= "/2020/12/25/20201225-healthIinsurance/" >商业健康险总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/19</span><a class="archive-post-title" href= "/2020/11/19/meta-analysis-learning/" >meta analysis learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/28</span><a class="archive-post-title" href= "/2020/10/28/studynote/" >生统流病学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2020/09/05/ncrerank3database/" >三级数据库技术知识点</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span><a class="archive-post-title" href= "/2020/08/15/SAS-codes/" >SAS codes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/31</span><a class="archive-post-title" href= "/2020/07/31/rubella/" >Dynamic modeling analyses of Rubella in Henan Province, China, 2005 -2016</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span><a class="archive-post-title" href= "/2020/07/29/flight-back-china/" >回国航班</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/20</span><a class="archive-post-title" href= "/2020/05/20/EPID622/" >Exploring Association Between Self-Reported Mental Health and Obesity by Using Propensity Score to Adjust Chronic Diseases</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/Portfolio-as-MPH-Student/" >Portfolio as MPH</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/05</span><a class="archive-post-title" href= "/2020/03/05/Repeat-Academic-Poisson-and-Negative-Binomial-Regression/" >Repeat Academic Poisson and Negative Binomial Regression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2020/03/04/Repeat-Ancademic-Survival-Analysis/" >Repeat Academic Survival Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/" >Understanding Fourier Transform and Wavelet Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/31</span><a class="archive-post-title" href= "/2020/01/31/Simulating-SIR-Model/" >Simulating SIR Model</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/17</span><a class="archive-post-title" href= "/2020/01/17/Crawling-Data-From-html-Based-Pages/" >Crawling Data From html Based Pages</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/2020/01/14/Vaccine-Making-Selling-Delivering-and-Using-System/" >Vaccine Making Selling Delivering and Using System</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/11</span><a class="archive-post-title" href= "/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/" >Using Longitudinal Models To Analyze Steam Games</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/10</span><a class="archive-post-title" href= "/2020/01/10/Connect-Four-Chess/" >Connect Four Chess</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2016 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/01</span><a class="archive-post-title" href= "/2016/09/01/summer-survey-2016/" >2016年暑期实践</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1994 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/10</span><a class="archive-post-title" href= "/1994/10/10/Markdown-Cheat-Sheet/" >Markdown Cheat Sheet</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/09</span><a class="archive-post-title" href= "/1994/10/09/MySQL-Hand-Book/" >MySQL Hand Book</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 1990 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/30</span><a class="archive-post-title" href= "/1990/07/30/test/" >test</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="Paper_Review"><span class="iconfont-archer">&#xe606;</span>Paper_Review</span>
+    
+        <span class="sidebar-tag-name" data-tags="trip"><span class="iconfont-archer">&#xe606;</span>trip</span>
+    
+        <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Ruoyan Han"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
+
+
