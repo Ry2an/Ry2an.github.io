@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>Ry2an&#39;s Blog</title>
+    <title>latex使用手册 · Ry2an&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,12 +203,23 @@
 <meta name="generator" content="Hexo 5.0.0"></head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Ry2an&#39;s Studio</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">latex使用手册</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Ry2an's Studio</a>
 </header>
@@ -220,24 +231,68 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/postbg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            latex使用手册
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">904</span>Reading time: <span class="post-count reading-time">4 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2021/08/17</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -338,304 +393,50 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/" >
-            
-                <span>Understanding Fourier Transform and Wavelet Analysis</span>
-        </a>
-        <div class="abstract-content">
-            This document is a note of learing these two methods.
-I also recorded videos about fourier transform and wavelet analysis under my bilibili account.(Fourier Transform, Wavelet Analysis)
-What is Fourier TransformLet’s begin with lights. We know that sunlight seems white but acutally it contain sev...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/09</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>记录一些tex语法以备不时之需。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line">\documentclass[UTF8]&#123;ctexart&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">\title&#123;你好，world!&#125;</span><br><span class="line">\author&#123;Liam&#125;</span><br><span class="line">\date&#123;\today&#125;</span><br><span class="line">% date 可以是 &#123;January 2021&#125;</span><br><span class="line"></span><br><span class="line">\usepackage&#123;graphicx&#125;</span><br><span class="line">% 使用图片</span><br><span class="line"></span><br><span class="line">\usepackage&#123;amsmath&#125;</span><br><span class="line">% 如果要使用数学公式，在导言区就要使用这个包。</span><br><span class="line"></span><br><span class="line">\usepackage&#123;geometry&#125;</span><br><span class="line">\geometry&#123;papersize&#x3D;&#123;20cm,15cm&#125;&#125;</span><br><span class="line">\geometry&#123;left&#x3D;1cm,right&#x3D;2cm,top&#x3D;3cm,bottom&#x3D;4cm&#125;</span><br><span class="line">% 设置纸张大小和页边距</span><br><span class="line"></span><br><span class="line">\usepackage&#123;fancyhdr&#125;</span><br><span class="line">\pagestyle&#123;fancy&#125;</span><br><span class="line">\lhead&#123;\author&#125;</span><br><span class="line">\chead&#123;\date&#125;</span><br><span class="line">\rhead&#123;18537182018&#125;</span><br><span class="line">\lfoot&#123;&#125;</span><br><span class="line">\cfoot&#123;\thepage&#125;</span><br><span class="line">\rfoot&#123;&#125;</span><br><span class="line">\renewcommand&#123;\headrulewidth&#125;&#123;0.4pt&#125;</span><br><span class="line">\renewcommand&#123;\headwidth&#125;&#123;\textwidth&#125;</span><br><span class="line">\renewcommand&#123;\footrulewidth&#125;&#123;0pt&#125;</span><br><span class="line">% 设置页眉页脚</span><br><span class="line"></span><br><span class="line">\usepackage&#123;setspace&#125;</span><br><span class="line">\onehalfspacing</span><br><span class="line">% 设置行间距</span><br><span class="line"></span><br><span class="line">\addtolength&#123;\parskip&#125;&#123;.4em&#125;</span><br><span class="line">% 修改段落间距：注意，这是在原有基础上加0.4em，如果需要缩小，改成负数就可以</span><br><span class="line"></span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">\maketitle</span><br><span class="line">% maketitle 将展示导言区的 title, author and date</span><br><span class="line">% 可以使用 titling 宏包更精细地编辑maketitle的展示方式</span><br><span class="line"></span><br><span class="line">\tableofcontents</span><br><span class="line">% 这个是目录</span><br><span class="line"></span><br><span class="line">你好，world!</span><br><span class="line">换一行不会换行。但是会有一个空格。</span><br><span class="line"></span><br><span class="line">换两行才会换行，和markdown一样。</span><br><span class="line"></span><br><span class="line">使用textbf来\textbf&#123;加粗文字&#125;。bf 是 bold font的缩写</span><br><span class="line"></span><br><span class="line">使用textit来\textit&#123;斜体文字&#125;。bf 是 italic的缩写</span><br><span class="line"></span><br><span class="line">使用underline来添加\underline&#123;下划线&#125;。</span><br><span class="line"></span><br><span class="line">\section&#123;你好中国&#125;</span><br><span class="line">中国在East Asia.</span><br><span class="line">\subsection&#123;Hello Beijing&#125;</span><br><span class="line">北京是capital of China.</span><br><span class="line">\subsubsection&#123;Hello Dongcheng District&#125;</span><br><span class="line">\paragraph&#123;Tian&#39;anmen Square&#125;</span><br><span class="line">is in the center of Beijing</span><br><span class="line">\subparagraph&#123;Chairman Mao&#125;</span><br><span class="line">is in the center of 天安门广场。</span><br><span class="line">\subsection&#123;Hello 山东&#125;</span><br><span class="line">\paragraph&#123;山东大学&#125; is one of the best university in 山东。</span><br><span class="line"></span><br><span class="line">% 注意 上述的section subsection subsubsection paragraph subparagraph subsubparagraph 全部是文档类 article&#x2F;ctexart 中可以使用的行文组织结构</span><br><span class="line">% 在report&#x2F;ctexrep&#x2F;ctexbook中，还有\chapter&#123;·&#125;；在文档类book&#x2F;ctexbook中，还定义了\part&#123;·&#125;。</span><br><span class="line"></span><br><span class="line">展示行内数学公式 $ a + \theta * b  &#x3D; \frac&#123;a&#125;&#123;b&#125; $ 展示行内数学公式。</span><br><span class="line"></span><br><span class="line">展示行间数学公式</span><br><span class="line"></span><br><span class="line">\[a + \theta * b  &#x3D; \frac&#123;a&#125;&#123;b&#125;\]</span><br><span class="line"></span><br><span class="line">展示行间数学公式</span><br><span class="line"></span><br><span class="line">如果要对公式进行编号，需要使用下方这种形式：</span><br><span class="line"></span><br><span class="line">\begin&#123;equation&#125;</span><br><span class="line">    E&#x3D;mc^2.</span><br><span class="line">\end&#123;equation&#125;</span><br><span class="line"></span><br><span class="line">表格用法</span><br><span class="line"></span><br><span class="line">\begin&#123;tabular&#125;&#123;|l|c|r|&#125;</span><br><span class="line">    \hline</span><br><span class="line">   操作系统&amp; 发行版&amp; 编辑器\\</span><br><span class="line">    \hline</span><br><span class="line">   Windows &amp; MikTeX &amp; TexMakerX \\</span><br><span class="line">    \hline</span><br><span class="line">   Unix&#x2F;Linux &amp; teTeX &amp; Kile \\</span><br><span class="line">    \hline</span><br><span class="line">   Mac OS &amp; MacTeX &amp; TeXShop \\</span><br><span class="line">    \hline</span><br><span class="line">   通用&amp; TeX Live &amp; TeXworks \\</span><br><span class="line">    \hline</span><br><span class="line">\end&#123;tabular&#125;</span><br><span class="line"></span><br><span class="line">% 插图和表格通常需要占据大块空间，所以在文字处理软件中我们经常需要调整他们的位置。figure 和 table 环境可以自动完成这样的任务；这种自动调整位置的环境称作浮动体(float)。我们以 figure 为例。</span><br><span class="line"></span><br><span class="line">\begin&#123;figure&#125;[htbp]</span><br><span class="line">\centering</span><br><span class="line">% 图片据中，可不写</span><br><span class="line">\includegraphics[width &#x3D; 0.5\textwidth]&#123;a.jpg&#125;</span><br><span class="line">% textwidth 代表当前文本区域的宽度</span><br><span class="line">\caption&#123;有图有真相&#125;</span><br><span class="line">% 如果不需要添加标题，直接使用\includegraphics就行，不用figure环境</span><br><span class="line">\label&#123;fig:myphoto&#125;</span><br><span class="line">\end&#123;figure&#125;</span><br><span class="line"></span><br><span class="line">% htbp 选项用来指定插图的理想位置，这几个字母分别代表 here, top, bottom, float page，也就是就这里、页顶、页尾、浮动页（专门放浮动体的单独页面或分栏）。\centering 用来使插图居中；\caption 命令设置插图标题，LaTeX 会自动给浮动体的标题加上编号。注意 \label 应该放在标题命令之后。</span><br><span class="line"></span><br><span class="line">\begin&#123;enumerate&#125;</span><br><span class="line">  \item 第一项</span><br><span class="line">  \item item2</span><br><span class="line">  \item item3</span><br><span class="line">\end&#123;enumerate&#125;</span><br><span class="line"></span><br><span class="line">\begin&#123;itemize&#125;</span><br><span class="line">  \item 第一项</span><br><span class="line">  \item item2</span><br><span class="line">  \item item3</span><br><span class="line">\end&#123;itemize&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">\end&#123;document&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
     </article>
+    <!-- license  -->
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/01/31/Simulating-SIR-Model/" >
-            
-                <span>Simulating SIR Model</span>
-        </a>
-        <div class="abstract-content">
-            This is a note of learning SIR model, which means Suscepted - Infected - Recovered Model.
-Background Kowledge of the ModelAssume we have a group of people. This group of people is very stable, there is no dying, no birth among them. They are living in a isolated area and there is no move in and m...
+        <div class="license-wrapper">
+            <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
+            <p>Link of This Article：<a href="https://ry2an.github.io/2021/08/17/latex-hand-book/">https://ry2an.github.io/2021/08/17/latex-hand-book/</a>
+            <p>Publish Date：<a href="https://ry2an.github.io/2021/08/17/latex-hand-book/">August 17th 2021, 8:19:20 am</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2021/08/17/latex-hand-book/">August 17th 2021, 8:22:19 am</a>
+            <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
         </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/31</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/01/17/Crawling-Data-From-html-Based-Pages/" >
-            
-                <span>Crawling Data From html Based Pages</span>
-        </a>
-        <div class="abstract-content">
-            This practicing project is going to crawl published infectious disease data from official website of health department of Shanghai (上海市卫生与计划生育委员会).
-This project is finished in 2016. I don’t know whether their website has been updated or not. The name of the department has already changed from “卫计...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/17</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/01/14/Vaccine-Making-Selling-Delivering-and-Using-System/" >
-            
-                <span>Vaccine Making Selling Delivering and Using System</span>
-        </a>
-        <div class="abstract-content">
-            Baisc InformationThis is a Database course assignment I made in 2015. 
-This is the program link.
-This is a video link of using the program.
-This project is mainly made by Visual Basic, and also use SQL grammars to operate the .mdb file, which is created by Miscrosoft Office Access.
-Background Inf...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/14</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/01/11/Use-Longitudinal-Models-Analyzing-Steam-Games/" >
-            
-                <span>Using Longitudinal Models To Analyze Steam Games</span>
-        </a>
-        <div class="abstract-content">
-            This is the final assignment of course BIOS 623 at CUNY GSPHHP in Fall 2019Author: Ruoyan Han
-IntroductionVideo games, as an emerging merchandise, are usually selling their copies through online stores and physical storage disks. Before a game marked by a price and selling on markets, it should b...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/11</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/01/10/Connect-Four-Chess/" >
-            
-                <span>Connect Four Chess</span>
-        </a>
-        <div class="abstract-content">
-            During my summer internship, I used ggplot2 a lot. It is a powerful statistic plotting package. However, how could ggplot2 performance in game developing? As I was learning R shiny, I made this chess game based on the two functions in R.
-
-This is a snapshot of the interface.
-
-
-Key Features / Func...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/10</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2016/09/01/summer-survey-2016/" >
-            
-                <span>2016年暑期实践</span>
-        </a>
-        <div class="abstract-content">
-            这是我2016年带领班上同学做得一次调研，言语中多少透露着一丝稚嫩。现在想起来都是满满的回忆
-黄河潮来信息通，豫防不见暮云重 - - 河南省公共卫生相关单位信息化系统 现状调查成员组长：韩若岩
-组员（依姓氏排序）：陈廷瑞，刘石坚，罗斯元，周前
-调查背景随着计算机科学和互联网技术的发展，各行各业都进入了“互联网+”的时代。公共卫生行业因其对于信息传递、分析的及时性、有效性的需求，故信息化系统的建设对于公共卫生行业尤为重要。从 08 年左右逐渐热起来的信息化建设（公共卫生的信息化建设其实更早，在 03 年非典之后就已经开始了） ，经过了 8 年左右时间的搭建，如今信息化平台的效果如何？在进一...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/09/01</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/1994/10/10/Markdown-Cheat-Sheet/" >
-            
-                <span>Markdown Cheat Sheet</span>
-        </a>
-        <div class="abstract-content">
-            This page contains most markdown formats.
-original text could be seen at:
-https://github.com/Ry2an/markdown_cheat_sheet/blob/master/markdown_cheat_sheet.txt
-我展示的是一级标题我展示的是二级标题一级标题二级标题三级标题四级标题五级标题六级标题换行的方式可以两个空格加回车
-或者连续两个回车
-斜体文本
-_斜体文本_
-粗体文本
-粗体文本
-粗斜体文本
-_粗斜体文本_
-居中
-
-左对齐
-
-分隔线
-
-
-
-
-删除线
-带下划线文本
-Markdown 列...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">1994/10/10</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/1994/10/09/MySQL-Hand-Book/" >
-            
-                <span>MySQL Hand Book</span>
-        </a>
-        <div class="abstract-content">
-            数据库SQL指令 笔记本文档为本人学习sql的笔记（虽然我能保证在我的电脑上每部都成功，但若您将本文作为参考也可能遇到我没有遇到的问题）
-本文标题级别并不是按照知识系统来划分，而是按照我所学习的资料的章节所划分的
-安装
-搜索mysql 5.5.27 win64 msi
-
-配置
-配置程序在server/bin的文件夹下（如果你安装最后一步没有点开始配置的话来这里启动）
-
-端口3306
-
-字符集utf8
-
-
-服务器操作启动mysql服务器方法一
-
-根据配置时候设置的服务名，在我的电脑右键，管理，服务和应用程序，服务，里找到mysql5.5(配置的时候设置的服务名为mysql5.5)，右键属性...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">1994/10/09</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/1990/07/30/test/" >
-            
-                <span>test</span>
-        </a>
-        <div class="abstract-content">
-            <p>尝试使用hexo-asset-image加载图片。同时尝试将博客同时部署在github和码云上。</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">1990/07/30</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "test">test</a>
-    
-</div>
-            
-        </div>
-    </article>
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2021/07/26/20210726-realworldstudy/" title= "20210726_realworldstudy">
+                    <div class="prevTitle">20210726_realworldstudy</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-    <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/page/2/">&lt;-- PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
     
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -728,6 +529,24 @@ Markdown 列...
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1397,6 +1216,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
