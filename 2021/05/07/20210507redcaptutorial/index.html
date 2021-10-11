@@ -266,7 +266,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">8.1k</span>Reading time: <span class="post-count reading-time">27 min</span></span>
+                        <span>Word count: <span class="post-count word-count">8.6k</span>Reading time: <span class="post-count reading-time">29 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -396,13 +396,12 @@ height:50vh;
             <main class="main post-page">
     <article class="article-entry">
         <p>REDCap使用教程</p>
-<p>韩若岩</p>
 <a id="more"></a>
-<h1 id="一、项目概览"><a href="#一、项目概览" class="headerlink" title="一、项目概览"></a>一、项目概览</h1><h2 id="1-1-如何获取帮助"><a href="#1-1-如何获取帮助" class="headerlink" title="1.1 如何获取帮助"></a>1.1 如何获取帮助</h2><ul>
-<li><p>咨询我 韩若岩(18537182018)</p>
+<h1 id="一、REDCap概览"><a href="#一、REDCap概览" class="headerlink" title="一、REDCap概览"></a>一、REDCap概览</h1><h2 id="1-1-如何获取帮助"><a href="#1-1-如何获取帮助" class="headerlink" title="1.1 如何获取帮助"></a>1.1 如何获取帮助</h2><ul>
+<li><p>咨询我 (企业为中搜索 韩若岩)</p>
+<p><img src="/2021/05/07/20210507redcaptutorial/self2.jpg" width="300" height="300" alt="图片名称" align="center"></p>
 </li>
 <li><p>也可以在bilibili视频站观看简略版的教程。<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1op4y1x7UE">视频链接</a></p>
-<p><img src="/2021/05/07/20210507redcaptutorial/self2.jpg" width="300" height="300" alt="图片名称" align="center"></p>
 </li>
 <li><p>部分项目的帮助说明</p>
 </li>
@@ -445,7 +444,7 @@ height:50vh;
 <p><img src="/2021/05/07/20210507redcaptutorial/project_status_icon4.PNG" alt></p>
 </blockquote>
 <ul>
-<li><p>完成状态下部分功能会受到限制，最主要的还是不方便您和您的同事把我当前项目状态。</p>
+<li><p>完成状态下部分功能编辑会受到限制，其最主要的目的还是方便您和您的同事把握当前项目状态。</p>
 </li>
 <li><p>如果您发现问题或其他原因希望返回之前的状态，可以点击下方灰色的 <strong>未完成？</strong> 来回到之前的状态。</p>
 </li>
@@ -453,7 +452,7 @@ height:50vh;
 </li>
 </ul>
 <h2 id="1-4-设计模式与投入生产"><a href="#1-4-设计模式与投入生产" class="headerlink" title="1.4 设计模式与投入生产"></a>1.4 设计模式与投入生产</h2><ul>
-<li><p>在正式启用项目后(最后一模块点击完成)，您的项目将从设计模式转入生产模式。在转入之前，您有一次清除作为练手输入的拟造数据的机会。</p>
+<li><p>在正式启用项目后(最后一模块点击完成)，您的项目将从设计模式转入生产模式。在转入之前，您有一次清除作为练手或测试项目输入的拟造数据的机会。</p>
 </li>
 <li><p>在生产模式中，所有的更改问卷、更改随访设置等操作都需要由管理员审核通过后才能生效。</p>
 </li>
@@ -461,9 +460,9 @@ height:50vh;
 <h1 id="二、问卷设置"><a href="#二、问卷设置" class="headerlink" title="二、问卷设置"></a>二、问卷设置</h1><h2 id="2-1-问卷的概念"><a href="#2-1-问卷的概念" class="headerlink" title="2.1 问卷的概念"></a>2.1 问卷的概念</h2><ul>
 <li><p>在redcap中，一个问卷叫做 instrument。在一次随访中，虽然我们认为一次就是一个问卷。但在redcap所建立的概念中，一次访问可以是很多个instruments。或者说redcap中的问卷的概念更倾向于’子问卷’的概念。</p>
 </li>
-<li><p>这样做的好处是可以更灵活地搭配不同的instruments。比如我demographic的数据专门做一个问卷，然后询问受访者饮食习惯的部分专门做一个问卷。一方面方便管理。另一方面，在longitudinal study中，每次随访可能需要做的问卷是不一样的。第一次可能有基本信息，后面就基本没有了。之后可能会有每月的问卷和每年的问卷，也会有所不同。</p>
+<li><p>这样做的好处是可以更灵活地搭配不同的instruments。比如我demographic的数据专门做一个问卷，然后询问受访者饮食习惯的部分专门做一个问卷。一方面方便管理。另一方面，在longitudinal study中，每次随访可能需要做的问卷是不一样的。第一次可能需要有基本信息，后面就没有了。之后可能会有每月的问卷和每年的问卷，也会有所不同。</p>
 </li>
-<li><p>我举一个例子，大家应该都吃过肯德基或者麦当劳的套餐。每次随访都是我们给受访者制定的一个套餐。套餐中单独的餐品就是一个instrument。可能我们要受访者第一次吃全家桶套餐，之后每月吃鸡肉卷套餐，每年的那次再吃天椒皇堡套餐。其中有一些餐品比如薯条是每次都要吃的。</p>
+<li><p>我举一个例子，大家应该都吃过肯德基或者麦当劳的套餐。每次随访都是我们给受访者制定的一个套餐。套餐中单独的餐品就是一个instrument。可能我们要受访者第一次吃全家桶套餐，之后每月吃鸡肉卷套餐，每年再吃一次天椒皇堡套餐。其中有一些餐品比如薯条是每次都要吃的。而每一个单品，对应在REDCap中就是一个问卷。</p>
 <p><img src="/2021/05/07/20210507redcaptutorial/questionnaire_basic_1.jpg" width="300" height="200" alt="图片名称" align="center"><br><br><br></p>
 </li>
 <li><p>在下文中，我所指的问卷均为 <strong>‘子问卷’</strong> 或 <strong>instrument</strong> 的概念。</p>
@@ -505,7 +504,7 @@ height:50vh;
 <ul>
 <li><p>刚点开的时候如果没有选择字段类型会是一片灰色，这里我为了说明方便已经选择了短文本的答案格式。一般常用的问题格式有短文本、单项选择和描述性文本。</p>
 </li>
-<li><p>除上方图片内容外，这里再补充一下字段备注。我直接给大家看以下字段备注、字段描述以及问题出现的地方（下图）。可以看到，字段描述一般作为问题的题目而字段备注可以作为受访者填写答案的提示，可以是这样的：</p>
+<li><p>除上方图片内容外，这里再补充一下字段备注。我直接给大家看一下字段备注、字段描述以及问题出现的地方（下图）。可以看到，字段描述一般作为问题的题目而字段备注可以作为受访者填写答案的提示，可以是这样的：</p>
 </li>
 </ul>
 <blockquote>
@@ -517,8 +516,15 @@ height:50vh;
 </blockquote>
 <p><img src="/2021/05/07/20210507redcaptutorial/questionnaire_design_4.PNG" alt><br><img src="/2021/05/07/20210507redcaptutorial/questionnaire_design_5.PNG" alt></p>
 <ul>
-<li>另再强调 <strong>标识符</strong> 是可以确定受访者身份的信息。这些信息对于受访者的隐私保护至关重要，之后也会介绍redcap针对这些信息的特殊操作。所以请在设计问卷时就标注好这些信息。</li>
+<li><p>另再强调 <strong>标识符</strong> 是可以确定受访者身份的信息。这些信息对于受访者的隐私保护至关重要，之后也会介绍redcap针对这些信息的特殊操作。所以请在设计问卷时就标注好这些信息。</p>
+</li>
+<li><p>2021年10月11日补充，应信息科关于数据安全的建议，本中心使用REDCap做出如下规定：</p>
+</li>
 </ul>
+<blockquote>
+<p>REDCap中不得保存受试者姓名、电话、邮箱、住址等隐私信息。</p>
+<p>REDCap中将数据与受试者对应仅能通过编号，而编号与受试者对应的信息表，需要在本地或打印保密存储。</p>
+</blockquote>
 <h4 id="2-3-1-2-不同问题的设置"><a href="#2-3-1-2-不同问题的设置" class="headerlink" title="2.3.1.2 不同问题的设置"></a>2.3.1.2 不同问题的设置</h4><ol>
 <li><strong>短文本</strong></li>
 </ol>
@@ -562,7 +568,7 @@ height:50vh;
 <li><strong>新章节（包括描述性文本）</strong></li>
 </ol>
 <ul>
-<li><p>为了数据管理的方便快捷，一个instrument可以本分为不同的章节。被这个’字段分开的问题将处于上下两个章节’。</p>
+<li><p>为了数据管理的方便快捷，一个instrument可以本分为不同的章节。被这个’字段’分开的问题将处于上下两个章节。</p>
 </li>
 <li><p>注意：与描述性文本不同的是，这个字段并没有变量名。</p>
 </li>
@@ -621,7 +627,7 @@ height:50vh;
 <ul>
 <li>可以看到新的问题已经被添加进了问卷2中。但是中文字符部分是乱码。这是因为很多电脑默认存储中文的编码方式是GBK而大多数国际平台使用的编码是UTF8。在本文的第十一部分提供了将准备上传的.csv文件转变成UTF8编码的方法。</li>
 </ul>
-<h2 id="2-4-finish-mode-and-draft-mode"><a href="#2-4-finish-mode-and-draft-mode" class="headerlink" title="2.4 finish mode and draft mode"></a>2.4 finish mode and draft mode</h2><ul>
+<h2 id="2-4-Finish-mode-and-Draft-mode"><a href="#2-4-Finish-mode-and-Draft-mode" class="headerlink" title="2.4 Finish mode and Draft mode"></a>2.4 Finish mode and Draft mode</h2><ul>
 <li>在最后项目完成进入生产模式后，问卷将变得不可随意修改。如果需要修改需要在设计界面选择进入草稿模式。</li>
 </ul>
 <p><img src="/2021/05/07/20210507redcaptutorial/questionnaire_design_15.PNG" alt></p>
@@ -709,7 +715,10 @@ height:50vh;
 <ul>
 <li>关于如何将网络问卷分发给受访者，请参考本文第四部分。</li>
 </ul>
-<h3 id="3-2-4-自动开启其他问卷？"><a href="#3-2-4-自动开启其他问卷？" class="headerlink" title="3.2.4 自动开启其他问卷？"></a>3.2.4 自动开启其他问卷？</h3><p>如上文所介绍，在单次会面中，受访者可能需要填写超过一份的问卷。下面提供三种使各问卷产生连结关系的实现方案：</p>
+<h3 id="3-2-4-问卷与项目人员混合填写"><a href="#3-2-4-问卷与项目人员混合填写" class="headerlink" title="3.2.4 问卷与项目人员混合填写"></a>3.2.4 问卷与项目人员混合填写</h3><p>这里给大家一种REDCap问卷的常见思路：</p>
+<p><img src="/2021/05/07/20210507redcaptutorial/questionnaire_survey_15.PNG" alt></p>
+<p>这是用于REDCap用户申请账户的项目。可以看到，我的这个项目中分为两个instrument，第一部分用于用户填写，而第二部分则用于项目管理人员（我）来对第一部分填写的问卷进行批复（是否允许建立账号，用户名称等。）</p>
+<h3 id="3-2-5-自动开启其他问卷？"><a href="#3-2-5-自动开启其他问卷？" class="headerlink" title="3.2.5 自动开启其他问卷？"></a>3.2.5 自动开启其他问卷？</h3><p>如上文所介绍，在单次会面中，受访者可能需要填写超过一份的问卷。下面提供三种使各问卷产生连结关系的实现方案：</p>
 <blockquote>
 <ol>
 <li>自动连播</li>
@@ -747,7 +756,7 @@ height:50vh;
 <p>在点击自动发送邀请信后会出现这样的对话框：</p>
 <p><img src="/2021/05/07/20210507redcaptutorial/questionnaire_survey_14.PNG" alt></p>
 <p>其中第2步的条件与上方调查队列中填写逻辑条件的格式相同。在第4步中点击生效即可部署并保存即可部署此功能。</p>
-<h3 id="3-2-5-Survey-Login-登陆调查"><a href="#3-2-5-Survey-Login-登陆调查" class="headerlink" title="3.2.5 Survey Login 登陆调查"></a>3.2.5 Survey Login 登陆调查</h3><ul>
+<h3 id="3-2-6-Survey-Login-登陆调查"><a href="#3-2-6-Survey-Login-登陆调查" class="headerlink" title="3.2.6 Survey Login 登陆调查"></a>3.2.6 Survey Login 登陆调查</h3><ul>
 <li>为了问卷安全性考虑，可以在受访填写问卷时弹出一些其已经填写的信息使重复填写，相同的时候才能继续作答。比如在问卷2开始前问您的电话号码是多少，效果如下：</li>
 </ul>
 <p><img src="/2021/05/07/20210507redcaptutorial/survey_login_1.PNG" alt></p>
@@ -780,14 +789,17 @@ height:50vh;
 <li>如上文问卷设置中举的套餐的例子，纵向研究需要在不同的日期为不同的受访者安排不同的问卷。下方以这样一个案例来进行实践：</li>
 </ul>
 <blockquote>
-<p>某纵向研究有暴露和对照两组，其中暴露组需要每月测量血糖血氧，每12个月测量身高。对照组需要没有填写问卷2和问卷3。此外，两组第一次受访时都需要填写初始问卷。</p>
+<p>某纵向研究有暴露和对照两组，其中暴露组需要每月测量血糖血氧，每12个月测量身高。对照组需要每周填写问卷2和问卷3。此外，两组第一次受访时都需要填写初始问卷。</p>
 </blockquote>
 <ul>
 <li>在项目设置页面启用纵向研究设计后，事件设置模块就会出现。</li>
 </ul>
 <p><img src="/2021/05/07/20210507redcaptutorial/longitudinal_1.PNG" alt></p>
 <ul>
-<li>点击 <strong>定义事件</strong> 按钮后便可以自定义分组与事件。 <strong>(建议将事件名称设定为英文且不设置自定义标签)</strong></li>
+<li><p>点击 <strong>定义事件</strong> 按钮后便可以自定义分组与事件。 <strong>(建议将事件名称设定为英文且不设置自定义标签)</strong></p>
+</li>
+<li><p>注意，这里各位可以根据实际需求，既可以为每一次方式都建立一个问卷套组。也可以为某一类问卷建立一种问卷套组。（比如每周、每月、每年等。）</p>
+</li>
 </ul>
 <p><img src="/2021/05/07/20210507redcaptutorial/longitudinal_2.PNG" alt></p>
 <ul>
@@ -911,19 +923,35 @@ height:50vh;
 </ul>
 <p><img src="/2021/05/07/20210507redcaptutorial/error_1.PNG" alt></p>
 <p><img src="/2021/05/07/20210507redcaptutorial/error_2.PNG" alt></p>
-<font color="red"> 警告：请不要在存在红色警告时强行执行操作！ </font>
+<font color="red"> 警告：在正式发布的项目中请不要在没有经过确认的情况下在存在红色警告时强行执行操作！ </font>
 
 <ul>
 <li>如果您确实需要大范围修改项目从而导致不可避免地数据覆盖，推荐您新建立一个项目并将原项目的设置复制进新项目进行管理， 如图：</li>
 </ul>
 <p><img src="/2021/05/07/20210507redcaptutorial/error_3.PNG" alt></p>
-<h1 id="十、在线数据管理"><a href="#十、在线数据管理" class="headerlink" title="十、在线数据管理"></a>十、在线数据管理</h1><h2 id="10-1-数据质量控制与可视化"><a href="#10-1-数据质量控制与可视化" class="headerlink" title="10.1 数据质量控制与可视化"></a>10.1 数据质量控制与可视化</h2><h2 id="10-2-基本描述统计"><a href="#10-2-基本描述统计" class="headerlink" title="10.2 基本描述统计"></a>10.2 基本描述统计</h2><h2 id="10-3-数据比较工具"><a href="#10-3-数据比较工具" class="headerlink" title="10.3 数据比较工具"></a>10.3 数据比较工具</h2><h1 id="十一、高阶与其他功能"><a href="#十一、高阶与其他功能" class="headerlink" title="十一、高阶与其他功能"></a>十一、高阶与其他功能</h1><h2 id="11-1-动态标签-Fields’-Active-Tag"><a href="#11-1-动态标签-Fields’-Active-Tag" class="headerlink" title="11.1 动态标签 Fields’ Active Tag"></a>11.1 动态标签 Fields’ Active Tag</h2><ul>
+<h1 id="十、在线数据管理"><a href="#十、在线数据管理" class="headerlink" title="十、在线数据管理"></a>十、在线数据管理</h1><h2 id="10-1-数据质量控制与可视化"><a href="#10-1-数据质量控制与可视化" class="headerlink" title="10.1 数据质量控制与可视化"></a>10.1 数据质量控制与可视化</h2><ul>
+<li>数据质量控制界面提供了一些小工具可以快速的对数据质量进行统计。</li>
+</ul>
+<p><img src="/2021/05/07/20210507redcaptutorial/data_quality.PNG" alt></p>
+<h2 id="10-2-基本描述统计"><a href="#10-2-基本描述统计" class="headerlink" title="10.2 基本描述统计"></a>10.2 基本描述统计</h2><p>在数据导出界面，有一个统计工具，可以允许您初步地对于数据的描述统计结果有一个了解。</p>
+<p><img src="/2021/05/07/20210507redcaptutorial/statistic_tool.PNG" alt></p>
+<p><img src="/2021/05/07/20210507redcaptutorial/statistic_tool2.PNG" alt></p>
+<h2 id="10-3-数据比较工具"><a href="#10-3-数据比较工具" class="headerlink" title="10.3 数据比较工具"></a>10.3 数据比较工具</h2><ul>
+<li>如果您需要在一个问题超多的项目中比较两条记录有哪些字段不一样，数据比较工具可以帮助到您。</li>
+</ul>
+<p><img src="/2021/05/07/20210507redcaptutorial/data_compare1.PNG" alt></p>
+<h1 id="十一、高阶与其他功能"><a href="#十一、高阶与其他功能" class="headerlink" title="十一、高阶与其他功能"></a>十一、高阶与其他功能</h1><h2 id="11-1-动态标签-Fields’-Active-Tag"><a href="#11-1-动态标签-Fields’-Active-Tag" class="headerlink" title="11.1 动态标签 Fields’ Active Tag"></a>11.1 动态标签 Fields’ Active Tag</h2><ul>
 <li><p>动态标签主要用于输入默认的值。在对话框中填写@DEFAULT = 1可以使这个问题的默认回答是1。在对话框中填写@TODAY可以获取受访者填写问卷的日期。</p>
 </li>
-<li><p>但问卷中的每一个问题受访者都是有修改权限的，如果我们想记录受访者填写问卷的</p>
+<li><p>但问卷中的每一个问题受访者都是有修改权限的，如果我们想记录受访者填写问卷的填写时间又不被其发现，可以使用@TODAY @HIDDEN这两个选项，这样就可以在不被填写问卷这察觉的请跨下记录时间。</p>
 </li>
 </ul>
-<h2 id="11-2-智能变量"><a href="#11-2-智能变量" class="headerlink" title="11.2 智能变量"></a>11.2 智能变量</h2><h2 id="11-3-问卷重复填写"><a href="#11-3-问卷重复填写" class="headerlink" title="11.3 问卷重复填写"></a>11.3 问卷重复填写</h2><ul>
+<h2 id="11-2-智能变量"><a href="#11-2-智能变量" class="headerlink" title="11.2 智能变量"></a>11.2 智能变量</h2><ul>
+<li>REDCap系统中常会保存一些常量，比如动态标签中的@TODAY等。只能变量也有类似的效果。</li>
+</ul>
+<p>举例：智能变量[user-name]可以自动显示填写用户的用户名</p>
+<p><img src="/2021/05/07/20210507redcaptutorial/zhinengbianliang_1.PNG" alt><br><img src="/2021/05/07/20210507redcaptutorial/zhinengbianliang_2.PNG" alt><br><img src="/2021/05/07/20210507redcaptutorial/zhinengbianliang_3.PNG" alt><br><img src="/2021/05/07/20210507redcaptutorial/zhinengbianliang_4.PNG" alt></p>
+<h2 id="11-3-问卷重复填写"><a href="#11-3-问卷重复填写" class="headerlink" title="11.3 问卷重复填写"></a>11.3 问卷重复填写</h2><ul>
 <li><p>无论是横断面还是纵向研究，REDCap中都允许问卷可以被反复填写。</p>
 </li>
 <li><p>注意：对于横断面研究，虽然redcap允许这样做，但不建议让受访者重复填写问卷。（如果需要修改问卷答案可以再问卷调查设置中开启重新填写问卷功能。） 以下内容默认讲解纵向研究设计中的问卷重复功能。</p>
@@ -950,15 +978,18 @@ height:50vh;
 <li>重复的事件可以不断地使用‘添加实例’按钮添加同样的事件，但是事件内的问卷不能被重复了。</li>
 </ul>
 <p><img src="/2021/05/07/20210507redcaptutorial/repeat_instrument_4.PNG" alt></p>
-<h2 id="11-4-使用动态文本-数据引入"><a href="#11-4-使用动态文本-数据引入" class="headerlink" title="11.4 使用动态文本(数据引入)"></a>11.4 使用动态文本(数据引入)</h2><ul>
-<li><p>在redcap系统中填写各类文本时，可以注意到某些地方会出现这样的标志：</p>
-</li>
-<li><p>这标志着在这些文本中可以使用动态文本。</p>
+<h2 id="11-4-使用数据引入-动态文本"><a href="#11-4-使用数据引入-动态文本" class="headerlink" title="11.4 使用数据引入(动态文本)"></a>11.4 使用数据引入(动态文本)</h2><ul>
+<li>在redcap系统中填写各类文本时，可以注意到某些地方会出现这样的标志：</li>
+</ul>
+<p><img src="/2021/05/07/20210507redcaptutorial/shujuyinru_1.PNG" alt></p>
+<ul>
+<li><p>这标志着在这些文本中可以使用数据引入。</p>
 </li>
 <li><p>这项功能的典型用法是当受访者输入自己的姓名(比如变量名是name)(比如输入了’张三’)后，部分提示性文本可以显示 ‘张三您好’</p>
 </li>
-<li></li>
 </ul>
+<p>举例：</p>
+<p><img src="/2021/05/07/20210507redcaptutorial/shujuyinru_2.PNG" alt><br><img src="/2021/05/07/20210507redcaptutorial/shujuyinru_3.PNG" alt><br><img src="/2021/05/07/20210507redcaptutorial/shujuyinru_4.PNG" alt><br><img src="/2021/05/07/20210507redcaptutorial/shujuyinru_5.PNG" alt></p>
 <h2 id="11-5-UTF8-编码"><a href="#11-5-UTF8-编码" class="headerlink" title="11.5 UTF8 编码"></a>11.5 UTF8 编码</h2><ol>
 <li>使用<a target="_blank" rel="noopener" href="https://code.visualstudio.com/">VS Code</a>打开一个其他类型编码的文件(示例为GBK)</li>
 </ol>
@@ -1018,7 +1049,13 @@ height:50vh;
 <ul>
 <li>如果认为设置大批量的事件很麻烦，可以使用excel模板的方式上传已有的events设计。</li>
 </ul>
-<h1 id="十三、一个标准的临床研究范例"><a href="#十三、一个标准的临床研究范例" class="headerlink" title="十三、一个标准的临床研究范例"></a>十三、一个标准的临床研究范例</h1><h1 id="十四、使用redcap的安全管理办法"><a href="#十四、使用redcap的安全管理办法" class="headerlink" title="十四、使用redcap的安全管理办法"></a>十四、使用redcap的安全管理办法</h1><h2 id="14-1-服务权限分级开放"><a href="#14-1-服务权限分级开放" class="headerlink" title="14.1 服务权限分级开放"></a>14.1 服务权限分级开放</h2><h2 id="14-2-权限按需求划分"><a href="#14-2-权限按需求划分" class="headerlink" title="14.2 权限按需求划分"></a>14.2 权限按需求划分</h2><h2 id="14-3-开发者资格审查"><a href="#14-3-开发者资格审查" class="headerlink" title="14.3 开发者资格审查"></a>14.3 开发者资格审查</h2><h2 id="14-4-第三方应用接入审查"><a href="#14-4-第三方应用接入审查" class="headerlink" title="14.4 第三方应用接入审查"></a>14.4 第三方应用接入审查</h2><h2 id="14-5-定期更换密码"><a href="#14-5-定期更换密码" class="headerlink" title="14.5 定期更换密码"></a>14.5 定期更换密码</h2>
+<h2 id="12-3-一些关于数据安全的使用策略："><a href="#12-3-一些关于数据安全的使用策略：" class="headerlink" title="12.3 一些关于数据安全的使用策略："></a>12.3 一些关于数据安全的使用策略：</h2><ul>
+<li><p>认真分配每个用户的权限，不要允许用户越权操作。</p>
+</li>
+<li><p>定期更换用户名和密码</p>
+</li>
+</ul>
+
     </article>
     <!-- license  -->
     
@@ -1026,7 +1063,7 @@ height:50vh;
             <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
             <p>Link of This Article：<a href="https://ry2an.github.io/2021/05/07/20210507redcaptutorial/">https://ry2an.github.io/2021/05/07/20210507redcaptutorial/</a>
             <p>Publish Date：<a href="https://ry2an.github.io/2021/05/07/20210507redcaptutorial/">May 7th 2021, 11:19:32 am</a>
-            <p>Update Date：<a href="https://ry2an.github.io/2021/05/07/20210507redcaptutorial/">June 14th 2021, 11:01:34 am</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2021/05/07/20210507redcaptutorial/">October 11th 2021, 12:03:14 pm</a>
             <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
         </div>
     
@@ -1171,7 +1208,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%A7%88"><span class="toc-number">1.</span> <span class="toc-text">一、项目概览</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E5%B8%AE%E5%8A%A9"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 如何获取帮助</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%BB%BA%E7%AB%8B%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 建立一个项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E9%A1%B9%E7%9B%AE%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 项目设置界面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-1-%E9%A1%B9%E7%9B%AE%E8%BF%9B%E7%A8%8B"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.3.1 项目进程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%8A%95%E5%85%A5%E7%94%9F%E4%BA%A7"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 设计模式与投入生产</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E5%8D%B7%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">二、问卷设置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E9%97%AE%E5%8D%B7%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 问卷的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E9%97%AE%E5%8D%B7%E7%9A%84%E5%BB%BA%E7%AB%8B"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 问卷的建立</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E9%97%AE%E5%8D%B7%E7%9A%84%E7%BC%96%E8%BE%91"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 问卷的编辑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8A%E7%BC%96%E8%BE%91%E9%97%AE%E5%8D%B7"><span class="toc-number">2.3.1.</span> <span class="toc-text">2.3.1 在浏览器上编辑问卷</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-1-%E8%AE%BE%E7%BD%AE%E9%97%AE%E9%A2%98"><span class="toc-number">2.3.1.1.</span> <span class="toc-text">2.3.1.1 设置问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-2-%E4%B8%8D%E5%90%8C%E9%97%AE%E9%A2%98%E7%9A%84%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.3.1.2.</span> <span class="toc-text">2.3.1.2 不同问题的设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-3-%E9%97%AE%E9%A2%98%E9%80%BB%E8%BE%91%E5%85%B3%E7%B3%BB"><span class="toc-number">2.3.1.3.</span> <span class="toc-text">2.3.1.3 问题逻辑关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-4-%E5%85%B3%E4%BA%8E%EF%BC%88%E7%9C%9F-%E5%81%87%EF%BC%89%E5%92%8C%EF%BC%88%E6%98%AF-%E5%90%A6%EF%BC%89%E7%B1%BB%E9%97%AE%E9%A2%98"><span class="toc-number">2.3.1.4.</span> <span class="toc-text">2.3.1.4 关于（真&#x2F;假）和（是&#x2F;否）类问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-%E5%9C%A8Excel%E4%B8%AD%E7%BC%96%E8%BE%91%E9%97%AE%E5%8D%B7"><span class="toc-number">2.3.2.</span> <span class="toc-text">2.3.2 在Excel中编辑问卷</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-finish-mode-and-draft-mode"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 finish mode and draft mode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-%E6%9F%A5%E7%9C%8B%E7%BC%96%E7%A0%81%E6%89%8B%E5%86%8C"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 查看编码手册</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%95%B0%E6%8D%AE%E7%9A%84%E8%BE%93%E5%85%A5"><span class="toc-number">3.</span> <span class="toc-text">三、数据的输入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E4%BA%BA%E5%91%98%E6%89%8B%E5%8A%A8%E8%BE%93%E5%85%A5"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 数据管理人员手动输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-Survey-Mode"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 Survey Mode</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-Survey-mode-%E7%9A%84%E5%BC%80%E5%90%AF"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1 Survey mode 的开启</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-Survey-settings"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2 Survey settings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-%E4%BD%BF%E7%94%A8%E7%BD%91%E9%A1%B5%E5%A1%AB%E5%86%99%E9%97%AE%E5%8D%B7"><span class="toc-number">3.2.3.</span> <span class="toc-text">3.2.3 使用网页填写问卷</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-4-%E8%87%AA%E5%8A%A8%E5%BC%80%E5%90%AF%E5%85%B6%E4%BB%96%E9%97%AE%E5%8D%B7%EF%BC%9F"><span class="toc-number">3.2.4.</span> <span class="toc-text">3.2.4 自动开启其他问卷？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-5-Survey-Login-%E7%99%BB%E9%99%86%E8%B0%83%E6%9F%A5"><span class="toc-number">3.2.5.</span> <span class="toc-text">3.2.5 Survey Login 登陆调查</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81-%E9%A2%84%E7%BA%A6%E5%8F%97%E8%AE%BF%E6%96%B9%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text">四、 预约受访方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81longitudinal-study-events-setting"><span class="toc-number">5.</span> <span class="toc-text">五、longitudinal study events setting</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E4%B8%8E%E4%B8%8A%E4%BC%A0"><span class="toc-number">6.</span> <span class="toc-text">六、数据下载与上传</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E5%B7%A5%E5%85%B7"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 数据导出工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5%E5%B7%A5%E5%85%B7"><span class="toc-number">6.2.</span> <span class="toc-text">6.2 数据导入工具</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%97%A5%E5%8E%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">7.</span> <span class="toc-text">七、日历系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-%E6%89%8B%E5%8A%A8%E7%8B%AC%E7%AB%8B%E6%B7%BB%E5%8A%A0%E6%97%A5%E5%8E%86%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6"><span class="toc-number">7.1.</span> <span class="toc-text">7.1 手动独立添加日历中的事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-%E7%BA%B5%E5%90%91%E6%95%B0%E6%8D%AE%E5%8D%8A%E6%89%8B%E5%8A%A8%E6%89%B9%E9%87%8F%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE"><span class="toc-number">7.2.</span> <span class="toc-text">7.2 纵向数据半手动批量添加数据</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90"><span class="toc-number">8.</span> <span class="toc-text">八、用户权限</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-%E9%A1%B9%E7%9B%AE%E8%AE%BF%E9%97%AE%E8%AE%BE%E7%BD%AE"><span class="toc-number">8.1.</span> <span class="toc-text">8.1 项目访问设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%91%8A%E8%AE%BF%E9%97%AE%E8%AE%BE%E7%BD%AE"><span class="toc-number">8.2.</span> <span class="toc-text">8.2 数据报告访问设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-3-%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE%E7%BB%84%E7%9A%84%E5%85%B6%E4%BB%96%E5%8A%9F%E8%83%BD"><span class="toc-number">8.3.</span> <span class="toc-text">8.3 数据访问组的其他功能</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E8%A1%A8%E6%A0%BC%E6%9B%B4%E6%94%B9%E5%AE%A1%E6%9F%A5"><span class="toc-number">9.</span> <span class="toc-text">九、表格更改审查</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E3%80%81%E5%9C%A8%E7%BA%BF%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86"><span class="toc-number">10.</span> <span class="toc-text">十、在线数据管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#10-1-%E6%95%B0%E6%8D%AE%E8%B4%A8%E9%87%8F%E6%8E%A7%E5%88%B6%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">10.1.</span> <span class="toc-text">10.1 数据质量控制与可视化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-2-%E5%9F%BA%E6%9C%AC%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1"><span class="toc-number">10.2.</span> <span class="toc-text">10.2 基本描述统计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-3-%E6%95%B0%E6%8D%AE%E6%AF%94%E8%BE%83%E5%B7%A5%E5%85%B7"><span class="toc-number">10.3.</span> <span class="toc-text">10.3 数据比较工具</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E9%AB%98%E9%98%B6%E4%B8%8E%E5%85%B6%E4%BB%96%E5%8A%9F%E8%83%BD"><span class="toc-number">11.</span> <span class="toc-text">十一、高阶与其他功能</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#11-1-%E5%8A%A8%E6%80%81%E6%A0%87%E7%AD%BE-Fields%E2%80%99-Active-Tag"><span class="toc-number">11.1.</span> <span class="toc-text">11.1 动态标签 Fields’ Active Tag</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-2-%E6%99%BA%E8%83%BD%E5%8F%98%E9%87%8F"><span class="toc-number">11.2.</span> <span class="toc-text">11.2 智能变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-3-%E9%97%AE%E5%8D%B7%E9%87%8D%E5%A4%8D%E5%A1%AB%E5%86%99"><span class="toc-number">11.3.</span> <span class="toc-text">11.3 问卷重复填写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-4-%E4%BD%BF%E7%94%A8%E5%8A%A8%E6%80%81%E6%96%87%E6%9C%AC-%E6%95%B0%E6%8D%AE%E5%BC%95%E5%85%A5"><span class="toc-number">11.4.</span> <span class="toc-text">11.4 使用动态文本(数据引入)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-5-UTF8-%E7%BC%96%E7%A0%81"><span class="toc-number">11.5.</span> <span class="toc-text">11.5 UTF8 编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-6-%E8%AE%BE%E7%BD%AE%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AD%97%E6%AE%B5"><span class="toc-number">11.6.</span> <span class="toc-text">11.6 设置不可重复的字段</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E9%92%88%E5%AF%B9%E4%B8%B4%E5%BA%8A%E7%A0%94%E7%A9%B6%E7%9A%84REDCap%E4%BD%BF%E7%94%A8%E5%BB%BA%E8%AE%AE"><span class="toc-number">12.</span> <span class="toc-text">十二、针对临床研究的REDCap使用建议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#12-1-%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E5%91%98%E8%BE%85%E5%8A%A9%E8%BF%9B%E8%A1%8C%E5%8F%97%E8%AE%BF%E8%80%85%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">12.1.</span> <span class="toc-text">12.1 数据管理员辅助进行受访者的初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-2-%E8%AE%BE%E7%BD%AE%E4%BA%8B%E4%BB%B6"><span class="toc-number">12.2.</span> <span class="toc-text">12.2 设置事件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%B8%89%E3%80%81%E4%B8%80%E4%B8%AA%E6%A0%87%E5%87%86%E7%9A%84%E4%B8%B4%E5%BA%8A%E7%A0%94%E7%A9%B6%E8%8C%83%E4%BE%8B"><span class="toc-number">13.</span> <span class="toc-text">十三、一个标准的临床研究范例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E5%9B%9B%E3%80%81%E4%BD%BF%E7%94%A8redcap%E7%9A%84%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E5%8A%9E%E6%B3%95"><span class="toc-number">14.</span> <span class="toc-text">十四、使用redcap的安全管理办法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#14-1-%E6%9C%8D%E5%8A%A1%E6%9D%83%E9%99%90%E5%88%86%E7%BA%A7%E5%BC%80%E6%94%BE"><span class="toc-number">14.1.</span> <span class="toc-text">14.1 服务权限分级开放</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-2-%E6%9D%83%E9%99%90%E6%8C%89%E9%9C%80%E6%B1%82%E5%88%92%E5%88%86"><span class="toc-number">14.2.</span> <span class="toc-text">14.2 权限按需求划分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-3-%E5%BC%80%E5%8F%91%E8%80%85%E8%B5%84%E6%A0%BC%E5%AE%A1%E6%9F%A5"><span class="toc-number">14.3.</span> <span class="toc-text">14.3 开发者资格审查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-4-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E6%8E%A5%E5%85%A5%E5%AE%A1%E6%9F%A5"><span class="toc-number">14.4.</span> <span class="toc-text">14.4 第三方应用接入审查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-5-%E5%AE%9A%E6%9C%9F%E6%9B%B4%E6%8D%A2%E5%AF%86%E7%A0%81"><span class="toc-number">14.5.</span> <span class="toc-text">14.5 定期更换密码</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81REDCap%E6%A6%82%E8%A7%88"><span class="toc-number">1.</span> <span class="toc-text">一、REDCap概览</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E5%B8%AE%E5%8A%A9"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 如何获取帮助</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%BB%BA%E7%AB%8B%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 建立一个项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E9%A1%B9%E7%9B%AE%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 项目设置界面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-1-%E9%A1%B9%E7%9B%AE%E8%BF%9B%E7%A8%8B"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.3.1 项目进程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%8A%95%E5%85%A5%E7%94%9F%E4%BA%A7"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 设计模式与投入生产</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E5%8D%B7%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">二、问卷设置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E9%97%AE%E5%8D%B7%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 问卷的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E9%97%AE%E5%8D%B7%E7%9A%84%E5%BB%BA%E7%AB%8B"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 问卷的建立</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E9%97%AE%E5%8D%B7%E7%9A%84%E7%BC%96%E8%BE%91"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 问卷的编辑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8A%E7%BC%96%E8%BE%91%E9%97%AE%E5%8D%B7"><span class="toc-number">2.3.1.</span> <span class="toc-text">2.3.1 在浏览器上编辑问卷</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-1-%E8%AE%BE%E7%BD%AE%E9%97%AE%E9%A2%98"><span class="toc-number">2.3.1.1.</span> <span class="toc-text">2.3.1.1 设置问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-2-%E4%B8%8D%E5%90%8C%E9%97%AE%E9%A2%98%E7%9A%84%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.3.1.2.</span> <span class="toc-text">2.3.1.2 不同问题的设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-3-%E9%97%AE%E9%A2%98%E9%80%BB%E8%BE%91%E5%85%B3%E7%B3%BB"><span class="toc-number">2.3.1.3.</span> <span class="toc-text">2.3.1.3 问题逻辑关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-4-%E5%85%B3%E4%BA%8E%EF%BC%88%E7%9C%9F-%E5%81%87%EF%BC%89%E5%92%8C%EF%BC%88%E6%98%AF-%E5%90%A6%EF%BC%89%E7%B1%BB%E9%97%AE%E9%A2%98"><span class="toc-number">2.3.1.4.</span> <span class="toc-text">2.3.1.4 关于（真&#x2F;假）和（是&#x2F;否）类问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-%E5%9C%A8Excel%E4%B8%AD%E7%BC%96%E8%BE%91%E9%97%AE%E5%8D%B7"><span class="toc-number">2.3.2.</span> <span class="toc-text">2.3.2 在Excel中编辑问卷</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-Finish-mode-and-Draft-mode"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 Finish mode and Draft mode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-%E6%9F%A5%E7%9C%8B%E7%BC%96%E7%A0%81%E6%89%8B%E5%86%8C"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 查看编码手册</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%95%B0%E6%8D%AE%E7%9A%84%E8%BE%93%E5%85%A5"><span class="toc-number">3.</span> <span class="toc-text">三、数据的输入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E4%BA%BA%E5%91%98%E6%89%8B%E5%8A%A8%E8%BE%93%E5%85%A5"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 数据管理人员手动输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-Survey-Mode"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 Survey Mode</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-Survey-mode-%E7%9A%84%E5%BC%80%E5%90%AF"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1 Survey mode 的开启</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-Survey-settings"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2 Survey settings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-%E4%BD%BF%E7%94%A8%E7%BD%91%E9%A1%B5%E5%A1%AB%E5%86%99%E9%97%AE%E5%8D%B7"><span class="toc-number">3.2.3.</span> <span class="toc-text">3.2.3 使用网页填写问卷</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-4-%E9%97%AE%E5%8D%B7%E4%B8%8E%E9%A1%B9%E7%9B%AE%E4%BA%BA%E5%91%98%E6%B7%B7%E5%90%88%E5%A1%AB%E5%86%99"><span class="toc-number">3.2.4.</span> <span class="toc-text">3.2.4 问卷与项目人员混合填写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-5-%E8%87%AA%E5%8A%A8%E5%BC%80%E5%90%AF%E5%85%B6%E4%BB%96%E9%97%AE%E5%8D%B7%EF%BC%9F"><span class="toc-number">3.2.5.</span> <span class="toc-text">3.2.5 自动开启其他问卷？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-6-Survey-Login-%E7%99%BB%E9%99%86%E8%B0%83%E6%9F%A5"><span class="toc-number">3.2.6.</span> <span class="toc-text">3.2.6 Survey Login 登陆调查</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81-%E9%A2%84%E7%BA%A6%E5%8F%97%E8%AE%BF%E6%96%B9%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text">四、 预约受访方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81longitudinal-study-events-setting"><span class="toc-number">5.</span> <span class="toc-text">五、longitudinal study events setting</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E4%B8%8E%E4%B8%8A%E4%BC%A0"><span class="toc-number">6.</span> <span class="toc-text">六、数据下载与上传</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E5%B7%A5%E5%85%B7"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 数据导出工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5%E5%B7%A5%E5%85%B7"><span class="toc-number">6.2.</span> <span class="toc-text">6.2 数据导入工具</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%97%A5%E5%8E%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">7.</span> <span class="toc-text">七、日历系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-%E6%89%8B%E5%8A%A8%E7%8B%AC%E7%AB%8B%E6%B7%BB%E5%8A%A0%E6%97%A5%E5%8E%86%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6"><span class="toc-number">7.1.</span> <span class="toc-text">7.1 手动独立添加日历中的事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-%E7%BA%B5%E5%90%91%E6%95%B0%E6%8D%AE%E5%8D%8A%E6%89%8B%E5%8A%A8%E6%89%B9%E9%87%8F%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE"><span class="toc-number">7.2.</span> <span class="toc-text">7.2 纵向数据半手动批量添加数据</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90"><span class="toc-number">8.</span> <span class="toc-text">八、用户权限</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-%E9%A1%B9%E7%9B%AE%E8%AE%BF%E9%97%AE%E8%AE%BE%E7%BD%AE"><span class="toc-number">8.1.</span> <span class="toc-text">8.1 项目访问设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%91%8A%E8%AE%BF%E9%97%AE%E8%AE%BE%E7%BD%AE"><span class="toc-number">8.2.</span> <span class="toc-text">8.2 数据报告访问设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-3-%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE%E7%BB%84%E7%9A%84%E5%85%B6%E4%BB%96%E5%8A%9F%E8%83%BD"><span class="toc-number">8.3.</span> <span class="toc-text">8.3 数据访问组的其他功能</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E8%A1%A8%E6%A0%BC%E6%9B%B4%E6%94%B9%E5%AE%A1%E6%9F%A5"><span class="toc-number">9.</span> <span class="toc-text">九、表格更改审查</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E3%80%81%E5%9C%A8%E7%BA%BF%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86"><span class="toc-number">10.</span> <span class="toc-text">十、在线数据管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#10-1-%E6%95%B0%E6%8D%AE%E8%B4%A8%E9%87%8F%E6%8E%A7%E5%88%B6%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">10.1.</span> <span class="toc-text">10.1 数据质量控制与可视化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-2-%E5%9F%BA%E6%9C%AC%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1"><span class="toc-number">10.2.</span> <span class="toc-text">10.2 基本描述统计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-3-%E6%95%B0%E6%8D%AE%E6%AF%94%E8%BE%83%E5%B7%A5%E5%85%B7"><span class="toc-number">10.3.</span> <span class="toc-text">10.3 数据比较工具</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E9%AB%98%E9%98%B6%E4%B8%8E%E5%85%B6%E4%BB%96%E5%8A%9F%E8%83%BD"><span class="toc-number">11.</span> <span class="toc-text">十一、高阶与其他功能</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#11-1-%E5%8A%A8%E6%80%81%E6%A0%87%E7%AD%BE-Fields%E2%80%99-Active-Tag"><span class="toc-number">11.1.</span> <span class="toc-text">11.1 动态标签 Fields’ Active Tag</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-2-%E6%99%BA%E8%83%BD%E5%8F%98%E9%87%8F"><span class="toc-number">11.2.</span> <span class="toc-text">11.2 智能变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-3-%E9%97%AE%E5%8D%B7%E9%87%8D%E5%A4%8D%E5%A1%AB%E5%86%99"><span class="toc-number">11.3.</span> <span class="toc-text">11.3 问卷重复填写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-4-%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BC%95%E5%85%A5-%E5%8A%A8%E6%80%81%E6%96%87%E6%9C%AC"><span class="toc-number">11.4.</span> <span class="toc-text">11.4 使用数据引入(动态文本)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-5-UTF8-%E7%BC%96%E7%A0%81"><span class="toc-number">11.5.</span> <span class="toc-text">11.5 UTF8 编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-6-%E8%AE%BE%E7%BD%AE%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AD%97%E6%AE%B5"><span class="toc-number">11.6.</span> <span class="toc-text">11.6 设置不可重复的字段</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E9%92%88%E5%AF%B9%E4%B8%B4%E5%BA%8A%E7%A0%94%E7%A9%B6%E7%9A%84REDCap%E4%BD%BF%E7%94%A8%E5%BB%BA%E8%AE%AE"><span class="toc-number">12.</span> <span class="toc-text">十二、针对临床研究的REDCap使用建议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#12-1-%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E5%91%98%E8%BE%85%E5%8A%A9%E8%BF%9B%E8%A1%8C%E5%8F%97%E8%AE%BF%E8%80%85%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">12.1.</span> <span class="toc-text">12.1 数据管理员辅助进行受访者的初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-2-%E8%AE%BE%E7%BD%AE%E4%BA%8B%E4%BB%B6"><span class="toc-number">12.2.</span> <span class="toc-text">12.2 设置事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-3-%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E7%AD%96%E7%95%A5%EF%BC%9A"><span class="toc-number">12.3.</span> <span class="toc-text">12.3 一些关于数据安全的使用策略：</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
