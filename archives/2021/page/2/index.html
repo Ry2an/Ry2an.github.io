@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>Simulating SIR Model · Ry2an&#39;s Blog</title>
+    <title>Ry2an&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,23 +203,12 @@
 <meta name="generator" content="Hexo 5.0.0"></head>
 
     
-        <body class="post-body">
-    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
-    
-    <div class="banner">
-            <div class="blog-title">
-                <a href="/" >Ry2an&#39;s Studio</a>
-            </div>
-            <div class="post-title">
-                <a href="#" class="post-name">Simulating SIR Model</a>
-            </div>
-    </div>
     
     <a class="home-link" href=/>Ry2an's Studio</a>
 </header>
@@ -231,68 +220,24 @@
 
 
 
-
-height:50vh;
 ">
     
     <!-- 主页  -->
-    
-    
-    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/postbg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
-            
-            Simulating SIR Model
-            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-            
-            <!-- 404 -->
-            
         </p>
         <!-- 文章页meta -->
-        
-            <div class="post-intros">
-                <!-- 文章页标签  -->
-                
-                
-                    <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">604</span>Reading time: <span class="post-count reading-time">3 min</span></span>
-                    </div>
-                
-                <div class="post-intro-meta">
-                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/01/31</span>
-                    
-                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
-                        <span class="iconfont-archer">&#xe602;</span>
-                        <span id="busuanzi_value_page_pv"></span>
-                    </span>
-                    
-                    <span class="shareWrapper">
-                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
-                        <span class="shareText">Share</span>
-                        <ul class="shareList">
-                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
-                                <div class="share-qrcode"></div>
-                            </li>
-                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
-                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
-                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
-                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
-                        </ul>
-                    </span>
-                </div>
-            </div>
         
     </div>
 </div>
@@ -393,87 +338,57 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main post-page">
-    <article class="article-entry">
-        <p>This is a note of learning SIR model, which means Suscepted - Infected - Recovered Model.</p>
-<h2 id="Background-Kowledge-of-the-Model"><a href="#Background-Kowledge-of-the-Model" class="headerlink" title="Background Kowledge of the Model"></a>Background Kowledge of the Model</h2><p>Assume we have a group of people. This group of people is very stable, there is no dying, no birth among them. They are living in a isolated area and there is no move in and move out. And thus, the total count of this group of people is stable.</p>
-<p>Unfortunately, someday, a small number of people among them got an infectious disease. Appreciated to our human inmmunity system, once people recoved from the disease, B cells can remember it and protect its host not get infected again.</p>
-<p>Therefore, assumming all people in this group is susceptable for this disease at the begining, this group of people could have three components: suscepted, infected and recovered. In this special stable group, we can know that all of them would go through the suscept, infect and recover processes and finally this disease can no longer cause anything in this group of people.</p>
-<h2 id="Formulas-of-the-Model"><a href="#Formulas-of-the-Model" class="headerlink" title="Formulas of the Model"></a>Formulas of the Model</h2><p>However, describing the trend of the three componnets, is not as easy as the ‘swimming pool questions’ we learned in primary schools. But we can still have a little galnce review of it. Assume there are three swimming pools in your backyard called “Suscept”, “Infect” and “Recover”. Waters are slowly flowing from “S”, through “I” and finally moving to “R”. We can know that the relationship between remain volume in three pools are:</p>
-<p><img src="/2020/01/31/Simulating-SIR-Model/2.PNG" alt="2"></p>
-<script type="math/tex; mode=display">
-\textrm{Volume-S}_t = \textrm{Volume-S}_{t-1} - \textrm{Speed S to I per unit time}</script><script type="math/tex; mode=display">
-\textrm{Volume-I}_t = \textrm{Volume-I}_{t-1} + \textrm{Speed S to I per unit time} - \textrm{Speed I to R per unit time}</script><script type="math/tex; mode=display">
-\textrm{Volume-R}_t = \textrm{Volume-R}_{t-1} + \textrm{Speed I to R per unit time}</script><p>However, the biggest problem of these equation is that the speed among the pools are not stable!</p>
-<p>If we know something about infectious diseases, we can know that: </p>
-<blockquote>
-<ul>
-<li><p>The more infected people in that group, the faster the people “flowing from S to I”.</p>
-</li>
-<li><p>The more infected people there is, if the chance of recovering for each patient is same, the more people “flowing from I to R.”</p>
-</li>
-<li><p>And in fact, during the process that everyone tranforming from S to R, the number of I is actually changing all the time.</p>
-</li>
-</ul>
-</blockquote>
-<p>A good thing is that we can define the “speed of transforming per unit time” in formulas above based on these features.</p>
-<p>We can set the speed of S to I as $\beta_1*\textrm{S}*\textrm{I}$, and the speed of I to R as $\beta_2*\textrm{I}$. Thus, the formulas are chaged as following:</p>
-<script type="math/tex; mode=display">
-\textrm{Volume-S}_t = \textrm{Volume-S}_{t-1} - \beta_1*\textrm{S}*\textrm{I}</script><script type="math/tex; mode=display">
-\textrm{Volume-I}_t = \textrm{Volume-I}_{t-1} + \beta_1*\textrm{S}*\textrm{I} - \beta_2*\textrm{I}</script><script type="math/tex; mode=display">
-\textrm{Volume-R}_t = \textrm{Volume-R}_{t-1} + \beta_2*\textrm{I}</script><h2 id="Shiny-Program"><a href="#Shiny-Program" class="headerlink" title="Shiny Program"></a>Shiny Program</h2><p>I also created a R shiny app to simulate the trends, please use the following code in your R studio:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">library(shiny)</span><br><span class="line">runGitHub(&quot;shiny_sir&quot;, &quot;Ry2an&quot;)</span><br></pre></td></tr></table></figure>
-<p>To install shiny package, you may want to use:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">install.packages(&quot;shiny&quot;)</span><br></pre></td></tr></table></figure>
-<p>Here is a snapshot of the Shiny App.</p>
-<p><img src="/2020/01/31/Simulating-SIR-Model/1.PNG" alt="1"></p>
-<h2 id="Video-tutorial"><a href="#Video-tutorial" class="headerlink" title="Video tutorial"></a>Video tutorial</h2><p>I created a video to show how the model works and how to draw the curves through R and ggplot2. The video is published on <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av85896996">bilibili video site</a>. I apologize that there is no English subtitle in that video, but the code should be clear to see.</p>
-<p>Thank you for reading my article!</p>
-
-    </article>
-    <!-- license  -->
+            <main class="main index-page">
     
-        <div class="license-wrapper">
-            <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
-            <p>Link of This Article：<a href="https://ry2an.github.io/2020/01/31/Simulating-SIR-Model/">https://ry2an.github.io/2020/01/31/Simulating-SIR-Model/</a>
-            <p>Publish Date：<a href="https://ry2an.github.io/2020/01/31/Simulating-SIR-Model/">January 31st 2020, 11:49:16 am</a>
-            <p>Update Date：<a href="https://ry2an.github.io/2020/01/31/Simulating-SIR-Model/">August 1st 2020, 8:46:30 pm</a>
-            <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2021/02/19/20200219gongkaobeikao/" >
+            
+                <span>公务员事业单位备考</span>
+        </a>
+        <div class="abstract-content">
+            考试内容简介
+公务员考试分为行政能力测验(行测)与申论
+
+行测包括：常识判断、言语理解、判断推理、数量关系、资料分析
+
+事业单位考试包括职业能力倾向测试、公共基础知识（公基）和专业课。有的考综合知识 = 公基 + 职测
+
+职业能力倾向测试包括：常识判断、言语理解、判断推理、数量关系、资料分析
+
+公共基础知识包括：法律基础、中国特色社会主义理论、马克思注意哲学、应用文写作、经济与管理、公民道德建设、科技基础知识、省情市情、时事政治
+
+事业单位考试可参考往年考试大纲
+
+河南省疾控中心只考专业基础知识
+
+
+复习方法行测：
+常识积累、多刷题
+
+申论：
+多看人民网、半月谈。看文章思路结构、论点论据...
         </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/02/19</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
     
     <!-- paginator  -->
-    <ul class="post-paginator">
-        <li class="next">
-            
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/02/09/Understanding-Fourier-Transform-and-Wavelet-Analysis/" title= "Understanding Fourier Transform and Wavelet Analysis">
-                    <div class="nextTitle">Understanding Fourier Transform and Wavelet Analysis</div>
-                </a>
-            
-        </li>
-        <li class="previous">
-            
-                <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/01/17/Crawling-Data-From-html-Based-Pages/" title= "Crawling Data From html Based Pages">
-                    <div class="prevTitle">Crawling Data From html Based Pages</div>
-                </a>
-            
-        </li>
-    </ul>
-    <!-- 评论插件 -->
-    <!-- 来必力City版安装代码 -->
-
-<!-- City版安装代码已完成 -->
     
+    <nav class="page-nav">
+        <a class="extend prev" rel="prev" href="/archives/2021/">&lt;-- PREV</a><a class="page-number" href="/archives/2021/">1</a><span class="page-number current">2</span>
+    </nav>
     
-    <!-- partial('_partial/comment/changyan') -->
-    <!--PC版-->
-
-
-    
-    
-
-    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -566,24 +481,6 @@ height:50vh;
 </footer>
     </div>
     <!-- toc -->
-    
-    <div class="toc-wrapper" style=
-    
-
-
-
-
-
-
-
-top:50vh;
-
-    >
-        <div class="toc-catalog">
-            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
-        </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Background-Kowledge-of-the-Model"><span class="toc-number">1.</span> <span class="toc-text">Background Kowledge of the Model</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Formulas-of-the-Model"><span class="toc-number">2.</span> <span class="toc-text">Formulas of the Model</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shiny-Program"><span class="toc-number">3.</span> <span class="toc-text">Shiny Program</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Video-tutorial"><span class="toc-number">4.</span> <span class="toc-text">Video tutorial</span></a></li></ol>
-    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1289,8 +1186,6 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
-    
-        <script src="/scripts/share.js" async></script>    
      
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
