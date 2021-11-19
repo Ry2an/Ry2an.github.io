@@ -266,7 +266,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">177</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">646</span>Reading time: <span class="post-count reading-time">3 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -399,6 +399,315 @@ height:50vh;
 <a id="more"></a>
 <p><img src="/2021/11/15/ggplot-memo/001.png" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ggplot(date_plot_df, aes(x &#x3D; date, y &#x3D; date_proj_num)) + </span><br><span class="line">  geom_bar(stat &#x3D; &quot;identity&quot;, aes(fill &#x3D; bar_mark)) + </span><br><span class="line">  geom_line(aes(x &#x3D; date, y &#x3D; mean_detail, color &#x3D; point_mark), size &#x3D; 3) +</span><br><span class="line">  geom_point(aes(x &#x3D; date, y &#x3D; mean_detail, color &#x3D; point_mark), size &#x3D; 6) +</span><br><span class="line">  ylab(&quot;工作量&quot;) + xlab(&quot;日期&quot;) +</span><br><span class="line">  scale_fill_manual(values &#x3D; &quot;#04B4AE&quot;, labels&#x3D;c(&quot;每日经手\n任务量&quot;)) +</span><br><span class="line">  scale_color_manual(values &#x3D; &quot;#B4045F&quot;, labels&#x3D;c(&quot;平均每任务\n当日完成事项数&quot;)) +</span><br><span class="line">  guides(fill&#x3D;guide_legend(title&#x3D;NULL))+</span><br><span class="line">  guides(color&#x3D;guide_legend(title&#x3D;NULL))+ </span><br><span class="line">  theme(legend.text&#x3D;element_text(size&#x3D;14), </span><br><span class="line">        axis.title.y&#x3D;element_text(size&#x3D;14),</span><br><span class="line">        axis.title.x&#x3D;element_text(size&#x3D;14))</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/11/15/ggplot-memo/002.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">ggplot(plot_df, aes(x &#x3D; date, y &#x3D; proj_num)) + </span><br><span class="line">  geom_bar(stat &#x3D; &quot;identity&quot;, aes(fill &#x3D; bar_mark)) + </span><br><span class="line">  geom_line(aes(x &#x3D; date, y &#x3D; detail_num, color &#x3D; point_mark), size &#x3D; 2) +</span><br><span class="line">  geom_point(aes(x &#x3D; date, y &#x3D; detail_num, color &#x3D; point_mark), size &#x3D; 3) +</span><br><span class="line">  ylab(&quot;工作量&quot;) + xlab(&quot;时间&quot;) +</span><br><span class="line">  scale_fill_manual(values &#x3D; &quot;#04B4AE&quot;, labels&#x3D;c(&quot;每周经手\n任务量&quot;)) +</span><br><span class="line">  scale_color_manual(values &#x3D; &quot;#B4045F&quot;, labels&#x3D;c(&quot;每周完成\n事项数&quot;)) +</span><br><span class="line">  guides(fill&#x3D;guide_legend(title&#x3D;NULL))+</span><br><span class="line">  guides(color&#x3D;guide_legend(title&#x3D;NULL))+ </span><br><span class="line">  theme(legend.text&#x3D;element_text(size&#x3D;14), </span><br><span class="line">        axis.title.y&#x3D;element_text(size&#x3D;14),</span><br><span class="line">        axis.title.x&#x3D;element_text(size&#x3D;14))+</span><br><span class="line">  scale_x_continuous(breaks &#x3D; </span><br><span class="line">                       seq(as.Date(&quot;2021-05-01&quot;), as.Date(&quot;2021-11-01&quot;), len &#x3D; 5)</span><br><span class="line">                     )+</span><br><span class="line">  theme(axis.title.x &#x3D; element_text(size &#x3D; 15, </span><br><span class="line">                                    family &#x3D; &quot;myFont&quot;, </span><br><span class="line">                                    color &#x3D; &quot;green&quot;, </span><br><span class="line">                                    face &#x3D; &quot;bold&quot;, </span><br><span class="line">                                    vjust &#x3D; 0.5, hjust &#x3D; 0.5, angle &#x3D; 45))+</span><br><span class="line">  theme(axis.text.x &#x3D; element_text(size &#x3D; 15, </span><br><span class="line">                                    family &#x3D; &quot;myFont&quot;, </span><br><span class="line">                                    color &#x3D; &quot;green&quot;, </span><br><span class="line">                                    face &#x3D; &quot;bold&quot;, </span><br><span class="line">                                    vjust &#x3D; 0.5, hjust &#x3D; 0.5, angle &#x3D; 45))</span><br></pre></td></tr></table></figure>
+<p><strong>PLOT_DF</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">week_vec</th>
+<th style="text-align:center">start_point</th>
+<th style="text-align:center">end_point</th>
+<th style="text-align:center">proj_num</th>
+<th style="text-align:center">detail_num</th>
+<th style="text-align:center">week_id</th>
+<th style="text-align:center">bar_mark</th>
+<th style="text-align:center">point_mark</th>
+<th style="text-align:center">date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">44321</td>
+<td style="text-align:center">44327</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18752</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">44328</td>
+<td style="text-align:center">44334</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">11</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18759</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">44335</td>
+<td style="text-align:center">44341</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18766</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">44342</td>
+<td style="text-align:center">44348</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18773</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">44349</td>
+<td style="text-align:center">44355</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18780</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">44356</td>
+<td style="text-align:center">44362</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18787</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">44363</td>
+<td style="text-align:center">44369</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18794</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">44370</td>
+<td style="text-align:center">44376</td>
+<td style="text-align:center">11</td>
+<td style="text-align:center">26</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18801</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center">44377</td>
+<td style="text-align:center">44383</td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">38</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18808</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">44384</td>
+<td style="text-align:center">44390</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18815</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center">44391</td>
+<td style="text-align:center">44397</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">23</td>
+<td style="text-align:center">11</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18822</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">44398</td>
+<td style="text-align:center">44404</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18829</td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td style="text-align:center">44405</td>
+<td style="text-align:center">44411</td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">21</td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18836</td>
+</tr>
+<tr>
+<td style="text-align:center">14</td>
+<td style="text-align:center">44412</td>
+<td style="text-align:center">44418</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">14</td>
+<td style="text-align:center">14</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18843</td>
+</tr>
+<tr>
+<td style="text-align:center">15</td>
+<td style="text-align:center">44419</td>
+<td style="text-align:center">44425</td>
+<td style="text-align:center">18</td>
+<td style="text-align:center">25</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18850</td>
+</tr>
+<tr>
+<td style="text-align:center">16</td>
+<td style="text-align:center">44426</td>
+<td style="text-align:center">44432</td>
+<td style="text-align:center">21</td>
+<td style="text-align:center">24</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18857</td>
+</tr>
+<tr>
+<td style="text-align:center">17</td>
+<td style="text-align:center">44433</td>
+<td style="text-align:center">44439</td>
+<td style="text-align:center">30</td>
+<td style="text-align:center">54</td>
+<td style="text-align:center">17</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18864</td>
+</tr>
+<tr>
+<td style="text-align:center">18</td>
+<td style="text-align:center">44440</td>
+<td style="text-align:center">44446</td>
+<td style="text-align:center">28</td>
+<td style="text-align:center">71</td>
+<td style="text-align:center">18</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18871</td>
+</tr>
+<tr>
+<td style="text-align:center">19</td>
+<td style="text-align:center">44447</td>
+<td style="text-align:center">44453</td>
+<td style="text-align:center">23</td>
+<td style="text-align:center">41</td>
+<td style="text-align:center">19</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18878</td>
+</tr>
+<tr>
+<td style="text-align:center">20</td>
+<td style="text-align:center">44454</td>
+<td style="text-align:center">44460</td>
+<td style="text-align:center">14</td>
+<td style="text-align:center">28</td>
+<td style="text-align:center">20</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18885</td>
+</tr>
+<tr>
+<td style="text-align:center">21</td>
+<td style="text-align:center">44461</td>
+<td style="text-align:center">44467</td>
+<td style="text-align:center">18</td>
+<td style="text-align:center">41</td>
+<td style="text-align:center">21</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18892</td>
+</tr>
+<tr>
+<td style="text-align:center">22</td>
+<td style="text-align:center">44468</td>
+<td style="text-align:center">44474</td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">25</td>
+<td style="text-align:center">22</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18899</td>
+</tr>
+<tr>
+<td style="text-align:center">23</td>
+<td style="text-align:center">44475</td>
+<td style="text-align:center">44481</td>
+<td style="text-align:center">24</td>
+<td style="text-align:center">72</td>
+<td style="text-align:center">23</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18906</td>
+</tr>
+<tr>
+<td style="text-align:center">24</td>
+<td style="text-align:center">44482</td>
+<td style="text-align:center">44488</td>
+<td style="text-align:center">34</td>
+<td style="text-align:center">67</td>
+<td style="text-align:center">24</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18913</td>
+</tr>
+<tr>
+<td style="text-align:center">25</td>
+<td style="text-align:center">44489</td>
+<td style="text-align:center">44495</td>
+<td style="text-align:center">27</td>
+<td style="text-align:center">43</td>
+<td style="text-align:center">25</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18920</td>
+</tr>
+<tr>
+<td style="text-align:center">26</td>
+<td style="text-align:center">44496</td>
+<td style="text-align:center">44502</td>
+<td style="text-align:center">34</td>
+<td style="text-align:center">57</td>
+<td style="text-align:center">26</td>
+<td style="text-align:center">bar</td>
+<td style="text-align:center">point</td>
+<td style="text-align:center">18927</td>
+</tr>
+</tbody>
+</table>
+</div>
+
     </article>
     <!-- license  -->
     
@@ -406,7 +715,7 @@ height:50vh;
             <p>Author：<a href="https://ry2an.github.io">Ruoyan Han</a>
             <p>Link of This Article：<a href="https://ry2an.github.io/2021/11/15/ggplot-memo/">https://ry2an.github.io/2021/11/15/ggplot-memo/</a>
             <p>Publish Date：<a href="https://ry2an.github.io/2021/11/15/ggplot-memo/">November 15th 2021, 3:27:26 pm</a>
-            <p>Update Date：<a href="https://ry2an.github.io/2021/11/15/ggplot-memo/">November 15th 2021, 3:40:55 pm</a>
+            <p>Update Date：<a href="https://ry2an.github.io/2021/11/15/ggplot-memo/">November 19th 2021, 9:30:17 am</a>
             <p>Copyright Notice：This article is licensed under <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</a></p>
         </div>
     
@@ -415,8 +724,8 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2021/11/15/2021worknote/" title= "2021工作总结">
-                    <div class="nextTitle">2021工作总结</div>
+                <a href= "/2021/11/19/2021worknote/" title= "2021年工作总结">
+                    <div class="nextTitle">2021年工作总结</div>
                 </a>
             
         </li>
@@ -988,7 +1297,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">11/15</span><a class="archive-post-title" href= "/2021/11/15/2021worknote/" >2021工作总结</a>
+            <span class="archive-post-date">11/19</span><a class="archive-post-title" href= "/2021/11/19/2021worknote/" >2021年工作总结</a>
         </li>
     
     
